@@ -1,0 +1,34 @@
+div#root {
+  text-align: center;
+  background-color: rgba(81, 106, 44, 0.618);
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+button {
+  align-items: flex-end;
+  background-color: bisque;
+}
+h2 {
+  padding-top: 2rem;
+}
+.help {
+  position: relative;
+  display: flex;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: none;
+  gap: 20%;
+  padding-top: 25%;
+}
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
