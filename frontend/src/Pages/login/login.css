@@ -1,6 +1,7 @@
 div#root {
-  text-align: center;
-  background-color: rgba(81, 106, 44, 0.618);
+  justify-content: center;
+  flex-direction: column;
+  min-height: 90vh;
 }
 
 .login {
@@ -11,6 +12,7 @@ div#root {
 }
 
 button {
+  /* podria eliminarse */
   align-items: flex-end;
   background-color: bisque;
 }
@@ -27,8 +29,12 @@ h2 {
   padding-top: 25%;
 }
 img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
-  object-fit: cover;
+  margin: 3rem;
+}
+
+div {
+  margin-top: 2rem;
 }

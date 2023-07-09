@@ -1,6 +1,5 @@
 import React from 'react';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
-
 import InputText from '../../Components/Shared/Input/InputText';
 import Button from '../../Components/Shared/Button/Button';
 import Footer from '../../Components/Shared/Footer/Footer';
@@ -16,7 +15,6 @@ function Login() {
         <InputPassword />
         <Button text='Login' />
       </div>
-      <Footer />
     </>
   );
 }
