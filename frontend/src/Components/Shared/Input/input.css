@@ -5,3 +5,13 @@ input {
   border: 10px black;
   padding: 0.25rem 1rem;
 }
+.email-label {
+  font-size: 12px;
+  color: gray;
+  margin-right: 150px;
+}
+.info-label {
+  font-size: 12px;
+  color: gray;
+  margin-right: 150px;
+}
