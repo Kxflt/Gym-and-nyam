@@ -9,6 +9,8 @@ import './login.css';
 function Login() {
   return (
     <>
+      {/* El logo lo pondria en components, en la carpeta de logo, para poder
+      exportarlo */}
       <img src={ImgLogo} alt='logo' />
       <div className='login'>
         <InputText />
