@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "3a4849f6-f72f-4cfc-98d1-bc13d2801272",
+		"_postman_id": "3ac2f0da-563c-4663-907c-7b3902008fe1",
 		"name": "APP GIMNASIO",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27492829"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -22,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
+							"raw": "{\n    \"name\": \"pepe\",\n    \"email\": \"oriol.solanes@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +80,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Uri\",\n    \"email\": \"oriol.solanes.lopez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
+							"raw": "{\n    \"name\": \"Marina\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"1234567\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,7 +355,7 @@
 								},
 								{
 									"key": "description",
-									"value": "Probandoprobando1212",
+									"value": "algo raro",
 									"type": "text"
 								},
 								{
@@ -372,7 +371,7 @@
 								{
 									"key": "photo",
 									"type": "file",
-									"src": []
+									"src": "/Users/uri/Desktop/logo/logo.png"
 								}
 							]
 						},

@@ -59,8 +59,8 @@ const main = async () => {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS exercises(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR (50) UNIQUE NOT NULL,
-        description VARCHAR(200) NOT NULL,
+        name VARCHAR(150) UNIQUE NOT NULL,
+        description VARCHAR(500) NOT NULL,
         photo VARCHAR(100),
         userId INT UNSIGNED NOT NULL,
         typologyId INT UNSIGNED NOT NULL,
