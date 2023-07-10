@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
-import { login } from '../services';
+import { login } from '../services/authService';
 //import {login , signUp , signUpAvatar, updateAccount}
 
 const AuthContext = createContext();
@@ -40,3 +40,5 @@ export function AuthProvider({ children }) {
     } catch (error) {}
   };
 }
+
+export default AuthContext;

@@ -1,7 +1,7 @@
 .button {
   color: rgb(8, 8, 8);
   border: 1px black;
-  background-color: rgb(109, 6, 150);
+  background-color: rgb(116, 224, 15);
   padding: 0.7rem 5.2rem;
   border-radius: 5%;
   margin: 2rem;
@@ -19,4 +19,7 @@
   color: white;
   padding: 1rem 5rem;
   transition: all 0.2s ease;
+}
+button {
+  background-color: aqua;
 }

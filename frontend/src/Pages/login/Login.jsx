@@ -16,7 +16,12 @@ function Login() {
         <InputText />
         <InputPassword />
         <Button text='Login' />
+        <div className='help'>
+          <p>Forget Password</p>
+          <p>Sign Up</p>
+        </div>
       </div>
+      <Footer />
     </>
   );
 }
