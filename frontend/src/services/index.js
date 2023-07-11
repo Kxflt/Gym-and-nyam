@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
-import { login, newUser } from './authService';
+import { login, newUser, signUpAvatar, updateUser } from './authService';
 import { createExercise, modifyExercise } from './exerciseService';
 
 //Cogemos el token del localstorage => nos viene los datos de usuario junto al token al registrarnos.
@@ -74,4 +74,11 @@ axios.interceptors.response.use(
 );
 
 //Se importa y exporta las mismas funciones para que recorran todo el código del axios para que implementen el token y que tipo de rutas se puede seguir.
-export { createExercise, modifyExercise, login, createExercise };
+export {
+  signUpAvatar,
+  updateUser,
+  createExercise,
+  modifyExercise,
+  login,
+  createExercise,
+};

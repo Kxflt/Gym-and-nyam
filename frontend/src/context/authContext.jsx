@@ -6,14 +6,17 @@ import { login } from '../services/authService';
 
 const AuthContext = createContext();
 
+//Miramos en el localstorage si se encuentra el currentUser, (usuario con token)
 const currentUser = JSON.parse(
   //verificamos si el currentUser esta en el localstorage
   localStorage.getItem(CURRENT_USER_LOCAL_STORAGE)
 );
 
 export function AuthProvider({ children }) {
+  //Variable para guardar los datos del usuario, con esto podremos poner en el header Hola ${name} si lo necesitamos.
   const [user, setUser] = useState(currentUser?.user);
 
+  //Variable con la que guardamos si esta o no esta logueado, el !! hace que al recorrerlo ve si esta o no, un if/else muy comprimido
   const [isAuthenticated, setIsAuthenticated] = useState(!!currentUser);
 
   const navigate = useNavigate();
