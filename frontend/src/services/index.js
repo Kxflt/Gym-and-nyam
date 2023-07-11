@@ -11,10 +11,11 @@ const currentUser = JSON.parse(
 const token = currentUser?.user;
 
 const tokenRequired = (url) => {
-  //Nos hace un destructuring de la URL, y el pathname esta dentro, siendo las unicas publicas login y account, el resto seran privadas.
+  //Nos hace un destructuring de la URL, y el pathname esta dentro, siendo las unicas rutas publicas login y account, el resto seran privadas.
   const parsedUrl = new URL(url);
 
-  const publicRoutes = ['/login', '/account'];
+  //Por lo que a las únicas páginas que puede acceder serán la de login y newUser
+  const publicRoutes = ['/login', '/newUser'];
 
   //Si necesita el token para las paginas privadas necesitaremos el token, por lo que si no tiene el token nos retornara falso, y si lo tenemos, sera true y podremos entrar.
   if (publicRoutes.includes(parsedUrl.pathname)) {
@@ -28,6 +29,7 @@ axios.interceptors.request.use(
   // Es parecido a un try/catch que utilizamos
   function (config) {
     if (token) {
+      //El Bearer nos confirmará que el cliente tiene un token y esta autorizado para entrar en las redes privadas.
       config.headers['Authorization'] = `Bearer ${token}`;
     }
     //Con este log entraremos a la info del token y del usuario.
@@ -43,7 +45,7 @@ axios.interceptors.response.use(
   function (response) {
     // Si la respuesta contiene token (login y registro)
     if (response?.data?.token) {
-      // Añadimos el token en el localstorage
+      // Añadimos el token creado en el localstorage
       localStorage.setItem(
         CURRENT_USER_LOCAL_STORAGE,
         //Al no recoger objetos, lo transformamos en JSON.
@@ -57,9 +59,9 @@ axios.interceptors.response.use(
     // El token ha cadudcado
     if (
       error.response.status === 401 &&
-      // Y la url anterior no es el login (sino se piden los todos y no da tiempo a setear el localStorage ya que no es inmediato) //ESTO TENGO QUE TERMINAR DE EXPLICARLO.
+      // Y la url anterior no es el login (sino se piden los todos y no da tiempo a setear el localStorage ya que no es inmediato)
       (error.config.url.indexOf('/login') !== -1 ||
-        error.config.url.indexOf('/account') !== -1)
+        error.config.url.indexOf('/newUser') !== -1)
     ) {
       // Eliminamos los datos del localStorage
       localStorage.removeItem(CURRENT_USER_LOCAL_STORAGE);
@@ -70,3 +72,6 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//Se importa y exporta las mismas funciones para que recorran todo el código del axios para que implementen el token y que tipo de rutas se puede seguir.
+export { createExercise, modifyExercise, login, createExercise };
