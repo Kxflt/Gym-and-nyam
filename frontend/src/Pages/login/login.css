@@ -1,7 +1,7 @@
 div#root {
   justify-content: center;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .login {
@@ -22,11 +22,11 @@ h2 {
 .help {
   position: relative;
   display: flex;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: none;
-  gap: 20%;
-  padding-top: 25%;
+  gap: 15px;
+  padding-top: 1px;
 }
 img {
   width: 250px;
