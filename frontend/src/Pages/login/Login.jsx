@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/authContext';
+import { EMAIL_REGEX } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
 import InputText from '../../Components/Shared/Input/InputText';
 import Button from '../../Components/Shared/Button/Button';
 import Footer from '../../Components/Shared/Footer/Footer';
 import ImgLogo from '../../assets/logo2.png';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/authContext';
+/* Falta el ErrorPopUp import ErrorPopUp from ... */
 import './login.css';
 
 function Login() {
@@ -48,16 +51,42 @@ function Login() {
     <>
       {/* Hay que preguntar como hacer una funcion que nos traiga la img  */}
       <img src={ImgLogo} alt='logo' />
-      <div className='login'>
-        <InputText />
-        <InputPassword />
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* por aqui */}
+        <InputText
+          label='Email'
+          register={register('email', {
+            required: true,
+            pattern: EMAIL_REGEX,
+          })}
+          errors={errors}
+          registerName='email'
+        />
+
+        <InputPassword
+          label='Contraseña'
+          register={register('password', {
+            required: true,
+            minLength: 8,
+            maxLength: 100,
+          })}
+          errors={errors}
+          registerName='password'
+        />
+
+        <span className='error'>{errorText}</span>
+
+        {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
         <div className='help'>
           <p>Forget Password</p>
           <p>Sign Up</p>
         </div>
         <Button text='Login' />
-      </div>
-      {/* <Logo /> */}
+      </form>
+
+      {/* Dejado escrita la llamada, pero hay que crear su archivo. */}
+      <errorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
       <Footer />
     </>
   );

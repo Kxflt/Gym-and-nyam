@@ -18,7 +18,7 @@ const newUserSchema = joi.object().keys({
     .max(20)
     .required()
     .error((errors) => {
-      if (errors[0].code === 'any required') {
+      if (errors[0].code === 'any.required') {
         return new Error('Se require un nombre.');
       } else {
         return new Error(
