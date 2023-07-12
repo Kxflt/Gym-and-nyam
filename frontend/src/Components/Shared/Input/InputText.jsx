@@ -3,7 +3,7 @@ import './input.css';
 function InputText(label, register, errors, registerName) {
   return (
     <>
-      {/* Aitor: TODOS LOS ERRORES ESTAN RECOGIDOS DE BACKEND/newUserSchema, hasta que no se comience con el registro, no lo completaria para ser conscientes de que vamos colocando. */}
+      {/* TODOS LOS ERRORES ESTAN RECOGIDOS DE BACKEND/newUserSchema, hasta que no se comience con el registro, no lo completaria para ser conscientes de que vamos colocando. */}
 
       {/* Utilizamos el label para poder asociar un texto con campo de entrada en el formulario */}
       {/* el {label} mostrará la etiqueta de los errores cuando haya algún fallo a la hora de registrarse. */}

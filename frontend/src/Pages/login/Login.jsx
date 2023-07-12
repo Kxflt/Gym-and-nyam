@@ -8,9 +8,12 @@ import InputText from '../../Components/Shared/Input/InputText';
 import Button from '../../Components/Shared/Button/Button';
 import Footer from '../../Components/Shared/Footer/Footer';
 import ImgLogo from '../../assets/logo2.png';
-/* Falta el ErrorPopUp import ErrorPopUp from ... */
+import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import './login.css';
 
+// IMPORTANTE_______________________________
+/* Aitor: Hay que hacer el css del pop up, en el momento que haga la prueba de como funciona la pag lo modificaré. */
+//_________________________________________
 function Login() {
   const [errorText, setErrorText] = useState();
 
@@ -27,7 +30,7 @@ function Login() {
   } = useForm();
 
   //Utilizamos el signIn del Context
-  const { signIn } = useAuth();
+  const { signIn } = useAuth(); /* undefined. //BUSCAR SOLUCION A ESTO// */
 
   //La función ciamdp enviamos los datos
   const onSubmit = async ({ email, password }) => {
@@ -85,8 +88,9 @@ function Login() {
         <Button text='Login' />
       </form>
 
-      {/* Dejado escrita la llamada, pero hay que crear su archivo. */}
-      <errorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
+      {/* En la funcion importada, en el open, metemos la variable del useState.
+      Al cerrarlo, el setErrorPopUp vuelve a false para desaparecer. */}
+      <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
       <Footer />
     </>
   );
