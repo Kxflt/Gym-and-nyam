@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
@@ -99,7 +100,6 @@ export function AuthProvider({ children }) {
         user,
         isAuthenticated,
         registerUserAvatar,
-
         updateUser,
       }}
     >
