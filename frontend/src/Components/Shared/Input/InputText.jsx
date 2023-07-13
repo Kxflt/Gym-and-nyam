@@ -13,7 +13,7 @@ function InputText({ label, register, errors, registerName }) {
       <label>{label}</label>
 
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
-      <input type='text' {...register} />
+      <input type='text' placeholder='Email' {...register} />
 
       {errors[registerName]?.type === 'required' && (
         <span className='error'>Campo requerido.</span>

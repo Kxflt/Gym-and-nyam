@@ -1,6 +1,6 @@
 div#root {
   text-align: center;
-  background-color: rgba(81, 106, 44, 0.618);
+  background-color: rgba(200, 220, 161, 1);
 }
 
 .login {
@@ -10,10 +10,6 @@ div#root {
   gap: 2rem;
 }
 
-button {
-  align-items: flex-end;
-  background-color: bisque;
-}
 h2 {
   padding-top: 2rem;
 }
