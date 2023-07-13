@@ -1,11 +1,14 @@
+
 import React from 'react';
 import { string, object } from 'prop-types';
 
 import './input.css';
 
+
 function InputPassword({ label, register, errors, registerName }) {
   return (
     <>
+
       {/* TODOS LOS ERRORES ESTAN RECOGIDOS DE BACKEND/newUserSchema, hasta que no se comience con el registro, no lo completaria para ser conscientes de que vamos colocando. */}
 
       {/* Utilizamos el label para poder asociar un texto con campo de entrada en el formulario */}
@@ -31,6 +34,7 @@ function InputPassword({ label, register, errors, registerName }) {
 
       {errors[registerName]?.type === 'minLength' && (
         <span className='error'>Mínimo 8 carácteres.</span>
+
       )}
     </>
   );
