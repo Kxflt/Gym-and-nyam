@@ -35,6 +35,9 @@ img {
   margin: 3rem;
 }
 
-div {
-  margin-top: 2rem;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
-import { EMAIL_REGEX } from '../../utils/constants';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
 import InputText from '../../Components/Shared/Input/InputText';
 import Button from '../../Components/Shared/Button/Button';
@@ -54,9 +54,7 @@ function Login() {
       <img src='/original-multimedia/logo2.png' alt='logo' />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* por aqui */}
         <InputText
-          label='Email'
           register={register('email', {
             required: true,
             pattern: EMAIL_REGEX,
@@ -66,9 +64,9 @@ function Login() {
         />
 
         <InputPassword
-          label='Contraseña'
           register={register('password', {
             required: true,
+            pattern: PASSWORD_REGEX,
             minLength: 8,
             maxLength: 100,
           })}
