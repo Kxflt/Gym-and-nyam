@@ -1,8 +1,9 @@
+import React from 'react';
 import PopUp from 'reactjs-popup';
 import { bool, func } from 'prop-types';
 import './errorPopUp.css';
 
-function ErrorPopUp(open, onClose) {
+function ErrorPopUp({ open, onClose }) {
   return (
     //open lanzará el mensaje y el onclose con el boton le dara la función de cerrarlo.
     <PopUp open={open} onClose={onClose}>

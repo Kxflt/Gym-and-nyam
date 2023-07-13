@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
 import { EMAIL_REGEX } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
 import InputText from '../../Components/Shared/Input/InputText';
 import Button from '../../Components/Shared/Button/Button';
 import Footer from '../../Components/Shared/Footer/Footer';
-import ImgLogo from '../../assets/logo2.png';
 import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import './login.css';
 
@@ -19,8 +18,6 @@ function Login() {
 
   //El useState es falso ya que en el momento que la recorra y lo necesitemos se convertira en true y accederemos a ella.
   const [errorPopUp, setErrorPopUp] = useState(false);
-  //Lo utilizamos para que en caso de entrar, que nos redireccione al dashboard
-  const navigate = useNavigate();
 
   //Son valores que nos proporciona el useForm,
   const {
@@ -30,7 +27,10 @@ function Login() {
   } = useForm();
 
   //Utilizamos el signIn del Context
-  const { signIn } = useAuth(); /* undefined. //BUSCAR SOLUCION A ESTO// */
+  const { token, signIn } = useAuth();
+
+  // Si existe un token redireccionamos a la página principal.
+  if (token) <Navigate to='/' />;
 
   //La función ciamdp enviamos los datos
   const onSubmit = async ({ email, password }) => {
@@ -40,8 +40,6 @@ function Login() {
 
       //Utilizamos esto por si hemos intentado entrar y no hemos podido, que borre el errorText y poder entrar
       setErrorText(null);
-
-      navigate('/');
     } catch (error) {
       if (error.response?.status === 403 || error.response?.status === 402) {
         setErrorText('Email o contraseña no válida');
@@ -53,7 +51,7 @@ function Login() {
   return (
     <>
       {/* Hay que preguntar como hacer una funcion que nos traiga la img  */}
-      <img src={ImgLogo} alt='logo' />
+      <img src='/original-multimedia/logo2.png' alt='logo' />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* por aqui */}
@@ -79,6 +77,12 @@ function Login() {
         />
 
         <span className='error'>{errorText}</span>
+
+        {/* {user.role === 'admin' ? <p>Eres Admin</p> : <p>No eres admin</p>}
+
+        {user.role === 'admin' && <p>Eres admin </p>}
+
+        {user.role === 'normal' && <p>Eres un user normal </p>} */}
 
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
         <div className='help'>
