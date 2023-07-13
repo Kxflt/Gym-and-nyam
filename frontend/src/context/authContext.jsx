@@ -1,7 +1,6 @@
-import React from 'react';
-import { useContext, createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
+import React, { useContext, createContext, useState, useEffect } from 'react';
+
+import { login, newUser, signUpAvatar } from '../services/authService';
 
 //________________________________________
 //TODO LO QUE METAMOS AQUI SERAN LAS FUNCIONES QUE LLAMAREMOS DESPUES EN LOS JSX , Como sera en Login.jsx como ejemplo
@@ -9,30 +8,35 @@ import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
 
 const AuthContext = createContext();
 
-//Miramos en el localstorage si se encuentra el currentUser, (usuario con token)
-const currentUser = JSON.parse(
-  //verificamos si el currentUser esta en el localstorage
-  localStorage.getItem(CURRENT_USER_LOCAL_STORAGE)
-);
-
 export function AuthProvider({ children }) {
-  //Variable para guardar los datos del usuario, con esto podremos poner en el header Hola ${name} si lo necesitamos.
-  const [user, setUser] = useState(currentUser?.user);
+  // Variable para guardará los datos del usuario.
+  const [user, setUser] = useState(null);
 
-  //Variable con la que guardamos si esta o no esta logueado, el !! hace que al recorrerlo ve si esta o no, un if/else muy comprimido
-  const [isAuthenticated, setIsAuthenticated] = useState(!!currentUser);
+  // Variable donde almacenaremos el token.
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
-  const navigate = useNavigate();
+  // Obtenemos la información del usuario si existe token.
+  useEffect(() => {
+    const fetchUser = async () => {
+      // Obtenemos los datos del usuario.
+      // Guardamos el usuario en el State.
+    };
 
-  //Loguearse
+    // Si existe token obtenemos el usuario.
+    if (token) fetchUser();
+  }, [token]);
+
+  // Loguearse.
   const signIn = async (email, password) => {
     try {
-      //Llamamos al servicio
-      const response = await login(email, password);
-      // Guardamos que se ha autentificado
-      setIsAuthenticated(true);
-      //Guardamos los datos del usuario.
-      setUser(response.data.user);
+      //Llamamos al servicio.
+      const body = await login(email, password);
+
+      // Guardamos el token en el localStorage.
+      localStorage.setItem('token', body.data.token);
+
+      // Guardamos el token en el State.
+      setToken(body.data.token);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -41,16 +45,16 @@ export function AuthProvider({ children }) {
   //Registrarse
   const registerUser = async (data) => {
     try {
-      //LLamamos al servicio
-      const response = await signUp(
+      // Llamamos al servicio.
+      const body = await newUser(
         data.name,
         data.email,
         data.password
         //SI MODIFICAMOS EL BACKEND DEBEREMOS METER AQUI EL RESTO DE COSAS QUE NECESITAMOS PARA QUE SE REGISTREN
       );
 
-      //Guardamos que es autentificado
-      setIsAuthenticated(true);
+      // Guardamos el usuario en el State.
+      setUser(body.data.user);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -58,33 +62,37 @@ export function AuthProvider({ children }) {
 
   const registerUserAvatar = async (formData, config) => {
     try {
-      // Llamamos al servicio del registro
-      const response = await signUpAvatar(formData, config);
-      // Guardamos que se ha autentificado
-      setIsAuthenticated(true);
-      // Guardamos los datos de usuario
-      setUser(response.data.user);
+      // Llamamos al servicio del registro.
+      const body = await signUpAvatar(formData, config);
+
+      // Actualizamos el avatar del usuario. Para esto sería bueno que el endpoint de editar avatar retornara
+      // el nombre que le asigna el backend a este avatar.
+      setUser({
+        ...user,
+        avatar: 'elNuevoNombreDeAvatar.jpg',
+      });
     } catch (error) {
       return Promise.reject(error);
     }
   };
 
-  // Deslogueo
+  // Deslogueo.
   const logOut = () => {
-    // Eliminamos el currentUser del localStorage
-    localStorage.clear(CURRENT_USER_LOCAL_STORAGE);
-    // Modifiamos el isAuthenticated a false
-    setIsAuthenticated(false);
-    // Eliminamos los datos de usuario guardados
-    setUser(undefined);
-    // Navegamos al login
-    navigate('login');
+    // Eliminamos el token del localStorage.
+    localStorage.removeItem('token');
+
+    // Eliminamos el usuario y el token del State.
+    setUser(null);
+    setToken(null);
   };
 
+  // Actualizar usuario.
   const updateUser = async (formData, config) => {
     try {
-      const response = await updateAccount(formData, config);
-      setUser(response.data.user);
+      const body = await updateUser(formData, config);
+
+      // Actualizamos los datos del usuario.
+      setUser(body.data.user);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -98,7 +106,7 @@ export function AuthProvider({ children }) {
         registerUser,
         logOut,
         user,
-        isAuthenticated,
+        isAuthenticated: token,
         registerUserAvatar,
         updateUser,
       }}
