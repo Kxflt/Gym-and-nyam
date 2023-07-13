@@ -11,12 +11,13 @@ function App() {
   return (
     <>
       <div className='app'>
+      
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login />} />
           <Route path='/exercises' element={<Exercises />} />
           {/* Cambiado newUser por register */}
-          <Route path='/register' element={<NewUser />} />
+          <Route path='/users' element={<NewUser />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

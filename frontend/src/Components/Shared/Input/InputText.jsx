@@ -15,21 +15,24 @@ function InputText({ label, register, errors, registerName }) {
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
       <input type='text' {...register} />
 
-      {errors[registerName]?.type === 'required' && (
-        <span className='error'>Campo requerido.</span>
+      {errors[registerName]?.type === "required" && (
+        <span className="error">Campo requerido.</span>
       )}
 
-      {errors[registerName]?.type === 'pattern' && (
-        <span className='error'>El email no es válido.</span>
+      {errors[registerName]?.type === "pattern" && (
+        <span className="error">El email no es válido.</span>
       )}
 
-      {errors[registerName]?.type === 'maxLength' && (
-        <span className='error'>Máximo 100 carácteres.</span>
+      {errors[registerName]?.type === "maxLength" && (
+        <span className="error">Máximo 100 carácteres.</span>
       )}
 
-      {errors[registerName]?.type === 'minLength' && (
-        <span className='error'>Mínimo 8 carácteres.</span>
+      {errors[registerName]?.type === "minLength" && (
+        <span className="error">Mínimo 8 carácteres.</span>
       )}
+
+       
+     
     </>
   );
 }
