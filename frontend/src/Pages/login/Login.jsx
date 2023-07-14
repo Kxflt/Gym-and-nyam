@@ -50,7 +50,6 @@ function Login() {
   //Aitor: Falta en el return meter ciertas funciones.
   return (
     <>
-      {/* Hay que preguntar como hacer una funcion que nos traiga la img  */}
       <img src='/original-multimedia/logo2.png' alt='logo' />
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -88,7 +87,6 @@ function Login() {
           <p>Forget Password</p>
           <p>Sign Up</p>
         </div>
-        
       </form>
 
       {/* En la funcion importada, en el open, metemos la variable del useState.

@@ -13,13 +13,11 @@ function App() {
   return (
     <>
       <div className='app'>
-        <NavBar />
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/exercises' element={<Exercises />} />
-          {/* Cambiado newUser por register */}
           <Route path='/users' element={<NewUser />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

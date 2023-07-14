@@ -1,12 +1,16 @@
 import React from 'react';
+import { string } from 'prop-types';
 import './title.css';
 
-function Title() {
+function Title({ text }) {
   return (
     <>
-      <h2>Gym & Ñam</h2>
+      <h2>{text}</h2>
     </>
   );
 }
 
+Title.propTypes = {
+  text: string,
+};
 export default Title;

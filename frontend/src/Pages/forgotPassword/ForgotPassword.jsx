@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import InputText from '../../Components/Shared/Input/InputText';
 import { EMAIL_REGEX } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
@@ -26,6 +27,12 @@ function ForgotPassword() {
       setErrorPopUp(true);
     }
   };
+  {
+    /*Conexion con Backend para que mande el mail con el codigo */
+  }
+  const handelSendCode = () => {
+    axios.post('../../../controllers/users/sendRecoverPass.js ');
+  };
 
   return (
     <>
@@ -39,8 +46,9 @@ function ForgotPassword() {
             maxLength: 100,
           })}
           errors={errors}
-          registerName='password'
+          registerName='email'
         />
+        {/* Hay que mirar si tenemos las cosas  */}
         <Button text='Enviar' />
       </form>
       <Footer />

@@ -1,0 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Inconsolata:wght@600&display=swap%27);
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Inconsolata:wght@600&family=Libre+Franklin:wght@500&display=swap%27);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,100&family=Inconsolata:wght@600&family=Libre+Franklin:wght@500&family=Raleway:wght@100&display=swap%27); */
+html {
+  --darkest-colour: rgba(59, 80, 83, 1);
+  --dark-colour: #093c07;
+  --middle-colour: #6c8867;
+  --light-colour: #c3d898;
+  --lightest-colour: #c8dca1;
+}

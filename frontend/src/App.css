@@ -10,6 +10,9 @@ div#root {
   gap: 2rem;
 }
 
+body {
+  background-color: rgba(200, 220, 161, 1);
+}
 /* h2 {
   padding-top: 2rem;
 } */
