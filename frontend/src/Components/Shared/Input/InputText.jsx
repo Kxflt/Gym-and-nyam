@@ -3,7 +3,7 @@ import { string, object } from 'prop-types';
 
 import './input.css';
 
-function InputText({ label, register, errors, registerName }) {
+function InputText({ label, register, errors, registerName/* , errorMessage */ }) {
   return (
     <>
       {/* TODOS LOS ERRORES ESTAN RECOGIDOS DE BACKEND/newUserSchema, hasta que no se comience con el registro, no lo completaria para ser conscientes de que vamos colocando. */}
@@ -13,7 +13,7 @@ function InputText({ label, register, errors, registerName }) {
       <label>{label}</label>
 
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
-      <input type='text' placeholder='Email' {...register} />
+      <input type='text' placeholder={label} {...register} />
 
       {errors[registerName]?.type === "required" && (
         <span className="error">Campo requerido.</span>
@@ -30,9 +30,11 @@ function InputText({ label, register, errors, registerName }) {
       {errors[registerName]?.type === "minLength" && (
         <span className="error">Mínimo 8 carácteres.</span>
       )}
-
-       
-     
+      {errors[registerName]?.type === "repeat-password" && (
+        <span className="error">Esta contraseña debe coincidir con la anterior.</span>
+      )}
+      
+      {/*  {errorMessage && <span className="error">{errorMessage}</span>}  */}
     </>
   );
 }
@@ -42,5 +44,6 @@ InputText.propTypes = {
   register: object,
   errors: object,
   registerName: string,
+/*  errorMessage: string, */
 };
 export default InputText;

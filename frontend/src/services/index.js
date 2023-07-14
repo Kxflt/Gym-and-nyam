@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
 import { login, newUser, signUpAvatar, updateUser } from './authService';

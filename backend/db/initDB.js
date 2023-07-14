@@ -18,7 +18,9 @@ const main = async () => {
     await connection.query(`DROP TABLE IF EXISTS users`);
 
     console.log('Creando tablas...');
-
+    /*  surname VARCHAR (30) NOT NULL ,
+        gender ENUM("Male", "Female", "Other") NOT NULL,
+        interest ENUM ("Musculacion", "Cardio", "Desconocido") NOT NULL, */
     //Creamos la tabla users.
     await connection.query(`
     CREATE TABLE IF NOT EXISTS users(

@@ -31,7 +31,7 @@ function ForgotPassword() {
     /*Conexion con Backend para que mande el mail con el codigo */
   }
   const handelSendCode = () => {
-    axios.post('../../../controllers/users/sendRecoverPass.js ');
+    axios.put('../../../controllers/users/sendRecoverPass.js ');
   };
 
   return (
