@@ -1,0 +1,15 @@
+div#root {
+  text-align: center;
+  background-color: rgba(200, 220, 161, 1);
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+h2 {
+  padding-top: 2rem;
+}
