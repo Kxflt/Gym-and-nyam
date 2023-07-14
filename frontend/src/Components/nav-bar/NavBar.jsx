@@ -1,26 +1,59 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 import './nav-bar.css';
 
 function NavBar() {
-  return (
-    <>
-      <nav className='header-container'>
-        <img src='/original-multimedia/logo2.png' alt='logo' />
+   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-        <NavLink className='Home' to='/'>
-          Home
-        </NavLink>
-        <NavLink className='Exercises' to='/exercises'>
-          Exercises
-        </NavLink>
-        <NavLink className='Profile' to='/profile'>
-          Profile
-        </NavLink>
-      </nav>
-    </>
+  const handleLogin = () => {
+    // Lógica para iniciar sesión
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    // Lógica para cerrar sesión
+    setIsAuthenticated(false);
+  };
+
+  return (
+    
+      <nav className='header-container'>
+        <div>
+          <img src='/original-multimedia/logo2.png' alt='logo' />
+        </div>
+
+        <ul className="menu">
+        {!isAuthenticated ? (
+          <>
+            <li>
+              <NavLink to="/users"> Sign Up</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login" onClick={handleLogin}>Log in</NavLink>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <NavLink to="/exercises">Exercises</NavLink>
+            </li>
+            <li>
+              <NavLink to ="/edit-profile">Edit profile</NavLink>
+            </li>
+            <li>
+              <NavLink to="/" onClick={handleLogout}>Cerrar sesión</NavLink>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
   );
-}
+};
 
 export default NavBar;
+
+
+
+

@@ -83,11 +83,12 @@ function Login() {
         {user.role === 'normal' && <p>Eres un user normal </p>} */}
 
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
+        <Button text='Login' />
         <div className='help'>
           <p>Forget Password</p>
           <p>Sign Up</p>
         </div>
-        <Button text='Login' />
+        
       </form>
 
       {/* En la funcion importada, en el open, metemos la variable del useState.
