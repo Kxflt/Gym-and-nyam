@@ -1,6 +1,7 @@
 .header-container {
-  background-color: green;
+  background-color: --dark-colour;
   display: flex;
+  height: 50px;
   align-items: center;
   gap: 32px;
   justify-content: space-between;
@@ -8,10 +9,15 @@
 }
 
 .header-container img {
-  width: 140px;
-  height: 140px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom:35px;
+
 }
 
 nav {
@@ -21,6 +27,8 @@ nav {
 .menu {
   list-style: none;
   display: flex;
+  font-size: 12px;
+  
 }
 
 .menu li {

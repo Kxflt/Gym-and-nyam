@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import {
   EMAIL_REGEX,
   MAX_LENGTH_STRING,
@@ -14,29 +15,40 @@ import Footer from '../../Components/Shared/Footer/Footer';
 import './newUser.css';
 
 function NewUser() {
+  const navigate = useNavigate(); // Inicializa useNavigate
+
   const {
     state: { register, errors, passwordError, errorPopUp },
     actions: { handleSubmit, onSubmit, setErrorPopUp },
   } = useNewUser();
 
+  const handleFormSubmit = (data) => {
+    // Lógica para manejar el envío del formulario y redirección
+    onSubmit(data);
+    navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
+  };
+
   return (
     <>
+      
+      
       <div className='contenedor-registro'>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <InputText
-            label='Nombre'
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
+          <InputText 
+            label="Nombre"
             register={register('name', {
               required: true,
               maxLength: MAX_LENGTH_STRING,
               minLength: MIN_LENGTH_STRING,
             })}
             errors={errors}
-            registerName='name'
+            registerName="name"
+            
           />
 
           {/* Hay que meter apellido en Backend */}
-          <InputText
-            label='Apellido'
+          {/*  <InputText 
+            label="Apellido"
             register={register('surname', {
               required: true,
               maxLength: MAX_LENGTH_STRING,
@@ -44,19 +56,20 @@ function NewUser() {
             })}
             errors={errors}
             registerName='surname'
-          />
+          />  */}
 
-          <InputText
-            label='Email'
+          <InputText 
+            label="Email"
             register={register('email', {
               required: true,
               pattern: EMAIL_REGEX,
             })}
             errors={errors}
-            registerName='email'
+            registerName='email' 
+            /* errorMessage={errors.email && errors.email.message} */
           />
           {/* Hay que crear genero en backend */}
-          <label>Género</label>
+          {/* <label>Género</label>
           <select {...register('gender', { required: true })}>
             <option value=''>--</option>
             <option value='Female'>Mujer</option>
@@ -65,15 +78,20 @@ function NewUser() {
           </select>
           {errors.gender?.type === 'required' && (
             <span className='error'>Campo requerido</span>
-          )}
+          )}   */}
 
-          {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
-          <label>Interés</label>
+           {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
+          {/*  <label>Interés</label>
           <select {...register('interest', { required: true })}>
             <option value=''>--</option>
             <option value='Cardio'>Cardio</option>
             <option value='Musculacion'>Musculación</option>
-          </select>
+            <option value='Desconocido'>Desconocido</option>
+             {errors.interest?.type === 'required' && (
+            <span className='error'>Campo requerido</span>
+          )}
+            
+          </select>   */}
 
           <InputPassword
             label='Contraseña'
@@ -115,10 +133,12 @@ function NewUser() {
           <Button text='Continuar' />
         </form>
       </div>
-      <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
+      {/* <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} /> */}
+      
       <Footer />
     </>
   );
 }
 
 export default NewUser;
+

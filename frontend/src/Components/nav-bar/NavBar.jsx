@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-
+import { useAuth } from '../../context/authContext';
 import './nav-bar.css';
 
 function NavBar() {
-   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { logOut } = useAuth();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   const handleLogin = () => {
     // Lógica para iniciar sesión
@@ -15,7 +17,10 @@ function NavBar() {
   const handleLogout = () => {
     // Lógica para cerrar sesión
     setIsAuthenticated(false);
+   
+ 
   };
+  
 
   return (
     
@@ -24,8 +29,8 @@ function NavBar() {
           <img src='/original-multimedia/logo2.png' alt='logo' />
         </div>
 
-        <ul className="menu">
-        {!isAuthenticated ? (
+        <ul className="menu"> {/* Deberiamos ver si tenemos que cambiar el isAuth por isLogin // hay que hablarlo */}
+        {!!isAuthenticated ? (
           <>
             <li>
               <NavLink to="/users"> Sign Up</NavLink>
@@ -34,7 +39,7 @@ function NavBar() {
               <NavLink to="/login" onClick={handleLogin}>Log in</NavLink>
             </li>
           </>
-        ) : (
+        ) : ( 
           <>
             <li>
               <NavLink to="/exercises">Exercises</NavLink>
@@ -43,9 +48,10 @@ function NavBar() {
               <NavLink to ="/edit-profile">Edit profile</NavLink>
             </li>
             <li>
-              <NavLink to="/" onClick={handleLogout}>Cerrar sesión</NavLink>
+              <NavLink to="/login" onClick={handleLogout}>Cerrar sesión</NavLink>
             </li>
-          </>
+            </>
+            
         )}
       </ul>
     </nav>
