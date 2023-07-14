@@ -1,5 +1,5 @@
 .header-container {
-  background-color: #24a3b6;
+  background-color: green tea;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -7,45 +7,9 @@
   justify-content: space-between;
 }
 
-.header-container a {
-  font-family: 'Montserrat', sans-serif;
-  text-decoration: none;
-  font-weight: 400;
-  color: white;
-  opacity: 0.5;
-  margin-right: 20px;
-}
-
-.header-container a.active {
-  font-weight: 500;
-  opacity: 1;
-}
-
-.header-container span {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-size: 12px;
-  margin-right: 32px;
-  margin-bottom: 0;
-}
-
-.header-container button {
-  width: 100px;
-}
-
-.header-container button span {
-  margin: 0 auto;
-}
-
-.header-container .user-actions {
-  display: flex;
-  align-items: center;
-}
-
 .header-container img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  object-fit: cover;
   margin-right: 8px;
 }

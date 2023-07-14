@@ -5,11 +5,21 @@ import './nav-bar.css';
 
 function NavBar() {
   return (
-    <nav className='header-container'>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='exercises'>Exercises</NavLink>
-      <NavLink to='profile'>Profile</NavLink>
-    </nav>
+    <>
+      <nav className='header-container'>
+        <img src='/original-multimedia/logo2.png' alt='logo' />
+
+        <NavLink className='Home' to='/'>
+          Home
+        </NavLink>
+        <NavLink className='Exercises' to='/exercises'>
+          Exercises
+        </NavLink>
+        <NavLink className='Profile' to='/profile'>
+          Profile
+        </NavLink>
+      </nav>
+    </>
   );
 }
 
