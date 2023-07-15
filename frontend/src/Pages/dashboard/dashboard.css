@@ -1,0 +1,30 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+  }
+  
+  .nav {
+    background-color: #333;
+    color: #fff;
+    height: 10%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    height: 20%;
+  }
+  

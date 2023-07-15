@@ -6,13 +6,14 @@ import { useAuth } from '../../context/authContext';
 function useNewUser() {
   const [passwordError, setPasswordError] = useState(false);
   const [errorPopUp, setErrorPopUp] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { registerUser } = useAuth();
+  const { registerUser, checkUserExists } = useAuth();
 
   const onSubmit = async (data) => {
     if (data.password !== data['repeat-password']) {
@@ -23,13 +24,20 @@ function useNewUser() {
     }
 
     try {
+      // Verificar si el usuario ya existe
+      const userExists = await checkUserExists(data.email);
+      if (userExists) {
+        setErrorPopUp(true); // Mostrar error de usuario existente
+        return; // Detener la ejecución si el usuario ya existe
+      }
+
       // Llamamos el servicio del signup con los parámetros esperados
       await registerUser(data);
       // Navegamos al dashboard
-      navigate('/');
+      navigate('/login');
     } catch (error) {
-      // Mostraremos pop up genérico de error
       setErrorPopUp(true);
+      console.error('Error al registrar el usuario:', error);
     }
   };
 
