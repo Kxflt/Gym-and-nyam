@@ -1,9 +1,9 @@
 import { EMAIL_REGEX, MAX_LENGTH_STRING } from '../../utils/constants';
 import Button from "../../components/shared/button/Button";
-import InputText from "../../components/shared/inputs/InputText";
-import useProfile from "./useProfile";
+import InputText from "../../Components/Shared/Input/InputText";
+/* import useProfile from "./useProfile"; */
 /* import avatar from "../../assets/avatar.png"; */
-import ErrorPopUp from "../../components/shared/error-pop-up/ErrorPopUp";
+import ErrorPopUp from "../../Components/Shared/errorPopUp/ErrorPopUp";
 
 import "./profile.css";
 
@@ -32,7 +32,7 @@ function Profile() {
             <span className="error">Campo requerido</span>
           )}
 */}
-                        <InputText 
+          <InputText 
             label="Nombre"
             register={register('name', {
               required: true,
@@ -107,7 +107,7 @@ function Profile() {
 
     
 
-                    </div> 
+          </div> 
                 </form>
             
             </div>
@@ -119,3 +119,5 @@ function Profile() {
     )
 
 }
+
+export default Profile; 

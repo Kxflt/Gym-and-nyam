@@ -1,7 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { CURRENT_USER_LOCAL_STORAGE } from '../utils/constants';
-import { login, newUser, signUpAvatar, updateUser } from './authService';
+import {
+  login,
+  newUser,
+  signUpAvatar,
+  updateUser,
+  profile,
+} from './authService';
 import { createExercise, modifyExercise } from './exerciseService';
 
 //Cogemos el token del localstorage => nos viene los datos de usuario junto al token al registrarnos.
@@ -16,7 +22,7 @@ const tokenRequired = (url) => {
   const parsedUrl = new URL(url);
 
   //Por lo que a las únicas páginas que puede acceder serán la de login y newUser
-  const publicRoutes = ['/login', '/newUser'];
+  const publicRoutes = ['/login', '/account']; // '/'
 
   //Si necesita el token para las paginas privadas necesitaremos el token, por lo que si no tiene el token nos retornara falso, y si lo tenemos, sera true y podremos entrar.
   if (publicRoutes.includes(parsedUrl.pathname)) {
@@ -62,7 +68,7 @@ axios.interceptors.response.use(
       error.response.status === 401 &&
       // Y la url anterior no es el login (sino se piden los todos y no da tiempo a setear el localStorage ya que no es inmediato)
       (error.config.url.indexOf('/login') !== -1 ||
-        error.config.url.indexOf('/newUser') !== -1)
+        error.config.url.indexOf('/account') !== -1)
     ) {
       // Eliminamos los datos del localStorage
       localStorage.removeItem(CURRENT_USER_LOCAL_STORAGE);
@@ -82,4 +88,5 @@ export {
   modifyExercise,
   login,
   createExercise,
+  profile,
 };

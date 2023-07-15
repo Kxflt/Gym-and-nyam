@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../../context/authContext';
+
 import './nav-bar.css';
 
 function NavBar() {
-  const { logOut } = useAuth();
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 
@@ -45,7 +45,7 @@ function NavBar() {
               <NavLink to="/exercises">Exercises</NavLink>
             </li>
             <li>
-              <NavLink to ="/edit-profile">Edit profile</NavLink>
+              <NavLink to ="/account">Edit profile</NavLink>
             </li>
             <li>
               <NavLink to="/login" onClick={handleLogout}>Cerrar sesión</NavLink>
