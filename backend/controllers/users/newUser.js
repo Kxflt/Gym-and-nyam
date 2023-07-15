@@ -26,10 +26,11 @@ const newUser = async (req, res, next) => {
     const emailSubject = 'Activa tu usuario en la app de GymÑam';
 
     //Creamos el contenido del email.
+    //Por favor, verifica tu usuario a través del <a href=http://localhost:8000/users/validate/${registrationCode}>Siguiente enlace</a>
     const emailBody = `
         ¡Bienvenid@ a GymÑam, ${name}!
 
-        Por favor, verifica tu usuario a través del <a href=http://localhost:8000/users/validate/${registrationCode}>Siguiente enlace</a>
+        Por favor, verifica tu usuario con este código ${registrationCode} a través del <a href=http://localhost:5714/validate>Siguiente enlace</a>
     `;
 
     //Enviamos el email de verificación.

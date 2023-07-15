@@ -7,6 +7,24 @@ export const login = (email, password) => {
   });
 };
 
+/* export const confirmValidateCode = (registrationCode) => {
+  return (
+    axios.get('http://localhost:8000/users/validate/:regCode'),
+    {
+      registrationCode,
+    }
+  );
+}; */
+
+export const validation = (registrationCode) => {
+  return (
+    axios.put('http://localhost:8000/users/validate/:regCode'),
+    {
+      registrationCode,
+    }
+  );
+};
+
 export const newUser = (name, email, password) => {
   return axios.post('http://localhost:8000/users', {
     name,

@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState, useEffect } from 'react';
+import ValidateUser from '../Pages/validate/ValidateUser';
 
 import { login, newUser, signUpAvatar } from '../services/authService';
 
@@ -98,6 +99,35 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const checkUserExists = async (email) => {
+    try {
+      // Realiza una llamada a tu API para verificar si el usuario ya existe
+      const response = await fetch(`https://localhost:8000/users?email=${email}`);
+      const data = await response.json();
+      
+      // Devuelve true si el usuario existe, false si no existe
+      return data.length > 0;
+    } catch (error) {
+      console.error('Error al verificar la existencia del usuario:', error);
+      throw new Error('Error al verificar la existencia del usuario');
+    }
+  };
+
+
+  const validateUserCode = async (registrationCode) => {
+    try {
+      const response = await validateUser(registrationCode)
+      setUser(response.data.user)
+    
+    } catch (error) {
+    console.error('Error al validar el código de registro:', error);
+  
+  }
+ };
+
+
+
+
   // Todo lo que pongamos en la prop value van a ser los datos accesibles
   return (
     <AuthContext.Provider
@@ -109,6 +139,8 @@ export function AuthProvider({ children }) {
         isAuthenticated: token,
         registerUserAvatar,
         updateUser,
+        checkUserExists,
+        validateUserCode,
       }}
     >
       {children}

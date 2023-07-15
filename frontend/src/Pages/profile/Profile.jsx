@@ -1,123 +1,36 @@
-import { EMAIL_REGEX, MAX_LENGTH_STRING } from '../../utils/constants';
-import Button from "../../components/shared/button/Button";
-import InputText from "../../Components/Shared/Input/InputText";
-/* import useProfile from "./useProfile"; */
-/* import avatar from "../../assets/avatar.png"; */
-import ErrorPopUp from "../../Components/Shared/errorPopUp/ErrorPopUp";
+import React, { useState, useEffect } from 'react';
 
-import "./profile.css";
+const UserProfile = () => {
+  const [user, setUser] = useState(null);
 
-function Profile() {
-    const {
-        state: { register, errors, errorPopUp /*, avatarImg */ },
-        actions: { handleSubmit, onSubmit, setErrorPopUp, handleOnChangeAvatar },
-    } = useProfile();
+  useEffect(() => {
+    // Simular una llamada a una API para obtener los datos del usuario
+    // Aquí deberías hacer la llamada a tu backend para obtener los datos del usuario actual
+    const fetchUser = async () => {
+      try {
+        const response = await fetch('http:://localstore:8000/users/:userId'); //URL backend
+        const userData = await response.json();
+        setUser(userData);
+      } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+      }
+    };
 
-    return (
-        <>
-            <div text="Mi perfil">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='avatar-container'>
-                      {/*  <div className="avatar-container">
-            <img src={avatarImg ? avatarImg : avatar} alt="avatar" />
-            <input
-              type="file"
-              {...register("file", {
-                required: true,
-              })}
-              onChange={handleOnChangeAvatar}
-            />
-          </div>
-          {errors.file?.type === "required" && (
-            <span className="error">Campo requerido</span>
-          )}
-*/}
-          <InputText 
-            label="Nombre"
-            register={register('name', {
-              required: true,
-              maxLength: MAX_LENGTH_STRING,
-              minLength: MIN_LENGTH_STRING,
-            })}
-            errors={errors}
-            registerName="name"
-            
-          />
+    fetchUser();
+  }, []);
 
-          {/* Hay que meter apellido en Backend */}
-          {/*  <InputText 
-            label="Apellido"
-            register={register('surname', {
-              required: true,
-              maxLength: MAX_LENGTH_STRING,
-              minLength: MIN_LENGTH_STRING,
-            })}
-            errors={errors}
-            registerName='surname'
-          />  */}
+  if (!user) {
+    return <div>Cargando...</div>;
+  }
 
-          <InputText 
-            label="Email"
-            register={register('email', {
-              required: true,
-              pattern: EMAIL_REGEX,
-            })}
-            errors={errors}
-            registerName='email' 
-            /* errorMessage={errors.email && errors.email.message} */
-          />
-          {/* Hay que crear genero en backend */}
-          {/* <label>Género</label>
-          <select {...register('gender', { required: true })}>
-            <option value=''>--</option>
-            <option value='Female'>Mujer</option>
-            <option value='Male'>Hombre</option>
-            <option value='Other'>Otro</option>
-          </select>
-          {errors.gender?.type === 'required' && (
-            <span className='error'>Campo requerido</span>
-          )}   */}
+  return (
+    <div>
+      <h1>Perfil de Usuario</h1>
+      <p><strong>Nombre:</strong> {user.name}</p>
+      <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>Datos de registro:</strong> {user.registrationData}</p>
+    </div>
+  );
+};
 
-           {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
-          {/*  <label>Interés</label>
-          <select {...register('interest', { required: true })}>
-            <option value=''>--</option>
-            <option value='Cardio'>Cardio</option>
-            <option value='Musculacion'>Musculación</option>
-            <option value='Desconocido'>Desconocido</option>
-             {errors.interest?.type === 'required' && (
-            <span className='error'>Campo requerido</span>
-          )}
-            
-          </select>   */}
-         <div className="terms-container">
-            <input
-              type="checkbox"
-              {...register("terms", {
-                required: true,
-              })}
-            />
-            <label>Acepta términos y condiciones</label>
-          </div>
-          {errors.terms?.type === "required" && (
-            <span className="error">Campo requerido</span>
-          )}
-
-          <Button text="Continuar" />
-
-    
-
-          </div> 
-                </form>
-            
-            </div>
-            <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
-
-        
-        </>
-
-    )
-
-}
-
-export default Profile; 
+export default UserProfile;

@@ -25,7 +25,7 @@ function NewUser() {
   const handleFormSubmit = (data) => {
     // Lógica para manejar el envío del formulario y redirección
     onSubmit(data);
-    navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
+    navigate('/'); // Redirige a la ruta '/login' después de enviar el formulario
   };
 
   return (
@@ -133,7 +133,7 @@ function NewUser() {
           <Button text='Continuar' />
         </form>
       </div>
-      {/* <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} /> */}
+       <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} /> 
       
       <Footer />
     </>
