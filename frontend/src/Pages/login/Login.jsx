@@ -54,6 +54,7 @@ function Login() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText
+          label='Email'
           register={register('email', {
             required: true,
             pattern: EMAIL_REGEX,
@@ -63,6 +64,7 @@ function Login() {
         />
 
         <InputPassword
+          label='Password'
           register={register('password', {
             required: true,
             pattern: PASSWORD_REGEX,
@@ -84,7 +86,7 @@ function Login() {
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
         <Button text='Login' />
         <div className='help'>
-          <p>Forget Password</p>
+          <p>Forgot Password</p>
           <p>Sign Up</p>
         </div>
       </form>
