@@ -6,10 +6,8 @@ import Avatar from '../../Components/avatar/Avatar';
 import './nav-bar.css';
 
 function NavBar() {
-  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-
 
   const handleLogin = () => {
     // Lógica para iniciar sesión
@@ -19,9 +17,8 @@ function NavBar() {
   const handleLogout = () => {
     // Lógica para cerrar sesión
     setIsAuthenticated(false);
-   
- 
   };
+
   
   const handleAvatarUpload = () => {
     setAvatarUrl(imageUrl);
@@ -31,9 +28,7 @@ function NavBar() {
   return (
     
       <nav className='header-container'>
-        <div>
-          <img src='/original-multimedia/logo2.png' alt='logo' />
-      </div>
+        <ul className='menu'>
 
       {isAuthenticated && avatarUrl && ( // Condición para mostrar el Avatar
         <div className="avatar-container">
@@ -41,29 +36,31 @@ function NavBar() {
         </div>
       )}
 
-        <ul className="menu"> {/* Deberiamos ver si tenemos que cambiar el isAuth por isLogin // hay que hablarlo */}
         {!!isAuthenticated ? (
           <>
             <li>
-              <NavLink to="/users"> Sign Up</NavLink>
+              <NavLink to='/users'> Sign Up</NavLink>
             </li>
             <li>
-              <NavLink to="/login" onClick={handleLogin}>Log in</NavLink>
+              <NavLink to='/login' onClick={handleLogin}>
+                Log in
+              </NavLink>
             </li>
           </>
-        ) : ( 
+        ) : (
           <>
             <li>
-              <NavLink to="/exercises">Exercises</NavLink>
+              <NavLink to='/exercises'>Exercises</NavLink>
             </li>
             <li>
-              <NavLink to ="/account">Edit profile</NavLink>
+              <NavLink to='/account'>Edit profile</NavLink>
             </li>
             <li>
+
               <NavLink to="/login" onClick={handleLogout}>Log Out</NavLink>
+
             </li>
-            </>
-            
+          </>
         )}
       </ul>
       {isAuthenticated && ( // Condición para mostrar el componente Avatar
@@ -71,10 +68,6 @@ function NavBar() {
       )}
     </nav>
   );
-};
+}
 
 export default NavBar;
-
-
-
-
