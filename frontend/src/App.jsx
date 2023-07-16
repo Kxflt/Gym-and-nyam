@@ -7,9 +7,9 @@ import Exercises from './Pages/exercises/Exercises';
 import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
-import Profile from './Pages/Profile/Profile';
-
+import Profile from './Pages/profile/Profile';
 import './App.css';
+
 
 function App() {
   return (
