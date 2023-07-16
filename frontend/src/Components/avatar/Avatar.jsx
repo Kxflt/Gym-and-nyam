@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import ImgDefaultAvatar from '../../assets/user.png';
 
 const Avatar = () => {
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(ImgDefaultAvatar);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -28,6 +29,8 @@ const Avatar = () => {
         )}
       </div>
       <input type='file' accept='image/*' onChange={handleImageChange} />
+      
+   
     </div>
   );
 };

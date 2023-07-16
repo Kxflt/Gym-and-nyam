@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import Avatar from '../../Components/avatar/Avatar';
 
 import './nav-bar.css';
 
 function NavBar() {
   
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState('');
 
 
   const handleLogin = () => {
@@ -21,13 +23,23 @@ function NavBar() {
  
   };
   
+  const handleAvatarUpload = () => {
+    setAvatarUrl(imageUrl);
+  
+  }
 
   return (
     
       <nav className='header-container'>
         <div>
           <img src='/original-multimedia/logo2.png' alt='logo' />
+      </div>
+
+      {isAuthenticated && avatarUrl && ( // Condición para mostrar el Avatar
+        <div className="avatar-container">
+          <img className="avatar" src={avatarUrl} alt="User Avatar" />
         </div>
+      )}
 
         <ul className="menu"> {/* Deberiamos ver si tenemos que cambiar el isAuth por isLogin // hay que hablarlo */}
         {!!isAuthenticated ? (
@@ -48,12 +60,15 @@ function NavBar() {
               <NavLink to ="/account">Edit profile</NavLink>
             </li>
             <li>
-              <NavLink to="/login" onClick={handleLogout}>Cerrar sesión</NavLink>
+              <NavLink to="/login" onClick={handleLogout}>Log Out</NavLink>
             </li>
             </>
             
         )}
       </ul>
+      {isAuthenticated && ( // Condición para mostrar el componente Avatar
+        <Avatar onUpload={handleAvatarUpload} />
+      )}
     </nav>
   );
 };

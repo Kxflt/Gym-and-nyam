@@ -10,23 +10,28 @@ footer {
   justify-content: center;
   align-content: center;
   background-color: rgba(59, 80, 83, 1);
+  
 }
 
-footer img {
-  height: 120px;
-  width: 120px;
-  margin-bottom: 20px;
+footer img.logo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: 3rem;
+  overflow: hidden;
 }
 
 .logo {
   grid-column: 1;
   grid-row: 1;
+  border-radius: 50%;
 }
 
 .contact-footer {
   grid-column: 2;
   grid-row: 1;
   justify-self: center;
+  
 }
 
 .follow-footer {
@@ -49,7 +54,7 @@ footer h2 {
   margin-top: 3px;
   color: white;
   font-size: 0.8em;
-  font-family: Roboto, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 900;
   letter-spacing: 0.3px;
   text-transform: uppercase;
@@ -57,18 +62,19 @@ footer h2 {
 
 footer p {
   color: white;
-  font-family: Roboto, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 0.8em;
   line-height: 18px;
   font-weight: 700;
   max-width: 240px;
+  
 }
 
 footer a {
   font-size: 1em;
   text-decoration: none;
   color: #565f6b;
-  font-family: Roboto, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 900;
   letter-spacing: 0.3px;
 }

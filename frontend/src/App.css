@@ -1,7 +1,13 @@
 div#root {
-  text-align: center;
-  background-color: rgba(200, 220, 161, 1);
+  min-height: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  margin:0;
+  padding:0;
 }
+
 
 .login {
   display: flex;
@@ -16,4 +22,3 @@ body {
 /* h2 {
   padding-top: 2rem;
 } */
-

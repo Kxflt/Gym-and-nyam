@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Avatar from '../../Pages/avatar/Avatar';
+import { Link } from 'react-router-dom';
+import Avatar from '../../Components/avatar/Avatar';
 const UserProfile = () => {
   const [user, setUser] = useState(null);
 
@@ -21,19 +22,21 @@ const UserProfile = () => {
 
   return (
     <div>
-      <h1>Perfil de Usuario</h1>
+      <h2>My Profile</h2>
       <Avatar />
       <p>
-        <strong>Nombre:</strong>
+        <strong>Name:</strong>
         {/*  {user.name} */}
       </p>
       <p>
         <strong>Email:</strong> {/* {user.email} */}
       </p>
       <p>
-        <strong>Datos de registro:</strong> {/* {user.registrationData} */}
+        <strong>More Info:</strong> {/* {user.registrationData} */}
       </p>
+      <Link to="/">Back</Link>
     </div>
+  
   );
 };
 

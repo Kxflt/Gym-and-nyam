@@ -50,7 +50,7 @@ function Login() {
   //Aitor: Falta en el return meter ciertas funciones.
   return (
     <>
-      <img src='/original-multimedia/logo2.png' alt='logo' />
+      <img src='/original-multimedia/logo2.png' alt='logo' className="logo2"/>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText

@@ -35,7 +35,7 @@ function NewUser() {
       <div className='contenedor-registro'>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <InputText 
-            label="Nombre"
+            label="Name"
             register={register('name', {
               required: true,
               maxLength: MAX_LENGTH_STRING,
@@ -94,7 +94,7 @@ function NewUser() {
           </select>   */}
 
           <InputPassword
-            label='Contraseña'
+            label='Password'
             register={register('password', {
               required: true,
               minLength: 8,
@@ -105,7 +105,7 @@ function NewUser() {
           />
 
           <InputPassword
-            label='Repite contraseña'
+            label='Repeat password'
             register={register('repeat-password', {
               required: true,
             })}
@@ -124,13 +124,13 @@ function NewUser() {
                 required: true,
               })}
             />
-            <label>Acepta términos y condiciones</label>
+            <label>Accept Terms and Conditions</label>
           </div>
           {errors.terms?.type === 'required' && (
             <span className='error'>Campo requerido</span>
           )}
 
-          <Button text='Continuar' />
+          <Button text='Continue' />
         </form>
       </div>
        <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} /> 

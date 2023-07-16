@@ -22,6 +22,8 @@
 
 nav {
   background-color: green;
+  position:sticky;
+  top:0;
 }
 
 .menu {
