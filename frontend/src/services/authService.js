@@ -53,8 +53,18 @@ export const updateUser = (formData, config) => {
   );
 };
 
-export const sendRecoverPass = () => {
-  return axios.put('http://localhost:8000/users/password/recover'), {};
+/* export const sendRecoverPass = (recoverPassCode) => {
+  return (
+    axios.put('http://localhost:8000/users/password/recover'),
+    {
+      recoverPassCode,
+    }
+  ); 
+}; */
+export const sendRecoverPass = (recoverPassCode) => {
+  return axios.put('http://localhost:8000/users/password/recover', {
+    recoverPassCode,
+  });
 };
 
 export const editPassword = (password) => {
