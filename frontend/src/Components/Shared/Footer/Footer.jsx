@@ -12,7 +12,7 @@ function Footer() {
     <React.Fragment>
       <footer>
         <section className='logo'>
-          <img src='/original-multimedia/logo2.png' alt='Logo' />
+          <img src='/original-multimedia/logo2.png' alt='Logo' className='logo'/>
         </section>
 
         <section className='contact-footer'>

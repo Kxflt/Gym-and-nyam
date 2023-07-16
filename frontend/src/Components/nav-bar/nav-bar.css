@@ -10,8 +10,11 @@
 
 nav {
   background-color: green;
-  top: 0;
+
+  position:sticky;
+  top:0;
   margin: 0;
+
 }
 
 .menu {

@@ -5,6 +5,7 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0;
+
   height: 10%;
   margin: 0;
   padding: 0;
@@ -40,6 +41,7 @@ footer img {
     margin-bottom: 20px;
   }
 
+
   .logo {
     grid-column: 1;
     grid-row: 1;
@@ -56,6 +58,7 @@ footer img {
     grid-row: 1;
     justify-self: end;
   }
+
 
   .footer-footer {
     grid-column: 1/-1;
@@ -76,6 +79,7 @@ footer img {
     letter-spacing: 0.3px;
     text-transform: uppercase;
   }
+
 
   footer p {
     color: white;

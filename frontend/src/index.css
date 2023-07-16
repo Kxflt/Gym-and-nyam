@@ -1,4 +1,8 @@
+/*IMPORTAR LETRA*/
 .app {
   text-align: center;
 }
 
+body{
+  margin:0;
+}
