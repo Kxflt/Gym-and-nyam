@@ -8,8 +8,8 @@ import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
-import Footer from './Components/Shared/Footer/Footer';
 import './App.css';
+
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login />} />
-          <Route path='users/password/recover' element={<ForgotPassword />} />
+          <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/exercises' element={<Exercises />} />
           <Route path='/users' element={<NewUser />} />
           <Route path='/account' element={<Profile />} />
