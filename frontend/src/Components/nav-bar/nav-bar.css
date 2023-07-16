@@ -1,5 +1,5 @@
 .header-container {
-  background-color: --dark-colour;
+  position: sticky;
   display: flex;
   height: 50px;
   align-items: center;
@@ -8,27 +8,16 @@
   margin: 0;
 }
 
-.header-container img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 8px;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  margin-bottom:35px;
-
-}
-
 nav {
   background-color: green;
+  top: 0;
+  margin: 0;
 }
 
 .menu {
   list-style: none;
   display: flex;
-  font-size: 12px;
-  
+  font-size: 24px;
 }
 
 .menu li {
@@ -36,6 +25,7 @@ nav {
 }
 
 .menu li a {
+  align-content: space-around;
   color: white;
   text-decoration: none;
 }
