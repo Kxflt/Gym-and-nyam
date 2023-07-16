@@ -1,57 +1,62 @@
-import React from 'react';
-import axios from 'axios';
-import InputText from '../../Components/Shared/Input/InputText';
-import { EMAIL_REGEX } from '../../utils/constants';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Footer from '../../Components/Shared/Footer/Footer';
-import Header from '../../Components/Shared/header/Header';
+import { EMAIL_REGEX } from '../../utils/constants';
 import Button from '../../Components/Shared/Button/Button';
+import InputText from '../../Components/Shared/Input/InputText';
+import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
+import { sendRecoverPass } from '../../services/authService';
+import './forgotPassword.css';
 
 function ForgotPassword() {
+  const [errorText, setErrorText] = useState(null);
+  const [errorPopUp, setErrorPopUp] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // const sendValidationCode = async (email) => {
+  //   try {
+  //     await sendRecoverPass(email);
+  //     // Envío exitoso del código de validación
+  //     console.log('Código de validación enviado exitosamente');
+  //   } catch (error) {
+  //     console.error('Error al enviar el código de validación:', error);
+  //     throw error;
+  //   }
+  // };
+
   const onSubmit = async ({ email }) => {
     try {
-      // Función del Context para iniciar sesión.
-      await signIn(email);
-      // Utilizamos esto por si hemos intentado entrar y no hemos podido, que borre el errorText y poder entrar
       setErrorText(null);
+      await sendRecoverPass(email);
+      console.log('Código de validación enviado.');
+      // Envío exitoso del código de validación, puedes realizar las acciones necesarias aquí
     } catch (error) {
-      if (error.response?.status === 403 || error.response?.status === 402) {
-        setErrorText('Contraseña no válida');
-      }
+      console.log('Error al enviar el código.');
+      setErrorText('Ha ocurrido un error al enviar el código de validación.');
       setErrorPopUp(true);
     }
-  };
-  {
-    /*Conexion con Backend para que mande el mail con el codigo */
-  }
-  const handelSendCode = () => {
-    axios.put('../../../controllers/users/sendRecoverPass.js ');
   };
 
   return (
     <>
-      <Header />
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText
+          label='Email'
           register={register('email', {
             required: true,
             pattern: EMAIL_REGEX,
-            minLength: 8,
-            maxLength: 100,
           })}
           errors={errors}
           registerName='email'
         />
-        {/* Hay que mirar si tenemos las cosas  */}
-        <Button text='Enviar' />
+        <Button text='Enviar' type='submit' />
       </form>
-      <Footer />
+      {errorPopUp && (
+        <ErrorPopUp message={errorText} onClose={() => setErrorPopUp(false)} />
+      )}
     </>
   );
 }
