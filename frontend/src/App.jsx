@@ -7,16 +7,14 @@ import Exercises from './Pages/exercises/Exercises';
 import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
-import Profile from './Pages/Profile/Profile';
-import Footer from './Components/Shared/Footer/Footer'
+import Profile from './Pages/profile/Profile';
+import Footer from './Components/Shared/Footer/Footer';
 import './App.css';
-
 
 function App() {
   return (
     <>
       <div className='app'>
-        
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login />} />
