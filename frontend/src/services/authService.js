@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const login = (email, password) => {
-  return axios.post('http://localhost:8000/login', {
+  return axios.post('http://localhost:8000/users/login', {
     email,
     password,
   });
@@ -16,13 +16,14 @@ export const login = (email, password) => {
   );
 }; */
 
-export const validation = (registrationCode) => {
-  return (
-    axios.put('http://localhost:8000/users/validate/:regCode'),
-    {
-      registrationCode,
-    }
-  );
+export const validation = async (registrationCode) => {
+  try {
+    return await axios.put(
+      `http://localhost:8000/users/validate/${registrationCode}`
+    );
+  } catch (error) {
+    console.log(error.response.data);
+  }
 };
 
 export const newUser = (name, email, password) => {

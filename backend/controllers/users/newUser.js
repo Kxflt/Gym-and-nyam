@@ -30,7 +30,7 @@ const newUser = async (req, res, next) => {
     const emailBody = `
         ¡Bienvenid@ a GymÑam, ${name}!
 
-        Por favor, verifica tu usuario con este código ${registrationCode} a través del <a href=http://localhost:5714/validate>Siguiente enlace</a>
+        Por favor, verifica tu usuario con este código ${registrationCode} a través del <a href=http://localhost:5173/validate?registrationCode=${registrationCode}>Siguiente enlace</a>
     `;
 
     //Enviamos el email de verificación.

@@ -102,9 +102,11 @@ export function AuthProvider({ children }) {
   const checkUserExists = async (email) => {
     try {
       // Realiza una llamada a tu API para verificar si el usuario ya existe
-      const response = await fetch(`https://localhost:8000/users?email=${email}`);
+      const response = await fetch(
+        `https://localhost:8000/users?email=${email}`
+      );
       const data = await response.json();
-      
+
       // Devuelve true si el usuario existe, false si no existe
       return data.length > 0;
     } catch (error) {
@@ -113,20 +115,14 @@ export function AuthProvider({ children }) {
     }
   };
 
-
   const validateUserCode = async (registrationCode) => {
     try {
-      const response = await validateUser(registrationCode)
-      setUser(response.data.user)
-    
+      const response = await validateUser(registrationCode);
+      setUser(response.data.user);
     } catch (error) {
-    console.error('Error al validar el código de registro:', error);
-  
-  }
- };
-
-
-
+      console.error('Error al validar el código de registro:', error);
+    }
+  };
 
   // Todo lo que pongamos en la prop value van a ser los datos accesibles
   return (

@@ -1,49 +1,23 @@
-import React, { useState } from 'react';
-import InputText from '../../Components/Shared/Input/InputText';
-import Button from '../../Components/Shared/Button/Button';
-import { useForm } from 'react-hook-form';
-import { useAuth } from '../../context/authContext';
-import { validation } from '../../services/authService';
-import Footer from '../../Components/Shared/Footer/Footer';
+import React, { useEffect } from 'react';
 import './validate.css';
+import { useLocation } from 'react-router-dom';
+import { validation } from '../../services/authService';
 
 const ValidateUser = () => {
-  const [code, setCode] = useState('');
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search); //busca el query string de la url
+  const registrationCode = queryParams.get('registrationCode'); //recoge el query param concreto
 
-  const { validateUserCode } = useAuth();
+  useEffect(() => {
+    const fetchValidateUser = async () => {
+      const body = await validation(registrationCode);
+      console.log(body);
+    };
 
-  const handleActivateAccount = async (data) => {
-    const { code } = data;
-    setCode(code);
-    try {
-      validation(code); // Llama a la función de validación pasando el código
-      validateUserCode(code);
-    } catch (error) {
-      console.error('Error de validación');
-    }
-  };
+    fetchValidateUser();
+  }, []);
 
-  return (
-    <>
-      <form onSubmit={handleSubmit(handleActivateAccount)}>
-        <InputText
-          label='Pega tu código de validación'
-          register={register('code', {
-            required: true,
-          })}
-          errors={errors}
-          registerName='code'
-        />
-        <Button type='submit' text='Activar' />
-      </form>
-      <Footer />
-    </>
-  );
+  return <h2>Activacion usuario</h2>;
 };
 
 export default ValidateUser;
