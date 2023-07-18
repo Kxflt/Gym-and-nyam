@@ -27,16 +27,17 @@ function Login() {
   } = useForm();
 
   //Utilizamos el signIn del Context
-  const { token, signIn } = useAuth();
+  const { signIn, isAuthenticated } = useAuth();
 
   // Si existe un token redireccionamos a la página principal.
-  if (token) <Navigate to='/' />;
+  if (isAuthenticated) <Navigate to='/' />;
 
   //La función ciamdp enviamos los datos
   const onSubmit = async ({ email, password }) => {
     try {
-      //Funcion del Context para iniciar sesión.
-      await signIn(email, password);
+      const token = await signIn(email, password);
+      localStorage.setItem('token', token);
+      setErrorText(null);
 
       //Utilizamos esto por si hemos intentado entrar y no hemos podido, que borre el errorText y poder entrar
       setErrorText(null);
@@ -47,10 +48,16 @@ function Login() {
       setErrorPopUp(true);
     }
   };
-  //Aitor: Falta en el return meter ciertas funciones.
+
+  // Verificar si el usuario ya tiene un token en el localStorage
+  const token = localStorage.getItem('token');
+  if (token) {
+    return <Navigate to='/' />;
+  }
+
   return (
     <>
-      <img src='/original-multimedia/logo2.png' alt='logo' className="logo2"/>
+      <img src='/original-multimedia/logo2.png' alt='logo' className='logo2' />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText
