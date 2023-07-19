@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './restaurant.css';
 function Restaurant() {
   const dayOfWeek = new Date().getDay() - 1;
 
@@ -7,47 +7,47 @@ function Restaurant() {
     {
       day: 'Monday',
       firstDish:
-        'Chicken Salad with Spinach, Tomatoes, Avocado, and Yogurt Dressing.',
-      secondDish: 'Baked Salmon with Asparagus and Sweet Potato.',
-      dessert: 'Frozen Banana Ice Cream',
+        'Chicken salad with spinach, tomatoes, avocado, and yogurt dressing.',
+      secondDish: 'Baked salmon with asparagus and sweet potato.',
+      dessert: 'Frozen banana ice cream',
     },
     {
       day: 'Tuesday',
-      firstDish: 'Turkey Tacos with Whole Wheat Tortillas and Guacamole.',
+      firstDish: 'Turkey tacos with whole wheat tortillas and guacamole.',
       secondDish: 'Protein Smoothie with Banana, Spinach, and Almond Milk.',
       dessert: 'Sugar-Free Fruit Compote.',
     },
     {
       day: 'Wednesday',
-      firstDish: 'Grilled Chicken Breast with Brown Rice and Steamed Broccoli.',
+      firstDish: 'Grilled chicken breast with brown rice and steamed broccoli.',
       secondDish:
-        'Tuna Salad with Chickpeas, Cucumber, Bell Pepper, and Lemon Vinaigrette.',
-      dessert: 'Baked Apples with Cinnamon.',
+        'Tuna salad with chickpeas, cucumber, bell pepper, and lemon vinaigrette.',
+      dessert: 'Baked apples with cinnamon.',
     },
     {
       day: 'Thursday',
-      firstDish: 'Whole Wheat Toast with Avocado, Poached Egg, and Spinach.',
-      secondDish: 'Egg White Omelette with Mushrooms and Spinach.',
-      dessert: 'Chia Seed Pudding.',
+      firstDish: 'Whole wheat toast with avocado, poached egg, and spinach.',
+      secondDish: 'Egg white omelette with mushrooms and spinach.',
+      dessert: 'Chia seed pudding.',
     },
     {
       day: 'Friday',
-      firstDish: 'Lentil Soup with Vegetables and Quinoa.',
-      secondDish: 'Lettuce Wraps with Lean Ground Beef and Vegetables.',
-      dessert: 'Avocado Brownies.',
+      firstDish: 'Lentil soup with vegetables and quinoa.',
+      secondDish: 'Lettuce wraps with lean ground beef and vegetables.',
+      dessert: 'Avocado brownies.',
     },
     {
       day: 'Saturday',
-      firstDish: 'Baked Cod with Asparagus and Mashed Sweet Potatoes.',
+      firstDish: 'Baked cod with asparagus and mashed sweet potatoes.',
       secondDish:
-        'Quinoa Salad with Grilled Chicken, Cucumber, and Lemon Dressing.',
-      dessert: 'Oat and Banana Cookies.',
+        'Quinoa salad with grilled chicken, cucumber, and lemon dressing.',
+      dessert: 'Oat and banana cookies.',
     },
     {
       day: 'Monday',
       firstDish:
-        'Chicken Salad with Spinach, Tomatoes, Avocado, and Yogurt Dressing.',
-      secondDish: 'Baked Salmon with Asparagus and Sweet Potato.',
+        'Chicken salad with spinach, tomatoes, avocado, and yogurt dressing.',
+      secondDish: 'Baked salmon with asparagus and sweet potato.',
       dessert: 'Almond and Date Truffles.',
     },
   ];
@@ -55,12 +55,14 @@ function Restaurant() {
   const dayMenu = menu[dayOfWeek];
   console.log(new Date());
   return (
-    <div>
-      <h2>Today's menu - {dayMenu.day}:</h2>
-      <p>First dish: {dayMenu.firstDish}</p>
-      <p>Second dish: {dayMenu.secondDish}</p>
-      <p>Dessert: {dayMenu.dessert}</p>
-    </div>
+    <>
+      <div className='container'>
+        <h2>Today's menu - {dayMenu.day}:</h2>
+        <p>First dish: {dayMenu.firstDish}</p>
+        <p>Second dish: {dayMenu.secondDish}</p>
+        <p>Dessert: {dayMenu.dessert}</p>
+      </div>
+    </>
   );
 }
 
