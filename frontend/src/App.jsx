@@ -8,8 +8,8 @@ import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
+/* import Restaurant from './Pages/restaurant/Restaurant'; */
 import './App.css';
-
 
 function App() {
   return (
