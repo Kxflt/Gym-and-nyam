@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Londrina+Solid:wght@300&family=Mr+Dafoe&family=Sacramento&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Londrina+Solid:wght@300&family=Mr+Dafoe&family=Sacramento&family=Satisfy&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Londrina+Solid:wght@300&family=Mr+Dafoe&family=Sacramento&family=Satisfy&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Dancing Script', sans-serif;
+  background-color: #f7f7f7;
+}
+
+.container {
+  text-align: center;
+}
+
+.menu {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-family: 'Dancing Script', sans-serif;
+}
+
+p {
+  margin: 5px 0;
+  font-family: 'Dancing Script', sans-serif;
+}
