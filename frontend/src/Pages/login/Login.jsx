@@ -66,8 +66,8 @@ function Login() {
           label="Password"
           register={register('password', {
             required: true,
-            pattern: PASSWORD_REGEX,
-            minLength: 8,
+
+            minLength: 7,
             maxLength: 100,
           })}
           errors={errors}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import {
   EMAIL_REGEX,
   MAX_LENGTH_STRING,
@@ -25,16 +25,14 @@ function NewUser() {
   const handleFormSubmit = (data) => {
     // Lógica para manejar el envío del formulario y redirección
     onSubmit(data);
-    navigate('/'); // Redirige a la ruta '/login' después de enviar el formulario
+    navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
   };
 
   return (
     <>
-      
-      
-      <div className='contenedor-registro'>
+      <div className="contenedor-registro">
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <InputText 
+          <InputText
             label="Name"
             register={register('name', {
               required: true,
@@ -43,7 +41,6 @@ function NewUser() {
             })}
             errors={errors}
             registerName="name"
-            
           />
 
           {/* Hay que meter apellido en Backend */}
@@ -58,14 +55,14 @@ function NewUser() {
             registerName='surname'
           />  */}
 
-          <InputText 
+          <InputText
             label="Email"
             register={register('email', {
               required: true,
               pattern: EMAIL_REGEX,
             })}
             errors={errors}
-            registerName='email' 
+            registerName="email"
             /* errorMessage={errors.email && errors.email.message} */
           />
           {/* Hay que crear genero en backend */}
@@ -80,7 +77,7 @@ function NewUser() {
             <span className='error'>Campo requerido</span>
           )}   */}
 
-           {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
+          {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
           {/*  <label>Interés</label>
           <select {...register('interest', { required: true })}>
             <option value=''>--</option>
@@ -94,32 +91,32 @@ function NewUser() {
           </select>   */}
 
           <InputPassword
-            label='Password'
+            label="Password"
             register={register('password', {
               required: true,
               minLength: 8,
               maxLenght: 100,
             })}
             errors={errors}
-            registerName='password'
+            registerName="password"
           />
 
           <InputPassword
-            label='Repeat password'
+            label="Repeat password"
             register={register('repeat-password', {
               required: true,
             })}
             errors={errors}
-            registerName='repeat-password'
+            registerName="repeat-password"
           />
 
           {passwordError && (
-            <span className='error'>Las contraseñas no coinciden</span>
+            <span className="error">Las contraseñas no coinciden</span>
           )}
 
-          <div className='terms-container'>
+          <div className="terms-container">
             <input
-              type='checkbox'
+              type="checkbox"
               {...register('terms', {
                 required: true,
               })}
@@ -127,18 +124,17 @@ function NewUser() {
             <label>Accept Terms and Conditions</label>
           </div>
           {errors.terms?.type === 'required' && (
-            <span className='error'>Campo requerido</span>
+            <span className="error">Campo requerido</span>
           )}
 
-          <Button text='Continue' />
+          <Button text="Continue" />
         </form>
       </div>
-       <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} /> 
-      
+      <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
+
       <Footer />
     </>
   );
 }
 
 export default NewUser;
-
