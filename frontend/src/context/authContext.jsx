@@ -11,8 +11,8 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   // Variable para guardará los datos del usuario.
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem('token')) || null
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || null
   );
 
   // Loguearse.
@@ -21,13 +21,13 @@ export function AuthProvider({ children }) {
       //Llamamos al servicio.
       const body = await login(email, password);
 
-      console.log(body.data.data.token);
+      console.log(body.data.data);
 
-      // Guardamos el token en el localStorage.
-      localStorage.setItem('token', JSON.stringify(body.data.data.token));
+      // Guardamos el usuario en el localStorage.
+      localStorage.setItem('user', JSON.stringify(body.data.data));
 
-      // Guardamos el token en el State.
-      setToken(body.data.data.token);
+      // Guardamos el usuario en el State.
+      setUser(body.data.data);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -69,12 +69,11 @@ export function AuthProvider({ children }) {
 
   // Deslogueo.
   const logOut = () => {
-    // Eliminamos el token del localStorage.
-    localStorage.removeItem('token');
+    // Eliminamos el user del localStorage.
+    localStorage.removeItem('user');
 
-    // Eliminamos el usuario y el token del State.
+    // Eliminamos el usuario
     setUser(null);
-    setToken(null);
   };
 
   // Actualizar usuario.
@@ -121,7 +120,7 @@ export function AuthProvider({ children }) {
         signIn,
         registerUser,
         logOut,
-        token,
+        user,
         registerUserAvatar,
         updateUser,
         checkUserExists,

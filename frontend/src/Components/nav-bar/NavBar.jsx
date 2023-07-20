@@ -7,25 +7,21 @@ import { useAuth } from '../../context/authContext';
 import './nav-bar.css';
 
 function NavBar() {
-  const { token } = useAuth();
+  const { user } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState('');
   const history = useNavigate();
 
   const handleLogout = () => {
     // Lógica para cerrar sesión
     setAvatarUrl('');
-    localStorage.removeItem('token'); // Elimina el token del localStorage
+    localStorage.removeItem('user'); // Elimina el usuario del localStorage
     history.push('/login'); // Redirige a la página de inicio de sesión después de cerrar sesión
-  };
-
-  const handleAvatarUpload = (imageUrl) => {
-    setAvatarUrl(imageUrl);
   };
 
   return (
     <nav className='header-container'>
       <ul className='menu'>
-        {!token ? (
+        {!user ? (
           <>
             <li>
               <NavLink to='/users'> Sign Up</NavLink>
@@ -47,8 +43,9 @@ function NavBar() {
                 Log Out
               </NavLink>
             </li>
+            <li>{user.email}</li>
             <li className='avatar-container'>
-              <img className='avatar' src={avatarUrl} alt='User Avatar' />
+              <img className='avatar' src={user?.avatar} alt='User Avatar' />
             </li>
           </>
         )}

@@ -38,6 +38,9 @@ const loginUser = async (req, res, next) => {
       status: 'ok',
       data: {
         token,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
       },
     });
   } catch (err) {

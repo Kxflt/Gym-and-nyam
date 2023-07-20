@@ -15,7 +15,7 @@ const currentUser = JSON.parse(
   localStorage.getItem(CURRENT_USER_LOCAL_STORAGE)
 );
 
-const token = currentUser?.user.token;
+const token = currentUser?.token;
 
 const tokenRequired = (url) => {
   //Nos hace un destructuring de la URL, y el pathname esta dentro, siendo las unicas rutas publicas login y account, el resto seran privadas.
