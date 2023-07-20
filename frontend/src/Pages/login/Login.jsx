@@ -50,21 +50,20 @@ function Login() {
 
   return (
     <>
-      <img src='/original-multimedia/logo2.png' alt='logo' className='logo2' />
+      <img src="/original-multimedia/logo2.png" alt="logo" className="logo2" />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText
-          label='Email'
+          label="Email"
           register={register('email', {
             required: true,
             pattern: EMAIL_REGEX,
           })}
           errors={errors}
-          registerName='email'
+          registerName="email"
         />
-
         <InputPassword
-          label='Password'
+          label="Password"
           register={register('password', {
             required: true,
             pattern: PASSWORD_REGEX,
@@ -72,10 +71,10 @@ function Login() {
             maxLength: 100,
           })}
           errors={errors}
-          registerName='password'
+          registerName="password"
         />
 
-        <span className='error'>{errorText}</span>
+        <span className="error">{errorText}</span>
 
         {/* {user.role === 'admin' ? <p>Eres Admin</p> : <p>No eres admin</p>}
 
@@ -84,8 +83,8 @@ function Login() {
         {user.role === 'normal' && <p>Eres un user normal </p>} */}
 
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
-        <Button text='Login' />
-        <div className='help'>
+        <Button text="Login" />
+        <div className="help">
           <p>Forgot Password</p>
           <p>Sign Up</p>
         </div>
