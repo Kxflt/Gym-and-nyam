@@ -11,21 +11,9 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   // Variable para guardará los datos del usuario.
-  const [user, setUser] = useState(null);
-
-  // Variable donde almacenaremos el token.
-  const [token, setToken] = useState(localStorage.getItem('token'));
-
-  // Obtenemos la información del usuario si existe token.
-  useEffect(() => {
-    const fetchUser = async () => {
-      // Obtenemos los datos del usuario.
-      // Guardamos el usuario en el State.
-    };
-
-    // Si existe token obtenemos el usuario.
-    if (token) fetchUser();
-  }, [token]);
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem('token')) || null
+  );
 
   // Loguearse.
   const signIn = async (email, password) => {
@@ -33,11 +21,13 @@ export function AuthProvider({ children }) {
       //Llamamos al servicio.
       const body = await login(email, password);
 
+      console.log(body.data.data.token);
+
       // Guardamos el token en el localStorage.
-      localStorage.setItem('token', body.data.token);
+      localStorage.setItem('token', JSON.stringify(body.data.data.token));
 
       // Guardamos el token en el State.
-      setToken(body.data.token);
+      setToken(body.data.data.token);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -131,8 +121,7 @@ export function AuthProvider({ children }) {
         signIn,
         registerUser,
         logOut,
-        user,
-        isAuthenticated: token,
+        token,
         registerUserAvatar,
         updateUser,
         checkUserExists,
