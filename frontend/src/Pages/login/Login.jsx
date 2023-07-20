@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
@@ -27,20 +27,19 @@ function Login() {
   } = useForm();
 
   //Utilizamos el signIn del Context
-  const { signIn, token } = useAuth();
+  const { signIn } = useAuth();
 
-  // Si existe un token redireccionamos a la página principal.
-  if (token) <Navigate to='/' />;
+  const navigate = useNavigate();
 
   //La función ciamdp enviamos los datos
   const onSubmit = async ({ email, password }) => {
     try {
       await signIn(email, password);
-      //localStorage.setItem('token', token);
+
       setErrorText(null);
 
-      //Utilizamos esto por si hemos intentado entrar y no hemos podido, que borre el errorText y poder entrar
-      setErrorText(null);
+      // Si existe un usuario redireccionamos a la página principal.
+      navigate('/');
     } catch (error) {
       if (error.response?.status === 403 || error.response?.status === 402) {
         setErrorText('Email o contraseña no válida');

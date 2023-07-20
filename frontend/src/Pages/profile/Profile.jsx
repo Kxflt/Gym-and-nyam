@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/authContext';
 import Avatar from '../../Components/avatar/Avatar';
 const UserProfile = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
+  const { user } = useAuth();
+  /* useEffect(() => {
     // Simular  llamada a una API para obtener los datos del usuario
     //  llamada a  backend para obtener los datos del usuario actual
     const fetchUser = async () => {
@@ -19,14 +19,14 @@ const UserProfile = () => {
 
     fetchUser();
   }, []);
-
+ */
   return (
     <div>
       <h2>My Profile</h2>
       <Avatar />
       <p>
         <strong>Name:</strong>
-        {/*  {user.name} */}
+        {user.name}
       </p>
       <p>
         <strong>Email:</strong> {/* {user.email} */}
@@ -34,9 +34,8 @@ const UserProfile = () => {
       <p>
         <strong>More Info:</strong> {/* {user.registrationData} */}
       </p>
-      <Link to="/">Back</Link>
+      <Link to='/'>Back</Link>
     </div>
-  
   );
 };
 
