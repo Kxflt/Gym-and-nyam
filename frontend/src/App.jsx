@@ -8,14 +8,13 @@ import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
-import Restaurant from './Pages/restaurant/Restaurant';
+
 import './App.css';
 
 function App() {
   return (
     <>
-      <Restaurant />
-      {/*  <div className='app'>
+      <div className='app'>
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login />} />
@@ -26,7 +25,7 @@ function App() {
           <Route path='/validate' element={<ValidateUser />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-      </div> */}
+      </div>
     </>
   );
 }

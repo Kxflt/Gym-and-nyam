@@ -2,22 +2,17 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Avatar from '../../Components/avatar/Avatar';
+import { useAuth } from '../../context/authContext';
 
 import './nav-bar.css';
 
 function NavBar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { token } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState('');
   const history = useNavigate();
 
-  const handleLogin = () => {
-    // Lógica para iniciar sesión
-    setIsAuthenticated(true);
-  };
-
   const handleLogout = () => {
     // Lógica para cerrar sesión
-    setIsAuthenticated(false);
     setAvatarUrl('');
     localStorage.removeItem('token'); // Elimina el token del localStorage
     history.push('/login'); // Redirige a la página de inicio de sesión después de cerrar sesión
@@ -30,22 +25,13 @@ function NavBar() {
   return (
     <nav className='header-container'>
       <ul className='menu'>
-        {isAuthenticated &&
-          avatarUrl && ( // Condición para mostrar el Avatar
-            <div className='avatar-container'>
-              <img className='avatar' src={avatarUrl} alt='User Avatar' />
-            </div>
-          )}
-
-        {!!isAuthenticated ? (
+        {!token ? (
           <>
             <li>
               <NavLink to='/users'> Sign Up</NavLink>
             </li>
             <li>
-              <NavLink to='/login' onClick={handleLogin}>
-                Log in
-              </NavLink>
+              <NavLink to='/login'>Log in</NavLink>
             </li>
           </>
         ) : (
@@ -61,12 +47,12 @@ function NavBar() {
                 Log Out
               </NavLink>
             </li>
+            <li className='avatar-container'>
+              <img className='avatar' src={avatarUrl} alt='User Avatar' />
+            </li>
           </>
         )}
       </ul>
-      {isAuthenticated && ( // Condición para mostrar el componente Avatar
-        <Avatar onUpload={handleAvatarUpload} />
-      )}
     </nav>
   );
 }
