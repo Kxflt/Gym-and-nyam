@@ -20,6 +20,9 @@ div#root {
 
 body {
   background-color: rgba(200, 220, 161, 1);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 /* h2 {
   padding-top: 2rem;
