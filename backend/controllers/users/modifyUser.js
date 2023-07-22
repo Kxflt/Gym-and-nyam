@@ -44,6 +44,7 @@ const modifyUser = async (req, res, next) => {
         user: {
           name,
           email,
+          userId,
           modifiedAt: new Date(),
         },
       },

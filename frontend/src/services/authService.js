@@ -46,7 +46,7 @@ export const signUpAvatar = (formData, config) => {
 
 export const updateUser = (formData, config) => {
   return (
-    axios.put('http://localhost:8000/users'),
+    axios.put('http://localhost:8000/users/:userId'),
     {
       formData,
       config,
