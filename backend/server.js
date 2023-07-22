@@ -48,6 +48,7 @@ const {
   newUser,
   loginUser,
   getUser,
+  modifyUser,
   getOwnUser,
   deleteUser,
   editUserPass,
@@ -70,6 +71,9 @@ app.get('/users/:userId', getUser);
 
 //Permitir que un usuario logueado vea información sobre su propio usuario.
 app.get('/users', authUser, userExists, getOwnUser);
+
+//Permite que un usario logueado modifique sus datos.
+app.put('/users/:userId', authUser, userExists, modifyUser);
 
 //Enviar al usuario un email de recuperación de contraseña.
 app.put('/users/password/recover', sendRecoverPass);

@@ -9,6 +9,7 @@ const selectUserByIdQuery = async (userId) => {
       `SELECT id, name, email, avatar, role, createdAt FROM users WHERE id = ?`,
       [userId]
     );
+
     return users[0];
   } finally {
     if (connection) connection.release();

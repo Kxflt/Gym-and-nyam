@@ -5,9 +5,9 @@ const { generateError } = require('../../helpers');
 const getUser = async (req, res, next) => {
   try {
     //Destructuring de los path params.
-    const { userId, name, role } = req.params;
+    const { userId, name, role, email } = req.params;
 
-    const user = await selectUserByIdQuery(userId, name, role);
+    const user = await selectUserByIdQuery(userId, name, role, email);
     //Si el usuario no existe, lanzamos un error...
     if (!user) {
       generateError('Usuario no encontrado.', 404);

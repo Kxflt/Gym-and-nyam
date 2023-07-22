@@ -14,18 +14,18 @@ function NavBar() {
   const handleLogout = () => {
     // Lógica para cerrar sesión
     setAvatarUrl('');
-    localStorage.removeItem('token'); // Elimina el token del localStorage
+    localStorage.removeItem('user'); // Elimina el user/token del localStorage
     history.push('/login'); // Redirige a la página de inicio de sesión después de cerrar sesión
   };
 
-  const handleAvatarUpload = (imageUrl) => {
-    setAvatarUrl(imageUrl);
-  };
+  // const handleAvatarUpload = (imageUrl) => {
+  // setAvatarUrl(imageUrl);
+  // };
 
   return (
     <nav className="header-container">
       <ul className="menu">
-        {!token ? (
+        {!!token ? (
           <>
             <li>
               <NavLink to="/users"> Sign Up</NavLink>
@@ -47,9 +47,9 @@ function NavBar() {
                 Log Out
               </NavLink>
             </li>
-            <li className="avatar-container">
-              <img className="avatar" src={avatarUrl} alt="User Avatar" />
-            </li>
+            {/* <li className="avatar-container"> */}
+            {/* <img className="avatar" src={avatarUrl} alt="User Avatar" /> */}
+            {/* </li> */}
           </>
         )}
       </ul>
