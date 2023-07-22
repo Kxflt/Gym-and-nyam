@@ -11,11 +11,6 @@ div#root {
   gap: 1rem;
 }
 
-button {
-  /* podria eliminarse */
-  align-items: flex-end;
-  background-color: bisque;
-}
 h2 {
   padding-top: 2rem;
 }

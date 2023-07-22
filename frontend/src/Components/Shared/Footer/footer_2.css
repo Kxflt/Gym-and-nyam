@@ -1,57 +1,60 @@
-/* footer.css */
+/* Estilos del archivo style.css */
+
 @import '../../../services/style.css';
 
 footer {
-  position: sticky;
+  position: relative;
   bottom: 0;
-  height: 180px;
-  padding: 40px 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 140px 1fr;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-content: center;
   background-color: var(--darkest-colour);
 }
 
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.contact-footer,
+.follow-footer {
+  text-align: center;
+}
+
+.social-media {
+  display: flex;
+  justify-content: space-between;
+  width: 62%;
+  gap: 2px;
+}
+
 footer img {
-  height: 120px;
-  width: 120px; 
+  height: 35px;
+  width: 35px;
   margin-bottom: 20px;
   border-radius: 50%;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .logo {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.contact-footer {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: center;
-}
-
-.follow-footer {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.footer-footer {
-  grid-column: 1/-1;
-  grid-row: 2;
-  border-top: 1px solid #565f6b;
-}
-
-.footer-footer a {
-  text-transform: uppercase;
+  width: 75px;
+  height: 75px;
 }
 
 footer h2 {
-  margin-top: 3px;
   color: white;
-  font-size: 0.8em;
+  font-size: 10px;
   font-family: Roboto, sans-serif;
   font-weight: 900;
   letter-spacing: 0.3px;
@@ -61,47 +64,91 @@ footer h2 {
 footer p {
   color: white;
   font-family: Roboto, sans-serif;
-  font-size: 0.8em;
-  line-height: 18px;
+  font-size: 10px;
+
   font-weight: 700;
   max-width: 240px;
 }
 
-footer a {
-  font-size: 1em;
-  text-decoration: none;
-  color: #565f6b;
-  font-family: Roboto, sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.3px;
-}
-
-@media (max-width: 600px) {
+@media (min-width: 800px) {
   footer {
     position: relative;
-    width: 100%;
     bottom: 0;
-    margin: 0;
-    background-color: var(--darkest-colour);
-    display: flex;
-    flex-direction: row;
+    height: 180px;
+    padding: 40px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 140px 1fr;
     justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    height: 15%;
-  }
-
-  section {
-    font-size: 12px;
-    margin-bottom: 5px;
-    text-align: center;
+    align-content: center;
+    background-color: rgba(59, 80, 83, 1);
   }
 
   footer img {
-    height: 30px;
-    width: 30px;
-    margin-bottom: 5px;
-    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+    height: 120px;
+    width: 120px;
+  }
+
+  .contact-footer,
+  .follow-footer {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .follow-footer {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-footer {
+    grid-column: 1/-1;
+    grid-row: 2;
+    border-top: 1px solid #565f6b;
+  }
+
+  .footer-footer a {
+    text-transform: uppercase;
+  }
+
+  footer h2 {
+    margin-top: 3px;
+    color: white;
+    font-size: 0.8em;
+    font-family: Roboto, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  footer p {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 0.8em;
+    line-height: 18px;
+    font-weight: 700;
+    max-width: 240px;
+  }
+
+  footer a {
+    font-size: 1em;
+    text-decoration: none;
+    color: #565f6b;
+    font-family: Roboto, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.3px;
   }
 
   .follow-footer h2 {
@@ -115,5 +162,12 @@ footer a {
     width: 60px;
     margin-right: 5px;
     margin-top: 10px;
+  }
+  .follow-footer {
+    justify-content: end;
+    align-items: end;
+  }
+  figure.social-media {
+    background-color: black;
   }
 }

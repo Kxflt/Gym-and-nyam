@@ -5,7 +5,7 @@ import twitter from '../../../assets/twitter.png';
 import facebook from '../../../assets/facebook.png';
 import instagram from '../../../assets/instagram.png';
 
-import './footer.css';
+import './footer_2.css';
 
 function Footer() {
   return (
@@ -28,10 +28,11 @@ function Footer() {
 
         <section className="follow-footer">
           <h2>{formatMessage('Síguenos')}</h2>
-          <p>{formatMessage('Siguenos en nuestras redes sociales')}</p>
-          <img src={twitter} alt="Twitter" />
-          <img src={facebook} alt="Facebook" />
-          <img src={instagram} alt="Instagram" />
+          <figure className="social-media">
+            <img src={twitter} alt="Twitter" />
+            <img src={facebook} alt="Facebook" />
+            <img src={instagram} alt="Instagram" />
+          </figure>
         </section>
       </footer>
     </React.Fragment>
