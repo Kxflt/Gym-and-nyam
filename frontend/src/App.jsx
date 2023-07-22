@@ -14,16 +14,16 @@ import './App.css';
 function App() {
   return (
     <>
-      <div className='app'>
+      <div className="app">
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/forgotPassword' element={<ForgotPassword />} />
-          <Route path='/exercises' element={<Exercises />} />
-          <Route path='/users' element={<NewUser />} />
-          <Route path='/account' element={<Profile />} />
-          <Route path='/validate' element={<ValidateUser />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/exercises" element={<Exercises />} />
+          <Route path="/users" element={<NewUser />} />
+          <Route path="/account" element={<Profile />} />
+          <Route path="/validate" element={<ValidateUser />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>

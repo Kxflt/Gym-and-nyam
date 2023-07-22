@@ -69,11 +69,12 @@ export const sendRecoverPass = (email, recoverPassCode) => {
   });
 };
 
-export const editPassword = (password) => {
+export const editPassword = (recoverPassCode, newPass) => {
   return (
     axios.put('http://localhost:8000/users/password'),
     {
-      password,
+      recoverPassCode,
+      newPass,
     }
   );
 };
