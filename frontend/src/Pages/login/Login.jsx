@@ -66,7 +66,7 @@ function Login() {
           label="Password"
           register={register('password', {
             required: true,
-
+            pettern: PASSWORD_REGEX,
             minLength: 7,
             maxLength: 100,
           })}

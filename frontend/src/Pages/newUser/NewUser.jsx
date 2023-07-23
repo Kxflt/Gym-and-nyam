@@ -4,6 +4,7 @@ import {
   EMAIL_REGEX,
   MAX_LENGTH_STRING,
   MIN_LENGTH_STRING,
+  PASSWORD_REGEX,
 } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
 import InputText from '../../Components/Shared/Input/InputText';
@@ -96,6 +97,7 @@ function NewUser() {
               required: true,
               minLength: 8,
               maxLenght: 100,
+              pattern: PASSWORD_REGEX,
             })}
             errors={errors}
             registerName="password"
@@ -105,6 +107,7 @@ function NewUser() {
             label="Repeat password"
             register={register('repeat-password', {
               required: true,
+              pattern: PASSWORD_REGEX,
             })}
             errors={errors}
             registerName="repeat-password"
