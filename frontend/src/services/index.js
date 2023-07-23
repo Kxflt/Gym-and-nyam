@@ -84,6 +84,7 @@ axios.interceptors.response.use(
 export {
   signUpAvatar,
   updateUser,
+  newUser,
   createExercise,
   modifyExercise,
   login,

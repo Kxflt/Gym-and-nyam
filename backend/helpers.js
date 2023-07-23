@@ -97,7 +97,7 @@ const deletePhoto = async (imgName) => {
 
 // Creamos un transporte para poder enviar emails con nodemailer.
 const transport = nodemailer.createTransport({
-  host: 'smtp-relay.sendinblue.com',
+  host: 'smtp-relay.brevo.com',
   port: 587,
   auth: {
     user: SMTP_USER,

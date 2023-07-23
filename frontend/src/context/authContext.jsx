@@ -92,7 +92,7 @@ export function AuthProvider({ children }) {
     try {
       // Realiza una llamada a tu API para verificar si el usuario ya existe
       const response = await fetch(
-        `https://localhost:8000/users?email=${email}`
+        `http://localhost:8000/users?email=${email}`
       );
       const data = await response.json();
 
