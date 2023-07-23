@@ -19,14 +19,18 @@ function NewUser() {
   const navigate = useNavigate(); // Inicializa useNavigate
 
   const {
-    state: { register, errors, passwordError, errorPopUp },
-    actions: { handleSubmit, onSubmit, setErrorPopUp },
+    state: { register, errors, passwordError, errorPopUp, formErrors },
+    actions: { handleSubmit, onSubmit, setErrorPopUp, setFormErrors },
   } = useNewUser();
 
-  const handleFormSubmit = (data) => {
+  const handleFormSubmit = async (data) => {
     // Lógica para manejar el envío del formulario y redirección
-    onSubmit(data);
-    navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
+    const errors = await onSubmit(data);
+
+    setFormErrors(errors); // Set the form errors received from onSubmit
+    if (!errors) {
+      navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
+    }
   };
 
   return (
@@ -64,6 +68,11 @@ function NewUser() {
             })}
             errors={errors}
             registerName="email"
+            errorMessage={
+              formErrors && formErrors.userExists
+                ? formErrors.userExists // Display the userExists error message from formErrors
+                : undefined
+            }
             /* errorMessage={errors.email && errors.email.message} */
           />
           {/* Hay que crear genero en backend */}
@@ -112,6 +121,9 @@ function NewUser() {
             errors={errors}
             registerName="repeat-password"
           />
+          {formErrors && formErrors.userExists && (
+            <span className="error">{formErrors.userExists}</span>
+          )}
 
           {passwordError && (
             <span className="error">Las contraseñas no coinciden</span>
@@ -133,7 +145,19 @@ function NewUser() {
           <Button text="Continue" />
         </form>
       </div>
-      <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
+      <ErrorPopUp
+        open={errorPopUp}
+        onClose={() => setErrorPopUp(false)}
+        errorMessage={
+          formErrors
+            ? formErrors.userExists
+              ? 'Este email ya está en uso'
+              : formErrors.serverError
+              ? 'Error al registrar el usuario'
+              : ''
+            : ''
+        }
+      />
 
       <Footer />
     </>

@@ -6,6 +6,7 @@ import { useAuth } from '../../context/authContext';
 function useNewUser() {
   const [passwordError, setPasswordError] = useState(false);
   const [errorPopUp, setErrorPopUp] = useState(false);
+  const [formErrors, setFormErrors] = useState(null);
 
   const {
     register,
@@ -13,37 +14,41 @@ function useNewUser() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { registerUser, checkUserExists } = useAuth();
-
+  const { checkUserExists, registerUser } = useAuth();
   const onSubmit = async (data) => {
     if (data.password !== data['repeat-password']) {
-      // IMPORTANTE: Hacemos return porque sino se ejecutaría el siguiente código
-      return setPasswordError(true);
+      setPasswordError(true);
+      return { passwordError: true };
     } else {
       setPasswordError(false);
     }
 
     try {
-      // Verificar si el usuario ya existe
       const userExists = await checkUserExists(data.email);
       if (userExists) {
-        setErrorPopUp(true); // Mostrar error de usuario existente
-        return; // Detener la ejecución si el usuario ya existe
+        setErrorPopUp(true);
+        setFormErrors({ userExists: 'Ya existe un usuario con ese email' });
+        return { userExists: true };
       }
 
-      // Llamamos el servicio del signup con los parámetros esperados
       await registerUser(data);
-      // Navegamos al dashboard
-      navigate('/login');
+      return null;
     } catch (error) {
       setErrorPopUp(true);
       console.error('Error al registrar el usuario:', error);
+      if (error.response && error.response.status === 403) {
+        // If the error status is 403, handle the email in use error
+        setFormErrors({ userExists: true });
+        return { userExists: true };
+      } else {
+        setFormErrors({ serverError: true }); // Set formErrors for server error
+        return { serverError: true };
+      }
     }
   };
-
   return {
-    state: { register, errors, passwordError, errorPopUp },
-    actions: { handleSubmit, onSubmit, setErrorPopUp },
+    state: { register, errors, passwordError, errorPopUp, formErrors },
+    actions: { handleSubmit, onSubmit, setErrorPopUp, setFormErrors },
   };
 }
 
