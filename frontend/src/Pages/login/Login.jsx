@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../../utils/constants';
 import InputPassword from '../../Components/Shared/Input/inputPassword';
@@ -85,8 +85,12 @@ function Login() {
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
         <Button text="Login" />
         <div className="help">
-          <p>Forgot Password</p>
-          <p>Sign Up</p>
+          <p>
+            <NavLink to="/forgotPassword"> Forgot Password</NavLink>
+          </p>
+          <p>
+            <NavLink to="/users"> Sing Up</NavLink>
+          </p>
         </div>
       </form>
 

@@ -1,0 +1,9 @@
+div.app {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vw;
+}
+h2 {
+  flex-grow: 2;
+}

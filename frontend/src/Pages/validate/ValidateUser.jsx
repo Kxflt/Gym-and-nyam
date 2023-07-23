@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { validation } from '../../services/authService';
+import Footer from '../../Components/Shared/Footer/Footer';
+import NavBar from '../../Components/nav-bar/NavBar';
+
 import './validate.css';
 
 const ValidateUser = () => {
@@ -17,7 +20,13 @@ const ValidateUser = () => {
     fetchValidateUser();
   }, []);
 
-  return <h2>Activacion usuario</h2>;
+  return (
+    <>
+      <NavBar />
+      <h2>User Activated!!!</h2>
+      <Footer />
+    </>
+  );
 };
 
 export default ValidateUser;
