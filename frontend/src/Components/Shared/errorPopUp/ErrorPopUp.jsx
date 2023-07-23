@@ -7,10 +7,10 @@ function ErrorPopUp({ open, onClose }) {
   return (
     //open lanzará el mensaje y el onclose con el boton le dara la función de cerrarlo.
     <PopUp open={open} onClose={onClose}>
-      <div className='popupmessage'>
+      <div className="popupmessage">
         <h2>Sorry!!!!!</h2>
         <p>Try again in a few minutes</p>
-        <button className='close' onClick={onClose}>
+        <button className="close" onClick={onClose}>
           Close
         </button>
       </div>

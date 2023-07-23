@@ -3,12 +3,7 @@ import { string, object } from 'prop-types';
 
 import './input.css';
 
-function InputText({
-  label,
-  register,
-  errors,
-  registerName /* , errorMessage */,
-}) {
+function InputText({ label, register, errors, registerName, errorMessage }) {
   return (
     <>
       {/* TODOS LOS ERRORES ESTAN RECOGIDOS DE BACKEND/newUserSchema, hasta que no se comience con el registro, no lo completaria para ser conscientes de que vamos colocando. */}
@@ -18,30 +13,33 @@ function InputText({
       <label>{label}</label>
 
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
-      <input type='text' placeholder={label} {...register} />
+      <input type="text" placeholder={label} {...register} />
 
       {errors[registerName]?.type === 'required' && (
-        <span className='error'>Campo requerido.</span>
+        <span className="error">Campo requerido.</span>
       )}
 
       {errors[registerName]?.type === 'pattern' && (
-        <span className='error'>El email no es válido.</span>
+        <span className="error">El email no es válido.</span>
       )}
 
       {errors[registerName]?.type === 'maxLength' && (
-        <span className='error'>Máximo 100 carácteres.</span>
+        <span className="error">Máximo 100 carácteres.</span>
       )}
 
       {errors[registerName]?.type === 'minLength' && (
-        <span className='error'>Mínimo 8 carácteres.</span>
+        <span className="error">Mínimo 8 carácteres.</span>
       )}
       {errors[registerName]?.type === 'repeat-password' && (
-        <span className='error'>
+        <span className="error">
           Esta contraseña debe coincidir con la anterior.
         </span>
       )}
+      {errors[registerName]?.type === 'email' && (
+        <span className="error">Este email ya esta en uso.</span>
+      )}
 
-      {/*  {errorMessage && <span className="error">{errorMessage}</span>}  */}
+      {errorMessage && <span className="error">{errorMessage}</span>}
     </>
   );
 }
@@ -51,6 +49,6 @@ InputText.propTypes = {
   register: object,
   errors: object,
   registerName: string,
-  /*  errorMessage: string, */
+  errorMessage: string,
 };
 export default InputText;

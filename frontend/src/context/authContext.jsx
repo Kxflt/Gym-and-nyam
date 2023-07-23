@@ -106,7 +106,7 @@ export function AuthProvider({ children }) {
 
   const validateUserCode = async (registrationCode) => {
     try {
-      const response = await validateUser(registrationCode);
+      const response = await ValidateUser(registrationCode);
       setUser(response.data.user);
     } catch (error) {
       console.error('Error al validar el código de registro:', error);
