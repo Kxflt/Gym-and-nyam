@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../Shared/Button/Button';
 import InputText from '../Shared/Input/InputText';
 import InputPassword from '../Shared/Input/inputPassword';
 import { PASSWORD_REGEX } from '../../utils/constants';
+import { editPassword } from '../../services/authService';
 
 function NewPassword() {
   const [errorText, setErrorText] = useState();
@@ -19,17 +21,23 @@ function NewPassword() {
     newPassword,
     confirmPassword,
   }) => {
+    console.log('Form submitted, calling editPassword...');
     setErrorText(null);
 
     // You can add your logic here to handle the form submission and password change.
     // For example, you can compare newPassword and confirmPassword and make the necessary API call to update the password.
 
-    // Example logic to handle password change:
     if (newPassword !== confirmPassword) {
       setErrorText("Passwords don't match.");
     } else {
-      // Make the API call to change the password here.
-      console.log('Password change API call');
+      try {
+        await editPassword(recoverPassCode, newPassword);
+        console.log('Password change API call successful');
+      } catch (error) {
+        // Handle errors if the API call fails.
+        console.error('Error changing password:', error);
+        setErrorText('Failed to change password. Please try again.');
+      }
     }
   };
 
