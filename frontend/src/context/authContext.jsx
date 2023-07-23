@@ -95,6 +95,7 @@ export function AuthProvider({ children }) {
         `http://localhost:8000/users?email=${email}`
       );
       const data = await response.json();
+      console.log('Response from API:', data.user);
 
       // Devuelve true si el usuario existe, false si no existe
       return data.length > 0;
