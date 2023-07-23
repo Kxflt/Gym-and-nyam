@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { editPassword } from '../../services/authService';
+import { PASSWORD_REGEX } from '../../utils/constants';
 import Button from '../Shared/Button/Button';
 import InputText from '../Shared/Input/InputText';
 import InputPassword from '../Shared/Input/inputPassword';
-import { PASSWORD_REGEX } from '../../utils/constants';
-import { editPassword } from '../../services/authService';
 
 function NewPassword() {
   const [errorText, setErrorText] = useState();
