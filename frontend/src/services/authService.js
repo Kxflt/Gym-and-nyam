@@ -70,13 +70,11 @@ export const sendRecoverPass = (email, recoverPassCode) => {
 };
 
 export const editPassword = (recoverPassCode, newPass) => {
-  return (
-    axios.put('http://localhost:8000/users/password'),
-    {
-      recoverPassCode,
-      newPass,
-    }
-  );
+  console.log('calling API.');
+  return axios.put('http://localhost:8000/users/password', {
+    recoverPassCode,
+    newPass,
+  });
 };
 
 export const profile = (name, email, password) => {
