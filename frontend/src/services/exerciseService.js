@@ -9,7 +9,7 @@ export const createExercise = (
   muscleGroup
 ) => {
   return (
-    axios.post('http://localhost:8000/newExercises'),
+    axios.post('http://localhost:8000/exercises'),
     {
       name,
       description,
@@ -28,7 +28,25 @@ export const modifyExercise = (
   muscleGroup
 ) => {
   return (
-    axios.put('http://localhost:8000/modifyExercise'),
+    axios.put('http://localhost:8000/exercises/:id'),
+    {
+      name,
+      description,
+      photo,
+      typology,
+      muscleGroup,
+    }
+  );
+};
+export const listExercises = (
+  name,
+  description,
+  photo,
+  typology,
+  muscleGroup
+) => {
+  return (
+    axios.get('http://localhost:8000/exercises/:id'),
     {
       name,
       description,
