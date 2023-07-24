@@ -9,13 +9,14 @@ import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
 import LikeButton from './Components/like/Like';
+import FavButton from './Components/favourite/Favourite';
 
 import './App.css';
 
 function App() {
   return (
     <>
-      <LikeButton />
+      <FavButton />
       {/* <div className="app">
         <Routes>
           <Route path="/" element={<Dashboard />} />
