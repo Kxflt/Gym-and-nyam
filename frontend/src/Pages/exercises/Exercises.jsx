@@ -1,37 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExerciseBody from './ExerciseBody/ExerciseBody';
+import ExerciseFooter from './ExerciseFooter/ExerciseFooter';
+import ExerciseHeader from './ExerciseHeader/ExerciseHeader';
+import useExercise from './useExercises';
+import './exercises.css';
 
-const Exercise = ({ exercise }) => {
+const Exercise = ({ exercise, deleteExercise, loading }) => {
+  const { exercises, toogleLike, setSearchParams, errMsg } = useExercise();
   return (
     <li className="exercise">
-      <header>
-        <p>@{exercise.username}</p>
-        <time>
-          {new Date(exercise.createdAt).toLocaleDateString('es-ES', {
-            hour: '2-digit',
-            minuts: '2-digit',
-            day: '2 -digit',
-            month: '2-digit',
-            year: '2-digit',
-          })}
-        </time>
-      </header>
-      <div>
-        <p>{exercise.text}</p>
-        {exercise.image && (
-          <img
-            src={`http://localhost:8000/${exercise.image}`}
-            alt="imagen adjunta al exercicio"
-          />
-        )}
-      </div>
-      <footer>
-        <p>en construccion........</p>
-      </footer>
+      <ExerciseHeader name={exercise.name} />
+      <ExerciseBody text={exercise.description} image={exercise.photo} />
+      <ExerciseFooter
+        exerciseId={exercise.id}
+        // likes={exercises.likes}
+        // likedByMe={exercises.likedByMe}
+        // toogleLike={toogleLike}
+        deleteExercise={deleteExercise}
+        loading={loading}
+      />
     </li>
   );
 };
-Exercise.propTypes = {
+
+Exercise.PropTypes = {
   exercise: PropTypes.object,
+  // toogleLike: PropTypes.func,
+  deleteExercise: PropTypes.func,
+  loading: PropTypes.bool,
 };
+
 export default Exercise;

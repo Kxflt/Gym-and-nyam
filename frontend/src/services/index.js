@@ -8,7 +8,11 @@ import {
   updateUser,
   profile,
 } from './authService';
-import { createExercise, modifyExercise } from './exerciseService';
+import {
+  createExercise,
+  modifyExercise,
+  listExercises,
+} from './exerciseService';
 
 //Cogemos el token del localstorage => nos viene los datos de usuario junto al token al registrarnos.
 const currentUser = JSON.parse(
@@ -90,4 +94,5 @@ export {
   login,
   createExercise,
   profile,
+  listExercises,
 };
