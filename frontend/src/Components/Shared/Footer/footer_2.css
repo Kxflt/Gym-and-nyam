@@ -1,173 +1,53 @@
-/* Estilos del archivo style.css */
+/* footer.css */
 
-@import '../../../services/style.css';
-
+/* Estilos generales para el footer */
 footer {
+  background-color: var(--darkest-colour); /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 20px; /* Espaciado interno */
+
+  /* Mantener el footer en la parte inferior y ocupar todo el ancho */
   position: relative;
+  left: 0;
   bottom: 0;
-  padding: 0;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--darkest-colour);
+  width: 100%;
+  display: flex; /* Utilizar flexbox */
+  justify-content: space-between; /* Distribuir los elementos horizontalmente */
 }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 12px;
+/* Estilos para el logo */
+.logo img {
+  width: 25%;
+  padding-bottom: 0; /* Tamaño del logo */
 }
 
-.contact-footer,
+/* Estilos para la sección de contacto */
+.contact-footer {
+  text-align: center; /* Centrar el contenido */
+}
+
+.contact-footer h2 {
+  color: #fff; /* Color del título */
+  font-size: 20px; /* Tamaño del título */
+  margin-bottom: 10px; /* Espaciado inferior del título */
+}
+
+.contact-footer p {
+  margin: 5px 0; /* Espaciado vertical entre párrafos */
+}
+
+/* Estilos para la sección de seguir en redes sociales */
 .follow-footer {
-  text-align: center;
+  text-align: right; /* Alinear a la derecha */
 }
 
-.social-media {
-  display: flex;
-  justify-content: space-between;
-  width: 62%;
-  gap: 2px;
+.follow-footer h2 {
+  color: #fff; /* Color del título */
+  font-size: 20px; /* Tamaño del título */
+  margin-bottom: 10px; /* Espaciado inferior del título */
 }
 
-footer img {
-  height: 35px;
-  width: 35px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.logo {
-  width: 75px;
-  height: 75px;
-}
-
-footer h2 {
-  color: white;
-  font-size: 10px;
-  font-family: Roboto, sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-}
-
-footer p {
-  color: white;
-  font-family: Roboto, sans-serif;
-  font-size: 10px;
-
-  font-weight: 700;
-  max-width: 240px;
-}
-
-@media (min-width: 800px) {
-  footer {
-    position: relative;
-    bottom: 0;
-    height: 180px;
-    padding: 40px 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 140px 1fr;
-    justify-content: center;
-    align-content: center;
-    background-color: rgba(59, 80, 83, 1);
-  }
-
-  footer img {
-    height: 120px;
-    width: 120px;
-    margin-bottom: 20px;
-  }
-
-  .logo {
-    grid-column: 1;
-    grid-row: 1;
-    height: 120px;
-    width: 120px;
-  }
-
-  .contact-footer,
-  .follow-footer {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
-  }
-
-  .follow-footer {
-    grid-column: 3;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .footer-footer {
-    grid-column: 1/-1;
-    grid-row: 2;
-    border-top: 1px solid #565f6b;
-  }
-
-  .footer-footer a {
-    text-transform: uppercase;
-  }
-
-  footer h2 {
-    margin-top: 3px;
-    color: white;
-    font-size: 0.8em;
-    font-family: Roboto, sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-  }
-
-  footer p {
-    color: white;
-    font-family: Roboto, sans-serif;
-    font-size: 0.8em;
-    line-height: 18px;
-    font-weight: 700;
-    max-width: 240px;
-  }
-
-  footer a {
-    font-size: 1em;
-    text-decoration: none;
-    color: #565f6b;
-    font-family: Roboto, sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.3px;
-  }
-
-  .follow-footer h2 {
-    padding-left: 3rem;
-  }
-  .follow-footer p {
-    padding-left: 4.5rem;
-  }
-  .follow-footer img {
-    height: 60px;
-    width: 60px;
-    margin-right: 5px;
-    margin-top: 10px;
-  }
-  .follow-footer {
-    justify-content: end;
-    align-items: end;
-  }
-  figure.social-media {
-    background-color: black;
-  }
+.social-media img {
+  width: 30px; /* Tamaño de las imágenes de redes sociales */
+  margin-right: 10px; /* Espaciado entre las imágenes */
 }

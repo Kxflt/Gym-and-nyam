@@ -14,6 +14,7 @@ import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import Footer from '../../Components/Shared/Footer/Footer';
 
 import './newUser.css';
+import NavBar from '../../Components/nav-bar/NavBar';
 
 function NewUser() {
   const navigate = useNavigate(); // Inicializa useNavigate
@@ -35,6 +36,7 @@ function NewUser() {
 
   return (
     <>
+      <NavBar />
       <div className="contenedor-registro">
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <InputText
