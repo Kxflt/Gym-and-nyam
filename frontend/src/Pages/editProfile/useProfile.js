@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../context/authContext';
+import NavBar from '../../Components/nav-bar/NavBar';
 
 function editProfile() {
   const { updateProfile, user } = useAuth();

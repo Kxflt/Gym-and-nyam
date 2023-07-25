@@ -6,7 +6,8 @@ import Button from '../../Components/Shared/Button/Button';
 import InputText from '../../Components/Shared/Input/InputText';
 import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import NewPassword from '../../Components/newPassword/NewPassword';
-
+import NavBar from '../../Components/nav-bar/NavBar';
+import Footer from '../../Components/Shared/Footer/Footer';
 import './forgotPassword.css';
 
 function ForgotPassword() {
@@ -45,6 +46,7 @@ function ForgotPassword() {
 
   return (
     <>
+      <NavBar />
       {!showNewPassword ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputText
@@ -64,6 +66,7 @@ function ForgotPassword() {
       {errorPopUp && (
         <ErrorPopUp message={errorText} onClose={() => setErrorPopUp(false)} />
       )}
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './profile.css';
 
 const EditProfile = ({ user, onSave }) => {
   const [name, setName] = useState(user.name);
