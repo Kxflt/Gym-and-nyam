@@ -1,31 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+
+import useExercises from './useExercises';
 
 const ExerciseList = () => {
-  const [exercises, setExecises] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/exercises')
-      .then((response) => {
-        setExecises(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los ejercicios:', error);
-      });
-  }, []);
+  const { exercises } = useExercises();
 
   return (
     <div>
-      {exercises.map((exercise) => (
-        <div key={exercise.id}>
-          <h3>{exercise.title}</h3>
-          <p>{exercise.description}</p>
-          {exercise.imageUrl && (
-            <img src={exercise.imageUrl} alt={exercise.title} />
-          )}
-        </div>
-      ))}
+      {exercises &&
+        exercises.map((exercise) => (
+          <div key={exercise.id}>
+            {console.log(exercise)}
+            <h3>{exercise.title}</h3>
+            <p>{exercise.description}</p>
+            {exercise.photo && (
+              <img
+                src={`http://localhost:8000/${exercise.photo}`}
+                alt={exercise.title}
+              />
+            )}
+          </div>
+        ))}
     </div>
   );
 };
