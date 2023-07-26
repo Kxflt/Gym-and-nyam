@@ -13,24 +13,24 @@ function InputPassword({ label, register, errors, registerName }) {
       <label>{label}</label>
 
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
-      <input type='password' placeholder='Password' {...register} />
+      <input type="password" placeholder="Password" {...register} />
 
       {errors[registerName]?.type === 'required' && (
-        <span className='error'>Campo requerido.</span>
+        <span className="error">Field required</span>
       )}
 
       {errors[registerName]?.type === 'pattern' && (
-        <span className='error'>
-          La contraseña tiene que contener una letra mayúscula, una minúscula,
-          un número y un carácter especial.
+        <span className="error">
+          The password must contain one uppercase letter, one lowercase letter,
+          a number and a special character.
         </span>
       )}
       {errors[registerName]?.type === 'maxLength' && (
-        <span className='error'>Máximo 100 carácteres.</span>
+        <span className="error">Max 100 characters.</span>
       )}
 
       {errors[registerName]?.type === 'minLength' && (
-        <span className='error'>Mínimo 8 carácteres.</span>
+        <span className="error">Minimum 8 characters.</span>
       )}
     </>
   );
