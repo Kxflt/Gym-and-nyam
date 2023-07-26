@@ -14,7 +14,7 @@ function useNewUser() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { checkUserExists, registerUser } = useAuth();
+  const { registerUser } = useAuth();
   const onSubmit = async (data) => {
     if (data.password !== data['repeat-password']) {
       setPasswordError(true);
@@ -24,13 +24,6 @@ function useNewUser() {
     }
 
     try {
-      const userExists = await checkUserExists(data.email);
-      if (userExists) {
-        setErrorPopUp(true);
-        setFormErrors({ userExists: 'Ya existe un usuario con ese email' });
-        return { userExists: true };
-      }
-
       await registerUser(data);
       return null;
     } catch (error) {
