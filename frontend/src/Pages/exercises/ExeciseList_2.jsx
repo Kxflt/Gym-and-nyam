@@ -3,11 +3,12 @@ import NavBar from '../../Components/nav-bar/NavBar';
 import Footer from '../../Components/Shared/Footer/Footer';
 
 import useExercises from './useExercises';
-
+import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 const ExerciseList = () => {
   const { exercises } = useExercises();
-
+  //CONTINUO EL CODIGO POR AQUI.
   return (
+
     <>
       <NavBar />
 
@@ -29,6 +30,7 @@ const ExerciseList = () => {
       </div>
       <Footer />
     </>
+
   );
 };
 
