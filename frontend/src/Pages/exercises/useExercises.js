@@ -21,7 +21,9 @@ const useExercises = () => {
         const res = await fetch(
           `http://localhost:8000/exercises?${searchParams.toString()}`,
           {
-            headers: token ? { Authorization: token } : {},
+            headers: {
+              Authorization: user.token,
+            },
           }
         );
 
@@ -32,6 +34,8 @@ const useExercises = () => {
         }
 
         setExercises(body.data.exercises);
+
+        console.log(body.data.exercises);
       } catch (err) {
         setErrMsg(err.message);
       } finally {
@@ -39,9 +43,9 @@ const useExercises = () => {
       }
     };
 
-    // Llamamos a la función anterior.
-    fetchExercises();
-  }, [searchParams, token]);
+    // Si existe token llamamos a la función anterior.
+    if (user.token) fetchExercises();
+  }, [searchParams, user]);
 
   // Función que agrega o elimina un like.
   const toogleLike = async (e, exerciseId, likedByMe) => {
