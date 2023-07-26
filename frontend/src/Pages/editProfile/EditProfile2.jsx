@@ -4,12 +4,10 @@ import './profile.css';
 const EditProfile = ({ user, onSave }) => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [registrationData, setRegistrationData] = useState(
-    user.registrationData
-  );
+  const [avatar, setAvatar] = useState(user.avatar);
 
   const handleSave = () => {
-    onSave({ name, email, registrationData });
+    onSave({ name, email, avatar });
   };
 
   return (
@@ -31,11 +29,8 @@ const EditProfile = ({ user, onSave }) => {
         />
       </p>
       <p>
-        <strong>More Info:</strong>
-        <textarea
-          value={registrationData}
-          onChange={(e) => setRegistrationData(e.target.value)}
-        />
+        <strong>Avatar:</strong>
+        <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
       </p>
       <button onClick={handleSave}>Save</button>
     </>

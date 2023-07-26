@@ -5,6 +5,9 @@ const authUser = async (req, res, next) => {
   try {
     //Pedimos un token de autorización en la cabecera de la petición...
     const { authorization } = req.headers;
+
+    console.log(req.headers);
+    console.log(authorization);
     //...y si no existe, lanzamos error.
     if (!authorization) {
       generateError('Falta la cabecera de autentificación', 401);

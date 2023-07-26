@@ -44,24 +44,15 @@ export const signUpAvatar = (formData, config) => {
   );
 };
 
-export const updateUser = (formData, config) => {
-  return (
-    axios.put('http://localhost:8000/users/:userId'),
-    {
-      formData,
-      config,
-    }
-  );
-};
-
 /* export const sendRecoverPass = (recoverPassCode) => {
   return (
     axios.put('http://localhost:8000/users/password/recover'),
     {
       recoverPassCode,
     }
-  ); 
-}; */
+    ); 
+  }; */
+
 export const sendRecoverPass = (email, recoverPassCode) => {
   return axios.put('http://localhost:8000/users/password/recover', {
     email,
@@ -71,19 +62,18 @@ export const sendRecoverPass = (email, recoverPassCode) => {
 
 export const editPassword = (recoverPassCode, newPass) => {
   console.log('calling API.');
-  return axios.put('http://localhost:8000/users/password', {
+  return axios.put('http://localhost:8000/users/password/recover/change', {
     recoverPassCode,
     newPass,
   });
 };
 
-export const profile = (name, email, password) => {
+export const updateUser = (formData, config) => {
   return (
-    axios.put('http://localhost:8000/users/:userId'),
+    axios.put('http://localhost:8000/users'),
     {
-      name,
-      email,
-      password,
+      formData,
+      config,
     }
   );
 };

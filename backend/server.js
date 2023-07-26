@@ -73,13 +73,13 @@ app.get('/users/:userId', getUser);
 app.get('/users', authUser, userExists, getOwnUser);
 
 //Permite que un usario logueado modifique sus datos.
-app.put('/users/:userId', authUser, userExists, modifyUser);
+app.put('/users', authUser, userExists, modifyUser);
 
 //Enviar al usuario un email de recuperación de contraseña.
 app.put('/users/password/recover', sendRecoverPass);
 
 //Permitir que el usuario cambie su contraseña.
-app.put('/users/password', editUserPass);
+app.put('/users/password/recover/change', editUserPass);
 
 //Editar el avatar de usuario.
 app.put('/users/avatar', authUser, userExists, editUserAvatar);
