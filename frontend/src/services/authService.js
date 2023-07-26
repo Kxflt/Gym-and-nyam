@@ -68,12 +68,8 @@ export const editPassword = (recoverPassCode, newPass) => {
   });
 };
 
-export const updateUser = (formData, config) => {
-  return (
-    axios.put('http://localhost:8000/users'),
-    {
-      formData,
-      config,
-    }
-  );
+export const updateUserService = async (formData, config) => {
+  const res = await axios.put('http://localhost:8000/users', formData, config);
+
+  return res;
 };

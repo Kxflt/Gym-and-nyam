@@ -1,36 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ImgDefaultAvatar from '../../assets/user.png';
 
-const Avatar = () => {
-  const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(ImgDefaultAvatar);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (event) => {
-      setImageUrl(event.target.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-      setImage(file);
-    }
-  };
-
+const Avatar = ({ avatar }) => {
   return (
     <div>
-      <div className='avatar-container'>
-        {imageUrl ? (
-          <img className='avatar' src={imageUrl} alt='User Avatar' />
+      <div className="avatar-container">
+        {avatar ? (
+          <img
+            className="avatar"
+            src={`http://localhost:8000/${avatar}`}
+            alt="User Avatar"
+          />
         ) : (
-          <div className='avatar-placeholder' />
+          <img className="avatar" src={ImgDefaultAvatar} alt="User Avatar" />
         )}
       </div>
-      <input type='file' accept='image/*' onChange={handleImageChange} />
-      
-   
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import ValidateUser from '../Pages/validate/ValidateUser';
 
-import { login, newUser, signUpAvatar } from '../services/authService';
+import {
+  login,
+  newUser,
+  signUpAvatar,
+  updateUserService,
+} from '../services/authService';
 
 //________________________________________
 //TODO LO QUE METAMOS AQUI SERAN LAS FUNCIONES QUE LLAMAREMOS DESPUES EN LOS JSX , Como sera en Login.jsx como ejemplo
@@ -79,29 +84,23 @@ export function AuthProvider({ children }) {
   // Actualizar usuario.
   const updateUser = async (formData, config) => {
     try {
-      const body = await updateUser(formData, config);
+      const body = await updateUserService(formData, config);
 
-      // Actualizamos los datos del usuario.
-      setUser(body.data.user);
+      // Creamos un objeto con los nuevos datos del usuario.
+      const newUserData = {
+        ...user,
+        ...body.data.data.user,
+      };
+
+      console.log(newUserData);
+
+      // Actualizamos los datos del usuario en el State.
+      setUser(newUserData);
+
+      // Actualizamos los datos del usuario en el localStorage.
+      localStorage.setItem('user', JSON.stringify(newUserData));
     } catch (error) {
       return Promise.reject(error);
-    }
-  };
-
-  const checkUserExists = async (email) => {
-    try {
-      // Realiza una llamada a tu API para verificar si el usuario ya existe
-      const response = await fetch(
-        `http://localhost:8000/users?email=${email}`
-      );
-      const data = await response.json();
-      console.log('Response from API:', data.user);
-
-      // Devuelve true si el usuario existe, false si no existe
-      return data.length > 0;
-    } catch (error) {
-      console.error('Error al verificar la existencia del usuario:', error);
-      throw new Error('Error al verificar la existencia del usuario');
     }
   };
 
@@ -124,7 +123,6 @@ export function AuthProvider({ children }) {
         user,
         registerUserAvatar,
         updateUser,
-        checkUserExists,
         validateUserCode,
       }}
     >

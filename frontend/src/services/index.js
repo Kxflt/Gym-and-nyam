@@ -14,23 +14,24 @@ import {
   listExercises,
 } from './exerciseService';
 
-//Cogemos el token del localstorage => nos viene los datos de usuario junto al token al registrarnos.
+// Cogemos el token del localStorage
 const currentUser = JSON.parse(
   localStorage.getItem(CURRENT_USER_LOCAL_STORAGE)
 );
-console.log(currentUser);
+
 const token = currentUser?.token;
 
+console.log(token);
+
 axios.interceptors.request.use(
-  // Es parecido a un try/catch que utilizamos
   function (config) {
+    // Si tenemos token y el endpoint requiere autentificación
     if (token) {
-      console.log(token);
-      //El Bearer nos confirmará que el cliente tiene un token y esta autorizado para entrar en las redes privadas.
+      // Añadimos el header Bearer token a la config
       config.headers['Authorization'] = `Bearer ${token}`;
     }
-    //Con este log entraremos a la info del token y del usuario.
-    console.log('CONFIGURACIÓN', config.headers);
+    console.log('CONFIG', config.headers);
+    // IMPORTANTE: Siempre retornar la config, response o errores
     return config;
   },
   function (error) {
@@ -42,19 +43,18 @@ axios.interceptors.response.use(
   function (response) {
     // Si la respuesta contiene token (login y registro)
     if (response?.data?.token) {
-      // Añadimos el token creado en el localstorage
-      console.log(response.data);
+      // Añadimos al localStorage el token
       localStorage.setItem(
         CURRENT_USER_LOCAL_STORAGE,
-        //Al no recoger objetos, lo transformamos en JSON.
         JSON.stringify(response.data)
       );
     }
     return response;
   },
+
   function (error) {
     console.log('error', error);
-    // El token ha cadudcado
+    // Si nos devuelve que está no autorizado porque el token ha caducado
     if (
       error.response.status === 401 &&
       // Y la url anterior no es el login (sino se piden los todos y no da tiempo a setear el localStorage ya que no es inmediato)
