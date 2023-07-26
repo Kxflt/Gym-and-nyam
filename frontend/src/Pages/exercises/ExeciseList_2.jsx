@@ -1,17 +1,17 @@
 import React from 'react';
 
 import useExercises from './useExercises';
-
+import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 const ExerciseList = () => {
   const { exercises } = useExercises();
-
+  //CONTINUO EL CODIGO POR AQUI.
   return (
     <div>
       {exercises &&
         exercises.map((exercise) => (
           <div key={exercise.id}>
             {console.log(exercise)}
-            <h3>{exercise.title}</h3>
+            <h3>{exercise.name}</h3>
             <p>{exercise.description}</p>
             {exercise.photo && (
               <img
