@@ -40,7 +40,6 @@ const ExercisesFilter = ({ children }) => {
             </option>
             <option>Fuerza</option>
             <option>Cardio</option>
-            <option>Resistencia</option>
           </select>
         </fieldset>
         <fieldset>

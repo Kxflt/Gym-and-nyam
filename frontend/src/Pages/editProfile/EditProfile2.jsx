@@ -4,6 +4,9 @@ import './profile.css';
 const EditProfile = ({ user, updateUser, setEditing }) => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
+  const [surname, setSurname] = useState(user.surname);
+  const [gender, setGender] = useState(user.gender);
+  const [interest, setInterest] = useState(user.interest);
   const [avatar, setAvatar] = useState(user.avatar);
   const [loading, setLoading] = useState(false);
 
@@ -17,8 +20,11 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
 
       // Añadimos al FormData anterior los campos que vamos a enviar al backend.
       formData.append('name', name);
+      formData.append('surname', surname);
       formData.append('email', email);
       formData.append('avatar', avatar);
+      formData.append('gender', gender);
+      formData.append('interest', interest);
 
       await updateUser(formData, {
         headers: {
@@ -48,6 +54,14 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
         />
       </p>
       <p>
+        <strong>Surname:</strong>
+        <input
+          type="text"
+          value={surname}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </p>
+      <p>
         <strong>Email:</strong>
         <input
           type="text"
@@ -55,6 +69,26 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </p>
+      <p>
+        <strong>Gender:</strong>
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">--</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </p>
+
+      <p>
+        <strong>Interest:</strong>
+        <select value={interest} onChange={(e) => setGender(e.target.value)}>
+          <option value="">--</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Bodybuilding">Bodybuilding</option>
+          <option value="Other">N/A</option>
+        </select>
+      </p>
+
       <p>
         <strong>Avatar:</strong>
         <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
