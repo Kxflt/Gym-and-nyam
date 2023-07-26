@@ -1,5 +1,6 @@
 /*IMPORTAR LETRA*/
 .app {
+  display: flex;
   text-align: center;
 }
 * {

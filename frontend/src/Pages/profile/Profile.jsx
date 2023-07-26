@@ -28,11 +28,19 @@ const UserProfile = () => {
     setEditing(true);
   };
 
-  const handleonSave = async (updatedUserData) => {
+  const handleonSave = async ({ name, email, avatar }) => {
     try {
-      const response = await updateUser(user.id, updatedUserData, {
+      // Creamos un objecto de tipo FormData.
+      const formData = new FormData();
+
+      // Añadimos al FormData anterior los campos que vamos a enviar al backend.
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('avatar', avatar);
+
+      const response = updateUser(formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       });
 
