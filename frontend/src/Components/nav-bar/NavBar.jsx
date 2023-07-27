@@ -8,12 +8,12 @@ import './nav-bar.css';
 
 function NavBar() {
   const { user } = useAuth();
-  const [avatarImg, setAvatarImg] = useState(user?.avatar);
+  const [avatarUrl, setAvatarUrl] = useState('');
   const history = useNavigate();
 
   const handleLogout = () => {
     // Lógica para cerrar sesión
-    setAvatarImg('');
+    setAvatarUrl('');
     localStorage.removeItem('user'); // Elimina el user/token del localStorage
     history.push('/login'); // Redirige a la página de inicio de sesión después de cerrar sesión
   };
@@ -47,9 +47,9 @@ function NavBar() {
                 Log Out
               </NavLink>
             </li>
-            <li> Hi, {user.name} </li>
+            <li> Hola {user.name} </li>
             <li className="avatar-container">
-              <Avatar avatar={avatarImg} />
+              <img className="avatar" src={user?.avatar} alt="User Avatar" />
             </li>
           </>
         )}

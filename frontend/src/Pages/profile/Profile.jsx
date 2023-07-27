@@ -24,16 +24,10 @@ const UserProfile = () => {
             <strong>Name:</strong> {user && user.name}
           </p>
           <p>
-            <strong>Surname:</strong> {user && user.surname}
-          </p>
-          <p>
             <strong>Email:</strong> {user && user.email}
           </p>
           <p>
-            <strong>Gender:</strong> {user && user.gender}
-          </p>
-          <p>
-            <strong>Interest:</strong> {user && user.interest}
+            <strong>More Info:</strong> {user && user.registrationData}
           </p>
           <button onClick={() => setEditing(true)}>Edit Profile</button>
         </>

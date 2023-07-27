@@ -16,25 +16,27 @@ function InputText({ label, register, errors, registerName, errorMessage }) {
       <input type="text" placeholder={label} {...register} />
 
       {errors[registerName]?.type === 'required' && (
-        <span className="error">Field Required</span>
+        <span className="error">Campo requerido.</span>
       )}
 
       {errors[registerName]?.type === 'pattern' && (
-        <span className="error">The email address is not valid</span>
+        <span className="error">El email no es válido.</span>
       )}
 
       {errors[registerName]?.type === 'maxLength' && (
-        <span className="error">Max 100 characters</span>
+        <span className="error">Máximo 100 carácteres.</span>
       )}
 
       {errors[registerName]?.type === 'minLength' && (
-        <span className="error">Minimum 8 characters</span>
+        <span className="error">Mínimo 8 carácteres.</span>
       )}
       {errors[registerName]?.type === 'repeat-password' && (
-        <span className="error">Password must match.</span>
+        <span className="error">
+          Esta contraseña debe coincidir con la anterior.
+        </span>
       )}
       {errors[registerName]?.type === 'email' && (
-        <span className="error">This email is already registered.</span>
+        <span className="error">Este email ya esta en uso.</span>
       )}
 
       {errorMessage && <span className="error">{errorMessage}</span>}

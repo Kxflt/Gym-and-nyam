@@ -50,16 +50,17 @@ function NewUser() {
             registerName="name"
           />
 
-          <InputText
-            label="Surname"
+          {/* Hay que meter apellido en Backend */}
+          {/*  <InputText 
+            label="Apellido"
             register={register('surname', {
               required: true,
               maxLength: MAX_LENGTH_STRING,
               minLength: MIN_LENGTH_STRING,
             })}
             errors={errors}
-            registerName="surname"
-          />
+            registerName='surname'
+          />  */}
 
           <InputText
             label="Email"
@@ -76,28 +77,30 @@ function NewUser() {
             }
             /* errorMessage={errors.email && errors.email.message} */
           />
-
-          <label>Gender:</label>
+          {/* Hay que crear genero en backend */}
+          {/* <label>Género</label>
           <select {...register('gender', { required: true })}>
-            <option value="">--</option>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Other">Other</option>
+            <option value=''>--</option>
+            <option value='Female'>Mujer</option>
+            <option value='Male'>Hombre</option>
+            <option value='Other'>Otro</option>
           </select>
           {errors.gender?.type === 'required' && (
-            <span className="error">Field required</span>
-          )}
+            <span className='error'>Campo requerido</span>
+          )}   */}
 
-          <label>Interest:</label>
+          {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
+          {/*  <label>Interés</label>
           <select {...register('interest', { required: true })}>
-            <option value="">--</option>
-            <option value="Cardio">Cardio</option>
-            <option value="Bodybuilding">Bodybuilding</option>
-            <option value="Other">N/A</option>
-          </select>
-          {errors.interest?.type === 'required' && (
-            <span className="error">Field required</span>
+            <option value=''>--</option>
+            <option value='Cardio'>Cardio</option>
+            <option value='Musculacion'>Musculación</option>
+            <option value='Desconocido'>Desconocido</option>
+             {errors.interest?.type === 'required' && (
+            <span className='error'>Campo requerido</span>
           )}
+            
+          </select>   */}
 
           <InputPassword
             label="Password"
@@ -125,7 +128,7 @@ function NewUser() {
           )}
 
           {passwordError && (
-            <span className="error">Passwords don't match</span>
+            <span className="error">Las contraseñas no coinciden</span>
           )}
 
           <div className="terms-container">
@@ -138,7 +141,7 @@ function NewUser() {
             <label>Accept Terms and Conditions</label>
           </div>
           {errors.terms?.type === 'required' && (
-            <span className="error">Field required</span>
+            <span className="error">Campo requerido</span>
           )}
 
           <Button text="Continue" />
@@ -150,9 +153,9 @@ function NewUser() {
         errorMessage={
           formErrors
             ? formErrors.userExists
-              ? 'Email is already registed'
+              ? 'Este email ya está en uso'
               : formErrors.serverError
-              ? 'Error registering user'
+              ? 'Error al registrar el usuario'
               : ''
             : ''
         }

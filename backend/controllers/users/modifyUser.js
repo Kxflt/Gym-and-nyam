@@ -1,6 +1,6 @@
 'use strict';
 //Importamos los middlewares para guardar y borrar fotos, ya que en este request el usuario puede modificar su avatar.
-const { generateError, savePhoto, deletePhoto } = require('../../helpers');
+const { generateError } = require('../../helpers');
 
 const modifyUserQuery = require('../../db/queries/users/modifyUserQuery');
 const infoUserQuery = require('../../db/queries/users/selectUserByIdQuery');
@@ -11,39 +11,32 @@ const modifyUser = async (req, res, next) => {
     let { name, email } = req.body;
 
     //Si faltan campos generamos un error.
-    if (!name && !email && !req.files?.avatar) {
+    if (!name && !email) {
       generateError('Faltan campos', 400);
     }
-
-    // Obtenemos los datos del usuario.
     const user = await infoUserQuery(req.user.id);
+    //Destructuring del path params
+    //const { id: userId } = req.params;
 
-    // Creamos una variable para guardar el nombre del avatar.
-    let avatarName;
+    //await validateSchema(newUserSchema, req.body);
 
-    // Si se ha enviado un avatar en la petición, lo guardamos.
-    if (req.files?.avatar) {
-      // Procesamos la foto y la guardamos en la carpeta uploads.
-      avatarName = await savePhoto(req.files.avatar, 100);
+    //Destructuring de las columnas de la tabla "usuarios" que nos conciernen. Con "[columna]DB" establecemos que su valor inicial debe ser el que ya tiene en la tabla "usuarios".
+    //const { name: nameDB, email: emailDB } = infoUser;
 
-      // Si el usuario ya tenía avatar, borramos el anterior de la carpeta "uploads".
-      if (user.avatar) {
-        await deletePhoto(user.avatar);
-      }
-    }
-
-    // Comprobamos si se han cambiado datos.
+    //Comprobamos si se han cambiado datos.
     name = name || user.name;
     email = email || user.email;
-    avatarName = avatarName || user.avatar;
 
-    // Obtenemos el id del usuario.
+    //Destructuring de los datos del ejercicio que modificaremos a continuación.
+    //const userData = {
+    // name,
+    //email,
+    // userId,
+    // };
     const userId = req.user.id;
-
-    // Actualizamos los datos del ejercicio.
-    await modifyUserQuery(name, email, avatarName, userId);
-
-    // Mandamos un mensaje confirmando la correcta modificación de los datos del ejercicio. Asignamos un valor a la columna "modifiedAt".
+    //Actualizamos los datos del ejercicio.
+    await modifyUserQuery(name, email, userId);
+    //Mandamos un mensaje confirmando la correcta modificación de los datos del ejercicio. Asignamos un valor a la columna "modifiedAt".
     res.send({
       status: 'ok',
       message: `Usuario  modificado correctamente`,
@@ -51,7 +44,7 @@ const modifyUser = async (req, res, next) => {
         user: {
           name,
           email,
-          avatar: avatarName,
+          userId,
           modifiedAt: new Date(),
         },
       },
