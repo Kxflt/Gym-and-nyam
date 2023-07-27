@@ -1,12 +1,9 @@
+import React from 'react';
 import { useState } from 'react';
 
-const ExercisesFilter = ({ children }) => {
+const ExercisesFilter = () => {
   const [typology, setTypology] = useState('');
   const [muscleGroup, setMuscleGroup] = useState('');
-
-  const handleChange = async (e) => {
-    e.preventDefault();
-  };
 
   const handleChangeTypology = (e) => {
     setTypology(e.target.value);
@@ -23,10 +20,10 @@ const ExercisesFilter = ({ children }) => {
   };
 
   return (
-    <section>
+    <div>
       <h3>Filtro de ejercicios</h3>
       <p>Puedes filtrar los ejercicios por tipología y grupo muscular</p>
-      <form onChange={handleChange}>
+      <form>
         <h3>Filtrar por:</h3>
         <fieldset>
           <select
@@ -38,8 +35,8 @@ const ExercisesFilter = ({ children }) => {
             <option value="" disabled hidden>
               Tipología
             </option>
-            <option>Fuerza</option>
-            <option>Cardio</option>
+            <option value="1">Fuerza</option>
+            <option value="2">Cardio</option>
           </select>
         </fieldset>
         <fieldset>
@@ -52,17 +49,19 @@ const ExercisesFilter = ({ children }) => {
             <option value="" disabled hidden>
               Grupo muscular
             </option>
-            <option>Brazos</option>
-            <option>Hombros</option>
+            <option value="1">Biceps</option>
+            <option value="2">Triceps</option>
+            <option value="3">Antebrazo</option>
+            <option>Hombro</option>
             <option>Espalda</option>
-            <option>Pecho</option>
-            <option>Abs</option>
+            <option>Pectoral</option>
+            <option>Abdomen</option>
             <option>Piernas</option>
           </select>
         </fieldset>
         <button onClick={handleClickRemoveFilters}>Borrar filtros</button>
       </form>
-    </section>
+    </div>
   );
 };
 export default ExercisesFilter;

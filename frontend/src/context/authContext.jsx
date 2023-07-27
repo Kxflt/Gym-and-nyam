@@ -44,8 +44,8 @@ export function AuthProvider({ children }) {
       // Llamamos al servicio.
       const body = await newUser(
         data.name,
-        data.email,
         data.surname,
+        data.email,
         data.gender,
         data.interest,
         data.password

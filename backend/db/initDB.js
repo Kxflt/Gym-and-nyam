@@ -29,7 +29,7 @@ const main = async () => {
         name VARCHAR (30) NOT NULL ,
         surname VARCHAR (30) NOT NULL ,
         gender ENUM("Male", "Female", "Other") NOT NULL,
-        interest ENUM("Strength", "Cardio", "Unknown") NOT NULL,
+        interest ENUM("Bodybuilding", "Cardio", "Unknown") NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL , 
         password VARCHAR(100) NOT NULL,
         registrationCode VARCHAR(100),
