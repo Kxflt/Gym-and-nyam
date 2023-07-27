@@ -45,7 +45,11 @@ export function AuthProvider({ children }) {
       const body = await newUser(
         data.name,
         data.email,
+        data.surname,
+        data.gender,
+        data.interest,
         data.password
+
         //SI MODIFICAMOS EL BACKEND DEBEREMOS METER AQUI EL RESTO DE COSAS QUE NECESITAMOS PARA QUE SE REGISTREN
       );
 
