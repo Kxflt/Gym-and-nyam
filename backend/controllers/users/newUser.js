@@ -7,12 +7,12 @@ const { generateError, validateSchema, sendMail } = require('../../helpers');
 const newUser = async (req, res, next) => {
   try {
     //Obtener name, email & password del body
-    const { name, email, password } = req.body;
+    const { name, surname, gender, interest, email, password } = req.body;
 
     //Validamos los datos del body con joi.
     await validateSchema(newUserSchema, req.body);
 
-    if (!name || !email || !password) {
+    if (!name || !surname || !gender || !interest || !email || !password) {
       generateError('Faltan campos', 400);
     }
 
@@ -20,7 +20,15 @@ const newUser = async (req, res, next) => {
     const registrationCode = uuid();
 
     //Insertamos al usuario en la base de datos.
-    await insertUserQuery(name, email, password, registrationCode);
+    await insertUserQuery(
+      name,
+      surname,
+      gender,
+      interest,
+      email,
+      password,
+      registrationCode
+    );
 
     // reamos el asunto del email de verificación.
     const emailSubject = 'Activa tu usuario en la app de GymÑam';

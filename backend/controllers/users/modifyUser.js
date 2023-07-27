@@ -8,10 +8,17 @@ const infoUserQuery = require('../../db/queries/users/selectUserByIdQuery');
 const modifyUser = async (req, res, next) => {
   try {
     //Destructuring del body
-    let { name, email } = req.body;
+    let { name, email, surname, gender, interest } = req.body;
 
     //Si faltan campos generamos un error.
-    if (!name && !email && !req.files?.avatar) {
+    if (
+      !name &&
+      !email &&
+      !req.files?.avatar &&
+      !surname &&
+      !gender &&
+      !interest
+    ) {
       generateError('Faltan campos', 400);
     }
 
@@ -36,12 +43,23 @@ const modifyUser = async (req, res, next) => {
     name = name || user.name;
     email = email || user.email;
     avatarName = avatarName || user.avatar;
+    surname = surname || user.surname;
+    gender = gender || user.gender;
+    interest = interest || user.interest;
 
     // Obtenemos el id del usuario.
     const userId = req.user.id;
 
-    // Actualizamos los datos del ejercicio.
-    await modifyUserQuery(name, email, avatarName, userId);
+    // Actualizamos los datos del usuario.
+    await modifyUserQuery(
+      name,
+      surname,
+      gender,
+      interest,
+      email,
+      avatarName,
+      userId
+    );
 
     // Mandamos un mensaje confirmando la correcta modificación de los datos del ejercicio. Asignamos un valor a la columna "modifiedAt".
     res.send({
@@ -50,6 +68,9 @@ const modifyUser = async (req, res, next) => {
       data: {
         user: {
           name,
+          surname,
+          gender,
+          interest,
           email,
           avatar: avatarName,
           modifiedAt: new Date(),

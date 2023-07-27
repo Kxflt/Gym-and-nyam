@@ -34,11 +34,15 @@ const loginUser = async (req, res, next) => {
       expiresIn: '10d',
     });
 
+    //Datos que obtenemos del usuario (lo veremos en el LocalStorage)
     res.send({
       status: 'ok',
       data: {
         token,
         name: user.name,
+        surname: user.surname,
+        gender: user.gender,
+        interest: user.interest,
         email: user.email,
         avatar: user.avatar,
         id: user.id,
