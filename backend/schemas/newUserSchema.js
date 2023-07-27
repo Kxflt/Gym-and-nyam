@@ -30,14 +30,14 @@ const newUserSchema = joi.object().keys({
   surname: joi
     .string()
     .min(3)
-    .max(20)
+    .max(100)
     .required()
     .error((errors) => {
       if (errors[0].code === 'any.required') {
         return new Error('Se require un apellido.');
       } else {
         return new Error(
-          'El apellido requiere de mínimo 3 letras y máximo 20 letras.'
+          'El apellido requiere de mínimo 3 letras y máximo 100 letras.'
         );
       }
     }),

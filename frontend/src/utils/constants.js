@@ -4,7 +4,7 @@ export const EMAIL_REGEX =
 export const PASSWORD_REGEX =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()\-=_+{};':"|,.<>/?`~]).*$/;
 
-export const MAX_LENGTH_STRING = 20;
+export const MAX_LENGTH_STRING = 100;
 
 export const MIN_LENGTH_STRING = 3;
 
