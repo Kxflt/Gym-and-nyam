@@ -26,11 +26,14 @@ export const validation = async (registrationCode) => {
   }
 };
 
-export const newUser = (name, email, password) => {
+export const newUser = (name, surname, email, password, gender, interest) => {
   return axios.post('http://localhost:8000/users', {
     name,
+    surname,
     email,
     password,
+    gender,
+    interest,
   });
 };
 
