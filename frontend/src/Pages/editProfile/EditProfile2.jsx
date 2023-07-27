@@ -58,7 +58,7 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
         <input
           type="text"
           value={surname}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setSurname(e.target.value)}
         />
       </p>
       <p>

@@ -45,7 +45,7 @@ const modifyUser = async (req, res, next) => {
     avatarName = avatarName || user.avatar;
     surname = surname || user.surname;
     gender = gender || user.gender;
-    interest = interest || user.interest;
+    interest = interest !== undefined ? interest : user.interest;
 
     // Obtenemos el id del usuario.
     const userId = req.user.id;
