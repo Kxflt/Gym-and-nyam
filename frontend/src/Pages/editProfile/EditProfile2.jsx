@@ -81,11 +81,11 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
 
       <p>
         <strong>Interest:</strong>
-        <select value={interest} onChange={(e) => setGender(e.target.value)}>
+        <select value={interest} onChange={(e) => setInterest(e.target.value)}>
           <option value="">--</option>
           <option value="Cardio">Cardio</option>
           <option value="Bodybuilding">Bodybuilding</option>
-          <option value="Other">N/A</option>
+          <option value="Unknown">N/A</option>
         </select>
       </p>
 

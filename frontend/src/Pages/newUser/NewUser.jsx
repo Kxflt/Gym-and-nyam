@@ -76,28 +76,30 @@ function NewUser() {
             }
             /* errorMessage={errors.email && errors.email.message} */
           />
-
-          <label>Gender:</label>
-          <select {...register('gender', { required: true })}>
-            <option value="">--</option>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Other">Other</option>
-          </select>
-          {errors.gender?.type === 'required' && (
-            <span className="error">Field required</span>
-          )}
-
-          <label>Interest:</label>
-          <select {...register('interest', { required: true })}>
-            <option value="">--</option>
-            <option value="Cardio">Cardio</option>
-            <option value="Bodybuilding">Bodybuilding</option>
-            <option value="Other">N/A</option>
-          </select>
-          {errors.interest?.type === 'required' && (
-            <span className="error">Field required</span>
-          )}
+          <div>
+            <label>Gender:</label>
+            <select {...register('gender', { required: true })}>
+              <option value="">--</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Other">Other</option>
+            </select>
+            {errors.gender?.type === 'required' && (
+              <span className="error">Field required</span>
+            )}
+          </div>
+          <div>
+            <label>Interest:</label>
+            <select {...register('interest', { required: true })}>
+              <option value="">--</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Bodybuilding">Bodybuilding</option>
+              <option value="Unknown">N/A</option>
+            </select>
+            {errors.interest?.type === 'required' && (
+              <span className="error">Field required</span>
+            )}
+          </div>
 
           <InputPassword
             label="Password"
