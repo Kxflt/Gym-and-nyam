@@ -27,6 +27,9 @@ const main = async () => {
 
       id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT ,
         name VARCHAR (30) NOT NULL ,
+        surname VARCHAR (30) NOT NULL ,
+        gender ENUM("Male", "Female", "Other") NOT NULL,
+        interest ENUM("Strength", "Cardio", "Unknown") NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL , 
         password VARCHAR(100) NOT NULL,
         registrationCode VARCHAR(100),
@@ -106,7 +109,7 @@ const main = async () => {
 
     //Creamos un usuario de administrador.
     await connection.query(
-      `INSERT INTO users (name, email, password, role , createdAt) VALUES('Marina', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
+      `INSERT INTO users (name, surname, gender, interest, email, password, role , createdAt) VALUES('Marina', 'Adolfin', 'Female', 'Unknown', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
       [new Date()]
     );
 

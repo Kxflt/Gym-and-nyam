@@ -1,7 +1,15 @@
 const getDB = require('../../getDB');
 const { generateError } = require('../../../helpers');
 
-const modifyUserQuery = async (name, email, avatarName, userId) => {
+const modifyUserQuery = async (
+  name,
+  surname,
+  gender,
+  interest,
+  email,
+  avatarName,
+  userId
+) => {
   let connection;
 
   try {
@@ -20,8 +28,8 @@ const modifyUserQuery = async (name, email, avatarName, userId) => {
 
     // Continuamos con la lógica para realizar la actualización de datos del usuario.
     await connection.query(
-      `UPDATE users SET email = ?, name = ?, avatar = ?, modifiedAt = ? WHERE id = ?`,
-      [email, name, avatarName, new Date(), userId]
+      `UPDATE users SET email = ?, name = ?, surname = ?, gender = ?, interest = ?, avatar = ?, modifiedAt = ? WHERE id = ?`,
+      [email, name, surname, gender, interest, avatarName, new Date(), userId]
     );
   } finally {
     if (connection) connection.release();

@@ -30,7 +30,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   footer {
     position: sticky;
     bottom: 0;
