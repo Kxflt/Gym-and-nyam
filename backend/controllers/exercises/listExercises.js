@@ -3,14 +3,15 @@ const selectAllExercisesQuery = require('../../db/queries/exercises/selectAllExe
 const listExercises = async (req, res, next) => {
   try {
     //Destructuring de los campos especificados en el query. El usuario sólo puede filtrar por los primeros tres campos.
-    const { keyword, typology, muscleGroup, date } = req.query;
-    const exercises = await selectAllExercisesQuery(
+    const { keyword, typologyId, muscleGroupId, date } = req.query;
+
+    const exercises = await selectAllExercisesQuery({
       keyword,
-      typology,
-      muscleGroup,
+      typologyId,
+      muscleGroupId,
       date,
-      req.user.id
-    );
+      userId: req.user.id,
+    });
 
     res.send({
       status: 'ok',

@@ -8,12 +8,10 @@ function NotFound() {
   const [Text, setText] = useState();
   return (
     <>
-      <NavBar />
-      <Title text='Pagina no encontrada' />
-      <a href='/'>
-        <Button text='ET go home' />
+      <Title text="Pagina no encontrada" />
+      <a href="/">
+        <Button text="ET go home" />
       </a>
-      <Footer />
     </>
   );
 }

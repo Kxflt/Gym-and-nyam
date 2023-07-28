@@ -97,7 +97,6 @@ function Login() {
       {/* En la funcion importada, en el open, metemos la variable del useState.
       Al cerrarlo, el setErrorPopUp vuelve a false para desaparecer. */}
       <ErrorPopUp open={errorPopUp} onClose={() => setErrorPopUp(false)} />
-      <Footer />
     </>
   );
 }

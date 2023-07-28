@@ -15,12 +15,17 @@ const loginUser = async (req, res, next) => {
 
     const user = await selectUserByEmailQuery(email);
 
-    //Comprobamos si las contraseñas coinciden.
+    // Comprobamos si las contraseñas coinciden.
     const validPass = await bcrypt.compare(password, user.password);
 
-    //Si no coinciden lanzamos un error.
+    // Si no coinciden lanzamos un error.
     if (!validPass) {
       generateError('Contraseña incorrecta', 401);
+    }
+
+    // Si el usuario está pendiente de activar lanzamos un error.
+    if (!user.active) {
+      generateError('Usuario pendiente de activar', 401);
     }
 
     //Objeto con info que queremos agregar al token.

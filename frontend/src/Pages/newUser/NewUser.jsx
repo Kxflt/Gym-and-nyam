@@ -36,7 +36,6 @@ function NewUser() {
 
   return (
     <>
-      <NavBar />
       <div className="contenedor-registro">
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <InputText
@@ -159,8 +158,6 @@ function NewUser() {
             : ''
         }
       />
-
-      <Footer />
     </>
   );
 }

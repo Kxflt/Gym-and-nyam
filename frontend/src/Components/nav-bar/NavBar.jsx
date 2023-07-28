@@ -23,7 +23,7 @@ function NavBar() {
   // };
 
   return (
-    <nav className="header-container">
+    <nav className="header-container nav-bar">
       <ul className="menu">
         {!user ? (
           <>

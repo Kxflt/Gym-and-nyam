@@ -26,8 +26,6 @@ export function AuthProvider({ children }) {
       //Llamamos al servicio.
       const body = await login(email, password);
 
-      console.log(body.data.data);
-
       // Guardamos el usuario en el localStorage.
       localStorage.setItem('user', JSON.stringify(body.data.data));
 
@@ -43,13 +41,14 @@ export function AuthProvider({ children }) {
     try {
       // Llamamos al servicio.
       const body = await newUser(
-        data.name,
-        data.surname,
-        data.email,
-        data.gender,
-        data.interest,
-        data.password
-
+        {
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          gender: data.gender,
+          interest: data.interest,
+          password: data.password,
+        }
         //SI MODIFICAMOS EL BACKEND DEBEREMOS METER AQUI EL RESTO DE COSAS QUE NECESITAMOS PARA QUE SE REGISTREN
       );
 
@@ -95,8 +94,6 @@ export function AuthProvider({ children }) {
         ...user,
         ...body.data.data.user,
       };
-
-      console.log(newUserData);
 
       // Actualizamos los datos del usuario en el State.
       setUser(newUserData);

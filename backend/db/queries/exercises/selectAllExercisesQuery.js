@@ -1,16 +1,26 @@
 const getDB = require('../../getDB');
 
-const selectAllExercisesQuery = async (
+const selectAllExercisesQuery = async ({
   keyword = '',
-  typology = '',
-  muscleGroup = '',
-  date = ''
-) => {
+  typologyId = '',
+  muscleGroupId = '',
+  date = '',
+  userId,
+}) => {
   let connection;
   try {
     connection = await getDB();
-    //si la fecha está en orden ascendente (ASC), utilizar ASC. Sino establecer como valor por defecto DESC (descendente).
-    date = date.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
+
+    let whereClause = 'WHERE E.name LIKE ?';
+
+    // Convertimos a tipo Number los IDs.
+    typologyId = Number(typologyId);
+    muscleGroupId = Number(muscleGroupId);
+
+    // Si el usuario ha enviado un id añadimos el filtro.
+    if (typologyId) whereClause += ` AND E.typologyId = ${typologyId}`;
+    if (muscleGroupId) whereClause += ` AND E.muscleGroupId = ${muscleGroupId}`;
+
     //Seleccionamos los datos que queremos mostrar...
     const [exercises] = await connection.query(
       `
@@ -23,11 +33,11 @@ const selectAllExercisesQuery = async (
             E.muscleGroupId,
             E.createdAt
         FROM exercises E
-        WHERE E.name LIKE ? AND E.typologyId LIKE ? AND E.muscleGroupId LIKE ?
+        ${whereClause}
         GROUP BY E.id
         ORDER BY E.createdAt ${date};`,
       //...y filtramos según los tres campos especificados.
-      [`%${keyword}%`, `%${typology}%`, `%${muscleGroup}%`]
+      [`%${keyword}%`]
     );
     return exercises;
   } finally {
