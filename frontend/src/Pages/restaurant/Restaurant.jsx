@@ -53,10 +53,10 @@ function Restaurant() {
   ];
 
   const dayMenu = menu[dayOfWeek];
-  console.log(new Date());
+
   return (
     <>
-      <div className='container'>
+      <div className="container">
         <h2>Today's menu - {dayMenu.day}:</h2>
         <p>First dish: {dayMenu.firstDish}</p>
         <p>Second dish: {dayMenu.secondDish}</p>

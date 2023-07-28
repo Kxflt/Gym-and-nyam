@@ -10,7 +10,6 @@ const RecoverPass = () => {
   useEffect(() => {
     const fetchValidateUser = async () => {
       const body = await validation(registrationCode);
-      console.log(body);
     };
 
     fetchValidateUser();

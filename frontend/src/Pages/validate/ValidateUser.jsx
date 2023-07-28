@@ -14,7 +14,6 @@ const ValidateUser = () => {
   useEffect(() => {
     const fetchValidateUser = async () => {
       const body = await validation(registrationCode);
-      console.log(body);
     };
 
     fetchValidateUser();
@@ -22,9 +21,7 @@ const ValidateUser = () => {
 
   return (
     <>
-      <NavBar />
       <h2>User Activated!!!</h2>
-      <Footer />
     </>
   );
 };

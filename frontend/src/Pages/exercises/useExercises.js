@@ -1,7 +1,4 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
 import { useAuth } from '../../context/authContext';
 
 const useExercises = () => {
@@ -9,7 +6,6 @@ const useExercises = () => {
 
   const [exercises, setExercises] = useState([]);
   const [errMsg, setErrMsg] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -18,14 +14,11 @@ const useExercises = () => {
       try {
         setLoading(true);
 
-        const res = await fetch(
-          `http://localhost:8000/exercises?${searchParams.toString()}`,
-          {
-            headers: {
-              Authorization: user.token,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/exercises`, {
+          headers: {
+            Authorization: user.token,
+          },
+        });
 
         const body = await res.json();
 
@@ -34,8 +27,6 @@ const useExercises = () => {
         }
 
         setExercises(body.data.exercises);
-
-        console.log(body.data.exercises);
       } catch (err) {
         setErrMsg(err.message);
       } finally {
@@ -45,7 +36,7 @@ const useExercises = () => {
 
     // Si existe token llamamos a la función anterior.
     if (user.token) fetchExercises();
-  }, [searchParams, user]);
+  }, [user]);
 
   // Función que agrega o elimina un like.
   const toogleLike = async (e, exerciseId, likedByMe) => {
@@ -101,10 +92,9 @@ const useExercises = () => {
 
   return {
     exercises,
+    setExercises,
     toogleLike,
     deleteExercise,
-    searchParams,
-    setSearchParams,
     errMsg,
     loading,
   };
