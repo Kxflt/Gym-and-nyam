@@ -1,31 +1,43 @@
 import React, { useState } from 'react';
-
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
-import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import { useAuth } from '../../context/authContext';
+import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
+import ExerciseDelete from '../../Components/ExercisesDelete/ExercisesDelete';
+import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 
 const ExerciseList = () => {
   const { user } = useAuth();
   const { exercises, setExercises } = useExercises();
-  const [editing, setEditing] = useState(false);
+  const [editingExerciseId, setEditingExerciseId] = useState(null);
+  const [exercisesAdminMode, setExercisesAdminMode] = useState(false);
+  const [deleteExerciseId, setDeleteExerciseId] = useState(false);
 
-  const handleEditing = () => {
-    setEditing(true);
+  const handleEditButtonClick = (exerciseId) => {
+    setEditingExerciseId(exerciseId);
+  };
+
+  const handleEditComplete = () => {
+    setEditingExerciseId(null);
+  };
+
+  const handleExercisesAdminButtonClick = () => {
+    setExercisesAdminMode(true);
+  };
+
+  const handleExitAdminMode = () => {
+    setExercisesAdminMode(false);
+  };
+
+  const handleDeleteButtonClick = (exerciseId) => {
+    setDeleteExerciseId(exerciseId);
   };
 
   return (
     <>
       <div>
         <ExercisesFilter setExercises={setExercises} token={user.token} />
-        {editing ? (
-          <ExercisesCreation
-            user={user}
-            setEditing={setEditing}
-            setExercises={setExercises}
-          />
-        ) : (
-          exercises &&
+        {exercises &&
           exercises.map((exercise) => (
             <div key={exercise.id}>
               <h3>{exercise.name}</h3>
@@ -38,11 +50,36 @@ const ExerciseList = () => {
                   alt={exercise.title}
                 />
               )}
+              {!editingExerciseId && !exercisesAdminMode && (
+                <button onClick={() => handleEditButtonClick(exercise.id)}>
+                  Edit
+                </button>
+              )}
+              <ExerciseDelete exerciseId={exercise.id} />
             </div>
-          ))
-        )}
+          ))}
       </div>
-      <button onClick={() => setEditing(true)}>Exercises Admin</button>
+      {!editingExerciseId && !exercisesAdminMode && (
+        <button onClick={handleExercisesAdminButtonClick}>
+          Exercises Admin
+        </button>
+      )}
+      {exercisesAdminMode && (
+        <>
+          <ExercisesCreation
+            user={user}
+            setExercises={setExercises}
+            onExitAdminMode={handleExitAdminMode}
+          />
+          <button onClick={handleExitAdminMode}>Back</button>
+        </>
+      )}
+      {editingExerciseId && (
+        <ExerciseEdit
+          exercise={exercises.find((ex) => ex.id === editingExerciseId)}
+          onEditComplete={handleEditComplete}
+        />
+      )}
     </>
   );
 };

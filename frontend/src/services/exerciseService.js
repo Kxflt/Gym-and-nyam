@@ -9,7 +9,7 @@ export const createExercise = async (formData, token) => {
       {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: token, // Set the correct content type for file uploads
+          Authorization: token,
         },
       }
     );
@@ -19,24 +19,24 @@ export const createExercise = async (formData, token) => {
   }
 };
 
-export const modifyExercise = (
-  name,
-  description,
-  photo,
-  typologyId,
-  muscleGroupId
-) => {
-  return (
-    axios.put('http://localhost:8000/exercises/:id'),
-    {
-      name,
-      description,
-      photo,
-      typologyId,
-      muscleGroupId,
-    }
-  );
+export const modifyExercise = async (id, formData, token) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/exercises/${id}`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: token,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
+
 export const listExercises = (
   name,
   description,
@@ -54,4 +54,21 @@ export const listExercises = (
       muscleGroupId,
     }
   );
+};
+
+export const deleteExercise = async (id, token) => {
+  try {
+    const response = await axios.delete(
+      `http://localhost:8000/exercises/${id}`,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: token,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
