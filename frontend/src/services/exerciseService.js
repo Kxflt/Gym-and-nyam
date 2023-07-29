@@ -1,25 +1,28 @@
 import axios from 'axios';
 
-//Crear ejercicio (administrador)
-export const createExercise = (
+// Crear ejercicio (administrador)
+export const createExercise = async ({
   name,
   description,
   photo,
   typology,
-  muscleGroup
-) => {
-  return (
-    axios.post('http://localhost:8000/exercises'),
-    {
+  muscleGroup,
+}) => {
+  return await axios
+    .post('http://localhost:8000/exercises', {
       name,
       description,
       photo,
       typology,
       muscleGroup,
-    }
-  );
+    })
+    .then((response) => {
+      return response.data; //manejar la respuesta del servidor cuando se completa la solicitud.
+    })
+    .catch((error) => {
+      throw error; //maneja los errores
+    });
 };
-
 export const modifyExercise = (
   name,
   description,
