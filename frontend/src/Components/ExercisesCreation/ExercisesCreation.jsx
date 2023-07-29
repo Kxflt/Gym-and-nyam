@@ -9,7 +9,7 @@ const ExercisesCreation = () => {
   const [exerciseDescription, setExerciseDescription] = useState('');
   const [typologyId, setTypologyId] = useState('');
   const [muscleGroupId, setMuscleGroupId] = useState('');
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { user } = useAuth();
@@ -19,13 +19,12 @@ const ExercisesCreation = () => {
 
     setIsSubmitting(true);
 
-    const formData = new FormData(); // Use FormData to handle file uploads
+    const formData = new FormData(); //
     formData.append('name', exerciseName);
     formData.append('description', exerciseDescription);
     formData.append('typologyId', typologyId);
     formData.append('muscleGroupId', muscleGroupId);
-    formData.append('photo', photo); // Append the file object to the FormData
-
+    formData.append('photo', photo); //
     try {
       const response = await createExercise(formData, user.token);
       if (response) {
@@ -34,7 +33,7 @@ const ExercisesCreation = () => {
         setExerciseDescription('');
         setTypologyId('');
         setMuscleGroupId('');
-        setPhoto(null); // Reset the file state as well
+        setPhoto(null); //
         setEditing(false);
       } else {
         console.error('Failed to add an exercise');
@@ -100,11 +99,6 @@ const ExercisesCreation = () => {
           <button type="Submit" disabled={isSubmitting}>
             {isSubmitting ? 'Adding exercise...' : 'Add exercise'}
           </button>
-          <div>
-            <Link onClick={() => setIsFormVisible(false)}>
-              Back to exercises
-            </Link>
-          </div>
         </form>
       </div>
     </>

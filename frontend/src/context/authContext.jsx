@@ -8,6 +8,8 @@ import {
   updateUserService,
 } from '../services/authService';
 
+import { modifyExercise } from '../services/exerciseService';
+
 //________________________________________
 //TODO LO QUE METAMOS AQUI SERAN LAS FUNCIONES QUE LLAMAREMOS DESPUES EN LOS JSX , Como sera en Login.jsx como ejemplo
 //________________________________________
@@ -114,6 +116,25 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const updateExercise = async (formData, config) => {
+    try {
+      const updatedExercise = await modifyExercise(formData, config); // Replace with your exercise update function (e.g., modifyExercise)
+
+      // Do any necessary data manipulation or validation with the updated exercise if needed
+
+      // Update the exercise data in the local state
+      setExercise(updatedExercise);
+
+      // Optionally, update the exercise data in the local storage
+      localStorage.setItem('exercise', JSON.stringify(updatedExercise));
+
+      // Return the updated exercise data if needed
+      return updatedExercise;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   // Todo lo que pongamos en la prop value van a ser los datos accesibles
   return (
     <AuthContext.Provider
@@ -125,6 +146,7 @@ export function AuthProvider({ children }) {
         registerUserAvatar,
         updateUser,
         validateUserCode,
+        updateExercise,
       }}
     >
       {children}
