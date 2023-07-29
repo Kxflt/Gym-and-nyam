@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import NavBar from '../../Components/nav-bar/NavBar';
-import Footer from '../../Components/Shared/Footer/Footer';
+
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
+import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import { useAuth } from '../../context/authContext';
 
 const ExerciseList = () => {
   const { user } = useAuth();
   const { exercises, setExercises } = useExercises();
+  const [editing, setEditing] = useState(false);
 
   return (
     <>
       <div>
         <ExercisesFilter setExercises={setExercises} token={user.token} />
-
-        {exercises &&
+        {editing ? (
+          <ExercisesCreation user={user} setEditing={setEditing} />
+        ) : (
+          exercises &&
           exercises.map((exercise) => (
             <div key={exercise.id}>
               <h3>{exercise.name}</h3>
@@ -28,8 +31,10 @@ const ExerciseList = () => {
                 />
               )}
             </div>
-          ))}
+          ))
+        )}
       </div>
+      <button onClick={() => setEditing(true)}>Exercises Admin</button>
     </>
   );
 };
