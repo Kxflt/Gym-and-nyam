@@ -10,12 +10,20 @@ const ExerciseList = () => {
   const { exercises, setExercises } = useExercises();
   const [editing, setEditing] = useState(false);
 
+  const handleEditing = () => {
+    setEditing(true);
+  };
+
   return (
     <>
       <div>
         <ExercisesFilter setExercises={setExercises} token={user.token} />
         {editing ? (
-          <ExercisesCreation user={user} setEditing={setEditing} />
+          <ExercisesCreation
+            user={user}
+            setEditing={setEditing}
+            setExercises={setExercises}
+          />
         ) : (
           exercises &&
           exercises.map((exercise) => (

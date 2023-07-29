@@ -13,27 +13,27 @@ const ExercisesCreation = () => {
 
   //   const { user } = useAuth();
 
-  const handleAddExercise = async () => {
-    // Construir el objeto formData con los valores de los estados
-    const formData = {
-      name: exerciseName,
-      description: exerciseDescription,
-      typology: typology,
-      muscleGroup: muscleGroup,
-      photo: exercisePhoto,
-    };
+  const handleAddExercise = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(); // Use FormData to handle file uploads
+    formData.append('name', exerciseName);
+    formData.append('description', exerciseDescription);
+    formData.append('typology', typology);
+    formData.append('muscleGroup', muscleGroup);
+    formData.append('photo', exercisePhoto); // Append the file object to the FormData
 
     try {
-      // Llamar a la función externa createExercise para enviar los datos al servidor
       const response = await createExercise(formData);
       if (response) {
         console.log('Exercise Added Successfully!!!');
-        // Resetear los estados para limpiar el formulario
         setExerciseName('');
         setExerciseDescription('');
         setTypology('');
         setMuscleGroup('');
-        setExercisePhoto('');
+        setExercisePhoto(null); // Reset the file state as well
+        setExercises((prevExercises) => [...prevExercises, response]);
+        setEditing(false);
       } else {
         console.error('Failed to add an exercise');
       }
@@ -84,13 +84,14 @@ const ExercisesCreation = () => {
             />
           </div>
           <div>
-            <label>Exercise Photo</label>
-            <input
-              type="file"
-              value={exercisePhoto}
-              onChange={(e) => setExercisePhoto(e.target.files[0])}
-              required
-            />
+            <div>
+              <label>Exercise Photo</label>
+              <input
+                type="file"
+                onChange={(e) => setExercisePhoto(e.target.files[0])}
+                required
+              />
+            </div>
           </div>
           <button type="Submit">Add Exercise</button>
         </form>
