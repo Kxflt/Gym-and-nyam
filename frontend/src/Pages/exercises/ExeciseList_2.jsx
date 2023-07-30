@@ -5,6 +5,7 @@ import { useAuth } from '../../context/authContext';
 import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExerciseDelete from '../../Components/ExercisesDelete/ExercisesDelete';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
+import LikeButton from '../../Components/like/Like';
 
 const ExerciseList = () => {
   const { user } = useAuth();
@@ -59,15 +60,13 @@ const ExerciseList = () => {
           <button onClick={handleExitFormMode}>Back</button>
         </>
       ) : (
-        <div>
+        <>
           <ExercisesFilter setExercises={setExercises} token={user.token} />
-          {exercises &&
+          {exercises && exercises.length > 0 ? (
             exercises.map((exercise) => (
               <div key={exercise.id}>
                 <h3>{exercise.name}</h3>
                 <p>{exercise.description}</p>
-                <p>{exercise.muscleGroupId}</p>
-                <p>{exercise.typologyId}</p>
                 {exercise.photo && (
                   <img
                     src={`http://localhost:8000/${exercise.photo}`}
@@ -82,14 +81,18 @@ const ExerciseList = () => {
                     <ExerciseDelete exerciseId={exercise.id} />
                   </div>
                 )}
+                <LikeButton exercise={exercise} setExercises={setExercises} />
               </div>
-            ))}
+            ))
+          ) : (
+            <p>No exercises found.</p>
+          )}
           {!editingExerciseId && !exercisesFormMode && (
             <button onClick={handleExercisesFormButtonClick}>
               Exercises Admin
             </button>
           )}
-        </div>
+        </>
       )}
 
       {/* Pagination controls */}

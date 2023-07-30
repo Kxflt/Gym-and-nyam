@@ -45,13 +45,13 @@ const useExercises = (pageNumber, itemsPerPage) => {
     fetchExercises();
   }, [pageNumber, itemsPerPage, user.token]);
 
-  // Función que agrega o elimina un like.
+  /*   // Función que agrega o elimina un like.
   const toogleLike = async (e, exerciseId, likedByMe) => {
     try {
       setLoading(true);
 
       // Actualizamos el like en la base de datos.
-      await likeExerciseService(exerciseId, likedByMe, user);
+      await likeExerciseService(exerciseId, likedByMe, user.token);
 
       // Ahora debemos actualizar el like en el State.
       setExercises((exercises) =>
@@ -80,7 +80,7 @@ const useExercises = (pageNumber, itemsPerPage) => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   // Función que elimina un ejercicio del State.
   const deleteExercise = async (exerciseId) => {
@@ -102,7 +102,6 @@ const useExercises = (pageNumber, itemsPerPage) => {
   return {
     exercises,
     setExercises,
-    toogleLike,
     deleteExercise,
     errMsg,
     loading,

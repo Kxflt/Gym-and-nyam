@@ -109,7 +109,7 @@ const main = async () => {
 
     //Creamos un usuario de administrador.
     await connection.query(
-      `INSERT INTO users (name, surname, gender, interest, email, password, role , createdAt) VALUES('Marina', 'Adolfin', 'Female', 'Unknown', 'admin@gmail.com', '${hashedPass}','admin' ,?)`,
+      `INSERT INTO users (name, surname, gender, interest, email, password, active, role , createdAt) VALUES('Marina', 'Adolfin', 'Female', 'Unknown', 'admin@gmail.com', '${hashedPass}','1','admin' ,?)`,
       [new Date()]
     );
 
