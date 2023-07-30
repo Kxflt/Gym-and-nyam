@@ -40,54 +40,97 @@ const validateSchema = async (schema, data) => {
  */
 const savePhoto = async (img, width) => {
   try {
-    //ruta absoluta al directorio de subida de archivos
-    const uploadsPath = path.join(__dirname, UPLOADS_DIR);
+    // Assuming the photos are stored in the "uploads" directory.
+    const uploadsPath = path.join(
+      __dirname,
 
-    //Accedemos a la ruta
+      process.env.UPLOADS_DIR
+    );
+
+    // Log the image path for debugging purposes
+    console.log('Image path to save:', uploadsPath);
+
     try {
+      // Check if the directory exists before attempting to save the photo.
       await fs.access(uploadsPath);
-      //si no existe se crea.
     } catch {
+      // If the directory doesn't exist, create it.
       await fs.mkdir(uploadsPath);
     }
-    // Creamos un objeto de tipo sharp con la imagen.
+
+    // Convert the image data to a Sharp object to resize it.
     const sharpImg = sharp(img.data);
-    //Redimensionamos la imagen.
+
+    // Resize the image. "width" would be the desired width in pixels.
     sharpImg.resize(width);
-    //Generamos un nombre unico.
+
+    // Generate a unique name for the image.
     const imgName = `${uuid()}.jpg`;
-    // Ruta absoluta a la imagen.
+
+    // Generate the absolute path to the image.
     const imgPath = path.join(uploadsPath, imgName);
-    //Guardamos la imagen.
+
+    // Log the image path for debugging purposes
+    console.log('Image path:', imgPath);
+
+    // Save the image.
     await sharpImg.toFile(imgPath);
-    //Retornamos el nombre de la imagen.
+
+    console.log('Photo saved successfully:', imgName);
+
+    // Return the name with which we saved the image.
     return imgName;
   } catch (err) {
-    console.error(err);
-    generateError('Error al guardar la imagen en el servidor.', 500);
+    console.error('Error saving photo:', err);
+    // Throw the HTTP error if there's an issue in the function flow.
+    throw {
+      httpStatus: 500,
+      code: 'FILE_SAVE_FAILED',
+      message: 'Error al guardar el archivo en disco',
+    };
   }
 };
+
 /* #####################
  * ##  Delete photo   ##
  * #####################
  */
 const deletePhoto = async (imgName) => {
   try {
-    //Ruta absoluta al archivo que vamos a eliminar.
-    const imgPath = path.join(__dirname, UPLOADS_DIR, imgName);
-    try {
-      await fs.access(imgPath);
-      //Si no existe el archivo finalizamos la función.
-    } catch {
-      return;
+    // Assuming the photos are stored in the "uploads" directory.
+    const imgPath = path.join(
+      __dirname,
+
+      process.env.UPLOADS_DIR,
+      imgName
+    );
+
+    // Log the image path for debugging purposes
+    console.log('Image path to delete:', imgPath);
+
+    // Check if the file exists before attempting to delete
+    const fileExists = await fs
+      .access(imgPath)
+      .then(() => true)
+      .catch(() => false);
+    if (fileExists) {
+      // Delete the file
+      await fs.unlink(imgPath);
+      console.log('Previous photo deleted successfully.');
+    } else {
+      console.log('Previous photo not found.');
     }
-    //Eliminamos el archivo de la carpeta
-    await fs.unlink(imgPath);
   } catch (err) {
-    console.error(err);
-    generateError('Error al eliminar la imagen del servidor', 500);
+    console.error('Error deleting previous photo:', err);
+    throw {
+      httpStatus: 500,
+      code: 'FILE_DELETE_FAILED',
+      message: 'Error al eliminar el archivo del disco',
+    };
   }
 };
+
+module.exports = deletePhoto;
 
 /**
  * ###############

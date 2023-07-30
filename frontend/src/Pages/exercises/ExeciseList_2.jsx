@@ -34,6 +34,19 @@ const ExerciseList = () => {
     setPageNumber(newPageNumber);
   };
 
+  // Function to handle exercise edit complete
+  const handleExerciseEditComplete = (editedExercise) => {
+    // Find the index of the edited exercise in the exercises array
+    const index = exercises.findIndex((ex) => ex.id === editedExercise.id);
+
+    // Update the exercise in the exercises array with the updated exercise
+    if (index !== -1) {
+      const updatedExercises = [...exercises];
+      updatedExercises[index] = editedExercise;
+      setExercises(updatedExercises);
+    }
+  };
+
   return (
     <>
       {exercisesFormMode ? (
