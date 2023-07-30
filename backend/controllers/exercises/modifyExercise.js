@@ -1,16 +1,14 @@
 'use strict';
-//Importamos los middlewares para guardar y borrar fotos, ya que en este request el usuario puede modificar su avatar.
 const { generateError, savePhoto, deletePhoto } = require('../../helpers');
-
 const modifyExerciseQuery = require('../../db/queries/exercises/modifyExerciseQuery');
 const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery');
 
 const modifyExercise = async (req, res, next) => {
   try {
-    //Destructuring del body
+    // Destructuring of the body
     let { name, description, typologyId, muscleGroupId } = req.body;
 
-    //Si faltan campos generamos un error. El usuario no está obligado a subir una foto, por lo que ponemos un interrogante después de "req.files".
+    // If required fields are missing, generate an error. The user is not required to upload a photo, hence the use of the optional chaining (?.) after "req.files".
     if (
       !name &&
       !description &&
@@ -21,12 +19,12 @@ const modifyExercise = async (req, res, next) => {
       generateError('Faltan campos', 400);
     }
 
-    //Destructuring del path params
+    // Destructuring of the path params
     const { id: idExercise } = req.params;
 
     const infoExercise = await infoExerciseQuery(idExercise);
 
-    //Destructuring de las columnas de la tabla "exercises" que nos conciernen. Con "[columna]DB" establecemos que su valor inicial debe ser el que ya tiene en la tabla "exercises".
+    // Destructuring of the relevant columns from the "exercises" table, with initial values from the database.
     const {
       name: nameDB,
       description: descriptionDB,
@@ -35,27 +33,42 @@ const modifyExercise = async (req, res, next) => {
       muscleGroupId: muscleGroupDB,
     } = infoExercise;
 
-    //Comprobamos si el admin ha cambiado alguno de los datos. De no ser así, se retorna el dato que ya existía en la base de datos.
+    // Check if the admin has changed any data. If not, use the existing data from the database.
     name = name || nameDB;
     description = description || descriptionDB;
     typologyId = typologyId || typologyDB;
     muscleGroupId = muscleGroupId || muscleGroupDB;
 
-    //Variable que almacenará la foto, si el admin decide subir una.
+    // Variable that will store the new photo name if the admin decides to upload one.
     let imgNameExercise;
 
-    //Si el admin ha subido una foto...
+    // If the admin has uploaded a new photo...
     if (req.files?.photo) {
-      //...borramos la anterior.
-      await deletePhoto(photoDB);
+      // Log the value of photoDB for debugging purposes
+      console.log('Previous photo:', photoDB);
 
-      //Guardamos la imagen en la carpeta "uploads" y le asignamos un nombre con la función "savePhoto".
-      imgNameExercise = await savePhoto(req.files.photo);
+      try {
+        // ... delete the previous photo ...
+        await deletePhoto(photoDB);
+        console.log('Previous photo deleted successfully.');
+      } catch (err) {
+        console.error('Error deleting previous photo:', err);
+        // Handle the error if necessary
+      }
+
+      try {
+        // ... and save the new image ...
+        imgNameExercise = await savePhoto(req.files.photo);
+        console.log('New photo saved:', imgNameExercise);
+      } catch (err) {
+        console.error('Error saving new photo:', err);
+        // Handle the error if necessary
+      }
     }
-    //Si el admin no ha subido una imagen, utilizar la que ya existía.
+    // If the admin didn't upload a new image, use the existing one from the database.
     imgNameExercise = imgNameExercise || photoDB;
 
-    //Destructuring de los datos del ejercicio que modificaremos a continuación.
+    // Destructuring the exercise data for modification.
     const exerciseData = {
       name,
       description,
@@ -65,9 +78,10 @@ const modifyExercise = async (req, res, next) => {
       idExercise,
     };
 
-    //Actualizamos los datos del ejercicio.
+    // Update the exercise data.
     await modifyExerciseQuery(exerciseData);
-    //Mandamos un mensaje confirmando la correcta modificación de los datos del ejercicio. Asignamos un valor a la columna "modifiedAt".
+
+    // Send a message confirming the successful modification of the exercise data and assign a value to the "modifiedAt" column.
     res.send({
       status: 'ok',
       message: `Ejercicio ${idExercise} modificado correctamente`,
