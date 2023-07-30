@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
 import { useAuth } from '../../context/authContext';
@@ -8,10 +8,11 @@ import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreat
 
 const ExerciseList = () => {
   const { user } = useAuth();
-  const { exercises, setExercises } = useExercises();
+  const itemsPerPage = 5; //DECIDIR CUANTOS POR PAGINA
+  const [pageNumber, setPageNumber] = useState(1);
+  const { exercises, setExercises } = useExercises(pageNumber, itemsPerPage);
   const [editingExerciseId, setEditingExerciseId] = useState(null);
-  const [exercisesAdminMode, setExercisesAdminMode] = useState(false);
-  const [deleteExerciseId, setDeleteExerciseId] = useState(false);
+  const [exercisesFormMode, setExercisesFormMode] = useState(false);
 
   const handleEditButtonClick = (exerciseId) => {
     setEditingExerciseId(exerciseId);
@@ -21,59 +22,77 @@ const ExerciseList = () => {
     setEditingExerciseId(null);
   };
 
-  const handleExercisesAdminButtonClick = () => {
-    setExercisesAdminMode(true);
+  const handleExercisesFormButtonClick = () => {
+    setExercisesFormMode(true);
   };
 
-  const handleExitAdminMode = () => {
-    setExercisesAdminMode(false);
+  const handleExitFormMode = () => {
+    setExercisesFormMode(false);
   };
 
-  const handleDeleteButtonClick = (exerciseId) => {
-    setDeleteExerciseId(exerciseId);
+  const handlePageChange = (newPageNumber) => {
+    setPageNumber(newPageNumber);
   };
 
   return (
     <>
-      <div>
-        <ExercisesFilter setExercises={setExercises} token={user.token} />
-        {exercises &&
-          exercises.map((exercise) => (
-            <div key={exercise.id}>
-              <h3>{exercise.name}</h3>
-              <p>{exercise.description}</p>
-              <p>{exercise.muscleGroupId}</p>
-              <p>{exercise.typologyId}</p>
-              {exercise.photo && (
-                <img
-                  src={`http://localhost:8000/${exercise.photo}`}
-                  alt={exercise.title}
-                />
-              )}
-              {!editingExerciseId && !exercisesAdminMode && (
-                <button onClick={() => handleEditButtonClick(exercise.id)}>
-                  Edit
-                </button>
-              )}
-              <ExerciseDelete exerciseId={exercise.id} />
-            </div>
-          ))}
-      </div>
-      {!editingExerciseId && !exercisesAdminMode && (
-        <button onClick={handleExercisesAdminButtonClick}>
-          Exercises Admin
-        </button>
-      )}
-      {exercisesAdminMode && (
+      {exercisesFormMode ? (
         <>
           <ExercisesCreation
             user={user}
             setExercises={setExercises}
-            onExitAdminMode={handleExitAdminMode}
+            onExitAdminMode={handleExitFormMode}
           />
-          <button onClick={handleExitAdminMode}>Back</button>
+          <button onClick={handleExitFormMode}>Back</button>
         </>
+      ) : (
+        <div>
+          <ExercisesFilter setExercises={setExercises} token={user.token} />
+          {exercises &&
+            exercises.map((exercise) => (
+              <div key={exercise.id}>
+                <h3>{exercise.name}</h3>
+                <p>{exercise.description}</p>
+                <p>{exercise.muscleGroupId}</p>
+                <p>{exercise.typologyId}</p>
+                {exercise.photo && (
+                  <img
+                    src={`http://localhost:8000/${exercise.photo}`}
+                    alt={exercise.title}
+                  />
+                )}
+                {!editingExerciseId && (
+                  <div>
+                    <button onClick={() => handleEditButtonClick(exercise.id)}>
+                      Edit
+                    </button>
+                    <ExerciseDelete exerciseId={exercise.id} />
+                  </div>
+                )}
+              </div>
+            ))}
+          {!editingExerciseId && !exercisesFormMode && (
+            <button onClick={handleExercisesFormButtonClick}>
+              Exercises Admin
+            </button>
+          )}
+        </div>
       )}
+
+      {/* Pagination controls */}
+      <div>
+        <button
+          disabled={pageNumber === 1}
+          onClick={() => handlePageChange(pageNumber - 1)}
+        >
+          Previous Page
+        </button>
+        <span>Page {pageNumber}</span>
+        <button onClick={() => handlePageChange(pageNumber + 1)}>
+          Next Page
+        </button>
+      </div>
+
       {editingExerciseId && (
         <ExerciseEdit
           exercise={exercises.find((ex) => ex.id === editingExerciseId)}

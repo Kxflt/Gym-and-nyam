@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/authContext';
 
-const useExercises = () => {
+const useExercises = (pageNumber, itemsPerPage) => {
   const { user } = useAuth();
 
   const [exercises, setExercises] = useState([]);
@@ -14,11 +14,18 @@ const useExercises = () => {
       try {
         setLoading(true);
 
-        const res = await fetch(`http://localhost:8000/exercises`, {
-          headers: {
-            Authorization: user.token,
-          },
-        });
+        const res = await fetch(
+          `http://localhost:8000/exercises?page=${pageNumber}&limit=${itemsPerPage}`,
+          {
+            headers: {
+              Authorization: user.token,
+            },
+            params: {
+              page: pageNumber,
+              limit: itemsPerPage,
+            },
+          }
+        );
 
         const body = await res.json();
 
@@ -34,9 +41,9 @@ const useExercises = () => {
       }
     };
 
-    // Si existe token llamamos a la función anterior.
-    if (user.token) fetchExercises();
-  }, [user]);
+    // Call fetchExercises when the pageNumber or itemsPerPage change.
+    fetchExercises();
+  }, [pageNumber, itemsPerPage, user.token]);
 
   // Función que agrega o elimina un like.
   const toogleLike = async (e, exerciseId, likedByMe) => {
@@ -47,14 +54,14 @@ const useExercises = () => {
       await likeExerciseService(exerciseId, likedByMe, user);
 
       // Ahora debemos actualizar el like en el State.
-      setExercises(
+      setExercises((exercises) =>
         exercises.map((exercise) => {
           // Vamos a modificar únicamente el ej cuyo id recibamos como argumento.
           if (exercise.id === exerciseId) {
             // Comprobamos si el div donde aparece el corazón tiene la clase like.
             const hasLikeClass = e.target.classList.contains('like');
 
-            // Si tiene la clase like aumentamos los likes de este tweet en +1, de lo contrario
+            // Si tiene la clase like aumentamos los likes de este ejercicio en +1, de lo contrario
             // los decrementamos en -1.
             if (hasLikeClass) {
               exercise.likes++;
@@ -66,7 +73,7 @@ const useExercises = () => {
             exercise.likedByMe = !exercise.likedByMe;
           }
 
-          // Retornamos el tweet actual.
+          // Retornamos el ejercicio actual.
           return exercise;
         })
       );
@@ -75,16 +82,18 @@ const useExercises = () => {
     }
   };
 
-  // Función que elimina un tweet del State.
+  // Función que elimina un ejercicio del State.
   const deleteExercise = async (exerciseId) => {
     try {
       setLoading(true);
 
-      // Eliminamos el ej de la base de datos.
+      // Eliminamos el ejercicio de la base de datos.
       await deleteExerciseService(exerciseId, user);
 
-      // Eliminamos el ej del State.
-      setExercises(exercises.filter((exercise) => exercise.id !== exerciseId));
+      // Eliminamos el ejercicio del State.
+      setExercises((exercises) =>
+        exercises.filter((exercise) => exercise.id !== exerciseId)
+      );
     } finally {
       setLoading(false);
     }

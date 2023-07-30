@@ -10,7 +10,7 @@ const ExerciseEdit = ({ exercise }) => {
     description: exercise.description,
     typologyId: exercise.typologyId,
     muscleGroupId: exercise.muscleGroupId,
-    photo: exercise.photo,
+    photo: exercise.photo || null,
   });
 
   const handleEditExercise = async (e) => {
@@ -23,6 +23,7 @@ const ExerciseEdit = ({ exercise }) => {
     formData.append('typologyId', editedExercise.typologyId);
     formData.append('muscleGroupId', editedExercise.muscleGroupId);
     formData.append('photo', editedExercise.photo);
+    console.log(formData);
 
     try {
       const response = await modifyExercise(exercise.id, formData, user.token);
@@ -111,6 +112,15 @@ const ExerciseEdit = ({ exercise }) => {
         </div>
         <div>
           <label>Exercise Photo:</label>
+          {/* Mostrar la imagen existente si no hay una nueva imagen seleccionada */}
+          {!editedExercise.photo && exercise.photo && (
+            <img
+              src={`http://localhost:8000/${exercise.photo}`}
+              alt={exercise.title}
+              style={{ maxWidth: '200px', maxHeight: '200px' }}
+            />
+          )}
+          {/* Entrada para seleccionar una nueva imagen*/}
           <input
             type="file"
             onChange={(e) =>
