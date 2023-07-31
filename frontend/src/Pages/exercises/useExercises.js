@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/authContext';
+import {
+  likeExerciseService,
+  deleteExercise,
+} from '../../services/exerciseService';
 
-const useExercises = (pageNumber, itemsPerPage) => {
+const useExercises = () => {
   const { user } = useAuth();
 
   const [exercises, setExercises] = useState([]);
@@ -14,18 +18,11 @@ const useExercises = (pageNumber, itemsPerPage) => {
       try {
         setLoading(true);
 
-        const res = await fetch(
-          `http://localhost:8000/exercises?page=${pageNumber}&limit=${itemsPerPage}`,
-          {
-            headers: {
-              Authorization: user.token,
-            },
-            params: {
-              page: pageNumber,
-              limit: itemsPerPage,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/exercises`, {
+          headers: {
+            Authorization: user.token,
+          },
+        });
 
         const body = await res.json();
 
@@ -42,45 +39,35 @@ const useExercises = (pageNumber, itemsPerPage) => {
     };
 
     // Call fetchExercises when the pageNumber or itemsPerPage change.
-    fetchExercises();
-  }, [pageNumber, itemsPerPage, user.token]);
+    if (user.token) fetchExercises();
+  }, [user.token]);
 
-  /*   // Función que agrega o elimina un like.
-  const toogleLike = async (e, exerciseId, likedByMe) => {
+  // Función que agrega o elimina un like.
+  const toogleLike = async (exerciseId, likedByMe) => {
     try {
       setLoading(true);
 
       // Actualizamos el like en la base de datos.
       await likeExerciseService(exerciseId, likedByMe, user.token);
 
+      // Modificamos el array de ejercicios (creando uno nuevo).
+      const updatedExercises = exercises.map((exercise) => {
+        // Modificamos la propiedad "likedByMe" del ejercicio sobre el que hicimos like.
+        if (exercise.id === exerciseId) {
+          exercise.likedByMe = !exercise.likedByMe;
+        }
+
+        return exercise;
+      });
+
       // Ahora debemos actualizar el like en el State.
-      setExercises((exercises) =>
-        exercises.map((exercise) => {
-          // Vamos a modificar únicamente el ej cuyo id recibamos como argumento.
-          if (exercise.id === exerciseId) {
-            // Comprobamos si el div donde aparece el corazón tiene la clase like.
-            const hasLikeClass = e.target.classList.contains('like');
-
-            // Si tiene la clase like aumentamos los likes de este ejercicio en +1, de lo contrario
-            // los decrementamos en -1.
-            if (hasLikeClass) {
-              exercise.likes++;
-            } else {
-              exercise.likes--;
-            }
-
-            // Invertimos el valor de likedByMe.
-            exercise.likedByMe = !exercise.likedByMe;
-          }
-
-          // Retornamos el ejercicio actual.
-          return exercise;
-        })
-      );
+      setExercises(updatedExercises);
     } finally {
       setLoading(false);
     }
-  }; */
+  };
+
+  // Función que permite filtrar ejercicios por keyword, grupo muscular, etc.
 
   // Función que elimina un ejercicio del State.
   const deleteExercise = async (exerciseId) => {
@@ -88,7 +75,7 @@ const useExercises = (pageNumber, itemsPerPage) => {
       setLoading(true);
 
       // Eliminamos el ejercicio de la base de datos.
-      await deleteExerciseService(exerciseId, user);
+      await deleteExercise(exerciseId, user.token);
 
       // Eliminamos el ejercicio del State.
       setExercises((exercises) =>
@@ -102,6 +89,7 @@ const useExercises = (pageNumber, itemsPerPage) => {
   return {
     exercises,
     setExercises,
+    toogleLike,
     deleteExercise,
     errMsg,
     loading,

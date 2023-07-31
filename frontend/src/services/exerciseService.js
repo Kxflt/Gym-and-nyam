@@ -25,7 +25,7 @@ export const likeExerciseService = async (id, likedByMe, token) => {
 
   try {
     const response = await axios({
-      method: method, // Pass the method here
+      method, // Pass the method here
       url: `http://localhost:8000/exercises/${id}/likes`, // Correctly construct the URL
       headers: {
         Authorization: token,
