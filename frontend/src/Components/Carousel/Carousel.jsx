@@ -11,6 +11,7 @@ const ImageCarousel = () => {
     '../images/boxing.jpg',
     '../images/Chiquita.png',
     '../images/studio.jpg',
+    '../images/banner2.png',
   ];
   const handlesSelect = (selectedIndex, e) => {
     setCurrentIndex(selectedIndex);
