@@ -13,7 +13,7 @@ function InputPassword({ label, register, errors, registerName }) {
       <label>{label}</label>
 
       {/* Utilizamos los ...register para poder acceder a todas las propiedades del registro */}
-      <input type="password" placeholder="Password" {...register} />
+      <input type="password" class="bar" placeholder="Password" {...register} />
 
       {errors[registerName]?.type === 'required' && (
         <span className="error">Field required</span>
