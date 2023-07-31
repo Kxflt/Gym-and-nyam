@@ -9,30 +9,26 @@ import LikeButton from '../../Components/like/Like';
 
 const ExerciseList = () => {
   const { user } = useAuth();
-  const itemsPerPage = 5; //DECIDIR CUANTOS POR PAGINA
-  const [pageNumber, setPageNumber] = useState(1);
-  const { exercises, setExercises } = useExercises(pageNumber, itemsPerPage);
-  const [editingExerciseId, setEditingExerciseId] = useState(null);
-  const [exercisesFormMode, setExercisesFormMode] = useState(false);
+
+  const { exercises, setExercises, toogleLike } = useExercises();
+
+  const [editingExerciseModal, setEditingExerciseModal] = useState(false);
+  const [exercisesFormModal, setExercisesFormModal] = useState(false);
 
   const handleEditButtonClick = (exerciseId) => {
-    setEditingExerciseId(exerciseId);
+    setEditingExerciseModal(exerciseId);
   };
 
   const handleEditComplete = () => {
-    setEditingExerciseId(null);
+    setEditingExerciseModal(false);
   };
 
   const handleExercisesFormButtonClick = () => {
-    setExercisesFormMode(true);
+    setExercisesFormModal(true);
   };
 
   const handleExitFormMode = () => {
-    setExercisesFormMode(false);
-  };
-
-  const handlePageChange = (newPageNumber) => {
-    setPageNumber(newPageNumber);
+    setExercisesFormModal(false);
   };
 
   // Function to handle exercise edit complete
@@ -50,7 +46,7 @@ const ExerciseList = () => {
 
   return (
     <>
-      {exercisesFormMode ? (
+      {exercisesFormModal ? (
         <>
           <ExercisesCreation
             user={user}
@@ -62,6 +58,7 @@ const ExerciseList = () => {
       ) : (
         <>
           <ExercisesFilter setExercises={setExercises} token={user.token} />
+
           {exercises && exercises.length > 0 ? (
             exercises.map((exercise) => (
               <div key={exercise.id}>
@@ -73,7 +70,7 @@ const ExerciseList = () => {
                     alt={exercise.title}
                   />
                 )}
-                {!editingExerciseId && (
+                {!editingExerciseModal && user.role === 'admin' && (
                   <div>
                     <button onClick={() => handleEditButtonClick(exercise.id)}>
                       Edit
@@ -81,37 +78,29 @@ const ExerciseList = () => {
                     <ExerciseDelete exerciseId={exercise.id} />
                   </div>
                 )}
-                <LikeButton exercise={exercise} setExercises={setExercises} />
+                <LikeButton
+                  exerciseId={exercise.id}
+                  likedByMe={exercise.likedByMe}
+                  toogleLike={toogleLike}
+                />
               </div>
             ))
           ) : (
             <p>No exercises found.</p>
           )}
-          {!editingExerciseId && !exercisesFormMode && (
-            <button onClick={handleExercisesFormButtonClick}>
-              Exercises Admin
-            </button>
-          )}
+          {!editingExerciseModal &&
+            !exercisesFormModal &&
+            user.role === 'admin' && (
+              <button onClick={handleExercisesFormButtonClick}>
+                Exercises Admin
+              </button>
+            )}
         </>
       )}
 
-      {/* Pagination controls */}
-      <div>
-        <button
-          disabled={pageNumber === 1}
-          onClick={() => handlePageChange(pageNumber - 1)}
-        >
-          Previous Page
-        </button>
-        <span>Page {pageNumber}</span>
-        <button onClick={() => handlePageChange(pageNumber + 1)}>
-          Next Page
-        </button>
-      </div>
-
-      {editingExerciseId && (
+      {editingExerciseModal && (
         <ExerciseEdit
-          exercise={exercises.find((ex) => ex.id === editingExerciseId)}
+          exercise={exercises.find((ex) => ex.id === editingExerciseModal)}
           onEditComplete={handleEditComplete}
         />
       )}

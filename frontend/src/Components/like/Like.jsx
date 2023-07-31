@@ -1,45 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAuth } from '../../../src/context/authContext';
-import { likeExerciseService } from '../../services/exerciseService';
+import React from 'react';
+
 import './like.css';
 
-const LikeButton = ({ exercise }) => {
-  const { user } = useAuth();
-  const [loading, setLoading] = useState(false);
-  const [likedByMe, setLikedByMe] = useState(false);
-
-  // Load the liked state from local storage on component mount
-  useEffect(() => {
-    const likedByMeLocalStorage = localStorage.getItem(
-      `likedByMe_${exercise.id}`
-    );
-    setLikedByMe(likedByMeLocalStorage === 'true');
-  }, [exercise.id]);
-
-  const toggleLike = async () => {
-    try {
-      setLoading(true);
-
-      // Call the likeExerciseService to send the like request to the server
-      await likeExerciseService(exercise.id, likedByMe, user.token);
-
-      // Update the likedByMe state and save it to local storage
-      const updatedLikedByMe = !likedByMe;
-      setLikedByMe(updatedLikedByMe);
-      localStorage.setItem(
-        `likedByMe_${exercise.id}`,
-        updatedLikedByMe.toString()
-      );
-    } catch (error) {
-      console.error('Error liking the exercise:', error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const LikeButton = ({ exerciseId, likedByMe, toogleLike }) => {
+  console.log(exerciseId);
   return (
-    <button onClick={toggleLike} disabled={loading}>
+    <button onClick={() => toogleLike(exerciseId, likedByMe)}>
       <div className={`like ${likedByMe ? 'liked' : ''}`}>
         <div className="like">
           <div id="main-content">

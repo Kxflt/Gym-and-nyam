@@ -31,14 +31,26 @@ const selectAllExercisesQuery = async ({
             E.photo,
             E.typologyId,
             E.muscleGroupId,
+            E.userId = ? AS owner,
+            SUM(L.id) AS likes,
+            BIT_OR(IFNULL(L.userId = ?, 0)) AS likedByMe,
             E.createdAt
         FROM exercises E
+        INNER JOIN likes L ON L.exerciseId = E.id
         ${whereClause}
         GROUP BY E.id
         ORDER BY E.createdAt ${date};`,
       //...y filtramos según los tres campos especificados.
-      [`%${keyword}%`]
+      [userId, userId, `%${keyword}%`]
     );
+
+    // Convertimos el tipo de dato de algunas columnas.
+    for (const exercise of exercises) {
+      exercise.likes = Number(exercise.likes);
+      exercise.owner = Boolean(exercise.owner);
+      exercise.likedByMe = Boolean(exercise.likedByMe);
+    }
+
     return exercises;
   } finally {
     if (connection) connection.release();
