@@ -9,7 +9,7 @@ import LikeButton from '../../Components/like/Like';
 
 const ExerciseList = () => {
   const { user } = useAuth();
-
+  //Prueba para ver el pusheo
   const { exercises, setExercises, toogleLike } = useExercises();
 
   const [editingExerciseModal, setEditingExerciseModal] = useState(false);
