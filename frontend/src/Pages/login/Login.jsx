@@ -50,7 +50,13 @@ function Login() {
 
   return (
     <>
-      <img src="/original-multimedia/logo2.png" alt="logo" className="logo2" />
+      <div className="logo-container">
+        <img
+          src="/original-multimedia/logo2.png"
+          alt="logo"
+          className="logo2"
+        />
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputText
