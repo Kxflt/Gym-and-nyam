@@ -15,9 +15,9 @@ function Dashboard() {
       <ImageCarousel />
       <div className="dashboard-container">
         <main className="main-content">
-          <div className="publi1">
+          {/* <div className="publi1">
             <img src={banner2} alt="imagenbanner" className="banner" />
-          </div>
+          </div> */}
 
           <div className="image-container">
             <img src={girl} alt="secbanner1" className="banner2" />
