@@ -117,22 +117,45 @@ const main = async () => {
 
     //Insertamos los grupos musculares.
     await connection.query(
-      `INSERT INTO muscleGroups (name, createdAt) VALUES('biceps' ,?)`,
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Biceps' ,?)`,
       [new Date()]
     );
     await connection.query(
-      `INSERT INTO muscleGroups (name, createdAt) VALUES('Completo' ,?)`,
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Triceps' ,?)`,
       [new Date()]
     );
 
     await connection.query(
-      `INSERT INTO muscleGroups (name, createdAt) VALUES('Tren inferior' ,?)`,
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Forearm' ,?)`,
+      [new Date()]
+    );
+    await connection.query(
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Shoulders' ,?)`,
+      [new Date()]
+    );
+    await connection.query(
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Back' ,?)`,
+      [new Date()]
+    );
+
+    await connection.query(
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Chest' ,?)`,
+      [new Date()]
+    );
+
+    await connection.query(
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Abdomen' ,?)`,
+      [new Date()]
+    );
+
+    await connection.query(
+      `INSERT INTO muscleGroups (name, createdAt) VALUES('Legs' ,?)`,
       [new Date()]
     );
 
     //Insertamos las tipologias.
     await connection.query(
-      `INSERT INTO typologys (name, createdAt) VALUES('Musculación' ,?)`,
+      `INSERT INTO typologys (name, createdAt) VALUES('Bodubuilding' ,?)`,
       [new Date()]
     );
     await connection.query(
