@@ -49,7 +49,7 @@ function NavBar() {
             </li>
             <li className="Hi"> Hi, {user.name} </li>
             <li className="avatar-container">
-              <Avatar avatar={avatarImg} />
+              <Avatar class="avatar-nav" avatar={avatarImg} />
             </li>
           </>
         )}

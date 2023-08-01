@@ -142,7 +142,7 @@ function NewUser() {
             <span className="error">Field required</span>
           )}
 
-          <Button text="Continue" />
+          <Button text="REGISTER" />
         </form>
       </div>
       <ErrorPopUp

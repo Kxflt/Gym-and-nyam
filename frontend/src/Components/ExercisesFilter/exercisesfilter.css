@@ -1,0 +1,66 @@
+.search-bar {
+    width: 210px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+
+  }
+  
+ .input {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #000; 
+    outline: none;
+    caret-color: rgb(255, 81, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    padding-left: 15px;
+    letter-spacing: 0.8px;
+    color: rgb(19, 19, 19);
+    font-size: 10px;
+  }
+  
+.search-exercises , .remove-filters {
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    padding: 0.1rem 1.5rem;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #7b468c;
+    color: white;
+    font-size: 12px;
+  }
+  
+  .search-exercises:hover ,.remove-filters:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+  }
+  
+  
+  .options{
+    background-color: rgb(161, 141, 182);
+    padding: 0.5px;
+    margin: 2px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  
+
+  select {
+    background-color:white;
+    color: black,
+  }
