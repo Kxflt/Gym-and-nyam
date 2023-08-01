@@ -18,12 +18,11 @@ function Dashboard() {
           {/* <div className="publi1">
             <img src={banner2} alt="imagenbanner" className="banner" />
           </div> */}
-
+          <Button text="ABOUT US" />
           <div className="image-container">
             <img src={girl} alt="secbanner1" className="banner2" />
             <img src={meal} alt="secbanner2" className="banner3" />
           </div>
-          <Button text="ABOUT US" />
         </main>
       </div>
     </>

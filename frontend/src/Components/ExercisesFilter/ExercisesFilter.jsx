@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import './exercisesfilter.css';
 
 const ExercisesFilter = ({ setExercises, token }) => {
   const [keyword, setKeyword] = useState('');
@@ -48,24 +50,21 @@ const ExercisesFilter = ({ setExercises, token }) => {
 
   return (
     <div>
-      <h3>Filtro de ejercicios</h3>
-      <p>Puedes filtrar los ejercicios por tipología y grupo muscular</p>
       <form onSubmit={filterExercises}>
-        <h3>Filtrar por:</h3>
-
-        <fieldset>
-          <label htmlFor="keyword">Buscar:</label>
+        <div className="search-bar">
           <input
+            placeholder="Search..."
             type="search"
+            className="input"
             id="keyword"
             onChange={(e) => {
               setKeyword(e.target.value);
             }}
             value={keyword}
           />
-        </fieldset>
+        </div>
 
-        <fieldset>
+        <fieldset className="options">
           <select
             onChange={(e) => {
               setTypologyId(e.target.value);
@@ -78,7 +77,7 @@ const ExercisesFilter = ({ setExercises, token }) => {
           </select>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="options">
           <select
             onChange={(e) => {
               setMuscleGroupId(e.target.value);
@@ -96,8 +95,10 @@ const ExercisesFilter = ({ setExercises, token }) => {
             <option>Piernas</option>
           </select>
         </fieldset>
-        <button onClick={handleClickRemoveFilters}>Borrar filtros</button>
-        <button>Enviar</button>
+        <button className="remove-filters" onClick={handleClickRemoveFilters}>
+          REMOVE FILTERS
+        </button>
+        <button className="search-exercises">APPLY FILTERS</button>
       </form>
     </div>
   );

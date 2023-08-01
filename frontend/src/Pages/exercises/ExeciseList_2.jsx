@@ -6,6 +6,7 @@ import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
 import { deleteExercise } from '../../services/exerciseService';
+import './exercises.css';
 
 const ExerciseList = () => {
   const { user } = useAuth();
@@ -71,8 +72,11 @@ const ExerciseList = () => {
           {!editingExerciseModal &&
             !exercisesFormModal &&
             user.role === 'admin' && (
-              <button onClick={() => setExercisesFormModal(true)}>
-                Exercises Admin
+              <button
+                className="modalExercises"
+                onClick={() => setExercisesFormModal(true)}
+              >
+                EXERCISES ADMIN
               </button>
             )}
         </>

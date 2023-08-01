@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './profile.css';
+import './editProfile.css';
 
 const EditProfile = ({ user, updateUser, setEditing }) => {
   const [name, setName] = useState(user.name);
@@ -91,10 +91,18 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
 
       <p>
         <strong>Avatar:</strong>
-        <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
+        <input
+          type="file"
+          class="filepho"
+          onChange={(e) => setAvatar(e.target.files[0])}
+        />
       </p>
-      <button onClick={() => handleOnSave()} disabled={loading}>
-        Save
+      <button
+        className="button-edit"
+        onClick={() => handleOnSave()}
+        disabled={loading}
+      >
+        SAVE
       </button>
     </>
   );

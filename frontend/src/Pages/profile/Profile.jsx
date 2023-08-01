@@ -9,9 +9,13 @@ const UserProfile = () => {
   const [editing, setEditing] = useState(false);
 
   return (
-    <div>
+    <div className="profile">
+      <Link className="back-profile" to="/">
+        Back
+      </Link>
       <h2>My Profile</h2>
-      <Avatar avatar={user.avatar} />
+
+      <Avatar class="avatar-profile" avatar={user.avatar} />
       {editing ? (
         <EditProfile
           user={user}
@@ -35,10 +39,11 @@ const UserProfile = () => {
           <p>
             <strong>Interest:</strong> {user && user.interest}
           </p>
-          <button onClick={() => setEditing(true)}>Edit Profile</button>
+          <button className="button-edit" onClick={() => setEditing(true)}>
+            EDIT PROFILE
+          </button>
         </>
       )}
-      <Link to="/">Back</Link>
     </div>
   );
 };

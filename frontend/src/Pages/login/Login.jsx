@@ -89,7 +89,7 @@ function Login() {
         {user.role === 'normal' && <p>Eres un user normal </p>} */}
 
         {/* En el momento que tengamos estos dos archivos, modificar de la 77 a 80 */}
-        <Button text="Login" />
+        <Button text="LOG IN" />
         <div className="help">
           <p>
             <NavLink to="/forgotPassword"> Forgot Password</NavLink>
