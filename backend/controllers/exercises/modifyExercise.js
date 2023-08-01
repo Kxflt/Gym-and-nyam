@@ -5,6 +5,9 @@ const infoExerciseQuery = require('../../db/queries/exercises/infoExerciseQuery'
 
 const modifyExercise = async (req, res, next) => {
   try {
+    // Destructuring of the path params
+    const { id: idExercise } = req.params;
+
     // Destructuring of the body
     let { name, description, typologyId, muscleGroupId } = req.body;
 
@@ -18,9 +21,6 @@ const modifyExercise = async (req, res, next) => {
     ) {
       generateError('Faltan campos', 400);
     }
-
-    // Destructuring of the path params
-    const { id: idExercise } = req.params;
 
     const infoExercise = await infoExerciseQuery(idExercise);
 
@@ -87,6 +87,7 @@ const modifyExercise = async (req, res, next) => {
       message: `Ejercicio ${idExercise} modificado correctamente`,
       data: {
         exercise: {
+          id: infoExercise.id,
           name,
           description,
           typologyId,
