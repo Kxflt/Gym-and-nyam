@@ -57,6 +57,7 @@ section.logo {
   color: #fff; /* Color del título */
   font-size: 20px; /* Tamaño del título */
   margin-bottom: 10px; /* Espaciado inferior del título */
+  margin-right: 21px;
 }
 
 .social-media img {

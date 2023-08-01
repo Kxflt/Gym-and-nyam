@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { useAuth } from '../../context/authContext';
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
-import { useAuth } from '../../context/authContext';
 import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
