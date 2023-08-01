@@ -12,6 +12,10 @@ const useExercises = () => {
   const [errMsg, setErrMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
+  //__________________________________________
+
+  //CREAR LA FUNCION CREAR EJERCICIO Y MODIFICAR EJERCICIO AQUI!!!
+  //__________________________________________
   useEffect(() => {
     // Realizamos una petición para obtener los ejercicios.
     const fetchExercises = async () => {
@@ -59,6 +63,8 @@ const useExercises = () => {
 
         return exercise;
       });
+
+      console.log(updatedExercises);
 
       // Ahora debemos actualizar el like en el State.
       setExercises(updatedExercises);

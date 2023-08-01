@@ -3,46 +3,18 @@ import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
 import { useAuth } from '../../context/authContext';
 import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
-import ExerciseDelete from '../../Components/ExercisesDelete/ExercisesDelete';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
+import { deleteExercise } from '../../services/exerciseService';
 
 const ExerciseList = () => {
   const { user } = useAuth();
-  //Prueba para ver el pusheo
-  const { exercises, setExercises, toogleLike } = useExercises();
+  const { exercises, setExercises, toogleLike, deleteExercise } =
+    useExercises();
 
+  const [exercise, setExercise] = useState(null);
   const [editingExerciseModal, setEditingExerciseModal] = useState(false);
   const [exercisesFormModal, setExercisesFormModal] = useState(false);
-
-  const handleEditButtonClick = (exerciseId) => {
-    setEditingExerciseModal(exerciseId);
-  };
-
-  const handleEditComplete = () => {
-    setEditingExerciseModal(false);
-  };
-
-  const handleExercisesFormButtonClick = () => {
-    setExercisesFormModal(true);
-  };
-
-  const handleExitFormMode = () => {
-    setExercisesFormModal(false);
-  };
-
-  // Function to handle exercise edit complete
-  const handleExerciseEditComplete = (editedExercise) => {
-    // Find the index of the edited exercise in the exercises array
-    const index = exercises.findIndex((ex) => ex.id === editedExercise.id);
-
-    // Update the exercise in the exercises array with the updated exercise
-    if (index !== -1) {
-      const updatedExercises = [...exercises];
-      updatedExercises[index] = editedExercise;
-      setExercises(updatedExercises);
-    }
-  };
 
   return (
     <>
@@ -50,10 +22,11 @@ const ExerciseList = () => {
         <>
           <ExercisesCreation
             user={user}
+            exercises={exercises}
             setExercises={setExercises}
-            onExitAdminMode={handleExitFormMode}
+            setExercisesFormModal={setExercisesFormModal}
           />
-          <button onClick={handleExitFormMode}>Back</button>
+          <button onClick={() => setExercisesFormModal(false)}>Back</button>
         </>
       ) : (
         <>
@@ -72,10 +45,17 @@ const ExerciseList = () => {
                 )}
                 {!editingExerciseModal && user.role === 'admin' && (
                   <div>
-                    <button onClick={() => handleEditButtonClick(exercise.id)}>
+                    <button
+                      onClick={() => {
+                        setExercise(exercise);
+                        setEditingExerciseModal(true);
+                      }}
+                    >
                       Edit
                     </button>
-                    <ExerciseDelete exerciseId={exercise.id} />
+                    <button onClick={() => deleteExercise(exercise.id)}>
+                      Eliminar
+                    </button>
                   </div>
                 )}
                 <LikeButton
@@ -91,7 +71,7 @@ const ExerciseList = () => {
           {!editingExerciseModal &&
             !exercisesFormModal &&
             user.role === 'admin' && (
-              <button onClick={handleExercisesFormButtonClick}>
+              <button onClick={() => setExercisesFormModal(true)}>
                 Exercises Admin
               </button>
             )}
@@ -100,8 +80,10 @@ const ExerciseList = () => {
 
       {editingExerciseModal && (
         <ExerciseEdit
-          exercise={exercises.find((ex) => ex.id === editingExerciseModal)}
-          onEditComplete={handleEditComplete}
+          exercise={exercise}
+          exercises={exercises}
+          setExercises={setExercises}
+          setEditingExerciseModal={setEditingExerciseModal}
         />
       )}
     </>

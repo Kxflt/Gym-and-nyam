@@ -34,11 +34,9 @@ function ForgotPassword() {
     try {
       setErrorText(null);
       await sendRecoverPass(email);
-      console.log('Código de validación enviado.');
       setShowNewPassword(true);
       // Envío exitoso del código de validación, puedes realizar las acciones necesarias aquí
     } catch (error) {
-      console.log('Error al enviar el código.');
       setErrorText('Ha ocurrido un error al enviar el código de validación.');
       setErrorPopUp(true);
     }

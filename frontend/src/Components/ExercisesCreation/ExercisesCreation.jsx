@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
-import { useAuth } from '../../context/authContext';
-import { Link } from 'react-router-dom';
 import { createExercise } from '../../services/exerciseService';
 
-const ExercisesCreation = () => {
+const ExercisesCreation = ({
+  user,
+  exercises,
+  setExercises,
+  setExercisesFormModal,
+}) => {
   const [exerciseName, setExerciseName] = useState('');
   const [exerciseDescription, setExerciseDescription] = useState('');
   const [typologyId, setTypologyId] = useState('');
@@ -12,32 +15,29 @@ const ExercisesCreation = () => {
   const [photo, setPhoto] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { user } = useAuth();
-
   const handleAddExercise = async (e) => {
     e.preventDefault();
 
     setIsSubmitting(true);
 
-    const formData = new FormData(); //
+    const formData = new FormData();
     formData.append('name', exerciseName);
     formData.append('description', exerciseDescription);
     formData.append('typologyId', typologyId);
     formData.append('muscleGroupId', muscleGroupId);
-    formData.append('photo', photo); //
+    formData.append('photo', photo);
+
     try {
-      const response = await createExercise(formData, user.token);
-      if (response) {
-        console.log('Exercise Added Successfully!!!');
-        setExerciseName('');
-        setExerciseDescription('');
-        setTypologyId('');
-        setMuscleGroupId('');
-        setPhoto(null); //
-        setEditing(false);
-      } else {
-        console.error('Failed to add an exercise');
-      }
+      const { data } = await createExercise(formData, user.token);
+
+      // Creamos un nuevo array de ejercicios en el que incluiremos el nuevo ejercicio.
+      const newExercises = [data.exercise, ...exercises];
+
+      // Actualizamos el array de ejercicios en el State.
+      setExercises(newExercises);
+
+      // Cerramos el modal.
+      setExercisesFormModal(false);
     } catch (error) {
       console.error('An error occurred', error);
     } finally {

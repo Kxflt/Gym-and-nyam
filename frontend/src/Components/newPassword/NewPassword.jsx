@@ -21,7 +21,6 @@ function NewPassword() {
     newPassword,
     confirmPassword,
   }) => {
-    console.log('Form submitted, calling editPassword...');
     setErrorText(null);
 
     // You can add your logic here to handle the form submission and password change.
@@ -32,7 +31,6 @@ function NewPassword() {
     } else {
       try {
         await editPassword(recoverPassCode, newPassword);
-        console.log('Password change API call successful');
       } catch (error) {
         // Handle errors if the API call fails.
         console.error('Error changing password:', error);
