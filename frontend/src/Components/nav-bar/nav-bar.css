@@ -10,7 +10,6 @@
 
 nav {
   background-color: green;
-
   position: sticky;
   top: 0;
   margin: 0;
@@ -19,9 +18,12 @@ nav {
 .menu {
   list-style: none;
   display: flex;
-  font-size: 24px;
+  font-size: 12px;
+  margin-top: 25px;
 }
-
+.Hi {
+  margin-top: 10px;
+}
 .menu li {
   margin-right: 10px;
 }
@@ -41,6 +43,7 @@ nav {
   position: relative;
   width: 40px;
   height: 40px;
+  margin-bottom: 10px;
 }
 
 .avatar {
@@ -48,4 +51,10 @@ nav {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+@media (min-width: 720px) {
+  .Hi {
+    margin-left: 70vw;
+  }
 }

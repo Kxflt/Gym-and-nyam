@@ -47,7 +47,7 @@ function NavBar() {
                 Log Out
               </NavLink>
             </li>
-            <li> Hi, {user.name} </li>
+            <li className="Hi"> Hi, {user.name} </li>
             <li className="avatar-container">
               <Avatar avatar={avatarImg} />
             </li>
