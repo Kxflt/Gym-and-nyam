@@ -1,27 +1,33 @@
-import React, { useEffect } from 'react';
+// Importamos las dependencias y los hooks.
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { validationService } from '../../services/authService';
-import Footer from '../../Components/Shared/Footer/Footer';
-import NavBar from '../../Components/nav-bar/NavBar';
+import { useAuth } from '../../context/AuthContext';
 
+// Importamos los estilos.
 import './validate.css';
 
 const ValidateUser = () => {
     const location = useLocation();
+    const { authValidateUser } = useAuth();
+
+    const [activationMessage, setActivationMessage] = useState('');
+
     const queryParams = new URLSearchParams(location.search); //busca el query string de la url
     const registrationCode = queryParams.get('registrationCode'); //recoge el query param concreto
 
-    useEffect(() => {
-        const fetchValidateUser = async () => {
-            const body = await validationService(registrationCode);
-        };
+    useEffect(async () => {
+        try {
+            await authValidateUser(registrationCode);
 
-        fetchValidateUser();
+            setActivationMessage('User activated! :)');
+        } catch (err) {
+            setActivationMessage('Activation failed! :(');
+        }
     }, []);
 
     return (
         <>
-            <h2>User Activated!!!</h2>
+            <h2>{activationMessage}!</h2>
         </>
     );
 };

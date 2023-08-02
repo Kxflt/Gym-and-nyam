@@ -1,165 +1,152 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  EMAIL_REGEX,
-  MAX_LENGTH_STRING,
-  MIN_LENGTH_STRING,
-  PASSWORD_REGEX,
-} from '../../utils/constants';
-import InputPassword from '../../Components/Shared/Input/inputPassword';
-import InputText from '../../Components/Shared/Input/InputText';
-import Button from '../../Components/Shared/Button/Button';
-import useNewUser from './useNewUser';
-import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
-import Footer from '../../Components/Shared/Footer/Footer';
+// Importamos las dependencias y los hooks.
+import React, { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
+// Importamos los componentes.
+import { NavLink, Navigate } from 'react-router-dom';
+import Button from '../../Components/Shared/Button/Button';
+import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
+
+// Importamos las contantes.
+import {
+    EMAIL_REGEX,
+    MAX_LENGTH_STRING,
+    MIN_LENGTH_STRING,
+    PASSWORD_REGEX,
+} from '../../utils/constants';
+
+// Importamos los estilos.
 import './newUser.css';
-import NavBar from '../../Components/nav-bar/NavBar';
 
 function NewUser() {
-  const navigate = useNavigate(); // Inicializa useNavigate
+    const { authUser, authRegister } = useAuth();
 
-  const {
-    state: { register, errors, passwordError, errorPopUp, formErrors },
-    actions: { handleSubmit, onSubmit, setErrorPopUp, setFormErrors },
-  } = useNewUser();
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+    const [gender, setGender] = useState('');
+    const [interest, setInterest] = useState('');
+    const [showErrorPopUp, setShowErrorPopUp] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-  const handleFormSubmit = async (data) => {
-    // Lógica para manejar el envío del formulario y redirección
-    const errors = await onSubmit(data);
+    // Si el usuario está logeado redirigimos a la página principal.
+    if (authUser) return <Navigate to="/" />;
 
-    setFormErrors(errors); // Set the form errors received from onSubmit
-    if (!errors) {
-      navigate('/login'); // Redirige a la ruta '/login' después de enviar el formulario
-    }
-  };
+    return (
+        <>
+            <div className="logo-container">
+                <img
+                    src="/original-multimedia/logo2.png"
+                    alt="logo"
+                    className="logo2"
+                />
+            </div>
 
-  return (
-    <>
-      <div className="contenedor-registro">
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <InputText
-            label="Name"
-            register={register('name', {
-              required: true,
-              maxLength: MAX_LENGTH_STRING,
-              minLength: MIN_LENGTH_STRING,
-            })}
-            errors={errors}
-            registerName="name"
-          />
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
 
-          <InputText
-            label="Surname"
-            register={register('surname', {
-              required: true,
-              maxLength: MAX_LENGTH_STRING,
-              minLength: MIN_LENGTH_STRING,
-            })}
-            errors={errors}
-            registerName="surname"
-          />
+                    authRegister({
+                        name,
+                        surname,
+                        email,
+                        gender,
+                        interest,
+                        password: pass,
+                    });
 
-          <InputText
-            label="Email"
-            register={register('email', {
-              required: true,
-              pattern: EMAIL_REGEX,
-            })}
-            errors={errors}
-            registerName="email"
-            errorMessage={
-              formErrors && formErrors.userExists
-                ? formErrors.userExists // Display the userExists error message from formErrors
-                : undefined
-            }
-            /* errorMessage={errors.email && errors.email.message} */
-          />
-          <div>
-            <label>Gender:</label>
-            <select {...register('gender', { required: true })}>
-              <option value="">--</option>
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
-              <option value="Other">Other</option>
-            </select>
-            {errors.gender?.type === 'required' && (
-              <span className="error">Field required</span>
-            )}
-          </div>
-          <div>
-            <label>Interest:</label>
-            <select {...register('interest', { required: true })}>
-              <option value="">--</option>
-              <option value="Cardio">Cardio</option>
-              <option value="Bodybuilding">Bodybuilding</option>
-              <option value="Unknown">N/A</option>
-            </select>
-            {errors.interest?.type === 'required' && (
-              <span className="error">Field required</span>
-            )}
-          </div>
+                    setErrorMessage('Pikachu');
+                }}
+            >
+                <label htmlFor="name">Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    // pattern={EMAIL_REGEX}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
 
-          <InputPassword
-            label="Password"
-            register={register('password', {
-              required: true,
-              minLength: 8,
-              maxLenght: 100,
-              pattern: PASSWORD_REGEX,
-            })}
-            errors={errors}
-            registerName="password"
-          />
+                <label htmlFor="surname">Surname:</label>
+                <input
+                    type="text"
+                    id="surname"
+                    // pattern={EMAIL_REGEX}
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
+                    required
+                />
 
-          <InputPassword
-            label="Repeat password"
-            register={register('repeat-password', {
-              required: true,
-              pattern: PASSWORD_REGEX,
-            })}
-            errors={errors}
-            registerName="repeat-password"
-          />
-          {formErrors && formErrors.userExists && (
-            <span className="error">{formErrors.userExists}</span>
-          )}
+                <label htmlFor="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    // pattern={EMAIL_REGEX}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-          {passwordError && (
-            <span className="error">Passwords don't match</span>
-          )}
+                <label htmlFor="pass">Password:</label>
+                <input
+                    type="password"
+                    id="pass"
+                    // pattern={PASSWORD_REGEX}
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                    required
+                />
 
-          <div className="terms-container">
-            <input
-              type="checkbox"
-              {...register('terms', {
-                required: true,
-              })}
+                <label htmlFor="gender">Gender:</label>
+                <select
+                    id="gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    required
+                >
+                    <option value="">--</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label htmlFor="interest">Interest:</label>
+                <select
+                    id="interest"
+                    value={interest}
+                    onChange={(e) => setInterest(e.target.value)}
+                    required
+                >
+                    <option value="">--</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Bodybuilding">Bodybuilding</option>
+                    <option value="Unknown">N/A</option>
+                </select>
+
+                <span className="error">{errorMessage}</span>
+
+                <Button text="REGISTER" />
+
+                <div className="help">
+                    <p>
+                        <NavLink to="/forgotPassword">Forgot Password</NavLink>
+                    </p>
+                    <p>
+                        <NavLink to="/users">Sing Up</NavLink>
+                    </p>
+                </div>
+            </form>
+
+            {/* No funciona */}
+            <ErrorPopUp
+                showErrorPopUp={showErrorPopUp}
+                setShowErrorPopUp={setShowErrorPopUp}
+                errorMessage={errorMessage}
             />
-            <label>Accept Terms and Conditions</label>
-          </div>
-          {errors.terms?.type === 'required' && (
-            <span className="error">Field required</span>
-          )}
-
-          <Button text="REGISTER" />
-        </form>
-      </div>
-      <ErrorPopUp
-        open={errorPopUp}
-        onClose={() => setErrorPopUp(false)}
-        errorMessage={
-          formErrors
-            ? formErrors.userExists
-              ? 'Email is already registed'
-              : formErrors.serverError
-              ? 'Error registering user'
-              : ''
-            : ''
-        }
-      />
-    </>
-  );
+        </>
+    );
 }
 
 export default NewUser;

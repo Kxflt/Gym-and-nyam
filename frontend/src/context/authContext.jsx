@@ -24,7 +24,7 @@ const AuthContext = createContext();
 
 // Creamos y exportamos el componente Provider.
 export function AuthProvider({ children }) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [authToken, setAuthToken] = useState(
         localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY)
@@ -41,15 +41,15 @@ export function AuthProvider({ children }) {
                 const body = await getPrivateUserProfileService();
 
                 setAuthUser(body.data.user);
-            } catch (error) {
+            } catch (err) {
                 alert(err.message);
             } finally {
                 setLoading(false);
             }
         };
 
-        if (authToken) fetchUser;
-    });
+        if (authToken) fetchUser();
+    }, [authToken]);
 
     // Función que registra a un usuario en la base de datos.
     const authRegister = async (data) => {
@@ -70,7 +70,7 @@ export function AuthProvider({ children }) {
             );
 
             // Si todo ha ido bien redirijo a login.
-            // navigate('/login');
+            navigate('/login');
         } catch (err) {
             alert(err.message);
         } finally {
@@ -80,15 +80,18 @@ export function AuthProvider({ children }) {
 
     // Función que logea a un usuario almacenando el token en el Stage. No es necesario almacenar el token en el
     // localStorage ya que hemos configurado un interceptor que lo hace por nosotros.
-    const authLogin = async (email, password) => {
+    const authLogin = async (email, pass) => {
         try {
             setLoading(true);
 
             //Llamamos al servicio.
-            const body = await loginService(email, password);
+            const body = await loginService(email, pass);
 
             // Guardamos el usuario en el State.
             setAuthToken(body.data.token);
+
+            // Redirigimos a la página principal.
+            navigate('/');
         } catch (err) {
             alert(err.message);
         } finally {
@@ -104,9 +107,22 @@ export function AuthProvider({ children }) {
     };
 
     // Función que actualiza el avatar del usuario en la base de datos y en el State.
-    const authUpdateAvatar = async (formData, config) => {
+    const authUpdateAvatar = async (avatar) => {
         try {
             setLoading(true);
+
+            // Creamos un objeto de formData vacío
+            const formData = new FormData();
+
+            // Añadimos uno a uno los campos que necesitamos en backend
+            formData.append('avatar', avatar);
+
+            // Agregamos el header para enviar form-data.
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
 
             // Llamamos al servicio del registro de avatar.
             const body = await signUpAvatarService(formData, config);
@@ -115,7 +131,7 @@ export function AuthProvider({ children }) {
             // el nombre que le asigna el backend a este avatar.
             setAuthUser({
                 ...authUser,
-                avatar: body.data.avatar,
+                avatar: body.data.avatar.name,
             });
         } catch (err) {
             alert(err.message);
@@ -141,7 +157,7 @@ export function AuthProvider({ children }) {
 
             // Agregamos el header para enviar form-data.
             const config = {
-                header: {
+                headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             };
@@ -171,7 +187,7 @@ export function AuthProvider({ children }) {
             await validationService(registrationCode);
 
             // Tras validar redireccionamos a login.
-            // navigate('/login');
+            navigate('/login');
         } catch (err) {
             alert(err.message);
         } finally {

@@ -7,6 +7,7 @@ import './editProfile.css';
 const EditProfile = ({
     authUser,
     authUpdateUser,
+    authUpdateAvatar,
     loading,
     setEditProfileModal,
 }) => {
@@ -19,66 +20,87 @@ const EditProfile = ({
 
     return (
         <>
-            <p>
-                <strong>Name:</strong>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </p>
-            <p>
-                <strong>Surname:</strong>
-                <input
-                    type="text"
-                    value={surname}
-                    onChange={(e) => setSurname(e.target.value)}
-                />
-            </p>
-            <p>
-                <strong>Email:</strong>
-                <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </p>
-            <p>
-                <strong>Gender:</strong>
-                <select
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                >
-                    <option value="">--</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-            </p>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    authUpdateAvatar(avatar);
+                    setEditProfileModal(false);
+                }}
+            >
+                <p>
+                    <strong>Avatar:</strong>
+                    <input
+                        type="file"
+                        onChange={(e) => setAvatar(e.target.files[0])}
+                        required
+                    />
+                </p>
 
-            <p>
-                <strong>Interest:</strong>
-                <select
-                    value={interest}
-                    onChange={(e) => setInterest(e.target.value)}
-                >
-                    <option value="">--</option>
-                    <option value="Cardio">Cardio</option>
-                    <option value="Bodybuilding">Bodybuilding</option>
-                    <option value="Unknown">N/A</option>
-                </select>
-            </p>
-
-            <button
-                className="button-edit"
-                onClick={() => {
+                <button className="button-edit" disabled={loading}>
+                    UPDATE AVATAR
+                </button>
+            </form>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
                     authUpdateUser({ name, surname, gender, email, interest });
                     setEditProfileModal(false);
                 }}
-                disabled={loading}
             >
-                SAVE
-            </button>
+                <p>
+                    <strong>Name:</strong>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </p>
+                <p>
+                    <strong>Surname:</strong>
+                    <input
+                        type="text"
+                        value={surname}
+                        onChange={(e) => setSurname(e.target.value)}
+                    />
+                </p>
+                <p>
+                    <strong>Email:</strong>
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </p>
+                <p>
+                    <strong>Gender:</strong>
+                    <select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                    >
+                        <option value="">--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </p>
+
+                <p>
+                    <strong>Interest:</strong>
+                    <select
+                        value={interest}
+                        onChange={(e) => setInterest(e.target.value)}
+                    >
+                        <option value="">--</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Bodybuilding">Bodybuilding</option>
+                        <option value="Unknown">N/A</option>
+                    </select>
+                </p>
+
+                <button className="button-edit" disabled={loading}>
+                    SAVE
+                </button>
+            </form>
         </>
     );
 };
