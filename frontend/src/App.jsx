@@ -11,7 +11,7 @@ import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
 import ExerciseList from './Pages/exercises/ExeciseList_2';
 import Footer from './Components/Shared/Footer/Footer';
-
+import AboutUs from './Pages/aboutUs/AboutUs';
 import './App.css';
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
           <Route path="/account" element={<Profile />} />
           <Route path="/validate" element={<ValidateUser />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
         </Routes>
         <Footer />
       </div>
