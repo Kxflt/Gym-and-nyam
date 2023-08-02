@@ -1,95 +1,94 @@
-import React, { useState, useEffect } from 'react';
+// Importamos las dependencias y los hooks.
+import React, { useState } from 'react';
+
+// Importamos los estilos.
 import './editProfile.css';
 
-const EditProfile = ({ user, updateUser, setEditing }) => {
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [surname, setSurname] = useState(user.surname);
-  const [gender, setGender] = useState(user.gender);
-  const [interest, setInterest] = useState(user.interest);
-  const [avatar, setAvatar] = useState(user.avatar);
-  const [loading, setLoading] = useState(false);
+const EditProfile = ({
+    authUser,
+    authUpdateUser,
+    loading,
+    setEditProfileModal,
+}) => {
+    const [name, setName] = useState(authUser.name);
+    const [email, setEmail] = useState(authUser.email);
+    const [surname, setSurname] = useState(authUser.surname);
+    const [gender, setGender] = useState(authUser.gender);
+    const [interest, setInterest] = useState(authUser.interest);
+    const [avatar, setAvatar] = useState(null);
 
-  const handleOnSave = async () => {
-    try {
-      // Deshabilitamos el botón de enviar mientras se está procesando la petición.
-      setLoading(true);
+    return (
+        <>
+            <p>
+                <strong>Name:</strong>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </p>
+            <p>
+                <strong>Surname:</strong>
+                <input
+                    type="text"
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
+                />
+            </p>
+            <p>
+                <strong>Email:</strong>
+                <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </p>
+            <p>
+                <strong>Gender:</strong>
+                <select
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                >
+                    <option value="">--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </p>
 
-      // Creamos un objecto de tipo FormData.
-      const formData = new FormData();
+            <p>
+                <strong>Interest:</strong>
+                <select
+                    value={interest}
+                    onChange={(e) => setInterest(e.target.value)}
+                >
+                    <option value="">--</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Bodybuilding">Bodybuilding</option>
+                    <option value="Unknown">N/A</option>
+                </select>
+            </p>
 
-      // Añadimos al FormData anterior los campos que vamos a enviar al backend.
-      formData.append('name', name);
-      formData.append('surname', surname);
-      formData.append('email', email);
-      formData.append('avatar', avatar);
-      formData.append('gender', gender);
-      formData.append('interest', interest);
+            <button
+                className="button-edit"
+                onClick={() => {
+                    authUpdateUser({ name, surname, gender, email, interest });
+                    setEditProfileModal(false);
+                }}
+                disabled={loading}
+            >
+                SAVE
+            </button>
+        </>
+    );
+};
 
-      await updateUser(formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: user.token,
-        },
-      });
+export default EditProfile;
 
-      // Si todo ha ido bien establecemos setEditing a false para volver a mostrar la información del usuario.
-      setEditing(false);
-    } catch (error) {
-      console.error('Error al actualizar los datos del usuario:', error);
-    } finally {
-      // Habilitamos el botón de enviar.
-      setLoading(false);
-    }
-  };
+/* 
 
-  return (
-    <>
-      <p>
-        <strong>Name:</strong>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </p>
-      <p>
-        <strong>Surname:</strong>
-        <input
-          type="text"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-        />
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </p>
-      <p>
-        <strong>Gender:</strong>
-        <select value={gender} onChange={(e) => setGender(e.target.value)}>
-          <option value="">--</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-      </p>
 
-      <p>
-        <strong>Interest:</strong>
-        <select value={interest} onChange={(e) => setInterest(e.target.value)}>
-          <option value="">--</option>
-          <option value="Cardio">Cardio</option>
-          <option value="Bodybuilding">Bodybuilding</option>
-          <option value="Unknown">N/A</option>
-        </select>
-      </p>
-
-      <p>
+<p>
         <strong>Avatar:</strong>
         <input
           type="file"
@@ -97,15 +96,4 @@ const EditProfile = ({ user, updateUser, setEditing }) => {
           onChange={(e) => setAvatar(e.target.files[0])}
         />
       </p>
-      <button
-        className="button-edit"
-        onClick={() => handleOnSave()}
-        disabled={loading}
-      >
-        SAVE
-      </button>
-    </>
-  );
-};
-
-export default EditProfile;
+*/

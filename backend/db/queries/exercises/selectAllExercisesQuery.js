@@ -36,13 +36,15 @@ const selectAllExercisesQuery = async ({
             BIT_OR(IFNULL(L.userId = ?, 0)) AS likedByMe,
             E.createdAt
         FROM exercises E
-        INNER JOIN likes L ON L.exerciseId = E.id
+        LEFT JOIN likes L ON L.exerciseId = E.id
         ${whereClause}
         GROUP BY E.id
         ORDER BY E.createdAt ${date};`,
       //...y filtramos según los tres campos especificados.
       [userId, userId, `%${keyword}%`]
     );
+
+    console.log(exercises);
 
     // Convertimos el tipo de dato de algunas columnas.
     for (const exercise of exercises) {

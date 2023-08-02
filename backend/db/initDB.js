@@ -120,6 +120,7 @@ const main = async () => {
       `INSERT INTO muscleGroups (name, createdAt) VALUES('Biceps' ,?)`,
       [new Date()]
     );
+
     await connection.query(
       `INSERT INTO muscleGroups (name, createdAt) VALUES('Triceps' ,?)`,
       [new Date()]
@@ -129,10 +130,12 @@ const main = async () => {
       `INSERT INTO muscleGroups (name, createdAt) VALUES('Forearm' ,?)`,
       [new Date()]
     );
+
     await connection.query(
       `INSERT INTO muscleGroups (name, createdAt) VALUES('Shoulders' ,?)`,
       [new Date()]
     );
+
     await connection.query(
       `INSERT INTO muscleGroups (name, createdAt) VALUES('Back' ,?)`,
       [new Date()]
@@ -158,29 +161,43 @@ const main = async () => {
       `INSERT INTO typologys (name, createdAt) VALUES('Bodubuilding' ,?)`,
       [new Date()]
     );
+
     await connection.query(
       `INSERT INTO typologys (name, createdAt) VALUES('Cardio' ,?)`,
       [new Date()]
     );
+
     // Insertar ejercicios base musculación.
     await connection.query(
-      `INSERT INTO exercises (id, name, description, photo, userId, typologyId, muscleGroupId, createdAt) VALUES(1, 'Curl con barra', 'Para ejecutarlo tomamos la barra, pegamos los codos a los costados de nuestro cuerpo y tiramos los codos hacia atrás y debemos subir el peso y bajarlo lentamente hasta estirar el brazo completamente.', 'ruta_de_la_foto', 1, 1, 1, ?)`,
+      `
+        INSERT INTO exercises (id, name, description, userId, typologyId, muscleGroupId, createdAt)
+        VALUES(1, 'Curl con barra', 'Para ejecutarlo tomamos la barra, pegamos los codos a los costados de nuestro cuerpo y tiramos los codos hacia atrás y debemos subir el peso y bajarlo lentamente hasta estirar el brazo completamente.',  1, 1, 1, ?)
+      `,
       [new Date()]
     );
 
     await connection.query(
-      `INSERT INTO exercises (id, name, description, photo, userId, typologyId, muscleGroupId, createdAt) VALUES(2, 'Curl Martillo con mancuerna', 'Colócate de pie, con las rodillas ligeramente flexionadas y coge una mancuerna en cada mano, mantén la espalda recta y los brazos deben estar extendidos a lo largo de los costados.', 'ruta_de_la_foto', 1, 2, 2, ?)`,
+      `
+        INSERT INTO exercises (id, name, description, userId, typologyId, muscleGroupId, createdAt) 
+        VALUES(2, 'Curl Martillo con mancuerna', 'Colócate de pie, con las rodillas ligeramente flexionadas y coge una mancuerna en cada mano, mantén la espalda recta y los brazos deben estar extendidos a lo largo de los costados.',  1, 2, 2, ?)
+      `,
       [new Date()]
     );
 
     //Insertar ejercicios base Cardio.
     await connection.query(
-      `INSERT INTO exercises (id, name, description, photo, userId, typologyId, muscleGroupId, createdAt) VALUES(3, 'Elíptica', 'Consta de dos pedales sobre los que se marcha y de dos barras verticales que se cogen con las manos para ayudar al movimiento de impulsión de las piernas y se hace más fácil el ejercicio.', 'ruta_de_la_foto', 1, 1, 1, ?)`,
+      `
+        INSERT INTO exercises (id, name, description, userId, typologyId, muscleGroupId, createdAt) 
+        VALUES(3, 'Elíptica', 'Consta de dos pedales sobre los que se marcha y de dos barras verticales que se cogen con las manos para ayudar al movimiento de impulsión de las piernas y se hace más fácil el ejercicio.',  1, 1, 1, ?)
+      `,
       [new Date()]
     );
 
     await connection.query(
-      `INSERT INTO exercises (id, name, description, photo, userId, typologyId, muscleGroupId, createdAt) VALUES(4, 'Cinta de correr', 'máquina para entrenamiento físico que puede funcionar mediante propulsión eléctrica o manual, y que sirve para correr o andar sin moverse de un mismo sitio.', 'ruta_de_la_foto', 1, 2, 3, ?)`,
+      `
+        INSERT INTO exercises (id, name, description, userId, typologyId, muscleGroupId, createdAt) 
+        VALUES(4, 'Cinta de correr', 'máquina para entrenamiento físico que puede funcionar mediante propulsión eléctrica o manual, y que sirve para correr o andar sin moverse de un mismo sitio.',  1, 2, 3, ?)
+      `,
       [new Date()]
     );
   } catch (err) {

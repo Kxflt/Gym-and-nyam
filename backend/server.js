@@ -66,10 +66,10 @@ app.put('/users/validate/:regCode', validateUser);
 //Login del usuario.
 app.post('/users/login', loginUser);
 
-//Mostrar información de un usuario según su id.
+//Mostrar información pública de un usuario según su id. NO ES NECESARIO.
 app.get('/users/:userId', getUser);
 
-//Permitir que un usuario logueado vea información sobre su propio usuario.
+//Mostrar información privada de un usuario según el id del token.
 app.get('/users', authUser, userExists, getOwnUser);
 
 //Permite que un usario logueado modifique sus datos.
@@ -110,6 +110,9 @@ const {
 app.post('/exercises', authUser, userExists, isAdmin, newExercises);
 //mejor singular.
 
+//Listar y filtrar ejercicios.
+app.get('/exercises', authUser, listExercises);
+
 //Obtener información de un ejercicio en concreto.
 app.get('/exercises/:id', authUser, getExercise);
 
@@ -118,9 +121,6 @@ app.put('/exercises/:id', authUser, isAdmin, exerciseExists, modifyExercise);
 
 //Eliminar ejercicio.
 app.delete('/exercises/:id', authUser, isAdmin, exerciseExists, deleteExercise);
-
-//Listar y filtrar ejercicios.
-app.get('/exercises', authUser, listExercises);
 
 /**
  * ##################################

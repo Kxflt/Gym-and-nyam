@@ -1,85 +1,93 @@
-import axios from 'axios';
+import { axiosInstance } from './axiosInstance';
 
-export const login = (email, password) => {
-  return axios.post('http://localhost:8000/users/login', {
-    email,
-    password,
-  });
-};
-
-/* export const confirmValidateCode = (registrationCode) => {
-  return (
-    axios.get('http://localhost:8000/users/validate/:regCode'),
-    {
-      registrationCode,
-    }
-  );
-}; */
-
-export const validation = async (registrationCode) => {
-  try {
-    return await axios.put(
-      `http://localhost:8000/users/validate/${registrationCode}`
-    );
-  } catch (error) {
-    console.log(error.response.data);
-  }
-};
-
-export const newUser = ({
-  name,
-  surname,
-  email,
-  password,
-  gender,
-  interest,
-}) => {
-  return axios.post('http://localhost:8000/users', {
+// Registro de usuario.
+export const registerService = async ({
     name,
     surname,
     email,
     password,
     gender,
     interest,
-  });
+}) => {
+    await axiosInstance.post('/users', {
+        name,
+        surname,
+        email,
+        password,
+        gender,
+        interest,
+    });
 };
 
-export const signUpAvatar = (formData, config) => {
+// Login de usuario.
+export const loginService = async (email, password) => {
+    const res = await axiosInstance.post('/users/login', {
+        email,
+        password,
+    });
+
+    return res.data;
+};
+
+/* export const confirmValidateCode = (registrationCode) => {
   return (
-    axios.post('http://localhost:8000/users'),
+    axiosInstance.get('/users/validate/:regCode'),
     {
-      formData,
-      config,
+      registrationCode,
     }
   );
+}; */
+
+// Validación de usuario.
+export const validationService = async (registrationCode) => {
+    await axiosInstance.put(`/users/validate/${registrationCode}`);
+};
+
+// Obtener perfil privado del usuario.
+export const getPrivateUserProfileService = async () => {
+    const res = await axiosInstance.get('/users');
+
+    return res.data;
+};
+
+// Actualización de avatar de usuario.
+export const signUpAvatarService = async (formData, config) => {
+    const res = await axiosInstance.post('/users', {
+        formData,
+        config,
+    });
+
+    return res.data;
 };
 
 /* export const sendRecoverPass = (recoverPassCode) => {
   return (
-    axios.put('http://localhost:8000/users/password/recover'),
+    axiosInstance.put('/users/password/recover'),
     {
       recoverPassCode,
     }
     ); 
   }; */
 
-export const sendRecoverPass = (email, recoverPassCode) => {
-  return axios.put('http://localhost:8000/users/password/recover', {
-    email,
-    recoverPassCode,
-  });
+// Enviar correo de recuperación de contraseña a un usuario.
+export const sendRecoverPassService = async (email, recoverPassCode) => {
+    await axiosInstance.put('/users/password/recover', {
+        email,
+        recoverPassCode,
+    });
 };
 
-export const editPassword = (recoverPassCode, newPass) => {
-  console.log('calling API.');
-  return axios.put('http://localhost:8000/users/password/recover/change', {
-    recoverPassCode,
-    newPass,
-  });
+// Recuperar contraseña utilizando el código de recuperación.
+export const editPassword = async (recoverPassCode, newPass) => {
+    await axiosInstance.put('/users/password/recover/change', {
+        recoverPassCode,
+        newPass,
+    });
 };
 
+// Actualización general del usuario.
 export const updateUserService = async (formData, config) => {
-  const res = await axios.put('http://localhost:8000/users', formData, config);
+    const res = await axiosInstance.put('/users', formData, config);
 
-  return res;
+    return res.data;
 };

@@ -8,4 +8,4 @@ export const MAX_LENGTH_STRING = 100;
 
 export const MIN_LENGTH_STRING = 3;
 
-export const CURRENT_USER_LOCAL_STORAGE = 'user';
+export const TOKEN_LOCAL_STORAGE_KEY = 'authToken';

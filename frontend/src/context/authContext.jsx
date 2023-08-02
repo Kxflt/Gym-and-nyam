@@ -1,159 +1,204 @@
+// Importamos las dependencias y los hooks.
 import React, { useContext, createContext, useState, useEffect } from 'react';
-import ValidateUser from '../Pages/validate/ValidateUser';
+import { useNavigate } from 'react-router-dom';
 
+// Importamos los servicios del usuario.
 import {
-  login,
-  newUser,
-  signUpAvatar,
-  updateUserService,
+    loginService,
+    registerService,
+    getPrivateUserProfileService,
+    signUpAvatarService,
+    updateUserService,
+    validationService,
 } from '../services/authService';
 
-import { modifyExercise } from '../services/exerciseService';
+// Importamos la constante con el nombre del token.
+import { TOKEN_LOCAL_STORAGE_KEY } from '../utils/constants';
 
 //________________________________________
 //TODO LO QUE METAMOS AQUI SERAN LAS FUNCIONES QUE LLAMAREMOS DESPUES EN LOS JSX , Como sera en Login.jsx como ejemplo
 //________________________________________
 
+// Creamos el contexto.
 const AuthContext = createContext();
 
+// Creamos y exportamos el componente Provider.
 export function AuthProvider({ children }) {
-  // Variable para guardará los datos del usuario.
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || null
-  );
+    // const navigate = useNavigate();
 
-  // Loguearse.
-  const signIn = async (email, password) => {
-    try {
-      //Llamamos al servicio.
-      const body = await login(email, password);
+    const [authToken, setAuthToken] = useState(
+        localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY)
+    );
+    const [authUser, setAuthUser] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-      // Guardamos el usuario en el localStorage.
-      localStorage.setItem('user', JSON.stringify(body.data.data));
+    // Si existe un token en el localStorage tratamos de obtener los datos del usuario.
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                setLoading(true);
 
-      // Guardamos el usuario en el State.
-      setUser(body.data.data);
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+                const body = await getPrivateUserProfileService();
 
-  //Registrarse
-  const registerUser = async (data) => {
-    try {
-      // Llamamos al servicio.
-      const body = await newUser(
-        {
-          name: data.name,
-          surname: data.surname,
-          email: data.email,
-          gender: data.gender,
-          interest: data.interest,
-          password: data.password,
+                setAuthUser(body.data.user);
+            } catch (error) {
+                alert(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (authToken) fetchUser;
+    });
+
+    // Función que registra a un usuario en la base de datos.
+    const authRegister = async (data) => {
+        try {
+            setLoading(true);
+
+            // Llamamos al servicio.
+            await registerService(
+                {
+                    name: data.name,
+                    surname: data.surname,
+                    email: data.email,
+                    gender: data.gender,
+                    interest: data.interest,
+                    password: data.password,
+                }
+                //SI MODIFICAMOS EL BACKEND DEBEREMOS METER AQUI EL RESTO DE COSAS QUE NECESITAMOS PARA QUE SE REGISTREN
+            );
+
+            // Si todo ha ido bien redirijo a login.
+            // navigate('/login');
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            setLoading(false);
         }
-        //SI MODIFICAMOS EL BACKEND DEBEREMOS METER AQUI EL RESTO DE COSAS QUE NECESITAMOS PARA QUE SE REGISTREN
-      );
+    };
 
-      // Guardamos el usuario en el State.
-      setUser(body.data.user);
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+    // Función que logea a un usuario almacenando el token en el Stage. No es necesario almacenar el token en el
+    // localStorage ya que hemos configurado un interceptor que lo hace por nosotros.
+    const authLogin = async (email, password) => {
+        try {
+            setLoading(true);
 
-  const registerUserAvatar = async (formData, config) => {
-    try {
-      // Llamamos al servicio del registro.
-      const body = await signUpAvatar(formData, config);
+            //Llamamos al servicio.
+            const body = await loginService(email, password);
 
-      // Actualizamos el avatar del usuario. Para esto sería bueno que el endpoint de editar avatar retornara
-      // el nombre que le asigna el backend a este avatar.
-      setUser({
-        ...user,
-        avatar: 'elNuevoNombreDeAvatar.jpg',
-      });
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+            // Guardamos el usuario en el State.
+            setAuthToken(body.data.token);
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  // Deslogueo.
-  const logOut = () => {
-    // Eliminamos el user del localStorage.
-    localStorage.removeItem('user');
+    // Función que elimina el token del State y del localStorage. También elimina el usuario.
+    const authLogout = () => {
+        localStorage.removeItem(TOKEN_LOCAL_STORAGE_KEY);
+        setAuthToken(null);
+        setAuthUser(null);
+    };
 
-    // Eliminamos el usuario
-    setUser(null);
-  };
+    // Función que actualiza el avatar del usuario en la base de datos y en el State.
+    const authUpdateAvatar = async (formData, config) => {
+        try {
+            setLoading(true);
 
-  // Actualizar usuario.
-  const updateUser = async (formData, config) => {
-    try {
-      const body = await updateUserService(formData, config);
+            // Llamamos al servicio del registro de avatar.
+            const body = await signUpAvatarService(formData, config);
 
-      // Creamos un objeto con los nuevos datos del usuario.
-      const newUserData = {
-        ...user,
-        ...body.data.data.user,
-      };
+            // Actualizamos el avatar del usuario. Para esto sería bueno que el endpoint de editar avatar retornara
+            // el nombre que le asigna el backend a este avatar.
+            setAuthUser({
+                ...authUser,
+                avatar: body.data.avatar,
+            });
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-      // Actualizamos los datos del usuario en el State.
-      setUser(newUserData);
+    // Función que actualiza varios datos del usuario en labase de datos y en el State.
+    const authUpdateUser = async (data) => {
+        try {
+            setLoading(true);
 
-      // Actualizamos los datos del usuario en el localStorage.
-      localStorage.setItem('user', JSON.stringify(newUserData));
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+            // Creamos un objeto de formData vacío
+            const formData = new FormData();
 
-  const validateUserCode = async (registrationCode) => {
-    try {
-      const response = await ValidateUser(registrationCode);
-      setUser(response.data.user);
-    } catch (error) {
-      console.error('Error al validar el código de registro:', error);
-    }
-  };
+            // Añadimos uno a uno los campos que necesitamos en backend
+            formData.append('name', data.name);
+            formData.append('surname', data.surname);
+            formData.append('gender', data.gender);
+            formData.append('email', data.email);
+            formData.append('interest', data.interest);
 
-  const updateExercise = async (formData, config) => {
-    try {
-      const updatedExercise = await modifyExercise(formData, config); // Replace with your exercise update function (e.g., modifyExercise)
+            // Agregamos el header para enviar form-data.
+            const config = {
+                header: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
 
-      // Do any necessary data manipulation or validation with the updated exercise if needed
+            const body = await updateUserService(formData, config);
 
-      // Update the exercise data in the local state
-      setExercise(updatedExercise);
+            // Creamos un objeto con los nuevos datos del usuario.
+            const newUserData = {
+                ...authUser,
+                ...body.data.user,
+            };
 
-      // Optionally, update the exercise data in the local storage
-      localStorage.setItem('exercise', JSON.stringify(updatedExercise));
+            // Actualizamos los datos del usuario en el State.
+            setAuthUser(newUserData);
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-      // Return the updated exercise data if needed
-      return updatedExercise;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+    // Función que valida a un usuario en la base de datos.
+    const authValidateUser = async (registrationCode) => {
+        try {
+            setLoading(true);
 
-  // Todo lo que pongamos en la prop value van a ser los datos accesibles
-  return (
-    <AuthContext.Provider
-      value={{
-        signIn,
-        registerUser,
-        logOut,
-        user,
-        registerUserAvatar,
-        updateUser,
-        validateUserCode,
-        updateExercise,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+            await validationService(registrationCode);
+
+            // Tras validar redireccionamos a login.
+            // navigate('/login');
+        } catch (err) {
+            alert(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Todo lo que pongamos en la prop value van a ser los datos accesibles
+    return (
+        <AuthContext.Provider
+            value={{
+                authToken,
+                authUser,
+                authRegister,
+                authLogin,
+                authLogout,
+                authUpdateAvatar,
+                authUpdateUser,
+                authValidateUser,
+                loading,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+    return useContext(AuthContext);
 }
