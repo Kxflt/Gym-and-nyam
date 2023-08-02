@@ -1,18 +1,14 @@
-import axios from 'axios';
-// Crear ejercicio (administrador)
+import { axiosInstance } from './axiosInstance';
+
 // Crear ejercicio (administrador)
 export const createExercise = async (formData, token) => {
   try {
-    const response = await axios.post(
-      'http://localhost:8000/exercises',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: token,
-        },
-      }
-    );
+    const response = await axiosInstance.post('/exercises', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: token,
+      },
+    });
     return response.data;
   } catch (error) {
     throw error; // Handle errors
@@ -24,9 +20,9 @@ export const likeExerciseService = async (id, likedByMe, token) => {
   const method = likedByMe ? 'delete' : 'post';
 
   try {
-    const response = await axios({
+    const response = await axiosInstance({
       method, // Pass the method here
-      url: `http://localhost:8000/exercises/${id}/likes`, // Correctly construct the URL
+      url: `/exercises/${id}/likes`, // Correctly construct the URL
       headers: {
         Authorization: token,
       },
@@ -49,16 +45,12 @@ export const likeExerciseService = async (id, likedByMe, token) => {
 
 export const modifyExercise = async (id, formData, token) => {
   try {
-    const response = await axios.put(
-      `http://localhost:8000/exercises/${id}`,
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: token,
-        },
-      }
-    );
+    const response = await axiosInstance.put(`/exercises/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: token,
+      },
+    });
     return response.data;
   } catch (error) {
     throw error;
@@ -73,7 +65,7 @@ export const listExercises = (
   muscleGroupId
 ) => {
   return (
-    axios.get('http://localhost:8000/exercises/:id'),
+    axiosInstance.get('/exercises/:id'),
     {
       name,
       description,
@@ -86,15 +78,12 @@ export const listExercises = (
 
 export const deleteExercise = async (id, token) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:8000/exercises/${id}`,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: token,
-        },
-      }
-    );
+    const response = await axiosInstance.delete(`/exercises/${id}`, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: token,
+      },
+    });
     return response.data;
   } catch (error) {
     throw error;

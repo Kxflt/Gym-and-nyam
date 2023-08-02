@@ -5,6 +5,7 @@ const newExercises = async (req, res, next) => {
   try {
     //Destructuring del body del request.
     const { name, description, typologyId, muscleGroupId } = req.body;
+
     //Si el admin no incluye alguno de los campos necesarios, lanzamos un error.
     if (!name || !description || !typologyId || !muscleGroupId) {
       generateError('Faltan campos para publicar el ejercicio.', 400);
@@ -12,6 +13,7 @@ const newExercises = async (req, res, next) => {
 
     //Creamos una variable que almacenará la foto.
     let photo;
+
     //Si hay una foto...
     if (req.files?.photo) {
       //...la guardamos y le asignamos un nombre con la función "savePhoto".

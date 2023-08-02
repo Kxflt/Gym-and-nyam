@@ -4,8 +4,9 @@ import { useAuth } from '../../context/authContext';
 import NavBar from '../../Components/nav-bar/NavBar';
 
 function editProfile() {
-  const { updateProfile, user } = useAuth();
+  const { updateProfile, user, registerUserAvatar } = useAuth();
   const [errorPopUp, setErrorPopUp] = useState(false);
+
   // Variable de estado para previsualizar la foto seleccionada
   const [avatarImg, setAvatarImg] = useState(user?.avatar_url);
   const {
@@ -50,10 +51,11 @@ function editProfile() {
     }
   };
 
-  const handleOnChangeAvatar = (e) => {
+  const handleOnChangeAvatar = async (e) => {
     const target = e.target.files[0];
     const url = URL.createObjectURL(target);
     setAvatarImg(url);
+    updateUse;
   };
 
   return {

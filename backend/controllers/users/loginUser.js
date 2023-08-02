@@ -44,14 +44,6 @@ const loginUser = async (req, res, next) => {
       status: 'ok',
       data: {
         token,
-        name: user.name,
-        surname: user.surname,
-        gender: user.gender,
-        interest: user.interest,
-        email: user.email,
-        avatar: user.avatar,
-        role: user.role,
-        id: user.id,
       },
     });
   } catch (err) {
