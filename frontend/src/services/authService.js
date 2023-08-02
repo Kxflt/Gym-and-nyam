@@ -52,10 +52,7 @@ export const getPrivateUserProfileService = async () => {
 
 // Actualización de avatar de usuario.
 export const signUpAvatarService = async (formData, config) => {
-    const res = await axiosInstance.post('/users', {
-        formData,
-        config,
-    });
+    const res = await axiosInstance.put('/users/avatar', formData, config);
 
     return res.data;
 };
