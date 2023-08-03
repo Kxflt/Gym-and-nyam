@@ -15,14 +15,17 @@ const ValidateUser = () => {
     const queryParams = new URLSearchParams(location.search); //busca el query string de la url
     const registrationCode = queryParams.get('registrationCode'); //recoge el query param concreto
 
-    useEffect(async () => {
-        try {
-            await authValidateUser(registrationCode);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await authValidateUser(registrationCode);
+                setActivationMessage('User activated! :)');
+            } catch (err) {
+                setActivationMessage('Activation failed! :(');
+            }
+        };
 
-            setActivationMessage('User activated! :)');
-        } catch (err) {
-            setActivationMessage('Activation failed! :(');
-        }
+        fetchData();
     }, []);
 
     return (
