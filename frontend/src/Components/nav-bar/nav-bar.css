@@ -1,60 +1,60 @@
 .header-container {
-  position: sticky;
-  display: flex;
-  height: 50px;
-  align-items: center;
-  gap: 32px;
-  justify-content: space-between;
-  margin: 0;
+    position: sticky;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 32px;
+    justify-content: space-between;
+    margin: 0;
 }
 
 nav {
-  background-color: green;
-  position: sticky;
-  top: 0;
-  margin: 0;
+    background-color: green;
+    position: sticky;
+    top: 0;
+    margin: 0;
 }
 
 .menu {
-  list-style: none;
-  display: flex;
-  font-size: 12px;
-  margin-top: 25px;
+    list-style: none;
+    display: flex;
+    font-size: 12px;
+    margin-top: 5px;
 }
 .Hi {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 .menu li {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .menu li a {
-  align-content: space-around;
-  color: white;
-  text-decoration: none;
+    align-content: space-around;
+    color: white;
+    text-decoration: none;
 }
 
 .menu li a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* Avatar*/
 .avatar-container {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
 }
 
 .avatar {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 @media (min-width: 720px) {
-  .Hi {
-    margin-left: 70vw;
-  }
+    .Hi {
+        margin-left: 70vw;
+    }
 }
