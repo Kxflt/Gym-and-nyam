@@ -15,25 +15,28 @@ import AboutUs from './Pages/aboutUs/AboutUs';
 import './App.css';
 
 function App() {
-  return (
-    <>
-      <div className="app">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/exercises" element={<ExerciseList />} />
-          <Route path="/users" element={<NewUser />} />
-          <Route path="/account" element={<Profile />} />
-          <Route path="/validate" element={<ValidateUser />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-        </Routes>
-        <Footer />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="app">
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route
+                        path="/forgotPassword"
+                        element={<ForgotPassword />}
+                    />
+                    <Route path="/exercises" element={<ExerciseList />} />
+                    <Route path="/users" element={<NewUser />} />
+                    <Route path="/account" element={<Profile />} />
+                    <Route path="/validate" element={<ValidateUser />} />
+                    <Route path="/aboutUs" element={<AboutUs />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+                <Footer />
+            </div>
+        </>
+    );
 }
 
 export default App;
