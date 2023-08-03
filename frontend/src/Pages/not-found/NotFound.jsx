@@ -5,14 +5,14 @@ import NavBar from '../../Components/nav-bar/NavBar';
 import Footer from '../../Components/Shared/Footer/Footer';
 import Button from '../../Components/Shared/Button/Button';
 function NotFound() {
-  const [Text, setText] = useState();
-  return (
-    <>
-      <Title text="Pagina no encontrada" />
-      <a href="/">
-        <Button text="ET go home" />
-      </a>
-    </>
-  );
+    const [Text, setText] = useState();
+    return (
+        <main>
+            <Title text="Pagina no encontrada" />
+            <a href="/">
+                <Button text="ET go home" />
+            </a>
+        </main>
+    );
 }
 export default NotFound;

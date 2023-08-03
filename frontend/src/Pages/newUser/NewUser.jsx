@@ -1,6 +1,7 @@
 // Importamos las dependencias y los hooks.
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { useError } from '../../context/ErrorContext';
 
 // Importamos los componentes.
 import { NavLink, Navigate } from 'react-router-dom';
@@ -20,21 +21,21 @@ import './newUser.css';
 
 function NewUser() {
     const { authUser, authRegister } = useAuth();
+    const { setErrorMessage } = useError();
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [passRepeated, setPassRepeated] = useState('');
     const [gender, setGender] = useState('');
     const [interest, setInterest] = useState('');
-    const [showErrorPopUp, setShowErrorPopUp] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
 
     // Si el usuario está logeado redirigimos a la página principal.
     if (authUser) return <Navigate to="/" />;
 
     return (
-        <>
+        <main>
             <div className="logo-container">
                 <img
                     src="/original-multimedia/logo2.png"
@@ -47,41 +48,49 @@ function NewUser() {
                 onSubmit={(e) => {
                     e.preventDefault();
 
-                    authRegister({
-                        name,
-                        surname,
-                        email,
-                        gender,
-                        interest,
-                        password: pass,
-                    });
-
-                    setErrorMessage('Pikachu');
+                    if (pass !== passRepeated) {
+                        setErrorMessage('Las contraseñas no coinciden');
+                    } else {
+                        authRegister({
+                            name,
+                            surname,
+                            email,
+                            gender,
+                            interest,
+                            password: pass,
+                        });
+                    }
                 }}
             >
                 <label htmlFor="name">Name:</label>
                 <input
                     type="text"
+                    placeholder="Name"
                     id="name"
                     // pattern={EMAIL_REGEX}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    minLength="3"
                     required
                 />
 
                 <label htmlFor="surname">Surname:</label>
                 <input
                     type="text"
+                    placeholder="Surname"
                     id="surname"
                     // pattern={EMAIL_REGEX}
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
+                    minLength="3"
+                    maxLength="100"
                     required
                 />
 
                 <label htmlFor="email">Email:</label>
                 <input
                     type="email"
+                    placeholder="Email"
                     id="email"
                     // pattern={EMAIL_REGEX}
                     value={email}
@@ -92,10 +101,26 @@ function NewUser() {
                 <label htmlFor="pass">Password:</label>
                 <input
                     type="password"
+                    placeholder="Password"
                     id="pass"
                     // pattern={PASSWORD_REGEX}
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
+                    minLength="8"
+                    maxLength="100"
+                    required
+                />
+
+                <label htmlFor="repeat-pass">Repeat Password:</label>
+                <input
+                    type="password"
+                    placeholder="Repeat password"
+                    id="repeat-pass"
+                    // pattern={PASSWORD_REGEX}
+                    value={passRepeated}
+                    onChange={(e) => setPassRepeated(e.target.value)}
+                    minLength="3"
+                    maxLength="100"
                     required
                 />
 
@@ -125,8 +150,6 @@ function NewUser() {
                     <option value="Unknown">N/A</option>
                 </select>
 
-                <span className="error">{errorMessage}</span>
-
                 <Button text="REGISTER" />
 
                 <div className="help">
@@ -138,15 +161,22 @@ function NewUser() {
                     </p>
                 </div>
             </form>
-
-            {/* No funciona */}
-            <ErrorPopUp
-                showErrorPopUp={showErrorPopUp}
-                setShowErrorPopUp={setShowErrorPopUp}
-                errorMessage={errorMessage}
-            />
-        </>
+        </main>
     );
 }
 
 export default NewUser;
+
+{
+    /* <InputText
+label="Surname"
+register={register('surname', {
+  required: true,
+  maxLength: MAX_LENGTH_STRING,
+  minLength: MIN_LENGTH_STRING,
+})}
+errors={errors}
+registerName="surname"
+/>
+ */
+}

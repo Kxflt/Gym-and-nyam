@@ -7,7 +7,7 @@ import marina from '../../assets/marina.jpg';
 import './aboutUs.css';
 function AboutUs() {
     return (
-        <>
+        <main>
             <div className="container">
                 <div className="profile-wrapper">
                     <div className="profile">
@@ -528,7 +528,7 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-        </>
+        </main>
     );
 }
 export default AboutUs;

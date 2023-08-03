@@ -11,6 +11,7 @@ function Button({
     text = 'Continuar',
     error = false,
     isSelected = false,
+    disabled,
 }) {
     return (
         <button
@@ -19,6 +20,7 @@ function Button({
                 'button-error': error,
                 'button-selected': isSelected,
             })}
+            disabled={disabled}
         >
             <span>{text}</span>
         </button>

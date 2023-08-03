@@ -1,73 +1,40 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { modifyExercise } from '../../services/exerciseService';
 
 const ExerciseEdit = ({
     exercise,
-    exercises,
-    setExercises,
+    modifyExercise,
     setEditingExerciseModal,
+    loading,
 }) => {
-    const { user } = useAuth();
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [editedExercise, setEditedExercise] = useState({
         name: exercise.name,
         description: exercise.description,
         typologyId: exercise.typologyId,
         muscleGroupId: exercise.muscleGroupId,
     });
+
     const [photoFile, setPhotoFile] = useState(null);
-
-    // Función que permite editar un ejercicio.
-    const handleEditExercise = async (e) => {
-        e.preventDefault();
-
-        setIsSubmitting(true);
-
-        const formData = new FormData();
-
-        formData.append('name', editedExercise.name);
-        formData.append('description', editedExercise.description);
-        formData.append('typologyId', editedExercise.typologyId);
-        formData.append('muscleGroupId', editedExercise.muscleGroupId);
-        if (photoFile) {
-            formData.append('photo', photoFile);
-        }
-
-        try {
-            const { data } = await modifyExercise(
-                exercise.id,
-                formData,
-                user.token
-            );
-
-            // Obtenemos un nuevo array de ejercicios donde modificaremos únicamente el ejercicio
-            // que estamos editando.
-            const updatedExercises = exercises.map((currentExercise) => {
-                if (currentExercise.id === exercise.id) {
-                    currentExercise = data.exercise;
-                }
-
-                return currentExercise;
-            });
-
-            // ACtualizamos el array de ejercicios en el State para que se recargue la lista.
-            setExercises(updatedExercises);
-
-            // Cerramos el modal.
-            setEditingExerciseModal(false);
-        } catch (error) {
-            console.error('An error occurred', error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
 
     return (
         <div>
             <h2>Edit exercise:</h2>
-            <form onSubmit={handleEditExercise}>
+            <form
+                onSubmit={async (e) => {
+                    e.preventDefault(e);
+
+                    await modifyExercise({
+                        exerciseId: exercise.id,
+                        name: editedExercise.name,
+                        description: editedExercise.description,
+                        typologyId: editedExercise.typologyId,
+                        muscleGroupId: editedExercise.muscleGroupId,
+                        photo: photoFile,
+                    });
+
+                    // Si el ejercicio ha sido modificado correctamente cerramos el modal.
+                    setEditingExerciseModal(false);
+                }}
+            >
                 <div>
                     <label>Exercise Name:</label>
                     <input
@@ -144,8 +111,8 @@ const ExerciseEdit = ({
                         alt="Exercise"
                     />
                 )}
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Updating exercise...' : 'Update exercise'}
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Updating exercise...' : 'Update exercise'}
                 </button>
                 <button
                     type="button"

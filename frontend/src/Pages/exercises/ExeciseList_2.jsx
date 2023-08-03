@@ -5,40 +5,50 @@ import useExercises from './useExercises';
 import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
-import { deleteExercise } from '../../services/exerciseService';
+
 import './exercises.css';
 
 const ExerciseList = () => {
-    const { user } = useAuth();
-    const { exercises, setExercises, toogleLike, deleteExercise } =
-        useExercises();
+    const { authUser } = useAuth();
+
+    const {
+        exercises,
+        setExercises,
+        setSearchParams,
+        addExercise,
+        modifyExercise,
+        toogleLike,
+        deleteExercise,
+        loading,
+    } = useExercises();
 
     const [exercise, setExercise] = useState(null);
     const [editingExerciseModal, setEditingExerciseModal] = useState(false);
     const [exercisesFormModal, setExercisesFormModal] = useState(false);
 
     return (
-        <>
+        <main className="list-exercises">
             {exercisesFormModal ? (
-                <>
-                    <ExercisesCreation
-                        user={user}
-                        exercises={exercises}
-                        setExercises={setExercises}
-                        setExercisesFormModal={setExercisesFormModal}
-                    />
-                    <button onClick={() => setExercisesFormModal(false)}>
-                        Back
-                    </button>
-                </>
+                authUser.role === 'admin' && (
+                    <>
+                        <ExercisesCreation
+                            addExercise={addExercise}
+                            setExercisesFormModal={setExercisesFormModal}
+                            loading={loading}
+                        />
+                        <button onClick={() => setExercisesFormModal(false)}>
+                            Back
+                        </button>
+                    </>
+                )
             ) : (
                 <>
                     <ExercisesFilter
-                        setExercises={setExercises}
-                        token={user.token}
+                        setSearchParams={setSearchParams}
+                        loading={loading}
                     />
 
-                    {exercises && exercises.length > 0 ? (
+                    {exercises?.length > 0 ? (
                         exercises.map((exercise) => (
                             <div key={exercise.id}>
                                 <h3>{exercise.name}</h3>
@@ -50,7 +60,7 @@ const ExerciseList = () => {
                                     />
                                 )}
                                 {!editingExerciseModal &&
-                                    user.role === 'admin' && (
+                                    authUser?.role === 'admin' && (
                                         <div>
                                             <button
                                                 onClick={() => {
@@ -63,9 +73,18 @@ const ExerciseList = () => {
                                                 Edit
                                             </button>
                                             <button
-                                                onClick={() =>
-                                                    deleteExercise(exercise.id)
-                                                }
+                                                onClick={() => {
+                                                    if (
+                                                        confirm(
+                                                            '¿Deseas eliminar este ejercicio?'
+                                                        )
+                                                    ) {
+                                                        deleteExercise(
+                                                            exercise.id
+                                                        );
+                                                    }
+                                                }}
+                                                disabled={loading}
                                             >
                                                 Eliminar
                                             </button>
@@ -83,7 +102,7 @@ const ExerciseList = () => {
                     )}
                     {!editingExerciseModal &&
                         !exercisesFormModal &&
-                        user.role === 'admin' && (
+                        authUser?.role === 'admin' && (
                             <button
                                 className="modalExercises"
                                 onClick={() => setExercisesFormModal(true)}
@@ -97,12 +116,12 @@ const ExerciseList = () => {
             {editingExerciseModal && (
                 <ExerciseEdit
                     exercise={exercise}
-                    exercises={exercises}
-                    setExercises={setExercises}
+                    modifyExercise={modifyExercise}
                     setEditingExerciseModal={setEditingExerciseModal}
+                    loading={loading}
                 />
             )}
-        </>
+        </main>
     );
 };
 

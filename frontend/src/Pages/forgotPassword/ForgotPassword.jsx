@@ -45,7 +45,7 @@ function ForgotPassword() {
     };
 
     return (
-        <>
+        <main>
             {!showNewPassword ? (
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <InputText
@@ -68,7 +68,7 @@ function ForgotPassword() {
                     onClose={() => setErrorPopUp(false)}
                 />
             )}
-        </>
+        </main>
     );
 }
 
