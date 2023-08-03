@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useError } from './context/ErrorContext';
 
 import NavBar from './Components/nav-bar/NavBar';
 import Login from './Pages/login/Login';
@@ -12,13 +13,22 @@ import Profile from './Pages/profile/Profile';
 import ExerciseList from './Pages/exercises/ExeciseList_2';
 import Footer from './Components/Shared/Footer/Footer';
 import AboutUs from './Pages/aboutUs/AboutUs';
+import ErrorModal from './Components/Shared/ErrorModal/ErrorModal';
+import ExerciseList2 from './Pages/exercises/NewExercises';
+
 import './App.css';
 
 function App() {
+    const { errorMessage, setErrorMessage } = useError();
+
     return (
         <>
             <div className="app">
                 <NavBar />
+                <ErrorModal
+                    errorMessage={errorMessage}
+                    setErrorMessage={setErrorMessage}
+                />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/login" element={<Login />} />

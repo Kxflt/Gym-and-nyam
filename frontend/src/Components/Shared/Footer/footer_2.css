@@ -3,79 +3,76 @@
 
 /* Estilos generales para el footer */
 footer {
-  background-color: var(--darkest-colour); /* Color de fondo */
-  color: #fff; /* Color del texto */
-  padding: 20px; /* Espaciado interno */
+    background-color: var(--darkest-colour); /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
 
-  /* Mantener el footer en la parte inferior y ocupar todo el ancho */
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex; /* Utilizar flexbox */
-  justify-content: space-between; /* Distribuir los elementos horizontalmente */
+    /* Mantener el footer en la parte inferior y ocupar todo el ancho */
+
+    display: flex; /* Utilizar flexbox */
+    justify-content: space-between; /* Distribuir los elementos horizontalmente */
 }
 
 section.logo {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 /* Estilos para el logo */
 .logo img {
-  width: 113px;
-  height: 100px;
-  padding-bottom: 0; /* Tamaño del logo */
-  border-radius: 50%;
-  border: solid 2px var(--lightest-colour);
-  display: flex;
-  align-items: center;
-  flex-grow: 0;
-  flex-shrink: 0;
+    width: 113px;
+    height: 100px;
+    padding-bottom: 0; /* Tamaño del logo */
+    border-radius: 50%;
+    border: solid 2px var(--lightest-colour);
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 /* Estilos para la sección de contacto */
 .contact-footer {
-  text-align: center; /* Centrar el contenido */
+    text-align: center; /* Centrar el contenido */
 }
 
 .contact-footer h2 {
-  color: #fff; /* Color del título */
-  font-size: 20px; /* Tamaño del título */
-  margin-bottom: 10px; /* Espaciado inferior del título */
+    color: #fff; /* Color del título */
+    font-size: 20px; /* Tamaño del título */
+    margin-bottom: 10px; /* Espaciado inferior del título */
 }
 
 .contact-footer p {
-  margin: 5px 0; /* Espaciado vertical entre párrafos */
+    margin: 5px 0; /* Espaciado vertical entre párrafos */
 }
 
 /* Estilos para la sección de seguir en redes sociales */
 .follow-footer {
-  text-align: right; /* Alinear a la derecha */
+    text-align: right; /* Alinear a la derecha */
 }
 
 .follow-footer h2 {
-  color: #fff; /* Color del título */
-  font-size: 20px; /* Tamaño del título */
-  margin-bottom: 10px; /* Espaciado inferior del título */
-  margin-right: 21px;
+    color: #fff; /* Color del título */
+    font-size: 20px; /* Tamaño del título */
+    margin-bottom: 10px; /* Espaciado inferior del título */
+    margin-right: 21px;
 }
 
 .social-media img {
-  width: 30px; /* Tamaño de las imágenes de redes sociales */
-  margin-right: 10px; /* Espaciado entre las imágenes */
+    width: 30px; /* Tamaño de las imágenes de redes sociales */
+    margin-right: 10px; /* Espaciado entre las imágenes */
 }
 
 @media (max-width: 400px) {
-  .contact-footer {
-    font-size: 10px;
-  }
-  .follow-footer h2 {
-    margin-right: 18px;
-  }
-  .social-media {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 24px;
-  }
+    .contact-footer {
+        font-size: 10px;
+    }
+    .follow-footer h2 {
+        margin-right: 18px;
+    }
+    .social-media {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 24px;
+    }
 }

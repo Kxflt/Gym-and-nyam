@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Oswald:wght@200;300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     --darkest-colour: rgba(59, 80, 83, 1);
     --dark-colour: #093c07;
@@ -10,23 +17,24 @@ html {
     --input-colour: #dbe3c9;
 }
 
-div#root {
-    background-color: var(--light-colour);
-    min-height: 100%;
-    height: 100%;
+body {
+    background-color: #c8dca1;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 200;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: #c8dca1;
-    min-height: 100vh;
 }
 
 /* h2 {
   padding-top: 2rem;
 } */
+
+div.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}

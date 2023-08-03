@@ -10,7 +10,7 @@ import './dashboard.css';
 
 function Dashboard() {
     return (
-        <>
+        <main>
             <ImageCarousel />
             <div className="dashboard-container">
                 <main className="main-content">
@@ -24,7 +24,7 @@ function Dashboard() {
                     </div>
                 </main>
             </div>
-        </>
+        </main>
     );
 }
 

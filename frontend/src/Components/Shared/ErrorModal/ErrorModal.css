@@ -1,0 +1,16 @@
+.error-modal {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 1.5rem;
+    border: 1px solid rgb(25, 25, 25);
+    z-index: 2;
+}
+
+.error-modal > p {
+    color: red;
+    font-weight: bold;
+    margin: 0;
+}

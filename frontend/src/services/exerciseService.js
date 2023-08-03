@@ -1,91 +1,41 @@
 import { axiosInstance } from './axiosInstance';
 
 // Crear ejercicio (administrador)
-export const createExercise = async (formData, token) => {
-  try {
-    const response = await axiosInstance.post('/exercises', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: token,
-      },
-    });
+export const createExerciseService = async (formData, config) => {
+    const response = await axiosInstance.post('/exercises', formData, config);
+
     return response.data;
-  } catch (error) {
-    throw error; // Handle errors
-  }
 };
 
-export const likeExerciseService = async (id, likedByMe, token) => {
-  // Definimos si vamos a eliminar o a crear el like.
-  const method = likedByMe ? 'delete' : 'post';
+export const likeExerciseService = async (id, likedByMe) => {
+    // Definimos si vamos a eliminar o a crear el like.
+    const method = likedByMe ? 'delete' : 'post';
 
-  try {
-    const response = await axiosInstance({
-      method, // Pass the method here
-      url: `/exercises/${id}/likes`, // Correctly construct the URL
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axiosInstance[method](`/exercises/${id}/likes`);
 
-    // Optionally, you can return the response data if needed.
     return response.data;
-  } catch (error) {
-    // Handle errors here if needed.
-    if (error.response) {
-      throw new Error(error.response.data.message);
-    } else if (error.request) {
-      console.error('No se recibió una respuesta del servidor.');
-    } else {
-      console.error('Error al enviar la solicitud:', error.message);
-    }
-    throw error; // Re-throw the error to be handled in the calling code.
-  }
 };
 
-export const modifyExercise = async (id, formData, token) => {
-  try {
-    const response = await axiosInstance.put(`/exercises/${id}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: token,
-      },
-    });
+export const modifyExerciseService = async (id, formData, config) => {
+    const response = await axiosInstance.put(
+        `/exercises/${id}`,
+        formData,
+        config
+    );
+
     return response.data;
-  } catch (error) {
-    throw error;
-  }
 };
 
-export const listExercises = (
-  name,
-  description,
-  photo,
-  typologyId,
-  muscleGroupId
-) => {
-  return (
-    axiosInstance.get('/exercises/:id'),
-    {
-      name,
-      description,
-      photo,
-      typologyId,
-      muscleGroupId,
-    }
-  );
+export const listExercisesService = async (searchParams) => {
+    const res = await axiosInstance.get(
+        `/exercises?${searchParams.toString()}`
+    );
+
+    return res.data;
 };
 
-export const deleteExercise = async (id, token) => {
-  try {
-    const response = await axiosInstance.delete(`/exercises/${id}`, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: token,
-      },
-    });
+export const deleteExerciseService = async (id) => {
+    const response = await axiosInstance.delete(`/exercises/${id}`);
+
     return response.data;
-  } catch (error) {
-    throw error;
-  }
 };

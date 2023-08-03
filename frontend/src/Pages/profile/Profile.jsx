@@ -13,53 +13,59 @@ const UserProfile = () => {
     const [editProfileModal, setEditProfileModal] = useState(false);
 
     return (
-        <div className="profile">
-            {authUser && (
-                <>
-                    <Link className="back-profile" to="/">
-                        Back
-                    </Link>
+        <main>
+            <div className="profile">
+                {authUser && (
+                    <>
+                        <Link className="back-profile" to="/">
+                            Back
+                        </Link>
 
-                    <h2>My Profile</h2>
+                        <h2>My Profile</h2>
 
-                    <Avatar class="avatar-profile" avatar={authUser.avatar} />
-
-                    {editProfileModal ? (
-                        <EditProfile
-                            authUser={authUser}
-                            authUpdateUser={authUpdateUser}
-                            setEditProfileModal={setEditProfileModal}
-                            authUpdateAvatar={authUpdateAvatar}
-                            loading={loading}
+                        <Avatar
+                            className="avatar-profile"
+                            avatar={authUser.avatar}
                         />
-                    ) : (
-                        <>
-                            <p>
-                                <strong>Name:</strong> {authUser.name}
-                            </p>
-                            <p>
-                                <strong>Surname:</strong> {authUser.surname}
-                            </p>
-                            <p>
-                                <strong>Email:</strong> {authUser.email}
-                            </p>
-                            <p>
-                                <strong>Gender:</strong> {authUser.gender}
-                            </p>
-                            <p>
-                                <strong>Interest:</strong> {authUser.interest}
-                            </p>
-                            <button
-                                className="button-edit"
-                                onClick={() => setEditProfileModal(true)}
-                            >
-                                EDIT PROFILE
-                            </button>
-                        </>
-                    )}
-                </>
-            )}
-        </div>
+
+                        {editProfileModal ? (
+                            <EditProfile
+                                authUser={authUser}
+                                authUpdateUser={authUpdateUser}
+                                setEditProfileModal={setEditProfileModal}
+                                authUpdateAvatar={authUpdateAvatar}
+                                loading={loading}
+                            />
+                        ) : (
+                            <>
+                                <p>
+                                    <strong>Name:</strong> {authUser.name}
+                                </p>
+                                <p>
+                                    <strong>Surname:</strong> {authUser.surname}
+                                </p>
+                                <p>
+                                    <strong>Email:</strong> {authUser.email}
+                                </p>
+                                <p>
+                                    <strong>Gender:</strong> {authUser.gender}
+                                </p>
+                                <p>
+                                    <strong>Interest:</strong>{' '}
+                                    {authUser.interest}
+                                </p>
+                                <button
+                                    className="button-edit"
+                                    onClick={() => setEditProfileModal(true)}
+                                >
+                                    EDIT PROFILE
+                                </button>
+                            </>
+                        )}
+                    </>
+                )}
+            </div>
+        </main>
     );
 };
 

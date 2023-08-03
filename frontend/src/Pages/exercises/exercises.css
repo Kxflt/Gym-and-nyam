@@ -1,10 +1,21 @@
 p {
-  font-size: 10px;
+    font-size: 10px;
 }
+
 img {
-  width: 200px;
-  height: fit-content;
+    width: 200px;
+    height: fit-content;
 }
+
+main.list-exercises > p {
+    text-align: center;
+}
+
+main.list-exercises > button {
+    display: block;
+    margin: 0 auto;
+}
+
 /*
 .modalExercises {
   border: 0 solid;

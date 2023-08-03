@@ -9,12 +9,14 @@ const axiosInstance = axios.create({
     timeout: 5000,
 });
 
-// Cogemos el token del localStorage
-const authToken = JSON.parse(localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY));
-
 // Interceptor que añade el token de forma automática a la petición si existe.
 axiosInstance.interceptors.request.use(
     (config) => {
+        // Cogemos el token del localStorage
+        const authToken = JSON.parse(
+            localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY)
+        );
+
         // Si tenemos token y el endpoint requiere autentificación
         if (authToken) {
             // Añadimos el header token a la config

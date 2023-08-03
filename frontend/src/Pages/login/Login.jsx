@@ -17,7 +17,7 @@ import './login.css';
 /* Aitor: Hay que hacer el css del pop up, en el momento que haga la prueba de como funciona la pag lo modificaré. */
 //_________________________________________
 function Login() {
-    const { authUser, authLogin } = useAuth();
+    const { authUser, authLogin, loading } = useAuth();
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -28,7 +28,7 @@ function Login() {
     if (authUser) return <Navigate to="/" />;
 
     return (
-        <>
+        <main>
             <div className="logo-container">
                 <img
                     src="/original-multimedia/logo2.png"
@@ -68,7 +68,7 @@ function Login() {
 
                 <span className="error">{errorMessage}</span>
 
-                <Button text="LOG IN" />
+                <Button text="LOG IN" disabled={loading} />
 
                 <div className="help">
                     <p>
@@ -86,7 +86,7 @@ function Login() {
                 setShowErrorPopUp={setShowErrorPopUp}
                 errorMessage={errorMessage}
             />
-        </>
+        </main>
     );
 }
 

@@ -19,19 +19,20 @@ const ValidateUser = () => {
         const fetchData = async () => {
             try {
                 await authValidateUser(registrationCode);
+
                 setActivationMessage('User activated! :)');
             } catch (err) {
                 setActivationMessage('Activation failed! :(');
             }
         };
 
-        fetchData();
-    }, []);
+        if (registrationCode) fetchData();
+    }, [registrationCode]);
 
     return (
-        <>
+        <main>
             <h2>{activationMessage}!</h2>
-        </>
+        </main>
     );
 };
 

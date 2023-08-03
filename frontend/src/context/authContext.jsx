@@ -1,6 +1,7 @@
 // Importamos las dependencias y los hooks.
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useError } from './ErrorContext';
 
 // Importamos los servicios del usuario.
 import {
@@ -11,6 +12,9 @@ import {
     updateUserService,
     validationService,
 } from '../services/authService';
+
+// Importamos la función que maneja los errores.
+import { handleErrorMessage } from '../utils/handleErrorMessage';
 
 // Importamos la constante con el nombre del token.
 import { TOKEN_LOCAL_STORAGE_KEY } from '../utils/constants';
@@ -25,6 +29,7 @@ const AuthContext = createContext();
 // Creamos y exportamos el componente Provider.
 export function AuthProvider({ children }) {
     const navigate = useNavigate();
+    const { setErrorMessage } = useError();
 
     const [authToken, setAuthToken] = useState(
         localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY)
@@ -42,7 +47,7 @@ export function AuthProvider({ children }) {
 
                 setAuthUser(body.data.user);
             } catch (err) {
-                alert(err.message);
+                handleErrorMessage(err, setErrorMessage);
             } finally {
                 setLoading(false);
             }
@@ -72,7 +77,7 @@ export function AuthProvider({ children }) {
             // Si todo ha ido bien redirijo a login.
             navigate('/login');
         } catch (err) {
-            alert(err.message);
+            handleErrorMessage(err, setErrorMessage);
         } finally {
             setLoading(false);
         }
@@ -87,13 +92,13 @@ export function AuthProvider({ children }) {
             //Llamamos al servicio.
             const body = await loginService(email, pass);
 
-            // Guardamos el usuario en el State.
+            // Guardamos el token en el State.
             setAuthToken(body.data.token);
 
             // Redirigimos a la página principal.
             navigate('/');
         } catch (err) {
-            alert(err.message);
+            handleErrorMessage(err, setErrorMessage);
         } finally {
             setLoading(false);
         }
@@ -134,7 +139,7 @@ export function AuthProvider({ children }) {
                 avatar: body.data.avatar.name,
             });
         } catch (err) {
-            alert(err.message);
+            handleErrorMessage(err, setErrorMessage);
         } finally {
             setLoading(false);
         }
@@ -173,7 +178,7 @@ export function AuthProvider({ children }) {
             // Actualizamos los datos del usuario en el State.
             setAuthUser(newUserData);
         } catch (err) {
-            alert(err.message);
+            handleErrorMessage(err, setErrorMessage);
         } finally {
             setLoading(false);
         }
@@ -189,7 +194,7 @@ export function AuthProvider({ children }) {
             // Tras validar redireccionamos a login.
             navigate('/login');
         } catch (err) {
-            alert(err.message);
+            handleErrorMessage(err, setErrorMessage);
         } finally {
             setLoading(false);
         }
