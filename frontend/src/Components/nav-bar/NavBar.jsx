@@ -39,7 +39,7 @@ function NavBar() {
                         <li className="avatar-container">
                             {authUser?.avatar && (
                                 <Avatar
-                                    class="avatar-nav"
+                                    className="avatar-nav"
                                     avatar={authUser.avatar}
                                 />
                             )}
