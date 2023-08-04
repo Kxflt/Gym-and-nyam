@@ -3,7 +3,7 @@ p {
 }
 
 img {
-    width: 220px;;
+    width: 220px;
     height: fit-content;
 }
 
@@ -15,18 +15,48 @@ main.list-exercises > button {
     display: block;
     margin: 0 auto;
 }
-main.list-exercises {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+
+.exercise-and-filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
-    margin: 10px
+    margin: 10px;
 }
-.list-exercises div {
-    border: black 2px solid;
+
+.filter {
+    width: 100%;
+}
+
+.exercises-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.exercise-container {
+    flex: 1;
+    border: black solid 1px;
+    border-radius: 20px;
+    text-align: center;
+}
+.list-exercises {
     border-radius: 20px;
     box-sizing: content-box;
-
-
+}
+.edit-button {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.edit-button > button {
+    margin-top: 1rem;
+    width: 90px;
+}
+.like {
+    width: 60px;
+    height: 60px;
+}
 /*
 .modalExercises {
   border: 0 solid;

@@ -1,48 +1,56 @@
 body {
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  font-family: arial;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: arial;
 }
-
+.like {
+    background-color: var(--lightest-colour);
+}
+.like-button {
+    border: none;
+    background-color: yellow;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 10px;
+}
 h1 {
-  font-size: 14px;
-  font-weight: 400;
-  margin: 10px 0 0 0;
-  color: #888888;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0 0 0;
+    color: #888888;
 }
 
 a {
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  color: #008a68;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #008a68;
 }
 
 svg {
-  cursor: pointer;
-  overflow: visible;
-  width: 60px;
+    cursor: pointer;
+    overflow: visible;
 }
 
 div.liked > svg {
-  animation: animateHeart 0.5s;
+    animation: animateHeart 0.5s;
 }
 
 div.liked > svg * {
-  fill: red;
+    fill: red;
 }
 
 @keyframes animateHeart {
-  0% {
-    transform: scale(0.2);
-  }
-  40% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(0.2);
+    }
+    40% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
