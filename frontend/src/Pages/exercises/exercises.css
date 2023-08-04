@@ -3,7 +3,7 @@ p {
 }
 
 img {
-    width: 200px;
+    width: 220px;;
     height: fit-content;
 }
 
@@ -15,6 +15,17 @@ main.list-exercises > button {
     display: block;
     margin: 0 auto;
 }
+main.list-exercises {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px
+}
+.list-exercises div {
+    border: black 2px solid;
+    border-radius: 20px;
+    box-sizing: content-box;
+
 
 /*
 .modalExercises {
