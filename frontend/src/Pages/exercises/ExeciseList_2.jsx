@@ -43,73 +43,84 @@ const ExerciseList = () => {
                 )
             ) : (
                 <>
-                    <ExercisesFilter
-                        setSearchParams={setSearchParams}
-                        loading={loading}
-                    />
-
-                    {exercises?.length > 0 ? (
-                        exercises.map((exercise) => (
-                            <div key={exercise.id}>
-                                <h3>{exercise.name}</h3>
-                                <p>{exercise.description}</p>
-                                {exercise.photo && (
-                                    <img
-                                        src={`http://localhost:8000/${exercise.photo}`}
-                                        alt={exercise.title}
-                                    />
+                    <div className="exercise-and-filter">
+                        <div className="filter-edit">
+                            <ExercisesFilter
+                                className="filter"
+                                setSearchParams={setSearchParams}
+                                loading={loading}
+                            />
+                            {!editingExerciseModal &&
+                                !exercisesFormModal &&
+                                authUser?.role === 'admin' && (
+                                    <button
+                                        className="modalExercises"
+                                        onClick={() =>
+                                            setExercisesFormModal(true)
+                                        }
+                                    >
+                                        EXERCISES ADMIN
+                                    </button>
                                 )}
-                                {!editingExerciseModal &&
-                                    authUser?.role === 'admin' && (
-                                        <div>
-                                            <button
-                                                onClick={() => {
-                                                    setExercise(exercise);
-                                                    setEditingExerciseModal(
-                                                        true
-                                                    );
-                                                }}
-                                            >
-                                                Edit
-                                            </button>
-                                            <button
-                                                onClick={() => {
-                                                    if (
-                                                        confirm(
-                                                            '¿Deseas eliminar este ejercicio?'
-                                                        )
-                                                    ) {
-                                                        deleteExercise(
-                                                            exercise.id
-                                                        );
-                                                    }
-                                                }}
-                                                disabled={loading}
-                                            >
-                                                Eliminar
-                                            </button>
-                                        </div>
+                        </div>
+
+                        {exercises?.length > 0 ? (
+                            exercises.map((exercise) => (
+                                <div
+                                    className="exercise-container"
+                                    key={exercise.id}
+                                >
+                                    <h3>{exercise.name}</h3>
+                                    <p>{exercise.description}</p>
+                                    {exercise.photo && (
+                                        <img
+                                            src={`http://localhost:8000/${exercise.photo}`}
+                                            alt={exercise.title}
+                                        />
                                     )}
-                                <LikeButton
-                                    exerciseId={exercise.id}
-                                    likedByMe={exercise.likedByMe}
-                                    toogleLike={toogleLike}
-                                />
-                            </div>
-                        ))
-                    ) : (
-                        <p>No exercises found.</p>
-                    )}
-                    {!editingExerciseModal &&
-                        !exercisesFormModal &&
-                        authUser?.role === 'admin' && (
-                            <button
-                                className="modalExercises"
-                                onClick={() => setExercisesFormModal(true)}
-                            >
-                                EXERCISES ADMIN
-                            </button>
+                                    {!editingExerciseModal &&
+                                        authUser?.role === 'admin' && (
+                                            <div className="edit-button">
+                                                <button
+                                                    className="edit"
+                                                    onClick={() => {
+                                                        setExercise(exercise);
+                                                        setEditingExerciseModal(
+                                                            true
+                                                        );
+                                                    }}
+                                                >
+                                                    Edit
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        if (
+                                                            confirm(
+                                                                '¿Deseas eliminar este ejercicio?'
+                                                            )
+                                                        ) {
+                                                            deleteExercise(
+                                                                exercise.id
+                                                            );
+                                                        }
+                                                    }}
+                                                    disabled={loading}
+                                                >
+                                                    Eliminar
+                                                </button>
+                                            </div>
+                                        )}
+                                    <LikeButton
+                                        exerciseId={exercise.id}
+                                        likedByMe={exercise.likedByMe}
+                                        toogleLike={toogleLike}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <p>No exercises found.</p>
                         )}
+                    </div>
                 </>
             )}
 
