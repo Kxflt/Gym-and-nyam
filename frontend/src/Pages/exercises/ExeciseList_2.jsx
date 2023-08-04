@@ -5,6 +5,7 @@ import useExercises from './useExercises';
 import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
+import FavButton from '../../Components/favourite/Favourite';
 
 import './exercises.css';
 
@@ -13,13 +14,13 @@ const ExerciseList = () => {
 
     const {
         exercises,
-        setExercises,
         setSearchParams,
         addExercise,
         modifyExercise,
         toogleLike,
         deleteExercise,
         loading,
+        addFavourite,
     } = useExercises();
 
     const [exercise, setExercise] = useState(null);
@@ -114,6 +115,11 @@ const ExerciseList = () => {
                                         exerciseId={exercise.id}
                                         likedByMe={exercise.likedByMe}
                                         toogleLike={toogleLike}
+                                    />
+                                    <FavButton
+                                        exerciseId={exercise.id}
+                                        favByMe={exercise.favByMe}
+                                        addFavourite={addFavourite}
                                     />
                                 </div>
                             ))

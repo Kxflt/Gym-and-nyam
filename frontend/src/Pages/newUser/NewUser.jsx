@@ -6,15 +6,6 @@ import { useError } from '../../context/ErrorContext';
 // Importamos los componentes.
 import { NavLink, Navigate } from 'react-router-dom';
 import Button from '../../Components/Shared/Button/Button';
-import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
-
-// Importamos las contantes.
-import {
-    EMAIL_REGEX,
-    MAX_LENGTH_STRING,
-    MIN_LENGTH_STRING,
-    PASSWORD_REGEX,
-} from '../../utils/constants';
 
 // Importamos los estilos.
 import './newUser.css';
@@ -59,6 +50,7 @@ function NewUser() {
                             interest,
                             password: pass,
                         });
+                        setShowValidateMessage(true);
                     }
                 }}
             >
@@ -157,7 +149,7 @@ function NewUser() {
                         <NavLink to="/forgotPassword">Forgot Password</NavLink>
                     </p>
                     <p>
-                        <NavLink to="/users">Sing Up</NavLink>
+                        <NavLink to="/users">Sign Up</NavLink>
                     </p>
                 </div>
             </form>
@@ -166,17 +158,3 @@ function NewUser() {
 }
 
 export default NewUser;
-
-{
-    /* <InputText
-label="Surname"
-register={register('surname', {
-  required: true,
-  maxLength: MAX_LENGTH_STRING,
-  minLength: MIN_LENGTH_STRING,
-})}
-errors={errors}
-registerName="surname"
-/>
- */
-}
