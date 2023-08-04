@@ -9,6 +9,7 @@ import {
     listExercisesService,
     deleteExerciseService,
     modifyExerciseService,
+    favExerciseService,
 } from '../../services/exerciseService';
 
 import { handleErrorMessage } from '../../utils/handleErrorMessage';
@@ -166,6 +167,35 @@ const useExercises = () => {
         }
     };
 
+    // Función que agrega o elimina un favorito.
+
+    const addFavourite = async (exerciseId, favByMe) => {
+        try {
+            setLoading(true);
+
+            // Actualizamos el favorito en la base de datos.
+            await favExerciseService(exerciseId, favByMe);
+
+            // Modificamos el array de ejercicios creando un nuevo array donde modificamos unicamente el ejercicio
+            // sobre el que modificamos el favorito.
+            const updatedExercises = exercises.map((exercise) => {
+                // Modificamos la propiedad "FavByMe" del ejercicio sobre el que hicimos like.
+                if (exercise.id === exerciseId) {
+                    exercise.favByMe = !exercise.favByMe;
+                }
+
+                return exercise;
+            });
+
+            // Ahora debemos actualizar el like en el State.
+            setExercises(updatedExercises);
+        } catch (err) {
+            handleErrorMessage(err, setErrorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // Función que elimina un ejercicio de la base de datos y del State.
     const deleteExercise = async (exerciseId) => {
         try {
@@ -194,6 +224,7 @@ const useExercises = () => {
         toogleLike,
         deleteExercise,
         loading,
+        addFavourite,
     };
 };
 
