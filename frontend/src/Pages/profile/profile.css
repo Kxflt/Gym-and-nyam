@@ -28,6 +28,31 @@
   margin-top: 10px; /* Ajusta el margen superior según tus necesidades
 } */
 
+/*DESDE AQUI TENIAMOS*/
+/* Estilos para el contenedor del perfil */
+main.profile-container {
+    height: auto;
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/* Estilos para el título h2 */
+.profile h2 {
+    margin-bottom: 1px;
+}
+
+/* Estilos para el avatar */
+.avatar-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .button-edit {
     border: 0 solid;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
@@ -76,6 +101,7 @@ input:focus {
     color: #333;
 }
 
+/*HASTA AQUI*/
 /* 
   label {
     color: #999;
