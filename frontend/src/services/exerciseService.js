@@ -48,3 +48,11 @@ export const deleteExerciseService = async (id) => {
 
     return response.data;
 };
+
+export const listFavExercisesService = async (searchParams) => {
+    const res = await axiosInstance.get(
+        `/favourites?${searchParams.toString()}`
+    );
+
+    return res.data;
+};

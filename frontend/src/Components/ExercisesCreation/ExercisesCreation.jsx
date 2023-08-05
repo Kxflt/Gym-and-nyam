@@ -46,24 +46,41 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                             required
                         />
                     </div>
+
                     <div>
-                        <label>Exercise Typology:</label>
-                        <input
+                        <label>Exercise Typology::</label>
+                        <select
                             type="text"
                             value={typologyId}
                             onChange={(e) => setTypologyId(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="">--</option>
+                            <option value="1">Cardio</option>
+                            <option value="2">BodyBuilding</option>
+                        </select>
                     </div>
+
                     <div>
                         <label>Exercise Muscle Group:</label>
-                        <input
+                        <select
                             type="text"
                             value={muscleGroupId}
                             onChange={(e) => setMuscleGroupId(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="">--</option>
+                            <option value="1">Biceps</option>
+                            <option value="2">Triceps</option>
+                            <option value="3">Forearm</option>
+                            <option value="4">Shoulders</option>
+                            <option value="5">Back</option>
+                            <option value="6">Chest</option>
+                            <option value="7">Abdomen</option>
+                            <option value="8">Legs</option>
+                        </select>
                     </div>
+
                     <div>
                         <div>
                             <label>Exercise Photo</label>
