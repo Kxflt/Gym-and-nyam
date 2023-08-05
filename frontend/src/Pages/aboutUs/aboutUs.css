@@ -1,4 +1,4 @@
-/* .container {
+.container {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -142,4 +142,4 @@
 
 .profile-name h2 {
     margin-bottom: 8px;
-} */
+}
