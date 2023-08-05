@@ -7,18 +7,23 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../Components/avatar/Avatar';
 
 import EditProfile from '../editProfile/EditProfile2';
+import './profile.css';
 
 const UserProfile = () => {
     const { authUser, authUpdateUser, authUpdateAvatar, loading } = useAuth();
     const [editProfileModal, setEditProfileModal] = useState(false);
 
     return (
-        <main>
+        <main className="profile-container">
             <div className="profile">
                 {authUser && (
                     <>
                         <Link className="back-profile" to="/">
                             Back
+                        </Link>
+
+                        <Link className="my-favourites" to="/favourites">
+                            MY FAVOURITE EXERCISES
                         </Link>
 
                         <h2>My Profile</h2>

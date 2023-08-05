@@ -22,14 +22,13 @@ function Login() {
 
     return (
         <main>
-
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
 
                     authLogin(email, pass);
 
-                    setErrorMessage('Pikachu');
+                    setErrorMessage();
                 }}
             >
                 <label htmlFor="email">Email:</label>

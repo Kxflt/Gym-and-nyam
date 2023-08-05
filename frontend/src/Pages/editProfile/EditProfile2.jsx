@@ -19,8 +19,9 @@ const EditProfile = ({
     const [avatar, setAvatar] = useState(null);
 
     return (
-        <>
+        <main className="edit-profile">
             <form
+                className="form-avatar"
                 onSubmit={(e) => {
                     e.preventDefault();
                     authUpdateAvatar(avatar);
@@ -30,6 +31,7 @@ const EditProfile = ({
                 <p>
                     <strong>Avatar:</strong>
                     <input
+                        className="edit-avatar"
                         type="file"
                         onChange={(e) => setAvatar(e.target.files[0])}
                         required
@@ -50,6 +52,7 @@ const EditProfile = ({
                 <p>
                     <strong>Name:</strong>
                     <input
+                        className="edit-name"
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -58,6 +61,7 @@ const EditProfile = ({
                 <p>
                     <strong>Surname:</strong>
                     <input
+                        className="edit-surname"
                         type="text"
                         value={surname}
                         onChange={(e) => setSurname(e.target.value)}
@@ -66,7 +70,7 @@ const EditProfile = ({
                 <p>
                     <strong>Email:</strong>
                     <input
-                        className="email"
+                        className="edit-email"
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -102,7 +106,7 @@ const EditProfile = ({
                     SAVE
                 </button>
             </form>
-        </>
+        </main>
     );
 };
 

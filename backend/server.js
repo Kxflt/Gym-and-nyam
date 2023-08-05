@@ -45,16 +45,16 @@ const exerciseExists = require('./middlewares/exerciseExists');
  */
 
 const {
-  newUser,
-  loginUser,
-  getUser,
-  modifyUser,
-  getOwnUser,
-  deleteUser,
-  editUserPass,
-  validateUser,
-  sendRecoverPass,
-  editUserAvatar,
+    newUser,
+    loginUser,
+    getUser,
+    modifyUser,
+    getOwnUser,
+    deleteUser,
+    editUserPass,
+    validateUser,
+    sendRecoverPass,
+    editUserAvatar,
 } = require('./controllers/users');
 
 //Registro de usuario pendiente de validar.
@@ -94,16 +94,16 @@ app.delete('/users/:id', authUser, userExists, isAdmin, deleteUser);
  * ###########################
  */
 const {
-  newExercises,
-  getExercise,
-  modifyExercise,
-  deleteExercise,
-  addLike,
-  deleteLike,
-  listExercises,
-  addFavourite,
-  deleteFavourite,
-  userFavourites,
+    newExercises,
+    getExercise,
+    modifyExercise,
+    deleteExercise,
+    addLike,
+    deleteLike,
+    listExercises,
+    addFavourite,
+    deleteFavourite,
+    userFavourites,
 } = require('./controllers/exercises');
 
 //Nuevo ejercicio.
@@ -144,14 +144,14 @@ app.post('/exercises/:id/favourites', authUser, exerciseExists, addFavourite);
 
 //Eliminar favoritos.
 app.delete(
-  '/exercises/:id/favourites',
-  authUser,
-  exerciseExists,
-  deleteFavourite
+    '/exercises/:id/favourites',
+    authUser,
+    exerciseExists,
+    deleteFavourite
 );
 
-//Listar los favoritos de un usuario.
-app.get('/favourites/:id', authUser, userExists, userFavourites);
+//Listar los favoritos de un usuario. ****OJO! :id
+app.get('/favourites', authUser, userExists, userFavourites);
 
 /**
  * ################################################
@@ -162,23 +162,23 @@ app.get('/favourites/:id', authUser, userExists, userFavourites);
 //Middleware de error.
 
 app.use((err, req, res, next) => {
-  console.error(err);
+    console.error(err);
 
-  res.status(err.httpStatus || 500).send({
-    status: 'error',
-    message: err.message,
-  });
+    res.status(err.httpStatus || 500).send({
+        status: 'error',
+        message: err.message,
+    });
 });
 
 //Middleware de ruta no encontrada.
 app.use((req, res) => {
-  res.status(404).send({
-    status: 'error',
-    message: 'Ruta no encontrada',
-  });
+    res.status(404).send({
+        status: 'error',
+        message: 'Ruta no encontrada',
+    });
 });
 
 //Ponemos el servidor a escuchar peticiones en un puerto dado.
 app.listen(process.env.PORT, () => {
-  console.log(`Server listening at http://localhost:${process.env.PORT}`);
+    console.log(`Server listening at http://localhost:${process.env.PORT}`);
 });
