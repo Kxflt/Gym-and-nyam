@@ -47,7 +47,10 @@ function ForgotPassword() {
     return (
         <main>
             {!showNewPassword ? (
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form
+                    className="forgot-pass-form"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
                     <InputText
                         label="Email"
                         register={register('email', {
