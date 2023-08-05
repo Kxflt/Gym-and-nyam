@@ -16,7 +16,7 @@ div.fav > svg {
 }
 
 div.fav > svg * {
-    fill: rgb(246, 250, 32);
+    fill: #ffb400;
 }
 
 @keyframes animateStar {

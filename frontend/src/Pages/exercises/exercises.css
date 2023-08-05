@@ -1,16 +1,18 @@
 @import '../../services/style.css';
 
 p {
-    font-size: 10px;
-}
-
-.exercise-container img {
-    width: 220px;
-    height: 220px;
-}
-
-main.list-exercises > p {
+    font-size: 16px;
+    margin: 15px;
     text-align: center;
+    width: auto;
+    height: auto;
+}
+h3 {
+    margin: 3%;
+}
+.exercise-container img {
+    width: 350px;
+    height: 350px;
 }
 
 main.list-exercises > button {
@@ -32,12 +34,35 @@ main.list-exercises > button {
 
 .exercise-container {
     position: relative;
-    width: 300px;
-    height: auto;
     flex: 1;
     border: black solid 1px;
     border-radius: 20px;
     text-align: center;
+    align-items: center;
+    box-shadow: 8px 12px 15px var(--darkest-colour);
+}
+.modalExercises {
+    position: relative;
+    margin-top: 53%;
+    margin-left: 15%;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    padding: 10px;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #7b468c;
+    color: white;
+}
+.modalExercises:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
 }
 
 .list-exercises {
@@ -45,6 +70,7 @@ main.list-exercises > button {
     box-sizing: content-box;
 }
 .edit-button {
+    margin-top: 10%;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -52,7 +78,7 @@ main.list-exercises > button {
 .edit-button > button {
     position: relative;
     margin-top: 1rem;
-    width: 90px;
+    width: 25%;
     border: 0 solid;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
     outline: 1px solid;
@@ -78,6 +104,7 @@ main.list-exercises > button {
     height: 60px;
 }
 .like-favourite {
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,5 +121,15 @@ main.list-exercises > button {
 }
 .edit {
     display: flex;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 35px;
+}
+.delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 35px;
 }
