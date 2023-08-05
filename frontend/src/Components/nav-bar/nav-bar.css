@@ -20,7 +20,7 @@ nav {
     list-style: none;
     display: flex;
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .Hi {
     margin-top: 10px;
@@ -33,6 +33,7 @@ nav {
     align-content: space-around;
     color: white;
     text-decoration: none;
+    margin-top: 5px;
 }
 
 .menu li a:hover {
