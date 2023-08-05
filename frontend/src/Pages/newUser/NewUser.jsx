@@ -26,16 +26,9 @@ function NewUser() {
     if (authUser) return <Navigate to="/" />;
 
     return (
-        <main>
-            <div className="logo-container">
-                <img
-                    src="/original-multimedia/logo2.png"
-                    alt="logo"
-                    className="logo2"
-                />
-            </div>
-
+        <main className="register-container">
             <form
+                className="form-register"
                 onSubmit={(e) => {
                     e.preventDefault();
 
@@ -58,7 +51,7 @@ function NewUser() {
                 <input
                     type="text"
                     placeholder="Name"
-                    id="name"
+                    id="name-register"
                     // pattern={EMAIL_REGEX}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -70,7 +63,7 @@ function NewUser() {
                 <input
                     type="text"
                     placeholder="Surname"
-                    id="surname"
+                    id="surname-register"
                     // pattern={EMAIL_REGEX}
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
@@ -83,7 +76,7 @@ function NewUser() {
                 <input
                     type="email"
                     placeholder="Email"
-                    id="email"
+                    id="email-register"
                     // pattern={EMAIL_REGEX}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -94,7 +87,7 @@ function NewUser() {
                 <input
                     type="password"
                     placeholder="Password"
-                    id="pass"
+                    id="pass-register"
                     // pattern={PASSWORD_REGEX}
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
@@ -107,7 +100,7 @@ function NewUser() {
                 <input
                     type="password"
                     placeholder="Repeat password"
-                    id="repeat-pass"
+                    id="repeat-pass-register"
                     // pattern={PASSWORD_REGEX}
                     value={passRepeated}
                     onChange={(e) => setPassRepeated(e.target.value)}
@@ -118,7 +111,7 @@ function NewUser() {
 
                 <label htmlFor="gender">Gender:</label>
                 <select
-                    id="gender"
+                    id="gender-register"
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
                     required
@@ -131,7 +124,7 @@ function NewUser() {
 
                 <label htmlFor="interest">Interest:</label>
                 <select
-                    id="interest"
+                    id="interest-register"
                     value={interest}
                     onChange={(e) => setInterest(e.target.value)}
                     required

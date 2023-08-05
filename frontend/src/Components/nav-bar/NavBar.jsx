@@ -1,6 +1,6 @@
 // Importamos las dependencias y componentes.
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Avatar from '../../Components/avatar/Avatar';
 
@@ -9,6 +9,8 @@ import './nav-bar.css';
 
 function NavBar() {
     const { authUser, authLogout } = useAuth();
+    const location = useLocation();
+    const isHomepage = location.pathname === '/' || location.pathname === '/';
 
     return (
         <nav className="header-container nav-bar">
@@ -24,6 +26,13 @@ function NavBar() {
                     </>
                 ) : (
                     <>
+                        {!isHomepage && ( // Mostrar el enlace solo si NO estamos en la homepage
+                            <li>
+                                <NavLink exact to="/">
+                                    Homepage
+                                </NavLink>
+                            </li>
+                        )}
                         <li>
                             <NavLink to="/exercises">Exercises</NavLink>
                         </li>

@@ -21,8 +21,9 @@ function Login() {
     if (authUser) return <Navigate to="/" />;
 
     return (
-        <main>
+        <main className="login-container">
             <form
+                className="form-login"
                 onSubmit={(e) => {
                     e.preventDefault();
 

@@ -1,15 +1,101 @@
-div#root {
+/* div#root {
     justify-content: center;
     flex-direction: column;
     min-height: 90vh;
     flex: 1;
-}
+} */
 
-div {
+/* div {
     margin-bottom: 10px;
 }
 
 div.contenedor {
     padding-top: 6rem;
     padding-left: 2rem;
+} */
+main .form-register {
+    background-color: #c8dca1;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 5px;
+}
+
+input#name-register,
+#surname-register,
+#email-register,
+#pass-register,
+#repeat-pass-register,
+#gender-register,
+#interest-register,
+select {
+    width: 300px;
+    padding: 3px;
+    font-size: 16px;
+    border: 1px solid #837e7e;
+    border-radius: 4px;
+}
+label {
+    font-size: 15px;
+}
+
+/* Media queries para diseño responsive */
+@media screen and (min-width: 1024px) {
+    .main.edit-profile {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    img.avatar {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    main .form-register {
+        height: 100vh;
+        margin-top: -5px;
+    }
+
+    .main.edit-profile {
+        max-width: 220px;
+    }
+
+    img.avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    main .form-register {
+        height: 100vh;
+        margin-top: -5px;
+    }
+
+    .main.edit-profile {
+        max-width: 180px;
+    }
+
+    img.avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    label {
+        margin-bottom: -10px;
+    }
+    .help {
+        margin-top: -5px;
+    }
 }
