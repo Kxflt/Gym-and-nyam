@@ -16,6 +16,15 @@ export const likeExerciseService = async (id, likedByMe) => {
     return response.data;
 };
 
+export const favExerciseService = async (id, favByMe) => {
+    // Definimos si vamos a eliminar o a crear el like.
+    const method = favByMe ? 'delete' : 'post';
+
+    const response = await axiosInstance[method](`/exercises/${id}/favourites`);
+
+    return response.data;
+};
+
 export const modifyExerciseService = async (id, formData, config) => {
     const response = await axiosInstance.put(
         `/exercises/${id}`,

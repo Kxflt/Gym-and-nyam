@@ -5,23 +5,16 @@ import { useAuth } from '../../context/AuthContext';
 // Importamos los componentes.
 import { NavLink, Navigate } from 'react-router-dom';
 import Button from '../../Components/Shared/Button/Button';
-import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
-
-// Importamos las constantes.
-import { EMAIL_REGEX, PASSWORD_REGEX } from '../../utils/constants';
 
 // Importamos los estilos.
 import './login.css';
 
-// IMPORTANTE_______________________________
-/* Aitor: Hay que hacer el css del pop up, en el momento que haga la prueba de como funciona la pag lo modificaré. */
-//_________________________________________
 function Login() {
     const { authUser, authLogin, loading } = useAuth();
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [showErrorPopUp, setShowErrorPopUp] = useState(false);
+
     const [errorMessage, setErrorMessage] = useState('');
 
     // Si el usuario está logeado redirigimos a la página principal.
@@ -29,13 +22,6 @@ function Login() {
 
     return (
         <main>
-            {/* <div className="logo-container">
-                <img
-                    src="/original-multimedia/logo2.png"
-                    alt="logo"
-                    className="logo2"
-                />
-            </div> */}
 
             <form
                 onSubmit={(e) => {
@@ -75,17 +61,10 @@ function Login() {
                         <NavLink to="/forgotPassword">Forgot Password</NavLink>
                     </p>
                     <p>
-                        <NavLink to="/users">Sing Up</NavLink>
+                        <NavLink to="/users">Sign Up</NavLink>
                     </p>
                 </div>
             </form>
-
-            {/* No funciona */}
-            <ErrorPopUp
-                showErrorPopUp={showErrorPopUp}
-                setShowErrorPopUp={setShowErrorPopUp}
-                errorMessage={errorMessage}
-            />
         </main>
     );
 }

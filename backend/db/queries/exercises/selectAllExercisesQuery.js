@@ -25,31 +25,35 @@ const selectAllExercisesQuery = async ({
         //Seleccionamos los datos que queremos mostrar...
         const [exercises] = await connection.query(
             `
-        SELECT 
-            E.id,
-            E.name,
-            E.description,
-            E.photo,
-            E.typologyId,
-            E.muscleGroupId,
-            E.userId = ? AS owner,
-            SUM(L.id) AS likes,
-            BIT_OR(IFNULL(L.userId = ?, 0)) AS likedByMe,
-            E.createdAt
-        FROM exercises E
-        LEFT JOIN likes L ON L.exerciseId = E.id
-        ${whereClause}
-        GROUP BY E.id
-        ORDER BY E.createdAt ${date};`,
-            //...y filtramos según los tres campos especificados.
-            [userId, userId, `%${keyword}%`]
+            SELECT 
+                E.id,
+                E.name,
+                E.description,
+                E.photo,
+                E.typologyId,
+                E.muscleGroupId,
+                E.userId = ? AS owner,
+                SUM(L.id) AS likes,
+                BIT_OR(IFNULL(L.userId = ?, 0)) AS likedByMe,
+                SUM(F.userId = ?) AS favourites,
+                BIT_OR(IFNULL(F.userId = ?, 0)) AS favByMe,
+                E.createdAt
+            FROM exercises E
+            LEFT JOIN likes L ON L.exerciseId = E.id
+            LEFT JOIN favourites F ON F.exerciseId = E.id
+            ${whereClause}
+            GROUP BY E.id
+            ORDER BY E.createdAt ${date};`,
+            [userId, userId, userId, userId, `%${keyword}%`]
         );
 
         // Convertimos el tipo de dato de algunas columnas.
         for (const exercise of exercises) {
             exercise.likes = Number(exercise.likes);
+            exercises.favourites = Number(exercise.favourites);
             exercise.owner = Boolean(exercise.owner);
             exercise.likedByMe = Boolean(exercise.likedByMe);
+            exercise.favByMe = Boolean(exercise.favByMe);
         }
 
         return exercises;
