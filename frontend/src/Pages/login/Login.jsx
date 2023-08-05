@@ -29,13 +29,13 @@ function Login() {
 
     return (
         <main>
-            <div className="logo-container">
+            {/* <div className="logo-container">
                 <img
                     src="/original-multimedia/logo2.png"
                     alt="logo"
                     className="logo2"
                 />
-            </div>
+            </div> */}
 
             <form
                 onSubmit={(e) => {

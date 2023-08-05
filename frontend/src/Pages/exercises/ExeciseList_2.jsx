@@ -70,14 +70,20 @@ const ExerciseList = () => {
                                     className="exercise-container"
                                     key={exercise.id}
                                 >
-                                    <h3>{exercise.name}</h3>
-                                    <p>{exercise.description}</p>
-                                    {exercise.photo && (
-                                        <img
-                                            src={`http://localhost:8000/${exercise.photo}`}
-                                            alt={exercise.title}
-                                        />
-                                    )}
+                                    <div className="front">
+                                        {/* cara frontal de la carta */}
+                                        <h3>{exercise.name}</h3>
+                                        {exercise.photo && (
+                                            <img
+                                                src={`http://localhost:8000/${exercise.photo}`}
+                                                alt={exercise.title}
+                                            />
+                                        )}
+                                        {/* Cara trasera de la carta */}
+                                        <div className="back">
+                                            <p>{exercise.description}</p>
+                                        </div>
+                                    </div>
                                     {!editingExerciseModal &&
                                         authUser?.role === 'admin' && (
                                             <div className="edit-button">

@@ -1,10 +1,10 @@
-p {
+/* p {
     font-size: 10px;
-}
+} */
 
 img {
     width: 220px;
-    height: fit-content;
+    height: 220px;
 }
 
 main.list-exercises > p {
@@ -28,18 +28,16 @@ main.list-exercises > button {
     width: 100%;
 }
 
-.exercises-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 .exercise-container {
+    position: relative;
+    width: 300px;
+    height: 350px;
     flex: 1;
     border: black solid 1px;
     border-radius: 20px;
     text-align: center;
 }
+
 .list-exercises {
     border-radius: 20px;
     box-sizing: content-box;
@@ -50,6 +48,7 @@ main.list-exercises > button {
     gap: 20px;
 }
 .edit-button > button {
+    position: relative;
     margin-top: 1rem;
     width: 90px;
 }
@@ -57,25 +56,37 @@ main.list-exercises > button {
     width: 60px;
     height: 60px;
 }
-/*
-.modalExercises {
-  border: 0 solid;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-  outline: 1px solid;
-  padding: 0.1rem 0.1rem;
-  outline-color: rgba(255, 255, 255, 0.5);
-  outline-offset: 0px;
-  text-shadow: none;
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  background-color: #7b468c;
-  color: white;
-  font-size: 12px;
-} */
-/* .modalExercises:hover {
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
-      0 0 20px rgba(255, 255, 255, 0.2);
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 2px #427388;
-  } */
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+.front {
+    width: 100%;
+    height: 100%;
+    transform: perspective(600px) rotateY('0deg');
+    box-shadow: 0 5px 10px rgb(244, 8, 8);
+}
+
+.back {
+    transform: perspective(600px) rotateY('180deg');
+    background: rgb(3, 35, 54);
+    padding: 15px;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 3px 10px red;
+}
+
+.back p {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
