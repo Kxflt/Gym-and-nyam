@@ -1,37 +1,15 @@
-body {
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    font-family: arial;
-}
 .favourite {
-    background-color: var(--lightest-colour);
+    padding: 0px;
+    margin: 0px;
+    height: 0px;
+    width: 0px;
 }
-.fav-button {
-    border: none;
-    background-color: yellow;
-    width: 55px;
-    height: 55px;
-    margin-bottom: 10px;
-}
-h1 {
-    font-size: 14px;
-    font-weight: 400;
-    margin: 10px 0 0 0;
-    color: #888888;
-}
-a {
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 10px;
-    display: inline-block;
-    text-decoration: none;
-    color: #008a68;
-}
-svg {
+
+.favourite svg {
     cursor: pointer;
     overflow: visible;
-    width: 60px;
+    width: 100px;
+    margin-left: 25px;
 }
 div.fav > svg {
     animation: animateStar 0.5s;
@@ -52,105 +30,3 @@ div.fav > svg * {
         transform: scale(1);
     }
 }
-
-/* stroke-width: 0.5; */ /* Grosor del contorno */
-/* }
-    85% {
-        transform: scale(17);
-        opacity: 1;
-        fill: transparent;
-        stroke: #ffd700; /* Color amarillo dorado para el contorno de la estrella */
-/* stroke-width: 0.2; Grosor del contorno */
-/*  }
-    95% {
-        transform: scale(18);
-        opacity: 1;
-        fill: transparent;
-        stroke: #ffd700;
-        stroke-width: 0.1;
-    }
-
-    100% {
-        transform: scale(19);
-        opacity: 1;
-        fill: transparent;
-        stroke: #ffd700;
-        stroke-width: 0; */
-/* }
-}
-@keyframes animateStart {
-    0% {
-        transform: scale(0.2);
-    }
-    40% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-} */
-/* 
-@keyframes animateStartOut {
-    0% {
-        transform: scale(1.4);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-/* body {
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    font-family: arial;
-}
-.favourite {
-    background-color: var(--lightest-colour);
-}
-.favourite-button {
-    border: none;
-    background-color: rgb(195, 195, 193);
-    width: 55px;
-    height: 55px;
-    margin-bottom: 10px;
-}
-h1 {
-    font-size: 14px;
-    font-weight: 400;
-    margin: 10px 0 0 0;
-    color: #888888;
-}
-
-a {
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 10px;
-    display: inline-block;
-    text-decoration: none;
-    color: #008a68;
-}
-
-svg {
-    cursor: pointer;
-    overflow: visible;
-}
-
-div.fav > svg {
-    animation: animateStar 0.5s;
-}
-
-div.fav > svg * {
-    fill: rgb(255, 251, 0);
-}
-
-@keyframes animateStar {
-    0% {
-        transform: scale(0.2);
-    }
-    40% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-} */

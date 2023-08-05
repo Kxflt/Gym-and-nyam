@@ -71,8 +71,7 @@ const ExerciseList = () => {
                                     className="exercise-container"
                                     key={exercise.id}
                                 >
-                                    <div className="front">
-                                        {/* cara frontal de la carta */}
+                                    <div>
                                         <h3>{exercise.name}</h3>
                                         {exercise.photo && (
                                             <img
@@ -80,8 +79,8 @@ const ExerciseList = () => {
                                                 alt={exercise.title}
                                             />
                                         )}
-                                        {/* Cara trasera de la carta */}
-                                        <div className="back">
+
+                                        <div>
                                             <p>{exercise.description}</p>
                                         </div>
                                     </div>
@@ -100,6 +99,7 @@ const ExerciseList = () => {
                                                     Edit
                                                 </button>
                                                 <button
+                                                    className="delete"
                                                     onClick={() => {
                                                         if (
                                                             confirm(
@@ -117,16 +117,22 @@ const ExerciseList = () => {
                                                 </button>
                                             </div>
                                         )}
-                                    <LikeButton
-                                        exerciseId={exercise.id}
-                                        likedByMe={exercise.likedByMe}
-                                        toogleLike={toogleLike}
-                                    />
-                                    <FavButton
-                                        exerciseId={exercise.id}
-                                        favByMe={exercise.favByMe}
-                                        addFavourite={addFavourite}
-                                    />
+                                    <div className="like-favourite">
+                                        <div className="like">
+                                            <LikeButton
+                                                exerciseId={exercise.id}
+                                                likedByMe={exercise.likedByMe}
+                                                toogleLike={toogleLike}
+                                            />
+                                        </div>
+                                        <div className="fav-button">
+                                            <FavButton
+                                                exerciseId={exercise.id}
+                                                favByMe={exercise.favByMe}
+                                                addFavourite={addFavourite}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             ))
                         ) : (

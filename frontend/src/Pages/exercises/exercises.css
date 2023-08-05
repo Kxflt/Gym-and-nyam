@@ -1,8 +1,10 @@
-/* p {
-    font-size: 10px;
-} */
+@import '../../services/style.css';
 
-img {
+p {
+    font-size: 10px;
+}
+
+.exercise-container img {
     width: 220px;
     height: 220px;
 }
@@ -31,7 +33,7 @@ main.list-exercises > button {
 .exercise-container {
     position: relative;
     width: 300px;
-    height: 350px;
+    height: auto;
     flex: 1;
     border: black solid 1px;
     border-radius: 20px;
@@ -51,42 +53,46 @@ main.list-exercises > button {
     position: relative;
     margin-top: 1rem;
     width: 90px;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    padding: 0.7rem 5.2rem;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #7b468c;
+    color: white;
 }
+.edit-button > button:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+}
+
 .like {
     width: 60px;
     height: 60px;
 }
-
-.face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.5s;
-}
-.front {
-    width: 100%;
-    height: 100%;
-    transform: perspective(600px) rotateY('0deg');
-    box-shadow: 0 5px 10px rgb(244, 8, 8);
-}
-
-.back {
-    transform: perspective(600px) rotateY('180deg');
-    background: rgb(3, 35, 54);
-    padding: 15px;
-    color: #f3f3f3;
+.like-favourite {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    box-shadow: 0 3px 10px red;
+    justify-content: center;
+    align-items: center;
 }
-
-.back p {
-    font-size: 8px;
-
-    letter-spacing: 2px;
+.fav-button {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--lightest-colour);
+    height: 100px;
+    width: 100px;
+    border: none;
+}
+.edit {
+    display: flex;
+    text-align: center;
 }
