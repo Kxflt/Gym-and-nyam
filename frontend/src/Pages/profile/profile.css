@@ -76,7 +76,7 @@ main.profile-container {
     outline-offset: 5px;
     text-shadow: 1px 1px 2px #427388;
 }
-input {
+/* input {
     font-size: 12px;
     padding: 5px 5px 5px 2.5px;
     display: inline-block;
@@ -85,11 +85,11 @@ input {
     border-bottom: 1px solid #515151;
     background: transparent;
     color: #333;
-}
-
+} */
+/* 
 input:focus {
     outline: none;
-}
+} */
 .filephoto {
     font-size: 12px;
     padding: 5px 5px 5px 2.5px;
