@@ -7,14 +7,14 @@ import {
 import Button from '../../components/shared/button/Button';
 import InputText from '../../Components/Shared/Input/InputText';
 import useProfile from './useProfile';
-/* import avatar from "../../assets/avatar.png"; */
+
 import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 
 import './profile.css';
 
 function Profile() {
     const {
-        state: { register, errors, errorPopUp /*, avatarImg */ },
+        state: { register, errors, errorPopUp },
         actions: {
             handleSubmit,
             onSubmit,
@@ -24,27 +24,13 @@ function Profile() {
     } = useProfile();
 
     return (
-        <>
-            <h1>Ejemplo visual</h1>
+        <main className="edit-profile">
+            <h1>Visual Example</h1>
             <div className="container">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="avatar-container">
-                        {/*  <div className="avatar-container">
-            <img src={avatarImg ? avatarImg : avatar} alt="avatar" />
-            <input
-              type="file"
-              {...register("file", {
-                required: true,
-              })}
-              onChange={handleOnChangeAvatar}
-            />
-          </div>
-          {errors.file?.type === "required" && (
-            <span className="error">Campo requerido</span>
-          )}
-*/}
                         <InputText
-                            label="Nombre"
+                            label="Name"
                             register={register('name', {
                                 required: true,
                                 maxLength: MAX_LENGTH_STRING,
@@ -53,19 +39,6 @@ function Profile() {
                             errors={errors}
                             registerName="name"
                         />
-
-                        {/* Hay que meter apellido en Backend */}
-                        {/*  <InputText 
-            label="Apellido"
-            register={register('surname', {
-              required: true,
-              maxLength: MAX_LENGTH_STRING,
-              minLength: MIN_LENGTH_STRING,
-            })}
-            errors={errors}
-            registerName='surname'
-          />  */}
-
                         <InputText
                             label="Email"
                             register={register('email', {
@@ -74,32 +47,7 @@ function Profile() {
                             })}
                             errors={errors}
                             registerName="email"
-                            /* errorMessage={errors.email && errors.email.message} */
                         />
-                        {/* Hay que crear genero en backend */}
-                        {/* <label>Género</label>
-          <select {...register('gender', { required: true })}>
-            <option value=''>--</option>
-            <option value='Female'>Mujer</option>
-            <option value='Male'>Hombre</option>
-            <option value='Other'>Otro</option>
-          </select>
-          {errors.gender?.type === 'required' && (
-            <span className='error'>Campo requerido</span>
-          )}   */}
-
-                        {/* Meter interes de ejercicios: cardio, etc y en base a eso mostrarle unos videos u otros al usario */}
-                        {/*  <label>Interés</label>
-          <select {...register('interest', { required: true })}>
-            <option value=''>--</option>
-            <option value='Cardio'>Cardio</option>
-            <option value='Musculacion'>Musculación</option>
-            <option value='Desconocido'>Desconocido</option>
-             {errors.interest?.type === 'required' && (
-            <span className='error'>Campo requerido</span>
-          )}
-            
-          </select>   */}
                         <div className="terms-container">
                             <input
                                 type="checkbox"
@@ -107,13 +55,12 @@ function Profile() {
                                     required: true,
                                 })}
                             />
-                            <label>Acepta términos y condiciones</label>
+                            <label>Accept terms and conditions</label>
                         </div>
                         {errors.terms?.type === 'required' && (
-                            <span className="error">Campo requerido</span>
+                            <span className="error">Field required</span>
                         )}
-
-                        <Button text="Continuar" />
+                        <Button text="Next" />
                     </div>
                 </form>
             </div>
@@ -121,7 +68,7 @@ function Profile() {
                 open={errorPopUp}
                 onClose={() => setErrorPopUp(false)}
             />
-        </>
+        </main>
     );
 }
 
