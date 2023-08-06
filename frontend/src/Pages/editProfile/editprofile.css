@@ -1,5 +1,8 @@
 main.edit-profile {
     border: 1px solid #7b468c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-radius: 2%;
 }
 .edit-profile p {
     margin-bottom: 20px;
@@ -68,27 +71,31 @@ input:focus {
     color: #333;
 }
 
+img.avatar {
+    display: flex;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
 /* Media queries para diseño responsive */
 @media screen and (min-width: 1024px) {
-    .main.edit-profile {
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    /* .edit-profile img.avatar {
-        width: 50px;
-        height: 50px;
-    } */
 }
 
-@media screen and (max-width: 768px) {
-    .main.edit-profile {
-        max-width: 220px;
-    }
+@media screen and (min-width: 768px) {
 }
 
-@media screen and (max-width: 400px) {
-    .main.edit-profile {
-        max-width: 180px;
+@media screen and (min-width: 375px) {
+    main.edit-profile {
+        margin: 10px 40px 10px 40px;
+    }
+    input #edit-avatar,
+    #edit-name,
+    #edit-surname,
+    #edit-email {
+        font-size: 8px;
+        padding: 1px 1px 1px 0.5px;
+        display: inline-block;
+        width: 100px;
     }
 }

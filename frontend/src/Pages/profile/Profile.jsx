@@ -18,12 +18,9 @@ const UserProfile = () => {
             <div className="profile">
                 {authUser && (
                     <>
+                        <div className="links-profiles"></div>
                         <Link className="back-profile" to="/">
                             Back
-                        </Link>
-
-                        <Link className="my-favourites" to="/favourites">
-                            MY FAVOURITE EXERCISES
                         </Link>
 
                         <h2>My Profile</h2>
@@ -43,28 +40,41 @@ const UserProfile = () => {
                             />
                         ) : (
                             <>
-                                <p>
-                                    <strong>Name:</strong> {authUser.name}
-                                </p>
-                                <p>
-                                    <strong>Surname:</strong> {authUser.surname}
-                                </p>
-                                <p>
-                                    <strong>Email:</strong> {authUser.email}
-                                </p>
-                                <p>
-                                    <strong>Gender:</strong> {authUser.gender}
-                                </p>
-                                <p>
-                                    <strong>Interest:</strong>{' '}
-                                    {authUser.interest}
-                                </p>
-                                <button
-                                    className="button-edit"
-                                    onClick={() => setEditProfileModal(true)}
+                                <div className="inputs-profile">
+                                    <p className="name-user">
+                                        <strong>Name:</strong> {authUser.name}
+                                    </p>
+                                    <p className="surname-user">
+                                        <strong>Surname:</strong>{' '}
+                                        {authUser.surname}
+                                    </p>
+                                    <p className="email-user">
+                                        <strong>Email:</strong> {authUser.email}
+                                    </p>
+                                    <p className="gender-user">
+                                        <strong>Gender:</strong>{' '}
+                                        {authUser.gender}
+                                    </p>
+                                    <p className="interest-user">
+                                        <strong>Interest:</strong>{' '}
+                                        {authUser.interest}
+                                    </p>
+
+                                    <button
+                                        className="button-edit"
+                                        onClick={() =>
+                                            setEditProfileModal(true)
+                                        }
+                                    >
+                                        EDIT PROFILE
+                                    </button>
+                                </div>
+                                <Link
+                                    className="my-favourites"
+                                    to="/favourites"
                                 >
-                                    EDIT PROFILE
-                                </button>
+                                    MY FAVOURITE EXERCISES
+                                </Link>
                             </>
                         )}
                     </>

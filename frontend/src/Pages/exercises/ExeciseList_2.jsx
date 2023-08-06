@@ -7,7 +7,7 @@ import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreat
 import LikeButton from '../../Components/like/Like';
 import FavButton from '../../Components/favourite/Favourite';
 import useExercises from './useExercises';
-import './exercises.css';
+import './exercisesList.css';
 
 const ExerciseList = () => {
     const { authUser } = useAuth();
@@ -37,8 +37,11 @@ const ExerciseList = () => {
                             setExercisesFormModal={setExercisesFormModal}
                             loading={loading}
                         />
-                        <button onClick={() => setExercisesFormModal(false)}>
-                            Back
+                        <button
+                            className="back-add-ex"
+                            onClick={() => setExercisesFormModal(false)}
+                        >
+                            BACK
                         </button>
                     </>
                 )
