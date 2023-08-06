@@ -102,7 +102,7 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                         type="Submit"
                         disabled={loading}
                     >
-                        {loading ? 'Adding exercise...' : 'Add exercise'}
+                        {loading ? 'ADDING EXERCISE...' : 'ADD EXERCISE'}
                     </button>
                 </form>
             </div>

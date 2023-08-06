@@ -93,6 +93,7 @@ const ExerciseEdit = ({
                         </label>
                         <select
                             className="edit-muscleGroup-form"
+                            ref={muscleInput}
                             type="text"
                             value={editedExercise.muscleGroupId}
                             onChange={(e) =>

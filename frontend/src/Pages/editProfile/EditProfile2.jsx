@@ -43,6 +43,7 @@ const EditProfile = ({
                 </button>
             </form>
             <form
+                className="form-info"
                 onSubmit={(e) => {
                     e.preventDefault();
                     authUpdateUser({ name, surname, gender, email, interest });

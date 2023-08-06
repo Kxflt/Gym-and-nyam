@@ -27,31 +27,35 @@ function NavBar() {
                 ) : (
                     <>
                         {!isHomepage && ( // Mostrar el enlace solo si NO estamos en la homepage
-                            <li>
+                            <li className="nav-homepage">
                                 <NavLink exact to="/">
                                     Homepage
                                 </NavLink>
                             </li>
                         )}
-                        <li>
+                        <li className="nav-exercises">
                             <NavLink to="/exercises">Exercises</NavLink>
                         </li>
-                        <li>
+
+                        <li className="nav-edit-profile">
                             <NavLink to="/account">Edit profile</NavLink>
                         </li>
-                        <li>
+
+                        <div className="nav-profile">
+                            <li className="Hi"> Hi, {authUser.name} </li>
+                            <li className="avatar-container">
+                                {authUser?.avatar && (
+                                    <Avatar
+                                        className="avatar-nav"
+                                        avatar={authUser.avatar}
+                                    />
+                                )}
+                            </li>
+                        </div>
+                        <li className="nav-logout">
                             <NavLink to="/login" onClick={authLogout}>
                                 Log Out
                             </NavLink>
-                        </li>
-                        <li className="Hi"> Hi, {authUser.name} </li>
-                        <li className="avatar-container">
-                            {authUser?.avatar && (
-                                <Avatar
-                                    className="avatar-nav"
-                                    avatar={authUser.avatar}
-                                />
-                            )}
                         </li>
                     </>
                 )}
