@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
-import useExercises from './useExercises';
-import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
+import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter.jsx';
+
+import ExerciseEdit from '../../Components/ExercisesEdit Uri-Ryan/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
 import LikeButton from '../../Components/like/Like';
 import FavButton from '../../Components/favourite/Favourite';
-
+import useExercises from './useExercises';
 import './exercises.css';
 
 const ExerciseList = () => {

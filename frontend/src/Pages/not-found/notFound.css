@@ -1,0 +1,33 @@
+.notfound-div {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.notfound-img {
+    width: 100%;
+    height: 85vh;
+    margin-top: 20px;
+}
+.notfound-title {
+    font-size: 50px;
+    font-style: inherit;
+}
+
+/* Media queries para diseño responsive */
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 375px) {
+    .notfound-img {
+        height: 55vh;
+    }
+    .notfound-title {
+        padding-left: 1.5rem;
+    }
+}
