@@ -79,6 +79,7 @@ const EditProfile = ({
                 <p>
                     <strong>Gender:</strong>
                     <select
+                        className="edit-gender"
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
                     >
@@ -92,6 +93,7 @@ const EditProfile = ({
                 <p>
                     <strong>Interest:</strong>
                     <select
+                        className="edit-interest"
                         value={interest}
                         onChange={(e) => setInterest(e.target.value)}
                     >

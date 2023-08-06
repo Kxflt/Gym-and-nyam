@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import './ExercisesCreation.css';
 
 const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
     const [name, setName] = useState('');
@@ -9,10 +10,11 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
     const [photo, setPhoto] = useState('');
 
     return (
-        <>
+        <main className="add-exercise-container">
             <div>
-                <h2>Add exercise:</h2>
+                <h2 className="add-title-exercise">Add exercise:</h2>
                 <form
+                    className="form-add-exercise"
                     onSubmit={async (e) => {
                         e.preventDefault();
 
@@ -29,8 +31,9 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                     }}
                 >
                     <div>
-                        <label>Exercise Name:</label>
+                        <label className="add-ex">Exercise Name:</label>
                         <input
+                            className="add-name-form"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -38,8 +41,9 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                         />
                     </div>
                     <div>
-                        <label>Exercise Description:</label>
+                        <label className="add-ex">Exercise Description:</label>
                         <textarea
+                            className="add-description-form"
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
@@ -48,8 +52,9 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                     </div>
 
                     <div>
-                        <label>Exercise Typology::</label>
+                        <label className="add-ex">Exercise Typology::</label>
                         <select
+                            className="add-typology-form"
                             type="text"
                             value={typologyId}
                             onChange={(e) => setTypologyId(e.target.value)}
@@ -62,8 +67,9 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                     </div>
 
                     <div>
-                        <label>Exercise Muscle Group:</label>
+                        <label className="add-ex">Exercise Muscle Group:</label>
                         <select
+                            className="add-muscleGroup-form"
                             type="text"
                             value={muscleGroupId}
                             onChange={(e) => setMuscleGroupId(e.target.value)}
@@ -82,21 +88,25 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                     </div>
 
                     <div>
-                        <div>
-                            <label>Exercise Photo</label>
-                            <input
-                                type="file"
-                                onChange={(e) => setPhoto(e.target.files[0])}
-                                required
-                            />
-                        </div>
+                        <label className="add-ex">Exercise Photo</label>
+                        <input
+                            className="add-pic-form"
+                            type="file"
+                            onChange={(e) => setPhoto(e.target.files[0])}
+                            required
+                        />
                     </div>
-                    <button type="Submit" disabled={loading}>
+
+                    <button
+                        className="ex-button-add"
+                        type="Submit"
+                        disabled={loading}
+                    >
                         {loading ? 'Adding exercise...' : 'Add exercise'}
                     </button>
                 </form>
             </div>
-        </>
+        </main>
     );
 };
 
