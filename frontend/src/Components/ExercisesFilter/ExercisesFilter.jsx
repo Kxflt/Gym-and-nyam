@@ -18,6 +18,7 @@ const ExercisesFilter = ({ setSearchParams, loading }) => {
     return (
         <div>
             <form
+                className="filter-form"
                 onSubmit={(e) => {
                     e.preventDefault();
 

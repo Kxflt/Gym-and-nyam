@@ -1,9 +1,11 @@
+img.avatar > .avatar-nav {
+    visibility: hidden;
+}
 .header-container {
     position: sticky;
     display: flex;
     height: 50px;
     align-items: center;
-    gap: 32px;
     justify-content: space-between;
     margin: 0;
 }
@@ -19,16 +21,24 @@ nav {
 .menu {
     list-style: none;
     display: flex;
-    font-size: 12px;
+    font-size: 18px;
     margin-top: 10px;
+    justify-content: space-between;
+    width: 100vw;
+    gap: 5%;
+    padding: 0;
+}
+
+ul.menu {
+    padding: 0;
+    margin: 0;
 }
 .Hi {
     margin-top: 10px;
 }
 .menu li {
-    margin-right: 10px;
-    font-size: 10px;
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .menu li a {
@@ -47,18 +57,34 @@ nav {
     position: relative;
     width: 40px;
     height: 40px;
-    margin-bottom: 10px;
-}
-
-.avatar {
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    object-fit: cover;
+    margin-bottom: 1%;
 }
 
 @media (min-width: 720px) {
     .Hi {
-        margin-left: 70vw;
+        margin-left: 40vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .Hi {
+        visibility: hidden;
+    }
+    img.avatar > .avatar-nav {
+        visibility: hidden;
+    }
+    .header-container {
+        width: 100vw;
+    }
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        gap: 2%;
+    }
+    .menu li {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12%;
+        margin-top: 12%;
     }
 }
