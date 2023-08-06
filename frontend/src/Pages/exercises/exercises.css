@@ -11,8 +11,10 @@ h3 {
     margin: 3%;
 }
 .exercise-container img {
-    width: 350px;
-    height: 350px;
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
 }
 
 main.list-exercises > button {
@@ -33,6 +35,8 @@ main.list-exercises > button {
 }
 
 .exercise-container {
+    background-color: rgb(97, 106, 97);
+
     position: relative;
     flex: 1;
     border: black solid 1px;
@@ -102,6 +106,7 @@ main.list-exercises > button {
 .like {
     width: 60px;
     height: 60px;
+    background-color: rgb(97, 106, 97);
 }
 .like-favourite {
     margin-top: 10%;
@@ -114,7 +119,7 @@ main.list-exercises > button {
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: var(--lightest-colour);
+    background-color: rgb(97, 106, 97);
     height: 100px;
     width: 100px;
     border: none;

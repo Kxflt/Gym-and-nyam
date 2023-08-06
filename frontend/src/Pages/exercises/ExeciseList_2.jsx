@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter';
 import useExercises from './useExercises';
@@ -72,13 +72,13 @@ const ExerciseList = () => {
                                     key={exercise.id}
                                 >
                                     <div>
-                                        <h3>{exercise.name}</h3>
                                         {exercise.photo && (
                                             <img
                                                 src={`http://localhost:8000/${exercise.photo}`}
                                                 alt={exercise.title}
                                             />
                                         )}
+                                        <h3>{exercise.name}</h3>
 
                                         <div>
                                             <p>{exercise.description}</p>
