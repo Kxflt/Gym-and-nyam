@@ -13,7 +13,7 @@ function NavBar() {
     const isHomepage = location.pathname === '/' || location.pathname === '/';
 
     return (
-        <nav className="header-container nav-bar">
+        <nav className="header-container">
             <ul className="menu">
                 {!authUser ? (
                     <>

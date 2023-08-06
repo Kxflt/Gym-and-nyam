@@ -68,13 +68,6 @@ input:focus {
     color: #333;
 }
 
-img.avatar {
-    display: flex;
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-}
 /* Media queries para diseño responsive */
 @media screen and (min-width: 1024px) {
     .main.edit-profile {
@@ -82,30 +75,20 @@ img.avatar {
         margin: 0 auto;
     }
 
-    img.avatar {
+    /* .edit-profile img.avatar {
         width: 50px;
         height: 50px;
-    }
+    } */
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .main.edit-profile {
         max-width: 220px;
     }
-
-    img.avatar {
-        width: 40px;
-        height: 40px;
-    }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (max-width: 400px) {
     .main.edit-profile {
         max-width: 180px;
-    }
-
-    img.avatar {
-        width: 30px;
-        height: 30px;
     }
 }

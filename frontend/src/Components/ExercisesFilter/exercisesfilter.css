@@ -55,14 +55,24 @@
 }
 
 .options {
-    background-color: rgb(161, 141, 182);
-    padding: 0.5px;
-    margin: 2px;
+
     border-radius: 5px;
     font-size: 12px;
+    display: flex;
+    align-items: center;
+
 }
 
 select {
     background-color: white;
     color: black;
+
+    width: 100%;
+}
+
+.filter-form {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+
 }
