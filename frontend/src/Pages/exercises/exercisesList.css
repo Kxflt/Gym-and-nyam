@@ -8,7 +8,7 @@ p {
     height: auto;
 }
 h3 {
-    margin: 3%;
+    /* margin: 3%; */
 }
 .exercise-container img {
     object-fit: fill;

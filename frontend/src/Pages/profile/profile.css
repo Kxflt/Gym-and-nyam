@@ -41,6 +41,12 @@ main.profile-container {
     text-align: center;
 }
 
+.links-profiles {
+    display: flex;
+
+    padding: 20px;
+}
+
 .inputs-profile {
     border: 1px solid #7b468c;
     padding: 15px;

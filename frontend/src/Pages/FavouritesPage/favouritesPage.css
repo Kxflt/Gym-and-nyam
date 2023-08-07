@@ -3,13 +3,12 @@
     box-sizing: content-box;
 }
 
-.list-favs-exercises {
+.container-cards-favs {
     display: flex;
-    flex-direction: inline-block;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-left: 25px;
-    margin-bottom: 50px;
+    margin: 10px 10px 50px 10px;
 }
 p {
     font-size: 16px;
@@ -19,29 +18,134 @@ p {
     height: auto;
 }
 
+.title-favs {
+    padding: 10px;
+    margin-top: 20px;
+}
+
 .fav-title {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 200px;
-    padding: 5px;
-    gap: 5px;
 }
 
-.exercise-container {
+.exercise-container-fav {
     background-color: rgb(97, 106, 97);
     position: relative;
-    flex: 0 0 calc(33.33% - 20px);
+    flex: 0 0 calc(23.33% - 20px);
     border: black solid 1px;
     border-radius: 20px;
     text-align: center;
-    align-items: center;
     box-shadow: 8px 12px 15px var(--darkest-colour);
 }
 
-.exercise-container img {
+.exercise-container-fav img {
     object-fit: fill;
     width: 100%;
     height: 350px;
     border-radius: 20px 20px 0 0;
+}
+
+.exerc-fav-text {
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+/*mobile*/
+@media screen and (max-width: 767px) {
+    .list-favs-exercises {
+        align-items: center;
+        justify-content: center;
+    }
+    .fav-title {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+    }
+    .container-cards-favs {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 10px 70px 10px;
+    }
+    .title-favs {
+        padding: 0;
+    }
+    .exercise-container-fav {
+        flex-direction: row;
+        position: relative;
+        height: 375px;
+        width: 300px;
+        margin-bottom: 10px;
+    }
+    .exerc-fav-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 25px;
+    }
+    .list-favs-exercises {
+        flex-direction: row;
+        margin-left: 0;
+    }
+
+    .exercise-container-fav img {
+        height: 150px;
+    }
+
+    p {
+        font-size: 10px;
+        margin: 7px;
+        text-align: center;
+        width: auto;
+        height: auto;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-cards-favs {
+        margin: 10px 0 50px 0;
+    }
+    .fav-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+    }
+
+    .exercise-container-fav {
+        width: 50%; /* Ocupará la mitad del ancho disponible, creando dos columnas */
+        box-sizing: border-box; /* Incluye el padding y el borde dentro del ancho especificado */
+        flex: 0 0 calc(33.33% - 20px);
+    }
+    .exerc-fav-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 10px;
+        padding: 10px;
+        margin-bottom: 0;
+    }
+
+    .exercise-container-fav img {
+        height: 150px;
+        width: 100%;
+        object-fit: fill;
+    }
+
+    p {
+        font-size: 10px;
+        margin: 7px;
+        text-align: center;
+        width: auto;
+        height: auto;
+    }
+    .title-exercise-fav {
+        font-size: 15px;
+    }
 }

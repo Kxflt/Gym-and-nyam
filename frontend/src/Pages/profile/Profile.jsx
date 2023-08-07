@@ -15,14 +15,14 @@ const UserProfile = () => {
 
     return (
         <main className="profile-container">
+            <div className="links-profiles">
+                <Link className="back-profile" to="/">
+                    Back
+                </Link>
+            </div>
             <div className="profile">
                 {authUser && (
                     <>
-                        <div className="links-profiles"></div>
-                        <Link className="back-profile" to="/">
-                            Back
-                        </Link>
-
                         <h2>My Profile</h2>
 
                         <Avatar

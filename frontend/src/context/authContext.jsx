@@ -11,6 +11,7 @@ import {
     signUpAvatarService,
     updateUserService,
     validationService,
+    sendRecoverPassService,
 } from '../services/authService';
 
 // Importamos la función que maneja los errores.
@@ -200,6 +201,22 @@ export function AuthProvider({ children }) {
         }
     };
 
+    // Función que manda al usuario un código de recuperación para modificar la contraseña.
+    const authSendEmailUser = async (recoverPassCode) => {
+        try {
+            setLoading(true);
+
+            await sendRecoverPassService(recoverPassCode);
+
+            // Tras validar el email navegamos
+            navigate('/forgotPassword');
+        } catch (err) {
+            handleErrorMessage(err, setErrorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // Todo lo que pongamos en la prop value van a ser los datos accesibles
     return (
         <AuthContext.Provider
@@ -212,6 +229,7 @@ export function AuthProvider({ children }) {
                 authUpdateAvatar,
                 authUpdateUser,
                 authValidateUser,
+                authSendEmailUser,
                 loading,
             }}
         >
