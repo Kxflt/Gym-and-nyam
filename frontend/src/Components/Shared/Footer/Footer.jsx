@@ -19,14 +19,18 @@ function Footer() {
             </section>
 
             <section className="contact-footer">
-                <h2>{formatMessage('Contacto')}</h2>
+                <h2 className="contact-title">
+                    {formatMessage('Contact info:')}
+                </h2>
                 <p>{formatMessage('Av. Chinchon, 77')}</p>
                 <p>{formatMessage('+34 587 348 428')}</p>
                 <p>{formatMessage('info@gymnam.com')}</p>
             </section>
 
             <section className="follow-footer">
-                <h2>{formatMessage('Síguenos')}</h2>
+                <h2 className="follow-title">
+                    {formatMessage('Our socials:')}
+                </h2>
                 <figure className="social-media">
                     <img src={twitter} alt="Twitter" />
                     <img src={gmail} alt="Gmail" />

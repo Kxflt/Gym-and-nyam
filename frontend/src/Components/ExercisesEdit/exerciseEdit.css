@@ -1,0 +1,82 @@
+@import '../../services/style.css';
+
+.edit-container {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.update-cancel {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    margin-top: 2%;
+    margin-right: 18%;
+    margin-bottom: 1%;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    padding: 10px;
+    outline-color: rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    color: white;
+}
+.update-cancel > button {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    padding: 10px;
+    outline-color: rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #7b468c;
+    color: white;
+}
+.update-cancel > button:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+}
+
+.title {
+    display: flex;
+    height: 15;
+    width: 20%;
+    text-shadow: 0 2px 5px lightgray;
+    text-decoration: underline 7px black;
+    text-align: center;
+}
+.photo {
+    width: 18%;
+    margin-left: 1%;
+}
+.photo-label {
+    color: black;
+}
+.image {
+    border-radius: 20px;
+    margin-left: 1%;
+    width: 350px;
+    height: 350px;
+    box-shadow: 8px 12px 15px var(--darkest-colour);
+    margin-top: 1%;
+}
+.exercises-edit {
+    align-content: space-around;
+}
+.exercises-edit label {
+    color: black;
+    margin-right: 2%;
+    width: 20%;
+}
+
+.exercises-edit input {
+    width: 25%;
+    margin-bottom: 2%;
+}
+.edit-container textarea {
+    width: 41%;
+}
