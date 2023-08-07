@@ -25,6 +25,12 @@
     justify-content: center;
     width: 20%;
 }
+a {
+    margin-top: 2%;
+    margin-left: 40%;
+    padding: 0;
+    justify-content: center;
+}
 .banner2 {
     width: 276px;
     height: auto;
@@ -46,6 +52,8 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
     }
 
     .banner2 {
@@ -56,5 +64,9 @@
     .banner3 {
         width: 42%;
         height: auto;
+    }
+    a {
+        margin-left: 15%;
+        margin-top: 10%;
     }
 }

@@ -65,14 +65,16 @@ section.logo {
 @media (max-width: 400px) {
     .contact-footer {
         font-size: 10px;
-    }
-    .follow-footer h2 {
-        margin-right: 25%;
-        font-size: 12px;
+        margin-left: 5%;
     }
 
-    .contact-footer h2 {
-        font-size: 12px;
+    h2.contact-title,
+    h2.follow-title {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    h2.follow-title {
+        margin-left: 16%;
     }
     .contact-footer p {
         font-size: 12px;

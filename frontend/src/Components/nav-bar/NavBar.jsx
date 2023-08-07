@@ -40,17 +40,18 @@ function NavBar() {
                         <li className="nav-edit-profile">
                             <NavLink to="/account">Edit profile</NavLink>
                         </li>
-
-                        <div className="nav-profile">
-                            <li className="Hi"> Hi, {authUser.name} </li>
-                            <li className="avatar-container">
-                                {authUser?.avatar && (
-                                    <Avatar
-                                        className="avatar-nav"
-                                        avatar={authUser.avatar}
-                                    />
-                                )}
-                            </li>
+                        <div className="nav-profile-container">
+                            <div className="nav-profile">
+                                <li className="Hi"> Hi, {authUser.name} </li>
+                                <li className="avatar-container">
+                                    {authUser?.avatar && (
+                                        <Avatar
+                                            className="avatar-nav"
+                                            avatar={authUser.avatar}
+                                        />
+                                    )}
+                                </li>
+                            </div>
                         </div>
                         <li className="nav-logout">
                             <NavLink to="/login" onClick={authLogout}>
