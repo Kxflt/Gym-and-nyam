@@ -12,8 +12,8 @@ function Dashboard() {
             <ImageCarousel />
             <div className="dashboard-container">
                 <main className="main-content">
-                    <a href="/aboutUs">
-                        <Button text="ABOUT US" />
+                    <a className="about-us-a" href="/aboutUs">
+                        <Button className="about-us" text="ABOUT US" />
                     </a>
                     <div className="image-container">
                         <img src={girl} alt="secbanner1" className="banner2" />

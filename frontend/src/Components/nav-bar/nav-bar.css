@@ -16,10 +16,20 @@ nav {
     z-index: 3;
 }
 
+.signup-nav,
+.login-nav {
+    font-size: 12px;
+}
+
+.nav-profile-container-1,
+.nav-profile-container {
+    display: flex;
+    flex-direction: row;
+}
 .menu {
     list-style: none;
     display: flex;
-    font-size: 18px;
+    font-size: 12px;
     margin-top: 10px;
     justify-content: space-between;
     width: 100vw;
@@ -35,23 +45,14 @@ ul.menu {
 .menu li {
     display: flex;
     justify-content: space-between;
-    margin: 0 30px 0 30px;
-}
-.nav-homepage,
-.nav-exercises,
-.nav-edit-profile,
-.nav-logout {
-    padding-top: 8px;
+    margin: 0 10px 0 10px;
+    align-items: center;
 }
 
-.Hi {
-    padding-bottom: 10px;
-}
 .menu li a {
     /* align-content: space-around; */
     color: white;
     text-decoration: none;
-    margin-top: 5px;
 }
 
 .menu li a:hover {
@@ -65,9 +66,11 @@ ul.menu {
     align-items: center;
 }
 
-li .avatar-container {
+.Hi {
+    margin-left: 60px;
+}
+.avatar-container {
     position: relative;
-    width: 40px;
     height: 40px;
     margin-bottom: 25%;
 }
@@ -79,7 +82,7 @@ li .avatar-container {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 767px) {
     /* Add a new CSS class for the "Hi" message and avatar container */
     .nav-profile-container {
         position: absolute;
@@ -89,18 +92,41 @@ li .avatar-container {
         display: flex;
     }
 
-    .nav-profile {
+    .nav-profile-container-1,
+    .nav-profile-container {
+        gap: 2px;
+    }
+
+    li.avatar-container,
+    li.Hi {
+        visibility: hidden;
+    }
+
+    .menu li {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 5px 0 5px;
+        align-items: center;
+    }
+    .nav-profile-container {
+        margin-right: 10px;
+    }
+}
+/*  .nav-profile {
         visibility: hidden;
     }
     .header-container {
         width: 100vw;
     }
     .menu {
+        list-style: none;
         display: flex;
+        font-size: 8.5px;
+        margin-top: 10px;
         justify-content: space-between;
-        gap: 2%;
-        overflow: hidden;
-        margin-top: 10%;
+        width: 100vw;
+        gap: 5%;
+        padding: 0;
     }
     .menu li a {
         margin-top: 20%;
@@ -122,3 +148,4 @@ li .avatar-container {
         margin-left: auto;
     }
 }
+ */

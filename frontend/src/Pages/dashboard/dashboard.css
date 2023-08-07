@@ -18,14 +18,14 @@
     display: flex;
     flex-direction: column;
 }
-.main-content > button {
+.about-us {
     margin-top: 2%;
     margin-left: 40%;
     padding: 0;
     justify-content: center;
     width: 20%;
 }
-a {
+.about-us-a {
     margin-top: 2%;
     margin-left: 40%;
     padding: 0;
@@ -47,7 +47,7 @@ a {
     height: 50vh;
 }
 
-@media (min-width: 300px) and (max-width: 800px) {
+@media (max-width: 767px) {
     div.image-container {
         display: flex;
         flex-direction: row;
@@ -65,7 +65,7 @@ a {
         width: 42%;
         height: auto;
     }
-    a {
+    .about-us-a {
         margin-left: 15%;
         margin-top: 10%;
     }

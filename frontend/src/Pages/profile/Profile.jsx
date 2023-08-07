@@ -24,11 +24,12 @@ const UserProfile = () => {
                 {authUser && (
                     <>
                         <h2>My Profile</h2>
-
-                        <Avatar
-                            className="avatar-profile"
-                            avatar={authUser.avatar}
-                        />
+                        <div className="prof-avatar">
+                            <Avatar
+                                className="avatar-profile"
+                                avatar={authUser.avatar}
+                            />
+                        </div>
 
                         {editProfileModal ? (
                             <EditProfile

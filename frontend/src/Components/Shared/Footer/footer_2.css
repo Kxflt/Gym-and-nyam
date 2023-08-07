@@ -62,7 +62,7 @@ section.logo {
     margin-right: 10px; /* Espaciado entre las imágenes */
 }
 
-@media (max-width: 400px) {
+@media (max-width: 767px) {
     .contact-footer {
         font-size: 10px;
         margin-left: 5%;

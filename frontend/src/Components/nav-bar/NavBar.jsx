@@ -17,47 +17,49 @@ function NavBar() {
             <ul className="menu">
                 {!authUser ? (
                     <>
-                        <li>
+                        <li className="signup-nav">
                             <NavLink to="/users"> Sign Up</NavLink>
                         </li>
-                        <li>
+                        <li className="login-nav">
                             <NavLink to="/login">Log in</NavLink>
                         </li>
                     </>
                 ) : (
                     <>
-                        {!isHomepage && ( // Mostrar el enlace solo si NO estamos en la homepage
-                            <li className="nav-homepage">
-                                <NavLink exact to="/">
-                                    Homepage
+                        <div className="nav-profile-container-1">
+                            {!isHomepage && ( // Mostrar el enlace solo si NO estamos en la homepage
+                                <li className="nav-homepage">
+                                    <NavLink exact to="/">
+                                        Homepage
+                                    </NavLink>
+                                </li>
+                            )}
+                            <li className="nav-exercises">
+                                <NavLink to="/exercises">Exercises</NavLink>
+                            </li>
+
+                            <li className="nav-edit-profile">
+                                <NavLink to="/account">Edit profile</NavLink>
+                            </li>
+                        </div>
+
+                        <div className="nav-profile-container">
+                            <li className="avatar-container">
+                                {authUser?.avatar && (
+                                    <Avatar
+                                        className="avatar-nav"
+                                        avatar={authUser.avatar}
+                                    />
+                                )}
+                            </li>
+                            <li className="Hi"> Hi, {authUser.name} </li>
+
+                            <li className="nav-logout">
+                                <NavLink to="/login" onClick={authLogout}>
+                                    Log Out
                                 </NavLink>
                             </li>
-                        )}
-                        <li className="nav-exercises">
-                            <NavLink to="/exercises">Exercises</NavLink>
-                        </li>
-
-                        <li className="nav-edit-profile">
-                            <NavLink to="/account">Edit profile</NavLink>
-                        </li>
-                        <div className="nav-profile-container">
-                            <div className="nav-profile">
-                                <li className="Hi"> Hi, {authUser.name} </li>
-                                <li className="avatar-container">
-                                    {authUser?.avatar && (
-                                        <Avatar
-                                            className="avatar-nav"
-                                            avatar={authUser.avatar}
-                                        />
-                                    )}
-                                </li>
-                            </div>
                         </div>
-                        <li className="nav-logout">
-                            <NavLink to="/login" onClick={authLogout}>
-                                Log Out
-                            </NavLink>
-                        </li>
                     </>
                 )}
             </ul>
