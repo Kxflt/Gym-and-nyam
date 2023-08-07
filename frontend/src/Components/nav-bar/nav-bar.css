@@ -80,10 +80,16 @@ li .avatar-container {
 }
 
 @media (max-width: 400px) {
-    .Hi {
-        visibility: hidden;
+    /* Add a new CSS class for the "Hi" message and avatar container */
+    .nav-profile-container {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
     }
-    img.avatar > .avatar-nav {
+
+    .nav-profile {
         visibility: hidden;
     }
     .header-container {
@@ -93,11 +99,26 @@ li .avatar-container {
         display: flex;
         justify-content: space-between;
         gap: 2%;
+        overflow: hidden;
+        margin-top: 10%;
+    }
+    .menu li a {
+        margin-top: 20%;
     }
     .menu li {
         display: flex;
-        justify-content: space-between;
         padding-bottom: 12%;
         margin-top: 12%;
+        margin: 0;
+        flex-grow: 1;
+    }
+    .nav-exercises {
+        justify-content: center;
+    }
+    .nav-edit-profile {
+        justify-content: center;
+    }
+    .nav-logout {
+        margin-left: auto;
     }
 }
