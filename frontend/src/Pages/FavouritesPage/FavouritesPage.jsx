@@ -9,29 +9,36 @@ const ExerciseFavList = () => {
     return (
         <main className="list-favs-exercises">
             <div className="fav-title">
-                <h3>MY FAVOURITES:</h3>
+                <h3 className="title-favs">MY FAVOURITES:</h3>
             </div>
-            {exercises?.length > 0 ? (
-                exercises.map((exercise) => (
-                    <div className="exercise-container" key={exercise.id}>
-                        <div>
-                            {exercise.photo && (
-                                <img
-                                    src={`http://localhost:8000/${exercise.photo}`}
-                                    alt={exercise.title}
-                                />
-                            )}
-                            <h3>{exercise.name}</h3>
-
+            <div className="container-cards-favs">
+                {exercises?.length > 0 ? (
+                    exercises.map((exercise) => (
+                        <div
+                            className="exercise-container-fav"
+                            key={exercise.id}
+                        >
                             <div>
-                                <p>{exercise.description}</p>
+                                {exercise.photo && (
+                                    <img
+                                        src={`http://localhost:8000/${exercise.photo}`}
+                                        alt={exercise.title}
+                                    />
+                                )}
+                                <div className="exerc-fav-text">
+                                    <h3 className="title-exercise-fav">
+                                        {exercise.name}
+                                    </h3>
+
+                                    <p>{exercise.description}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-            ) : (
-                <p>No favorite exercises found.</p>
-            )}
+                    ))
+                ) : (
+                    <p>No favorite exercises found.</p>
+                )}
+            </div>
         </main>
     );
 };

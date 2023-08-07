@@ -6,8 +6,6 @@ import Button from '../../Components/Shared/Button/Button';
 import InputText from '../../Components/Shared/Input/InputText';
 import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import NewPassword from '../../Components/newPassword/NewPassword';
-import NavBar from '../../Components/nav-bar/NavBar';
-import Footer from '../../Components/Shared/Footer/Footer';
 import './forgotPassword.css';
 
 function ForgotPassword() {
@@ -52,7 +50,8 @@ function ForgotPassword() {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <InputText
-                        label="Email"
+                        className="email-forg-pass"
+                        placeholder="Insert your email address and check your inbox. We'll send you a recovery pass."
                         register={register('email', {
                             required: true,
                             pattern: EMAIL_REGEX,
