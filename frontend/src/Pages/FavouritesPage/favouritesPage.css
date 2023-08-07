@@ -1,0 +1,47 @@
+.list-exercises {
+    border-radius: 20px;
+    box-sizing: content-box;
+}
+
+.list-favs-exercises {
+    display: flex;
+    flex-direction: inline-block;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 25px;
+    margin-bottom: 50px;
+}
+p {
+    font-size: 16px;
+    margin: 15px;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+.fav-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    gap: 5px;
+}
+
+.exercise-container {
+    background-color: rgb(97, 106, 97);
+    position: relative;
+    flex: 0 0 calc(33.33% - 20px);
+    border: black solid 1px;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    box-shadow: 8px 12px 15px var(--darkest-colour);
+}
+
+.exercise-container img {
+    object-fit: fill;
+    width: 100%;
+    height: 350px;
+    border-radius: 20px 20px 0 0;
+}

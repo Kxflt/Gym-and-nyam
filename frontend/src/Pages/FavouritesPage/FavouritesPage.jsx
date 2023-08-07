@@ -1,27 +1,29 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import useFavourites from './useFavourites';
+import './favouritesPage.css';
 
 const ExerciseFavList = () => {
     const { exercises } = useFavourites();
 
     return (
         <main className="list-favs-exercises">
-            <h3>MY FAVOURITES:</h3>
+            <div className="fav-title">
+                <h3>MY FAVOURITES:</h3>
+            </div>
             {exercises?.length > 0 ? (
                 exercises.map((exercise) => (
                     <div className="exercise-container" key={exercise.id}>
-                        <div className="front">
-                            {/* cara frontal de la carta */}
-                            <h3>{exercise.name}</h3>
+                        <div>
                             {exercise.photo && (
                                 <img
                                     src={`http://localhost:8000/${exercise.photo}`}
                                     alt={exercise.title}
                                 />
                             )}
-                            {/* Cara trasera de la carta */}
-                            <div className="back">
+                            <h3>{exercise.name}</h3>
+
+                            <div>
                                 <p>{exercise.description}</p>
                             </div>
                         </div>
