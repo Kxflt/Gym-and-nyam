@@ -71,13 +71,13 @@ input:focus {
     color: #333;
 }
 
-img.avatar {
+/* img.avatar {
     display: flex;
     margin-left: 10px;
     width: 40px;
     height: 40px;
     margin-top: 10px;
-}
+} */
 /* Media queries para diseño responsive */
 @media screen and (min-width: 1024px) {
 }

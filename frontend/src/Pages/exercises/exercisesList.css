@@ -134,38 +134,23 @@ div.filter-edit {
     text-shadow: 1px 1px 2px #427388;
 }
 
-.like {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(97, 106, 97);
-}
-.like-favourite {
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.fav-button {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: rgb(97, 106, 97);
-    height: 100px;
-    width: 100px;
-    border: none;
-}
-.edit {
+.edit,
+.delete {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 55px;
     height: 35px;
 }
-.delete {
+
+div.like-favourite {
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 35px;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+div.like-favourite > button {
+    background-color: transparent;
+    border: none;
 }

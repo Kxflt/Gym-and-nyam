@@ -121,20 +121,17 @@ const ExerciseList = () => {
                                             </div>
                                         )}
                                     <div className="like-favourite">
-                                        <div className="like">
-                                            <LikeButton
-                                                exerciseId={exercise.id}
-                                                likedByMe={exercise.likedByMe}
-                                                toogleLike={toogleLike}
-                                            />
-                                        </div>
-                                        <div className="fav-button">
-                                            <FavButton
-                                                exerciseId={exercise.id}
-                                                favByMe={exercise.favByMe}
-                                                addFavourite={addFavourite}
-                                            />
-                                        </div>
+                                        <LikeButton
+                                            exerciseId={exercise.id}
+                                            likedByMe={exercise.likedByMe}
+                                            toogleLike={toogleLike}
+                                        />
+
+                                        <FavButton
+                                            exerciseId={exercise.id}
+                                            favByMe={exercise.favByMe}
+                                            addFavourite={addFavourite}
+                                        />
                                     </div>
                                 </div>
                             ))
