@@ -32,9 +32,18 @@ function Footer() {
                     {formatMessage('Our socials:')}
                 </h2>
                 <figure className="social-media">
-                    <img src={twitter} alt="Twitter" />
-                    <img src={gmail} alt="Gmail" />
-                    <img src={github} alt="Github" />
+                    <a href="http://twitter.com/GymNyam" target="_blank">
+                        <img src={twitter} alt="Twitter" />
+                    </a>
+                    <a href="mailto:gym.nyam.23@gmail.com" target="_blank">
+                        <img src={gmail} alt="Gmail" />
+                    </a>
+                    <a
+                        href="https://github.com/Kxflt/Gym-and-nyam"
+                        target="_blank"
+                    >
+                        <img src={github} alt="Github" />
+                    </a>
                 </figure>
             </section>
         </footer>
