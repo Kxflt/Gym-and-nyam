@@ -18,19 +18,14 @@
     display: flex;
     flex-direction: column;
 }
-.about-us {
-    margin-top: 2%;
-    margin-left: 40%;
-    padding: 0;
-    justify-content: center;
-    width: 20%;
-}
+
 .about-us-a {
     margin-top: 2%;
     margin-left: 40%;
     padding: 0;
     justify-content: center;
 }
+
 .banner2 {
     width: 276px;
     height: auto;

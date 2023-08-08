@@ -1,8 +1,9 @@
 .dev-container {
     display: flex;
     flex-direction: inline-block;
+    flex: 0 0 calc(50% - 20px);
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 3%;
 }
 
 .dev-profile {
@@ -23,10 +24,14 @@
 }
 
 .about-us > h1 {
+    font-weight: bolder;
+    text-shadow: 0 3px 5px grey;
     text-align: center;
-    color: red;
-    width: 100vw;
-    margin-right: 10%;
+    color: rgb(8, 8, 8);
+    width: 80%;
+    margin-left: 7%;
+    margin-top: 2%;
+    margin-bottom: 6%;
 }
 .dev-profile .dev-profile-image {
     position: absolute;
@@ -151,5 +156,37 @@
 
 .dev-profile-bio {
     color: black;
+    font-family: 'Montserrat';
     font-size: 12px;
+}
+
+/* Media Query for Phones */
+@media (max-width: 767px) {
+    .dev-container {
+        margin-left: 15%;
+
+        margin-right: 15%;
+    }
+    .dev-profile {
+        width: 300px;
+    }
+}
+
+/* Media Query for Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .dev-container {
+        margin-left: 7%;
+        margin-right: 10%;
+    }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1024px) {
+    .dev-container {
+        margin-left: 10%;
+        margin-right: 5%;
+    }
+    .about-us > h1 {
+        margin-top: 2%;
+    }
 }
