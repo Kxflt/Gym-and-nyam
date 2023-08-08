@@ -22,9 +22,9 @@ function Footer() {
                 <h2 className="contact-title">
                     {formatMessage('Contact info:')}
                 </h2>
-                <p>{formatMessage('Av. Chinchon, 77')}</p>
-                <p>{formatMessage('+34 587 348 428')}</p>
-                <p>{formatMessage('info@gymnam.com')}</p>
+                <p className="contact-p">{formatMessage('Av. Chinchon, 77')}</p>
+                <p className="contact-p">{formatMessage('+34 587 348 428')}</p>
+                <p className="contact-p">{formatMessage('info@gymnam.com')}</p>
             </section>
 
             <section className="follow-footer">
