@@ -3,7 +3,6 @@
     flex-direction: inline-block;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 10%;
 }
 
 .dev-profile {
@@ -23,6 +22,12 @@
     transition: 0.5s;
 }
 
+.about-us > h1 {
+    text-align: center;
+    color: red;
+    width: 100vw;
+    margin-right: 10%;
+}
 .dev-profile .dev-profile-image {
     position: absolute;
     top: 0px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import profile from '../../assets/profile.jpg';
+import profile from '../../assets/profile.jpeg';
 import fat_pikachu from '../../assets/fat_pikachu.png';
 import aitor from '../../assets/aitor.jpg';
 import marina from '../../assets/marina.jpg';
@@ -8,6 +8,11 @@ import './aboutUs.css';
 function AboutUs() {
     return (
         <main className="about-us">
+            <h1>
+                We are team from Hack a Boss bootcamp. Our final proyect it's a
+                web site gym. We are working on it all july and part of august.
+                Here you can find all you need to be a member of our gym.
+            </h1>
             <div className="dev-container">
                 <div className="dev-profile-wrapper">
                     <div className="dev-profile">
@@ -20,7 +25,11 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#email" title="Email">
+                                <a
+                                    href="mailto:oriol.solanes-lopez@gmail.com"
+                                    title="Email"
+                                    target="_blank"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -38,7 +47,11 @@ function AboutUs() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#linkedin" title="Linkedin">
+                                <a
+                                    href="http://www.linkedin.com/in/oriol-solanes/"
+                                    title="Linkedin"
+                                    target="_blank"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
