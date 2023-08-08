@@ -1,7 +1,13 @@
 .avatar {
     border-radius: 50%;
+    width: 100%;
 }
 
-img .avatar > .avatar-container > .prof-avatar {
-    height: 100px;
+.nav-profile-container > .avatar-container {
+    width: 40px;
+}
+
+.profile > .avatar-container {
+    width: 150px;
+    height: 150px;
 }

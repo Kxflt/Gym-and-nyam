@@ -21,7 +21,7 @@ const editUserAvatar = async (req, res, next) => {
         }
 
         //Creamos la variable que almacenará el nuevo avatar.
-        const avatar = await savePhoto(req.files.avatar, 100);
+        const avatar = await savePhoto(req.files.avatar, 300);
 
         //Actualizamos el avatar del usuario.
         await updateUserAvatarQuery(avatar, req.user.id);

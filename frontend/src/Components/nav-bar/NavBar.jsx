@@ -46,10 +46,7 @@ function NavBar() {
                         <div className="nav-profile-container">
                             <li className="avatar-container">
                                 {authUser?.avatar && (
-                                    <Avatar
-                                        className="avatar-nav"
-                                        avatar={authUser.avatar}
-                                    />
+                                    <Avatar avatar={authUser.avatar} />
                                 )}
                             </li>
                             <li className="Hi"> Hi, {authUser.name} </li>

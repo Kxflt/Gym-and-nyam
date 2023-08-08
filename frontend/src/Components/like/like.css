@@ -1,25 +1,12 @@
-.like {
-    background-color: var(--lightest-colour);
-}
-.like-button {
-    border: none;
-    background-color: yellow;
-    width: 55px;
-    height: 55px;
-    margin-bottom: 10px;
-}
-
-svg {
+.like img {
     cursor: pointer;
     overflow: visible;
-}
-
-div.liked > svg {
     animation: animateHeart 0.5s;
+    max-height: 50px;
 }
 
-div.liked > svg * {
-    fill: red;
+div.not-liked > img {
+    filter: grayscale(0.5) contrast(1);
 }
 
 @keyframes animateHeart {

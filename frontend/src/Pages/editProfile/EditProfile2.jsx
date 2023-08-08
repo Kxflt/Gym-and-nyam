@@ -72,7 +72,7 @@ const EditProfile = ({
                     <strong>Email:</strong>
                     <input
                         className="edit-email"
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />

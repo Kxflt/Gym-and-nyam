@@ -46,9 +46,9 @@ main.profile-container {
 
     padding: 20px;
 }
-.prof-avatar > .avatar-container {
+/* .prof-avatar > .avatar-container {
     margin-bottom: 10%;
-}
+} */
 
 .nav-profile-container {
     display: flex;
