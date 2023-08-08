@@ -1,8 +1,8 @@
 import React from 'react';
 import profile from '../../assets/profile.jpeg';
 import fat_pikachu from '../../assets/fat_pikachu.png';
-import aitor from '../../assets/aitor.jpg';
-import marina from '../../assets/marina.jpg';
+import Aitor from '../../assets/Aitor.jpeg';
+import Marina from '../../assets/Marina_H.jpeg';
 
 import './aboutUs.css';
 function AboutUs() {
@@ -166,7 +166,7 @@ function AboutUs() {
                     <div className="dev-profile">
                         <div className="dev-profile-image">
                             <img
-                                src={aitor}
+                                src={Aitor}
                                 alt="profile 1"
                                 className="profile"
                             />
@@ -227,8 +227,10 @@ function AboutUs() {
                         <div className="dev-profile-name">
                             <h2>Aitor de la Cueva</h2>
                             <div className="dev-profile-bio">
-                                I'm student. love working with <em>React</em>{' '}
-                                and <em>Node.js</em>.
+                                Organised, proactive, with good social skills,
+                                people skills. A real team player; comitted
+                                responsible and with enthusiasm to work and
+                                demonstrate my programming skills.
                             </div>
                         </div>
                     </div>
@@ -238,7 +240,7 @@ function AboutUs() {
                     <div className="dev-profile">
                         <div className="dev-profile-image">
                             <img
-                                src={marina}
+                                src={Marina}
                                 alt="profile 1"
                                 className="profile"
                             />
@@ -299,8 +301,10 @@ function AboutUs() {
                         <div className="dev-profile-name">
                             <h2>Marina Hernández</h2>
                             <div className="dev-profile-bio">
-                                I'm student. love working with <em>React</em>{' '}
-                                and <em>Node.js</em>.
+                                Enthusiastic Markerting and E-commerce
+                                Specialist with 7 years’ experience. Developed a
+                                valuable digital and product awareness, and
+                                wanted to acquire knowledge on programming web.
                             </div>
                         </div>
                     </div>

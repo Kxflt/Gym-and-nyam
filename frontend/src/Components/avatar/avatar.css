@@ -4,10 +4,9 @@
 }
 
 .nav-profile-container > .avatar-container {
-    width: 40px;
+    width: 35px;
 }
 
 .profile > .avatar-container {
     width: 150px;
-    height: 150px;
 }
