@@ -83,13 +83,13 @@ function AboutUs() {
                         <div className="dev-profile-name">
                             <h2>Uri Solanes</h2>
                             <div className="dev-profile-bio">
-                                Web Developer - Hack a boss Bootcamp.
+                                Web Developer - Hack a boss Bootcamp.HTML:5,
+                                CSS, JAVASCRIPT, DOM, SQL, NODE.JS Y REACT.
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="dev-container">
+
                 <div className="dev-profile-wrapper">
                     <div className="dev-profile">
                         <div className="dev-profile-image">
@@ -119,7 +119,11 @@ function AboutUs() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#linkedin" title="Linkedin">
+                                <a
+                                    href="http://www.linkedin.com/in/rjq/"
+                                    target="_blank"
+                                    title="Linkedin"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
@@ -157,8 +161,7 @@ function AboutUs() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="dev-container">
+
                 <div className="dev-profile-wrapper">
                     <div className="dev-profile">
                         <div className="dev-profile-image">
@@ -188,7 +191,11 @@ function AboutUs() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#linkedin" title="Linkedin">
+                                <a
+                                    href="http://www.linkedin.com/in/aitordelacuevaalonso/"
+                                    target="_blank"
+                                    title="Linkedin"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
@@ -226,8 +233,7 @@ function AboutUs() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="dev-container">
+
                 <div className="dev-profile-wrapper">
                     <div className="dev-profile">
                         <div className="dev-profile-image">
@@ -257,7 +263,11 @@ function AboutUs() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#linkedin" title="Linkedin">
+                                <a
+                                    href="http://www.linkedin.com/in/marina-hernandez-hernandez/"
+                                    target="_blank"
+                                    title="Linkedin"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
