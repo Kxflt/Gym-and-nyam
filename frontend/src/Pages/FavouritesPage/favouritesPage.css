@@ -30,7 +30,7 @@ p {
 }
 
 .exercise-container-fav {
-    background-color: rgb(97, 106, 97);
+    background-color: #fae1aa;
     position: relative;
     flex: 0 0 calc(23.33% - 20px);
     border: black solid 1px;

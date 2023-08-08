@@ -19,6 +19,7 @@
     flex-direction: column;
 }
 
+
 .about-us-a {
     margin-top: 2%;
     display: flex;
@@ -26,6 +27,7 @@
     justify-content: center;
     text-decoration: none;
 }
+
 .banner2 {
     width: 276px;
     height: auto;

@@ -1,31 +1,45 @@
+.notfound-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .notfound-div {
-    margin: 20px;
+    margin-bottom: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.notfound-img {
-    width: 100%;
-    height: 85vh;
-    margin-top: 20px;
-}
-.notfound-title {
-    font-size: 50px;
-    font-style: inherit;
-}
-
 /* Media queries para diseño responsive */
 @media screen and (min-width: 1024px) {
+    .notfound-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 600px;
+    }
 }
 
 @media screen and (min-width: 768px) {
+    .notfound-title {
+        font-size: 40px;
+        text-align: center;
+    }
+    .notfound-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 80vh;
+        max-width: 80vh;
+    }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 200px) {
     .notfound-img {
-        height: 55vh;
+        max-height: 50vh;
+        max-width: 50vh;
     }
     .notfound-title {
         padding-left: 1.5rem;
