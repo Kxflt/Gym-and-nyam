@@ -50,7 +50,6 @@ const ExerciseList = () => {
                     <div className="exercise-and-filter">
                         <div className="filter-edit">
                             <ExercisesFilter
-                                className="filter"
                                 setSearchParams={setSearchParams}
                                 loading={loading}
                             />
@@ -63,7 +62,7 @@ const ExerciseList = () => {
                                             setExercisesFormModal(true)
                                         }
                                     >
-                                        EXERCISES ADMIN
+                                        ADMIN ZONE: ADD EXERCISE
                                     </button>
                                 )}
                         </div>
@@ -81,12 +80,17 @@ const ExerciseList = () => {
                                                 alt={exercise.title}
                                             />
                                         )}
-                                        <h3>{exercise.name}</h3>
+                                        <div className="info-exercise">
+                                            <h3 className="h3-ex">
+                                                {exercise.name}
+                                            </h3>
 
-                                        <div>
-                                            <p>{exercise.description}</p>
+                                            <p className="p-ex">
+                                                {exercise.description}
+                                            </p>
                                         </div>
                                     </div>
+
                                     {!editingExerciseModal &&
                                         authUser?.role === 'admin' && (
                                             <div className="edit-button">
@@ -99,7 +103,7 @@ const ExerciseList = () => {
                                                         );
                                                     }}
                                                 >
-                                                    Edit
+                                                    EDIT
                                                 </button>
                                                 <button
                                                     className="delete"
@@ -116,7 +120,7 @@ const ExerciseList = () => {
                                                     }}
                                                     disabled={loading}
                                                 >
-                                                    Eliminar
+                                                    DELETE
                                                 </button>
                                             </div>
                                         )}
