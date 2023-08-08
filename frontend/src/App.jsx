@@ -14,7 +14,6 @@ import ExerciseList from './Pages/exercises/ExeciseList_2';
 import Footer from './Components/Shared/Footer/Footer';
 import AboutUs from './Pages/aboutUs/AboutUs';
 import ErrorModal from './Components/Shared/ErrorModal/ErrorModal';
-import Favourites from './Pages/FavouritesPage/FavouritesPage';
 
 import './App.css';
 import ExerciseFavList from './Pages/FavouritesPage/FavouritesPage';

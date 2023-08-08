@@ -1,8 +1,9 @@
 .favourite img {
     cursor: pointer;
     overflow: visible;
-    max-height: 45px;
     animation: animateStar 0.5s;
+    max-height: 45px;
+    padding: 2px;
 }
 
 div.not-fav > img {
