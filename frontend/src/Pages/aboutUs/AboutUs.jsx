@@ -7,11 +7,11 @@ import marina from '../../assets/marina.jpg';
 import './aboutUs.css';
 function AboutUs() {
     return (
-        <main>
-            <div className="container">
-                <div className="profile-wrapper">
-                    <div className="profile">
-                        <div className="profile-image">
+        <main className="about-us">
+            <div className="dev-container">
+                <div className="dev-profile-wrapper">
+                    <div className="dev-profile">
+                        <div className="dev-profile-image">
                             <img
                                 src={profile}
                                 alt="profile 1"
@@ -20,81 +20,20 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#instagram" title="Instagram">
+                                <a href="#email" title="Email">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
                                         fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <rect
-                                            x="2"
-                                            y="2"
-                                            width="20"
-                                            height="20"
-                                            rx="5"
-                                            ry="5"
-                                        ></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line
-                                            x1="17.5"
-                                            y1="6.5"
-                                            x2="17.51"
-                                            y2="6.5"
-                                        ></line>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#twitter" title="Twitter">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
                                         viewBox="0 0 24 24"
-                                        fill="none"
+                                        stroke-width="1.5"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-twitter"
+                                        class="w-6 h-6"
                                     >
                                         <path
-                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 
-                                            10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5
-                                            4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                        ></path>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#threads" title="Threads">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path
-                                            d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7
-                                            -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 
-                                            3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1"
-                                        ></path>
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                        />
                                     </svg>
                                 </a>
                             </li>
@@ -128,20 +67,19 @@ function AboutUs() {
                                 </a>
                             </li>
                         </ul>
-                        <div className="profile-name">
+                        <div className="dev-profile-name">
                             <h2>Uri Solanes</h2>
-                            <div className="profile-bio">
-                                I'm student. love working with <em>React</em>{' '}
-                                and <em>Node.js</em>.
+                            <div className="dev-profile-bio">
+                                Web Developer - Hack a boss Bootcamp.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="profile-wrapper">
-                    <div className="profile">
-                        <div className="profile-image">
+            <div className="dev-container">
+                <div className="dev-profile-wrapper">
+                    <div className="dev-profile">
+                        <div className="dev-profile-image">
                             <img
                                 src={fat_pikachu}
                                 alt="profile 1"
@@ -150,81 +88,20 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#instagram" title="Instagram">
+                                <a href="#email" title="Email">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
                                         fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <rect
-                                            x="2"
-                                            y="2"
-                                            width="20"
-                                            height="20"
-                                            rx="5"
-                                            ry="5"
-                                        ></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line
-                                            x1="17.5"
-                                            y1="6.5"
-                                            x2="17.51"
-                                            y2="6.5"
-                                        ></line>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#twitter" title="Twitter">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
                                         viewBox="0 0 24 24"
-                                        fill="none"
+                                        stroke-width="1.5"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-twitter"
+                                        class="w-6 h-6"
                                     >
                                         <path
-                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 
-                                            10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5
-                                            4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                        ></path>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#threads" title="Threads">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path
-                                            d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7
-                                            -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 
-                                            3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1"
-                                        ></path>
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                        />
                                     </svg>
                                 </a>
                             </li>
@@ -258,9 +135,9 @@ function AboutUs() {
                                 </a>
                             </li>
                         </ul>
-                        <div className="profile-name">
+                        <div className="dev-profile-name">
                             <h2>Ryan John Quinn</h2>
-                            <div className="profile-bio">
+                            <div className="dev-profile-bio">
                                 I'm student. love working with <em>React</em>{' '}
                                 and <em>Node.js</em>.
                             </div>
@@ -268,10 +145,10 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="profile-wrapper">
-                    <div className="profile">
-                        <div className="profile-image">
+            <div className="dev-container">
+                <div className="dev-profile-wrapper">
+                    <div className="dev-profile">
+                        <div className="dev-profile-image">
                             <img
                                 src={aitor}
                                 alt="profile 1"
@@ -280,81 +157,20 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#instagram" title="Instagram">
+                                <a href="#email" title="Email">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
                                         fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <rect
-                                            x="2"
-                                            y="2"
-                                            width="20"
-                                            height="20"
-                                            rx="5"
-                                            ry="5"
-                                        ></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line
-                                            x1="17.5"
-                                            y1="6.5"
-                                            x2="17.51"
-                                            y2="6.5"
-                                        ></line>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#twitter" title="Twitter">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
                                         viewBox="0 0 24 24"
-                                        fill="none"
+                                        stroke-width="1.5"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-twitter"
+                                        class="w-6 h-6"
                                     >
                                         <path
-                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 
-                                            10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5
-                                            4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                        ></path>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#threads" title="Threads">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path
-                                            d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7
-                                            -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 
-                                            3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1"
-                                        ></path>
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                        />
                                     </svg>
                                 </a>
                             </li>
@@ -388,9 +204,9 @@ function AboutUs() {
                                 </a>
                             </li>
                         </ul>
-                        <div className="profile-name">
+                        <div className="dev-profile-name">
                             <h2>Aitor de la Cueva</h2>
-                            <div className="profile-bio">
+                            <div className="dev-profile-bio">
                                 I'm student. love working with <em>React</em>{' '}
                                 and <em>Node.js</em>.
                             </div>
@@ -398,10 +214,10 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="profile-wrapper">
-                    <div className="profile">
-                        <div className="profile-image">
+            <div className="dev-container">
+                <div className="dev-profile-wrapper">
+                    <div className="dev-profile">
+                        <div className="dev-profile-image">
                             <img
                                 src={marina}
                                 alt="profile 1"
@@ -410,81 +226,20 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#instagram" title="Instagram">
+                                <a href="#email" title="Email">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
                                         fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <rect
-                                            x="2"
-                                            y="2"
-                                            width="20"
-                                            height="20"
-                                            rx="5"
-                                            ry="5"
-                                        ></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line
-                                            x1="17.5"
-                                            y1="6.5"
-                                            x2="17.51"
-                                            y2="6.5"
-                                        ></line>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#twitter" title="Twitter">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
                                         viewBox="0 0 24 24"
-                                        fill="none"
+                                        stroke-width="1.5"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-twitter"
+                                        class="w-6 h-6"
                                     >
                                         <path
-                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 
-                                            10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5
-                                            4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                        ></path>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#threads" title="Threads">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path
-                                            d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7
-                                            -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 
-                                            3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1"
-                                        ></path>
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                        />
                                     </svg>
                                 </a>
                             </li>
@@ -518,9 +273,9 @@ function AboutUs() {
                                 </a>
                             </li>
                         </ul>
-                        <div className="profile-name">
+                        <div className="dev-profile-name">
                             <h2>Marina Hernández</h2>
-                            <div className="profile-bio">
+                            <div className="dev-profile-bio">
                                 I'm student. love working with <em>React</em>{' '}
                                 and <em>Node.js</em>.
                             </div>
