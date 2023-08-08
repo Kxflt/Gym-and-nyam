@@ -1,9 +1,11 @@
 .dev-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: inline-block;
     flex: 0 0 calc(50% - 20px);
     flex-wrap: wrap;
-    gap: 3%;
+    gap: 6%;
 }
 
 .dev-profile {
@@ -144,13 +146,14 @@
 }
 
 .dev-profile:hover .dev-profile-name {
-    background-color: #7b468c;
+    background-color: #fae1aa;
 }
 
 .dev-profile-name h2 {
-    color: white;
+    color: rgb(3, 3, 3);
     text-decoration: underline;
     font-size: 16px;
+    font-weight: bold;
     margin-bottom: 8px;
 }
 
@@ -183,7 +186,7 @@
 /* Media Query for Laptops and Desktops */
 @media (min-width: 1024px) {
     .dev-container {
-        margin-left: 10%;
+        margin-left: 5%;
         margin-right: 5%;
     }
     .about-us > h1 {
