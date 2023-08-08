@@ -15,7 +15,6 @@ p {
     border-radius: 20px 20px 0 0;
 }
 
-
 main.list-exercises > button {
     margin: 0 auto;
     position: relative;
@@ -213,5 +212,32 @@ div.like-favourite > button {
 @media screen and (min-width: 1025px) and (max-width: 1453px) {
     .exercise-container {
         flex: 0 0 calc(23.33% - 20px);
+    }
+}
+@media screen and (max-width: 736px) {
+    .exercise-container {
+        width: 100%;
+        flex: 0 0 calc(40.33% - 20px);
+        margin: 0 10px;
+    }
+    .edit-button {
+        gap: 8px;
+    }
+    .edit-button > button {
+        padding: 0.7rem 3.2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .exercise-container {
+        width: 100%;
+        flex: 0 0 calc(70.33% - 20px);
+        margin: 0 10px;
+    }
+    .edit-button {
+        gap: 8px;
+    }
+    .edit-button > button {
+        padding: 0.7rem 3.2rem;
     }
 }

@@ -76,3 +76,13 @@
 .musc-filter {
     width: 150px;
 }
+
+@media screen and (max-width: 600px) {
+    .filters-1 {
+        display: block;
+    }
+    .options {
+        justify-content: center;
+        margin: 2px;
+    }
+}

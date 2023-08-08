@@ -6,7 +6,7 @@
 }
 
 div.not-liked > img {
-    filter: grayscale(0.5) contrast(1);
+    filter: grayscale(1) contrast(1);
 }
 
 @keyframes animateHeart {
