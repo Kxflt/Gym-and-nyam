@@ -54,6 +54,7 @@ function ForgotPassword() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
+
                     <Button text="Enviar" type="submit" />
                 </form>
             ) : (

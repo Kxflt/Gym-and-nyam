@@ -41,7 +41,7 @@ function NewPassword() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="newPass" onSubmit={handleSubmit(onSubmit)}>
                 <InputText
                     label="Recovery Code"
                     register={register('recoverPassCode', {
@@ -59,6 +59,8 @@ function NewPassword() {
                     })}
                     errors={errors}
                 />
+                {/* Creo que falta la condicion de si hacen match las contraseñas redirigir a login, y si no hacen match
+                 que salga el modal error */}
                 <InputPassword
                     label="Confirm Password"
                     register={register('confirmPassword', {
@@ -70,6 +72,7 @@ function NewPassword() {
                     errors={errors}
                 />
                 <span className="error">{errorText}</span>
+
                 <Button text="Confirm changes" type="submit" />
             </form>
         </>
