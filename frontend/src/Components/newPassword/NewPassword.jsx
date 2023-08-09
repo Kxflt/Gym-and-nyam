@@ -1,82 +1,94 @@
 import React from 'react';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 import { editPassword } from '../../services/authService';
-import { PASSWORD_REGEX } from '../../utils/constants';
-import Button from '../Shared/Button/Button';
-import InputText from '../Shared/Input/InputText';
-import InputPassword from '../Shared/Input/inputPassword';
 
-function NewPassword() {
-    const [errorText, setErrorText] = useState();
+const NewPassword = () => {
+    const navigate = useNavigate();
+    const [recoverPassCode, setRecoverPassCode] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [newPasswordConfirm, setNewpasswordConfirm] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const [confirmations, setConfirmations] = useState('');
 
-    const onSubmit = async ({
-        recoverPassCode,
-        newPassword,
-        confirmPassword,
-    }) => {
-        setErrorText(null);
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
 
-        // You can add your logic here to handle the form submission and password change.
-        // For example, you can compare newPassword and confirmPassword and make the necessary API call to update the password.
+            if (newPassword === newPasswordConfirm) {
+                const newPass = newPassword;
 
-        if (newPassword !== confirmPassword) {
-            setErrorText("Passwords don't match.");
-        } else {
-            try {
-                await editPassword(recoverPassCode, newPassword);
-            } catch (error) {
-                // Handle errors if the API call fails.
-                console.error('Error changing password:', error);
-                setErrorText('Failed to change password. Please try again.');
+                if (newPass === '') {
+                    throw new Error('An error occur with your passwords');
+                }
+
+                setConfirmations(await editPassword(recoverPassCode, newPass));
+
+                setErrorMessage(confirmations);
+
+                navigate('/login');
+            } else {
+                setErrorMessage('Passwords dont match');
             }
+        } catch (error) {
+            setErrorMessage(error.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <>
-            <form className="newPass" onSubmit={handleSubmit(onSubmit)}>
-                <InputText
-                    label="Recovery Code"
-                    register={register('recoverPassCode', {
-                        required: true,
-                    })}
-                    errors={errors}
-                />
-                <InputPassword
-                    label="New Password"
-                    register={register('newPassword', {
-                        required: true,
-                        pattern: PASSWORD_REGEX,
-                        minLength: 7,
-                        maxLength: 100,
-                    })}
-                    errors={errors}
-                />
-                {/* Creo que falta la condicion de si hacen match las contraseñas redirigir a login, y si no hacen match
-                 que salga el modal error */}
-                <InputPassword
-                    label="Confirm Password"
-                    register={register('confirmPassword', {
-                        required: true,
-                        pattern: PASSWORD_REGEX,
-                        minLength: 7,
-                        maxLength: 100,
-                    })}
-                    errors={errors}
-                />
-                <span className="error">{errorText}</span>
-
-                <Button text="Confirm changes" type="submit" />
-            </form>
-        </>
+        <div className="recover-card">
+            <div className="imput2Recover">
+                <form onSubmit={handleSubmit}>
+                    <div className="firstLabel">
+                        <label htmlFor="editRecoverPassCode">
+                            Reset your password:
+                        </label>
+                    </div>
+                    <div>
+                        <label htmlFor="recoverPassCode">Recovery Pass:</label>
+                        <input
+                            id="recoverPassCode"
+                            value={recoverPassCode}
+                            onChange={(e) => setRecoverPassCode(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="newPassword">New Password:</label>
+                        <input
+                            type="password"
+                            id="newPassword"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
+                            required
+                            minLength="8"
+                            maxLength="100"
+                        />
+                        <label htmlFor="newpasswordConfirm">
+                            Confirm new Password:
+                        </label>
+                        <input
+                            type="password"
+                            id="newPasswordConfirm"
+                            value={newPasswordConfirm}
+                            onChange={(e) =>
+                                setNewpasswordConfirm(e.target.value)
+                            }
+                            required
+                            minLength="8"
+                            maxLength="100"
+                        />
+                    </div>
+                    <span className="error">{errorMessage}</span>
+                    <div className="buttonEdit" onClick={handleSubmit}>
+                        <button>Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
-}
+};
 
 export default NewPassword;
