@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { editPassword } from '../../services/authService';
-
+import './newPassword.css';
 const NewPassword = () => {
     const navigate = useNavigate();
     const [recoverPassCode, setRecoverPassCode] = useState('');
@@ -41,14 +41,17 @@ const NewPassword = () => {
 
     return (
         <div className="recover-card">
-            <div className="imput2Recover">
+            <div className="input2Recover">
                 <form onSubmit={handleSubmit}>
-                    <div className="firstLabel">
-                        <label htmlFor="editRecoverPassCode">
+                    <div>
+                        <label
+                            className="firstLabel"
+                            htmlFor="editRecoverPassCode"
+                        >
                             Reset your password:
                         </label>
                     </div>
-                    <div>
+                    <div className="input-label">
                         <label htmlFor="recoverPassCode">Recovery Pass:</label>
                         <input
                             id="recoverPassCode"
@@ -83,7 +86,7 @@ const NewPassword = () => {
                     </div>
                     <span className="error">{errorMessage}</span>
                     <div className="buttonEdit" onClick={handleSubmit}>
-                        <button>Confirm</button>
+                        <button className="buttonEdit">Confirm</button>
                     </div>
                 </form>
             </div>
