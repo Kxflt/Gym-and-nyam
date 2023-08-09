@@ -179,7 +179,7 @@
 /* Media Query for Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
     .dev-container {
-        margin-left: 1%;
+        margin-left: 10%;
         margin-right: 10%;
     }
 }
