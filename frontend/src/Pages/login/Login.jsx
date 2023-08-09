@@ -6,7 +6,6 @@ import { useAuth } from '../../context/AuthContext';
 import { NavLink, Navigate } from 'react-router-dom';
 import Button from '../../Components/Shared/Button/Button';
 
-// Importamos los estilos.
 import './login.css';
 
 function Login() {
@@ -36,7 +35,6 @@ function Login() {
                 <input
                     type="email"
                     id="email"
-                    // pattern={EMAIL_REGEX}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -46,7 +44,6 @@ function Login() {
                 <input
                     type="password"
                     id="pass"
-                    // pattern={PASSWORD_REGEX}
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
                     required

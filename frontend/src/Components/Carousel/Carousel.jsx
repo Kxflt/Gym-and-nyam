@@ -7,7 +7,7 @@ const ImageCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const imagePaths = [
-        '../images/yoga.jpg',
+        '../images/banner.jpg',
         '../images/boxing.jpg',
         '../images/Chiquita.png',
         '../images/studio.jpg',

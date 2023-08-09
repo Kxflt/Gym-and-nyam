@@ -1,8 +1,5 @@
-// Importamos las dependencias y los hooks.
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-
-// Importamos los componentes.
 import { Link } from 'react-router-dom';
 import Avatar from '../../Components/avatar/Avatar';
 

@@ -5,19 +5,6 @@
 /*MENU*/
 /*@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400;500;700&family=Montserrat:wght@200&family=Oswald:wght@200;400;500;700&family=Sacramento&display=swap');*/
 
-/*CTA*/
-/* https://codepen.io/Rincon/pen/zardaq */
-
-
-/*icons*/
-/*LIKES*/
-/*https://codepen.io/robeen/pen/PbvJjy*/
-/*https://www.flaticon.com/search?word=LIKE*/
-
-
-/*FAVOURITES*/
-/*https://www.flaticon.com/search?word=favourite*/
-
 /*COLOR NAV(MH)*/
 /*background: rgb(135,182,115);
 background: radial-gradient(circle, rgba(135,182,115,1) 0%, rgba(195,216,152,1) 100%);*/
@@ -35,14 +22,13 @@ CTAs & NavBar: mayusculas
 Body: Primera mayusc. y minusculas.
 */
 
-
 html {
-  --darkest-colour: rgba(59, 80, 83, 1);
-  --dark-colour: #093c07;
-  --middle-colour: #6c8867;
-  --light-colour: #c3d898;
-  --lightest-colour: #c8dca1;
-  --cta-colour: #7B468C;
-  --cta-hover-colour:#C998D9;
-  --input-colour:#dbe3c9; 
+    --darkest-colour: rgba(59, 80, 83, 1);
+    --dark-colour: #093c07;
+    --middle-colour: #6c8867;
+    --light-colour: #c3d898;
+    --lightest-colour: #c8dca1;
+    --cta-colour: #7b468c;
+    --cta-hover-colour: #c998d9;
+    --input-colour: #dbe3c9;
 }

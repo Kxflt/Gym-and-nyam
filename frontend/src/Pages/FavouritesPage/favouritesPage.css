@@ -118,8 +118,8 @@ p {
     }
 
     .exercise-container-fav {
-        width: 50%; /* Ocupará la mitad del ancho disponible, creando dos columnas */
-        box-sizing: border-box; /* Incluye el padding y el borde dentro del ancho especificado */
+        width: 50%;
+        box-sizing: border-box;
         flex: 0 0 calc(33.33% - 20px);
     }
     .exerc-fav-text {

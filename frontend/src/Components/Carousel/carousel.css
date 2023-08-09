@@ -10,12 +10,6 @@
     transform: translateX(100%);
 }
 
-img.banner {
-    margin-top: 1%;
-    margin-left: 8%;
-    max-width: 85%;
-}
-
 @media (max-width: 767px) {
     a.carousel-control-prev {
         justify-content: right;

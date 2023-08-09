@@ -1,38 +1,7 @@
-/* .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Ajusta la altura según tus necesidades }*/
-
-/* Formulario */
-/* form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px; /* Ajusta el margen superior según tus necesidades }*/
-
-/* Contenedor del avatar */
-/* .avatar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
-/* Contenedor de los términos y condiciones */
-/* .terms-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px; /* Ajusta el margen superior según tus necesidades
-} */
-
-/*DESDE AQUI TENIAMOS*/
-/* Estilos para el contenedor del perfil */
 main.profile-container {
     height: auto;
 }
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -46,9 +15,6 @@ main.profile-container {
 
     padding: 20px;
 }
-/* .prof-avatar > .avatar-container {
-    margin-bottom: 10%;
-} */
 
 .nav-profile-container {
     display: flex;
@@ -66,7 +32,7 @@ main.profile-container {
     border-radius: 2%;
     margin-top: 15px;
 }
-/* Estilos para el título h2 */
+
 .profile h2 {
     margin-bottom: 1px;
 }
@@ -83,7 +49,6 @@ main.profile-container {
     border-radius: 4px;
 }
 
-/* Estilos para el avatar */
 .avatar-profile {
     width: 150px;
     height: 150px;
@@ -120,20 +85,7 @@ main.profile-container {
     justify-content: center;
     width: 300px;
 }
-/* input {
-    font-size: 12px;
-    padding: 5px 5px 5px 2.5px;
-    display: inline-block;
-    width: 10%;
-    border: none;
-    border-bottom: 1px solid #515151;
-    background: transparent;
-    color: #333;
-} */
-/* 
-input:focus {
-    outline: none;
-} */
+
 .filephoto {
     font-size: 12px;
     padding: 5px 5px 5px 2.5px;
@@ -144,25 +96,6 @@ input:focus {
     background: transparent;
     color: #333;
 }
-
-/*HASTA AQUI*/
-/* 
-  label {
-    color: #999;
-    font-size: 20px;
-    font-weight: normal;
-    /* position: absolute; 
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-  } */
-
-/* .bar {
-    position: relative;
-    display: block;
-    width: 250px;
-  } */
 
 @media screen and (min-width: 375px) {
     .inputs-profile {

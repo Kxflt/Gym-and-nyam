@@ -61,8 +61,8 @@ const ExercisesCreation = ({ addExercise, setExercisesFormModal, loading }) => {
                             required
                         >
                             <option value="">--</option>
-                            <option value="1">Cardio</option>
-                            <option value="2">BodyBuilding</option>
+                            <option value="1">BodyBuilding</option>
+                            <option value="2">Cardio</option>
                         </select>
                     </div>
 

@@ -49,7 +49,7 @@ function NavBar() {
                                     <Avatar avatar={authUser.avatar} />
                                 )}
                             </li>
-                            <li className="Hi"> Hi, {authUser.name} </li>
+                            <li className="hi"> Hi, {authUser.name} </li>
 
                             <li className="nav-logout">
                                 <NavLink to="/login" onClick={authLogout}>

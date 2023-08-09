@@ -1,13 +1,9 @@
-// Importamos las dependencias y los hooks.
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useError } from '../../context/ErrorContext';
-
-// Importamos los componentes.
 import { NavLink, Navigate } from 'react-router-dom';
 import Button from '../../Components/Shared/Button/Button';
 
-// Importamos los estilos.
 import './newUser.css';
 
 function NewUser() {

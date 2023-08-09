@@ -66,7 +66,7 @@ app.put('/users/validate/:regCode', validateUser);
 //Login del usuario.
 app.post('/users/login', loginUser);
 
-//Mostrar información pública de un usuario según su id. NO ES NECESARIO.
+//Mostrar información pública de un usuario según su id.
 app.get('/users/:userId', getUser);
 
 //Mostrar información privada de un usuario según el id del token.
