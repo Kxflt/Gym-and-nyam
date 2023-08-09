@@ -2,6 +2,7 @@ import React from 'react';
 import profile from '../../assets/profile.jpeg';
 import Aitor from '../../assets/Aitor.jpeg';
 import Marina from '../../assets/Marina_H.jpeg';
+import Ryan from '../../assets/ryan.png';
 
 import './aboutUs.css';
 function AboutUs() {
@@ -25,7 +26,7 @@ function AboutUs() {
                         <ul className="social-icons">
                             <li>
                                 <a
-                                    href="mailto:oriol.solanes-lopez@gmail.com"
+                                    href="mailto:oriol.solanes.lopez@gmail.com"
                                     title="Email"
                                     target="_blank"
                                 >
@@ -82,8 +83,10 @@ function AboutUs() {
                         <div className="dev-profile-name">
                             <h2>Uri Solanes</h2>
                             <div className="dev-profile-bio">
-                                Web Developer - Hack a boss Bootcamp.HTML:5,
-                                CSS, JAVASCRIPT, DOM, SQL, NODE.JS Y REACT.
+                                Web Developer - Hack a boss Bootcamp.
+                                HTML:5,CSS, JAVASCRIPT, DOM, SQL, NODE.JS Y
+                                REACT. I speak Spanish, Catalan, English and
+                                Dutch
                             </div>
                         </div>
                     </div>
@@ -93,14 +96,14 @@ function AboutUs() {
                     <div className="dev-profile">
                         <div className="dev-profile-image">
                             <img
-                                src={fat_pikachu}
+                                src={Ryan}
                                 alt="profile 1"
                                 className="profile"
                             />
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#email" title="Email">
+                                <a href="ryanquinn23@live.co.uk" title="Email">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -154,8 +157,11 @@ function AboutUs() {
                         <div className="dev-profile-name">
                             <h2>Ryan John Quinn</h2>
                             <div className="dev-profile-bio">
-                                I'm student. love working with <em>React</em>{' '}
-                                and <em>Node.js</em>.
+                                Junior web dev. HTML, CSS, SQL, NODE, REACT. I
+                                moved to Spain by myself at the age of 21,
+                                seeking to expand my horizons; I do not shrink
+                                from challenging situations. I speak English,
+                                Spanish and French..
                             </div>
                         </div>
                     </div>
@@ -172,7 +178,10 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#email" title="Email">
+                                <a
+                                    href="aitor.delacueva13@gmail.com"
+                                    title="Email"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -246,7 +255,10 @@ function AboutUs() {
                         </div>
                         <ul className="social-icons">
                             <li>
-                                <a href="#email" title="Email">
+                                <a
+                                    href="hdezhdezmarina@gmail.com"
+                                    title="Email"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
