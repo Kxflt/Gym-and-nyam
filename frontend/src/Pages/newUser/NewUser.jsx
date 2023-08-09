@@ -52,7 +52,6 @@ function NewUser() {
                     type="text"
                     placeholder="Name"
                     id="name-register"
-                    // pattern={EMAIL_REGEX}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     minLength="3"
@@ -64,7 +63,6 @@ function NewUser() {
                     type="text"
                     placeholder="Surname"
                     id="surname-register"
-                    // pattern={EMAIL_REGEX}
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
                     minLength="3"
@@ -77,7 +75,6 @@ function NewUser() {
                     type="email"
                     placeholder="Email"
                     id="email-register"
-                    // pattern={EMAIL_REGEX}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -88,7 +85,6 @@ function NewUser() {
                     type="password"
                     placeholder="Password"
                     id="pass-register"
-                    // pattern={PASSWORD_REGEX}
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
                     minLength="8"
@@ -101,7 +97,6 @@ function NewUser() {
                     type="password"
                     placeholder="Repeat password"
                     id="repeat-pass-register"
-                    // pattern={PASSWORD_REGEX}
                     value={passRepeated}
                     onChange={(e) => setPassRepeated(e.target.value)}
                     minLength="3"
