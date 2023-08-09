@@ -5,7 +5,7 @@ import twitter from '../../../assets/twitter.png';
 import gmail from '../../../assets/gmail.png';
 import github from '../../../assets/github.png';
 
-import './footer_2.css';
+import './footer.css';
 
 function Footer() {
     return (

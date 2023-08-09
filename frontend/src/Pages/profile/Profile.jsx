@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/authContext';
 import { Link } from 'react-router-dom';
-import Avatar from '../../Components/avatar/Avatar';
+import Avatar from '../../Components/Avatar/Avatar';
 
-import EditProfile from '../editProfile/EditProfile2';
+import EditProfile from '../../Components/EditProfile/EditProfile';
 import './profile.css';
 
 const UserProfile = () => {

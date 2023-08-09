@@ -1,9 +1,11 @@
+// Importamos las dependencias y componentes.
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../avatar/Avatar';
 
-import './navBar.css';
+// Importamos los estilos.
+import './nav-bar.css';
 
 function NavBar() {
     const { authUser, authLogout } = useAuth();
