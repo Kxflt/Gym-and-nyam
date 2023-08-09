@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import { sendRecoverPassService } from '../../services/authService';
 import Button from '../../Components/Shared/Button/Button';
-import NewPassword from '../../Components/newPassword/NewPassword';
+import NewPassword from '../../Components/NewPassword/NewPassword';
 
 import './forgotPassword.css';
 
@@ -11,16 +10,6 @@ function ForgotPassword() {
     const [errorPopUp, setErrorPopUp] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [email, setEmail] = useState('');
-
-    // const sendValidationCode = async (email) => {
-    //   try {
-    //     await sendRecoverPass(email);
-    //     // Envío exitoso del código de validación
-    //     console.log('Código de validación enviado exitosamente');
-    //   } catch (error) {
-    //     console.error('Error al enviar el código de validación:', error);
-    //     throw error;
-    // };
 
     const handleSubmit = async ({ email }) => {
         try {

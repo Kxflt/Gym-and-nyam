@@ -1,19 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useError } from './context/ErrorContext';
-import NavBar from './Components/nav-bar/NavBar';
+import NavBar from './Components/Nav-bar/NavBar';
 import Login from './Pages/login/Login';
-import ValidateUser from './Pages/validate/ValidateUser';
+import ValidateUser from './Components/Validate/ValidateUser';
 import ForgotPassword from './Pages/forgotPassword/ForgotPassword';
 import Dashboard from './Pages/dashboard/Dashboard';
 import NewUser from './Pages/newUser/NewUser';
 import NotFound from './Pages/not-found/NotFound';
 import Profile from './Pages/profile/Profile';
-import ExerciseList from './Pages/exercises/ExeciseList_2';
+import ExerciseList from './Pages/exercises/ExerciseList';
 import Footer from './Components/Shared/Footer/Footer';
 import AboutUs from './Pages/aboutUs/AboutUs';
 import ErrorModal from './Components/Shared/ErrorModal/ErrorModal';
-import ExerciseFavList from './Pages/FavouritesPage/FavouritesPage';
+import ExerciseFavList from './Pages/favouritesPage/FavouritesPage';
 
 import './App.css';
 

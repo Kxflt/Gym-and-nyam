@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/authContext';
 import { useError } from '../../context/ErrorContext';
 
 import { listFavExercisesService } from '../../services/exerciseService';

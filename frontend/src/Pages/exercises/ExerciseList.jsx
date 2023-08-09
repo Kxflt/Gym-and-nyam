@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/authContext';
 import ExercisesFilter from '../../Components/ExercisesFilter/ExercisesFilter.jsx';
 
-import ExerciseEdit from '../../Components/ExercisesEdit Uri-Ryan/ExercisesEdit';
+import ExerciseEdit from '../../Components/ExercisesEdit/ExercisesEdit';
 import ExercisesCreation from '../../Components/ExercisesCreation/ExercisesCreation';
-import LikeButton from '../../Components/like/Like';
-import FavButton from '../../Components/favourite/Favourite';
+import LikeButton from '../../Components/Like/Like';
+import FavButton from '../../Components/Favourite/Favourite';
 import useExercises from './useExercises';
 import './exercisesList.css';
 
