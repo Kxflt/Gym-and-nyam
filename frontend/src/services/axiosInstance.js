@@ -2,8 +2,7 @@ import axios from 'axios';
 
 import { TOKEN_LOCAL_STORAGE_KEY } from '../utils/constants';
 
-// Creamos una instancia de Axios. Establecemos la URL base del servidor y el tiempo máximo
-// de espera en milisegundos.
+/* Creamos una instancia de Axios. Establecemos la URL base del servidor y el tiempo máximo de espera en milisegundos. */
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     timeout: 5000,
@@ -23,7 +22,6 @@ axiosInstance.interceptors.request.use(
             config.headers['Authorization'] = `${authToken}`;
         }
 
-        // IMPORTANTE: Siempre retornar la config, response o errores
         return config;
     },
     (err) => {
@@ -34,9 +32,9 @@ axiosInstance.interceptors.request.use(
 // Interceptor que guarda automáticamente el token en localStorage.
 axiosInstance.interceptors.response.use(
     (response) => {
-        // Si la respuesta contiene token (si el usuario hace login) lo almacenamos en el localStorage.
+        // Si la respuesta contiene token lo almacenamos en el localStorage.
         if (response?.data?.data?.token) {
-            // Añadimos al localStorage el token.
+            // Añadimos el token.
             localStorage.setItem(
                 TOKEN_LOCAL_STORAGE_KEY,
                 JSON.stringify(response.data.data.token)
@@ -49,8 +47,6 @@ axiosInstance.interceptors.response.use(
     (err) => {
         console.log('error', err);
 
-        // Si el código de estado del error es 401 (no autorizado) y la dirección de la solicitud contiene "/users/login"
-        // eliminamos el token del localStorage.
         if (
             err.response.status === 401 &&
             err.config.url.indexOf('/users/login') !== -1

@@ -8,7 +8,6 @@ main.edit-profile {
     margin-bottom: 20px;
 }
 
-/* Estilo para los campos de texto y select */
 .edit-profile input,
 .edit-profile select {
     width: 100%;
@@ -71,13 +70,6 @@ input:focus {
     color: #333;
 }
 
-/* img.avatar {
-    display: flex;
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-} */
 /* Media queries para diseño responsive */
 @media screen and (min-width: 1024px) {
 }

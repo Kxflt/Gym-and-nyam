@@ -29,15 +29,6 @@ export const loginService = async (email, password) => {
     return res.data;
 };
 
-/* export const confirmValidateCode = (registrationCode) => {
-  return (
-    axiosInstance.get('/users/validate/:regCode'),
-    {
-      registrationCode,
-    }
-  );
-}; */
-
 // Validación de usuario.
 export const validationService = async (registrationCode) => {
     await axiosInstance.put(`/users/validate/${registrationCode}`);
@@ -56,15 +47,6 @@ export const signUpAvatarService = async (formData, config) => {
 
     return res.data;
 };
-
-/* export const sendRecoverPass = (recoverPassCode) => {
-  return (
-    axiosInstance.put('/users/password/recover'),
-    {
-      recoverPassCode,
-    }
-    ); 
-  }; */
 
 // Enviar correo de recuperación de contraseña a un usuario.
 export const sendRecoverPassService = async (email, recoverPassCode) => {

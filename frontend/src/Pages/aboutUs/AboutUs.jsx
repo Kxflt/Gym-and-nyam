@@ -1,6 +1,5 @@
 import React from 'react';
 import profile from '../../assets/profile.jpeg';
-import fat_pikachu from '../../assets/fat_pikachu.png';
 import Aitor from '../../assets/Aitor.jpeg';
 import Marina from '../../assets/Marina_H.jpeg';
 

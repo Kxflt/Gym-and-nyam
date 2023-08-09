@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import { sendRecoverPassService } from '../../services/authService';
 import Button from '../../Components/Shared/Button/Button';
-
-import ErrorPopUp from '../../Components/Shared/errorPopUp/ErrorPopUp';
 import NewPassword from '../../Components/newPassword/NewPassword';
+
 import './forgotPassword.css';
 
 function ForgotPassword() {

@@ -25,10 +25,6 @@ body {
     font-weight: 200;
 }
 
-/* h2 {
-  padding-top: 2rem;
-} */
-
 div.app {
     display: flex;
     flex-direction: column;

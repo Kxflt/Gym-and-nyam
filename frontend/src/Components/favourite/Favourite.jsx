@@ -1,5 +1,5 @@
 import React from 'react';
-import './favourite.css'; // Asegúrate de tener el archivo CSS para estilizar el botón.
+import './favourite.css';
 
 const FavButton = ({ exerciseId, favByMe, addFavourite }) => {
     return (

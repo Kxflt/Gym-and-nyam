@@ -3,7 +3,6 @@ import { func, string, bool } from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-// Importamos los estilos.
 import './button.css';
 
 function Button({

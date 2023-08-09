@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useError } from './context/ErrorContext';
-
 import NavBar from './Components/nav-bar/NavBar';
 import Login from './Pages/login/Login';
 import ValidateUser from './Pages/validate/ValidateUser';
@@ -14,9 +13,9 @@ import ExerciseList from './Pages/exercises/ExeciseList_2';
 import Footer from './Components/Shared/Footer/Footer';
 import AboutUs from './Pages/aboutUs/AboutUs';
 import ErrorModal from './Components/Shared/ErrorModal/ErrorModal';
+import ExerciseFavList from './Pages/FavouritesPage/FavouritesPage';
 
 import './App.css';
-import ExerciseFavList from './Pages/FavouritesPage/FavouritesPage';
 
 function App() {
     const { errorMessage, setErrorMessage } = useError();
