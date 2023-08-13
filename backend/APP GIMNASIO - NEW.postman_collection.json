@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "62a90212-ad0d-41e8-b387-2f18fd464c04",
+		"name": "APP GIMNASIO - NEW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27492829"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Marina\",\n    \"surname\": \"Hernandez\",\n    \"gender\": \"Female\",\n    \"interest\": \"Cardio\",\n    \"email\": \"marinahdezhdez@gmail.com\",\n    \"password\": \"HackbOSs_9*\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:8000/users/validate/76a36b3b-a44c-426a-a442-86a34875b1a0"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Info User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/users/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/marina.hernandez/Downloads/Pikachu.webp"
+								}
+							]
+						},
+						"url": "http://localhost:8000/users/avatar"
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"marinahdezhdez@gmail.com\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/users/password/recover"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recoverPassCode\":\"4TXfmcug\",\n    \"newPass\": \"marinahdez*H9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/users/password/recover/change"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marina",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Hernandez Hernandez",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Female",
+									"type": "text"
+								},
+								{
+									"key": "interest",
+									"value": "Bodybuilding",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marinahdezhdez@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/users/"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/users/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EXERCISES",
+			"item": [
+				{
+					"name": "New Exercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Prueba Postman",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Probando que la creacion ejercicios funciona",
+									"type": "text"
+								},
+								{
+									"key": "typologyId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "muscleGroupId",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/marina.hernandez/Downloads/Cinta_de_correr.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:8000/exercises"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Info Exercise",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Prueba edicion",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Probando que editar ejercicios funciona",
+									"type": "text"
+								},
+								{
+									"key": "typologyId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "muscleGroupId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/marina.hernandez/Downloads/Bundles_Web_Pro_M_Mob1.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:8000/exercises/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/5/likes"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Like",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/5/likes"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Favourite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/4/favourites"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Favourite",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/3/favourites"
+					},
+					"response": []
+				},
+				{
+					"name": "Exercise List (Favs)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/favourites"
+					},
+					"response": []
+				},
+				{
+					"name": "Exercises List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_marina}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exercise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/exercises/5"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token_marina",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_admin",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
