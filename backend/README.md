@@ -19,7 +19,7 @@ Implementar una API que permite publicar ejercicios para la gestión de los mism
 
 1. Desde la consola, en el directorio raíz, instalar todas las dependencias disponibles en el archivo package.json con el comando <code>npm install</code> o <code>npm i</code>.
 2. Crear un archivo <code>.env</code> a partir del archivo ya existente como referencia <code>.env.example</code> completando todas las variables con sus valores correspondientes.
-3. Crear la base de datos desde MySQL Workbench con el nombre <code>gymñam</code>.
+3. Crear la base de datos desde MySQL Workbench con el nombre <code>gymñam</code>. La base de datos, la puedes encontrar con el nombre Gymnyam.sql para disponer de la tabla de ejercicios completa.
 4. Desde la consola, en el directorio raíz, iniciar la base de datos desde el archivo <code>initDB.js</code>. El código en la consola será <code>npm run initDB</code>, script en el archivo package.json. En este momento las tablas se deberían de haber creado en la base de datos. El usuario ADMIN se crea en este momento de forma automática.
 5. Existe un script en el archivo package.json que permite al usuario iniciar el servidor con la dependencia nodemon. Para ello basta con introducir en la consola el comando <code>npm run dev</code>.
 

@@ -37,15 +37,15 @@ Con nuestra cuenta de usuario podemos:
 
  - Editar perfil: En esta página podremos cambiar nuestros datos de usuario, avatar.
 
- - Mis Favoritos: Una página donde quedaran guardados todos los ejercicios a los que les hayas dado Favorito. Para eliminar de la lista de favoritos basta con quitar el Favorito del ejercicio desde la vista principal de ejercicios.
+ - Mis Favoritos: Una página donde quedan guardados todos los ejercicios a los que les hayas dado Favorito. Para eliminar de la lista de favoritos basta con quitar el Favorito del ejercicio desde la vista principal de ejercicios.
 
 ## Admin Zone
 
 Con la cuenta de admin podremos:
 
-- Editar Perfil: Cambiar nuestro nombre de usuario, avatar y contraseña.
+- Editar Perfil: Cambiar nuestro nombre de usuario, avatar.
 
-- Nuevo ejercicios: Esta opcion nos abre una ventana donde podremos crear un nuevo ejercicio.
+- Nuevo ejercicios: Esta opcion nos abre un modal donde podremos crear un nuevo ejercicio.
 
 - Editar ejercicio: Haciendo click en Edit, podremos editar todos los datos del ejercicio.
 
