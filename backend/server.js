@@ -150,7 +150,7 @@ app.delete(
     deleteFavourite
 );
 
-//Listar los favoritos de un usuario. ****OJO! :id
+//Listar los favoritos de un usuario.
 app.get('/favourites', authUser, userExists, userFavourites);
 
 /**
